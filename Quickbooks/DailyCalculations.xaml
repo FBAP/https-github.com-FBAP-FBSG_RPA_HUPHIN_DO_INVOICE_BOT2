@@ -18,7 +18,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1041.6,6772</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>825.6,5254.4</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>DailyProcessSequence_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="44">
@@ -108,7 +108,7 @@
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="CAlculate the number of hours worked and detect if driver has worked on Sundays or public holidays" DisplayName="Calculations main sequence" sap:VirtualizedContainerService.HintSize="1052,6707.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Calculate the number of hours worked and detect if driver has worked on Sundays or public holidays" DisplayName="Calculations for Daily and Consolidated main sequence" sap:VirtualizedContainerService.HintSize="836,5189.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="s:DateTime" Name="EndTime2" />
       <Variable x:TypeArguments="s:DateTime" Name="StartTime2" />
@@ -135,12 +135,12 @@
       <Variable x:TypeArguments="x:String" Name="EndDay" />
       <Variable x:TypeArguments="x:String" Name="StartDay" />
       <Variable x:TypeArguments="x:Double" Name="StdTotalWorkingHours1" />
-      <Variable x:TypeArguments="x:Double" Name="PremTotalWorkingHours1" />
       <Variable x:TypeArguments="x:Double" Name="StdTotalWorkingHours2" />
       <Variable x:TypeArguments="x:Double" Name="PremTotalWorkingHours2" />
       <Variable x:TypeArguments="x:String" Name="EndDate2" />
       <Variable x:TypeArguments="x:String" Name="PHDate" />
       <Variable x:TypeArguments="s:DateTime" Name="PHStartDateTime" />
+      <Variable x:TypeArguments="x:Double" Name="PremTotalWorkingHours1" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -149,8 +149,8 @@
         <x:Boolean x:Key="IsPinned">False</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message - fetching Start time 1 and end time 1" sap:VirtualizedContainerService.HintSize="1010.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_64" Level="Info" Message="[&quot;Fetching Start Times and End Times&quot;]" />
-    <If Condition="[in_TransactionItem1(&quot;Start Time 1&quot;).ToString.Contains(&quot;Not Available&quot;) and in_TransactionItem1(&quot;End Time 1&quot;).ToString.Contains(&quot;Not Available&quot;)]" DisplayName="If - Start time 1 and End time 1 calculations" sap:VirtualizedContainerService.HintSize="1010.4,52.8" sap2010:WorkflowViewState.IdRef="If_4">
+    <ui:LogMessage DisplayName="Log Message - fetching Start time 1 and end time 1" sap:VirtualizedContainerService.HintSize="794.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_64" Level="Info" Message="[&quot;Fetching Start Times and End Times&quot;]" />
+    <If Condition="[in_TransactionItem1(&quot;Start Time 1&quot;).ToString.Contains(&quot;Not Available&quot;) and in_TransactionItem1(&quot;End Time 1&quot;).ToString.Contains(&quot;Not Available&quot;)]" DisplayName="If - Start time 1 and End time 1 calculations" sap:VirtualizedContainerService.HintSize="794.4,52.8" sap2010:WorkflowViewState.IdRef="If_4">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -158,14 +158,14 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <Sequence DisplayName="If times are not available" sap:VirtualizedContainerService.HintSize="375.2,585.6" sap2010:WorkflowViewState.IdRef="Sequence_29">
+        <Sequence DisplayName="If times 1 are not available" sap:VirtualizedContainerService.HintSize="375.2,485.6" sap2010:WorkflowViewState.IdRef="Sequence_29">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message - Times not marked" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_42" Level="Info" Message="[&quot;Start and End work time before lunch is not available&quot;]" />
-          <Assign DisplayName="Assign - Calulate time difference" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_5">
+          <ui:LogMessage DisplayName="Log Message - Start time 1 &amp; 2 are not marked" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_42" Level="Info" Message="[&quot;Start and End work time before lunch is not available&quot;]" />
+          <Assign DisplayName="Assign - Calulate time difference bet start time 1 &amp; 2" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_5">
             <Assign.To>
               <OutArgument x:TypeArguments="x:Int32">[TimeDiffHours1]</OutArgument>
             </Assign.To>
@@ -173,15 +173,7 @@
               <InArgument x:TypeArguments="x:Int32">0</InArgument>
             </Assign.Value>
           </Assign>
-          <Assign DisplayName="Assign End Job Date Before Lunch" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_96">
-            <Assign.To>
-              <OutArgument x:TypeArguments="x:String">[EndDate1]</OutArgument>
-            </Assign.To>
-            <Assign.Value>
-              <InArgument x:TypeArguments="x:String">Not Available</InArgument>
-            </Assign.Value>
-          </Assign>
-          <Assign DisplayName="Assign Start Job Date Before Lunch" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_6">
+          <Assign DisplayName="Assign Start Date 1 to NA" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_6">
             <Assign.To>
               <OutArgument x:TypeArguments="x:String">[StartDate1]</OutArgument>
             </Assign.To>
@@ -189,7 +181,7 @@
               <InArgument x:TypeArguments="x:String">Not Available</InArgument>
             </Assign.Value>
           </Assign>
-          <Assign DisplayName="Assign End Job Date Before Lunch" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_7">
+          <Assign DisplayName="Assign End Date 1 to NA" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_96">
             <Assign.To>
               <OutArgument x:TypeArguments="x:String">[EndDate1]</OutArgument>
             </Assign.To>
@@ -200,13 +192,13 @@
         </Sequence>
       </If.Then>
       <If.Else>
-        <Sequence DisplayName="If times are marked" sap:VirtualizedContainerService.HintSize="304,552.8" sap2010:WorkflowViewState.IdRef="Sequence_34">
+        <Sequence DisplayName="If times 1 are marked" sap:VirtualizedContainerService.HintSize="304,552.8" sap2010:WorkflowViewState.IdRef="Sequence_34">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Assign DisplayName="Assign Start Job Time Before Lunch" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+          <Assign DisplayName="Assign Start Time 1" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_1">
             <Assign.To>
               <OutArgument x:TypeArguments="s:DateTime">[StartTime1]</OutArgument>
             </Assign.To>
@@ -214,7 +206,7 @@
               <InArgument x:TypeArguments="s:DateTime">[DateTime.ParseExact(in_TransactionItem1("Start Time 1").ToString, "dd/MM/yyyy HH:mm",System.Globalization.CultureInfo.InvariantCulture)]</InArgument>
             </Assign.Value>
           </Assign>
-          <Assign DisplayName="Assign End Job Time Before Lunch" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+          <Assign DisplayName="Assign End Time 1" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_2">
             <Assign.To>
               <OutArgument x:TypeArguments="s:DateTime">[EndTime1]</OutArgument>
             </Assign.To>
@@ -222,7 +214,7 @@
               <InArgument x:TypeArguments="s:DateTime">[DateTime.ParseExact(in_TransactionItem1("End Time 1").ToString, "dd/MM/yyyy HH:mm",System.Globalization.CultureInfo.InvariantCulture)]</InArgument>
             </Assign.Value>
           </Assign>
-          <Assign DisplayName="Assign Start Job Date Before Lunch" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_8">
+          <Assign DisplayName="Assign Start Date 1" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_8">
             <Assign.To>
               <OutArgument x:TypeArguments="x:String">[StartDate1]</OutArgument>
             </Assign.To>
@@ -230,7 +222,7 @@
               <InArgument x:TypeArguments="x:String">[StartTime1.ToShortDateString]</InArgument>
             </Assign.Value>
           </Assign>
-          <Assign DisplayName="Assign End Job Date Before Lunch" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_9">
+          <Assign DisplayName="Assign End Date 1" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_9">
             <Assign.To>
               <OutArgument x:TypeArguments="x:String">[EndDate1]</OutArgument>
             </Assign.To>
@@ -238,7 +230,7 @@
               <InArgument x:TypeArguments="x:String">[EndTime1.ToShortDateString]</InArgument>
             </Assign.Value>
           </Assign>
-          <Assign DisplayName="Assign - Calulate time difference" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_10">
+          <Assign DisplayName="Assign - Calulate time difference 1" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_10">
             <Assign.To>
               <OutArgument x:TypeArguments="x:Int32">[TimeDiffHours1]</OutArgument>
             </Assign.To>
@@ -249,7 +241,7 @@
         </Sequence>
       </If.Else>
     </If>
-    <If Condition="[in_TransactionItem1(&quot;Start Time 2&quot;).ToString.ToString.Contains(&quot;Not Available&quot;) and  in_TransactionItem1(&quot;End Time 2&quot;).ToString.ToString.Contains(&quot;Not Available&quot;)]" DisplayName="If - Start time 2 and End time 2 calculations" sap:VirtualizedContainerService.HintSize="1010.4,52.8" sap2010:WorkflowViewState.IdRef="If_5">
+    <If Condition="[in_TransactionItem1(&quot;Start Time 2&quot;).ToString.ToString.Contains(&quot;Not Available&quot;) and  in_TransactionItem1(&quot;End Time 2&quot;).ToString.ToString.Contains(&quot;Not Available&quot;)]" DisplayName="If - Start time 2 and End time 2 calculations" sap:VirtualizedContainerService.HintSize="794.4,52.8" sap2010:WorkflowViewState.IdRef="If_5">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -264,7 +256,7 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <ui:LogMessage DisplayName="Log Message - Times not marked" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_43" Level="Info" Message="[&quot;Start and End work time after lunch is not available&quot;]" />
-          <Assign DisplayName="Assign - Calulate time difference" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_15">
+          <Assign DisplayName="Assign - Calulate time difference to 0" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_15">
             <Assign.To>
               <OutArgument x:TypeArguments="x:Int32">[TimeDiffHours2]</OutArgument>
             </Assign.To>
@@ -272,7 +264,7 @@
               <InArgument x:TypeArguments="x:Int32">0</InArgument>
             </Assign.Value>
           </Assign>
-          <Assign DisplayName="Assign Start Job Date Before Lunch" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_16">
+          <Assign DisplayName="Assign Start Date 2 to NA" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_16">
             <Assign.To>
               <OutArgument x:TypeArguments="x:String">[StartDate2]</OutArgument>
             </Assign.To>
@@ -280,7 +272,7 @@
               <InArgument x:TypeArguments="x:String">Not Available</InArgument>
             </Assign.Value>
           </Assign>
-          <Assign DisplayName="Assign End Job Date Before Lunch" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_17">
+          <Assign DisplayName="Assign End Date to NA" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_17">
             <Assign.To>
               <OutArgument x:TypeArguments="x:String">[EndDate2]</OutArgument>
             </Assign.To>
@@ -297,7 +289,7 @@
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Assign DisplayName="Assign Start Job Time After Lunch" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_13">
+          <Assign DisplayName="Assign Start Time 2" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_13">
             <Assign.To>
               <OutArgument x:TypeArguments="s:DateTime">[StartTime2]</OutArgument>
             </Assign.To>
@@ -305,7 +297,7 @@
               <InArgument x:TypeArguments="s:DateTime">[DateTime.ParseExact(in_TransactionItem1("Start Time 2").ToString, "dd/MM/yyyy HH:mm",System.Globalization.CultureInfo.InvariantCulture)]</InArgument>
             </Assign.Value>
           </Assign>
-          <Assign DisplayName="Assign Start Job Time After Lunch" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_14">
+          <Assign DisplayName="Assign End Time 2" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_14">
             <Assign.To>
               <OutArgument x:TypeArguments="s:DateTime">[EndTime2]</OutArgument>
             </Assign.To>
@@ -313,7 +305,7 @@
               <InArgument x:TypeArguments="s:DateTime">[DateTime.ParseExact(in_TransactionItem1("End Time 2").ToString, "dd/MM/yyyy HH:mm",System.Globalization.CultureInfo.InvariantCulture)]</InArgument>
             </Assign.Value>
           </Assign>
-          <Assign DisplayName="Assign - Calulate time difference" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_18">
+          <Assign DisplayName="Assign - Calulate time difference 2" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_18">
             <Assign.To>
               <OutArgument x:TypeArguments="x:Int32">[TimeDiffHours2]</OutArgument>
             </Assign.To>
@@ -321,7 +313,7 @@
               <InArgument x:TypeArguments="x:Int32" xml:space="preserve">[( EndTime2-  StartTime2).Hours]</InArgument>
             </Assign.Value>
           </Assign>
-          <Assign DisplayName="Assign Start Job Date After Lunch" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_19">
+          <Assign DisplayName="Assign Start Date 2" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_19">
             <Assign.To>
               <OutArgument x:TypeArguments="x:String">[StartDate2]</OutArgument>
             </Assign.To>
@@ -329,7 +321,7 @@
               <InArgument x:TypeArguments="x:String">[StartTime2.ToString.split(" "c)(0)]</InArgument>
             </Assign.Value>
           </Assign>
-          <Assign DisplayName="Assign End Job Date After Lunch" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_20">
+          <Assign DisplayName="Assign End Date 2" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_20">
             <Assign.To>
               <OutArgument x:TypeArguments="x:String">[EndJobDate2]</OutArgument>
             </Assign.To>
@@ -340,14 +332,42 @@
         </Sequence>
       </If.Else>
     </If>
-    <ui:LogMessage DisplayName="Log Message - Start Time 1" sap:VirtualizedContainerService.HintSize="1010.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_65" Level="Info" Message="[&quot;Start Time 1: &quot;+ StartTime1.ToString]" />
-    <ui:LogMessage DisplayName="Log Message - End Time 1" sap:VirtualizedContainerService.HintSize="1010.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_66" Level="Info" Message="[&quot;End Time 1: &quot;+ EndTime1.ToString]" />
-    <ui:LogMessage DisplayName="Log Message - Start Time 2" sap:VirtualizedContainerService.HintSize="1010.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_67" Level="Info" Message="[&quot;Start Time 2: &quot;+ StartTime2.ToString]" />
-    <ui:LogMessage DisplayName="Log Message - End Time 2" sap:VirtualizedContainerService.HintSize="1010.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_68" Level="Info" Message="[&quot;End Time 2: &quot;+  EndTime2.ToString]" />
-    <If Condition="[in_TransactionItem1(&quot;Signature&quot;).ToString.ToUpper=&quot;TRUE&quot;]" DisplayName="Signature present check" sap:VirtualizedContainerService.HintSize="1010.4,52.8" sap2010:WorkflowViewState.IdRef="If_6">
+    <ui:LogMessage DisplayName="Log Message - Display Start Time 1" sap:VirtualizedContainerService.HintSize="794.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_65" Level="Info" Message="[&quot;Start Time 1: &quot;+ StartTime1.ToString]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:LogMessage>
+    <ui:LogMessage DisplayName="Log Message - Display End Time 1" sap:VirtualizedContainerService.HintSize="794.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_66" Level="Info" Message="[&quot;End Time 1: &quot;+ EndTime1.ToString]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:LogMessage>
+    <ui:LogMessage DisplayName="Log Message - Display Start Time 2" sap:VirtualizedContainerService.HintSize="794.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_67" Level="Info" Message="[&quot;Start Time 2: &quot;+ StartTime2.ToString]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:LogMessage>
+    <ui:LogMessage DisplayName="Log Message - Display End Time 2" sap:VirtualizedContainerService.HintSize="794.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_68" Level="Info" Message="[&quot;End Time 2: &quot;+  EndTime2.ToString]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:LogMessage>
+    <If Condition="[in_TransactionItem1(&quot;Signature&quot;).ToString.ToUpper=&quot;TRUE&quot;]" DisplayName="Signature present check" sap:VirtualizedContainerService.HintSize="794.4,444.8" sap2010:WorkflowViewState.IdRef="If_6">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
@@ -388,7 +408,7 @@
         </Sequence>
       </If.Else>
     </If>
-    <Sequence DisplayName="Calculate total worked time and min working hours" sap:VirtualizedContainerService.HintSize="1010.4,285.6" sap2010:WorkflowViewState.IdRef="Sequence_40">
+    <Sequence DisplayName="Calculate total worked time and min working hours" sap:VirtualizedContainerService.HintSize="794.4,285.6" sap2010:WorkflowViewState.IdRef="Sequence_40">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -405,14 +425,14 @@
       </Assign>
       <ui:LogMessage DisplayName="Log Message - Display total working hours" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_46" Level="Info" Message="[&quot;Total working hours: &quot;+ StdTotalWorkingHours1.ToString]" />
     </Sequence>
-    <Sequence DisplayName="Check if the start day is weekday or PH" sap:VirtualizedContainerService.HintSize="1010.4,68.8" sap2010:WorkflowViewState.IdRef="Sequence_109">
+    <Sequence DisplayName="Check if the start day is weekday or PH" sap:VirtualizedContainerService.HintSize="794.4,68.8" sap2010:WorkflowViewState.IdRef="Sequence_109">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Assign DisplayName="Assign - fetch the day of start time" sap:VirtualizedContainerService.HintSize="723.2,60" sap2010:WorkflowViewState.IdRef="Assign_46">
+      <Assign DisplayName="Assign - fetch the day of start time" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_46">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">[StartDay]</OutArgument>
         </Assign.To>
@@ -420,138 +440,7 @@
           <InArgument x:TypeArguments="x:String">[StartTime1.DayOfWeek.ToString]</InArgument>
         </Assign.Value>
       </Assign>
-      <If Condition="[StartDay=&quot;Sunday&quot;]" DisplayName="If - Check if it's weekday or sunday" sap:VirtualizedContainerService.HintSize="723.2,437.6" sap2010:WorkflowViewState.IdRef="If_24">
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-        <If.Then>
-          <Sequence DisplayName="If day is sunday" sap:VirtualizedContainerService.HintSize="304,152.8" sap2010:WorkflowViewState.IdRef="Sequence_99">
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-            <Assign DisplayName="Assign Start day to PH" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_56">
-              <Assign.To>
-                <OutArgument x:TypeArguments="x:String">[StartDay]</OutArgument>
-              </Assign.To>
-              <Assign.Value>
-                <InArgument x:TypeArguments="x:String">Public Holiday</InArgument>
-              </Assign.Value>
-            </Assign>
-          </Sequence>
-        </If.Then>
-        <If.Else>
-          <Sequence DisplayName="If check if day is public holidayif its weekday" sap:VirtualizedContainerService.HintSize="375.2,278.4" sap2010:WorkflowViewState.IdRef="Sequence_100">
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-            <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_PublicHolidaysDT]" DisplayName="For Each Row in Data Table of PH " sap:VirtualizedContainerService.HintSize="333.6,52.8" sap2010:WorkflowViewState.IdRef="ForEachRow_4">
-              <ui:ForEachRow.Body>
-                <ActivityAction x:TypeArguments="sd:DataRow">
-                  <ActivityAction.Argument>
-                    <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
-                  </ActivityAction.Argument>
-                  <Sequence DisplayName="for sundays dt" sap:VirtualizedContainerService.HintSize="693.6,604.8" sap2010:WorkflowViewState.IdRef="Sequence_96">
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                    <Assign DisplayName="Assign  PH date" sap:VirtualizedContainerService.HintSize="652,60" sap2010:WorkflowViewState.IdRef="Assign_47">
-                      <Assign.To>
-                        <OutArgument x:TypeArguments="x:String">[PHDate]</OutArgument>
-                      </Assign.To>
-                      <Assign.Value>
-                        <InArgument x:TypeArguments="x:String">[CurrentRow("Date").ToString]</InArgument>
-                      </Assign.Value>
-                    </Assign>
-                    <Assign DisplayName="Assign PHDate1" sap:VirtualizedContainerService.HintSize="652,60" sap2010:WorkflowViewState.IdRef="Assign_49">
-                      <Assign.To>
-                        <OutArgument x:TypeArguments="x:String">[PHDate]</OutArgument>
-                      </Assign.To>
-                      <Assign.Value>
-                        <InArgument x:TypeArguments="x:String">[PHStartDateTime.ToShortDateString]</InArgument>
-                      </Assign.Value>
-                    </Assign>
-                    <If Condition="[StartDate1= PHDate]" DisplayName="If the start day is public holiday" sap:VirtualizedContainerService.HintSize="652,312" sap2010:WorkflowViewState.IdRef="If_23">
-                      <sap:WorkflowViewStateService.ViewState>
-                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                        </scg:Dictionary>
-                      </sap:WorkflowViewStateService.ViewState>
-                      <If.Then>
-                        <Sequence DisplayName="Public Holiday" sap:VirtualizedContainerService.HintSize="304,152.8" sap2010:WorkflowViewState.IdRef="Sequence_97">
-                          <sap:WorkflowViewStateService.ViewState>
-                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                            </scg:Dictionary>
-                          </sap:WorkflowViewStateService.ViewState>
-                          <Assign DisplayName="Assign day to public holiday" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_54">
-                            <Assign.To>
-                              <OutArgument x:TypeArguments="x:String">[StartDay]</OutArgument>
-                            </Assign.To>
-                            <Assign.Value>
-                              <InArgument x:TypeArguments="x:String">Public Holiday</InArgument>
-                            </Assign.Value>
-                          </Assign>
-                        </Sequence>
-                      </If.Then>
-                      <If.Else>
-                        <Sequence DisplayName="Weekday" sap:VirtualizedContainerService.HintSize="304,152.8" sap2010:WorkflowViewState.IdRef="Sequence_98">
-                          <sap:WorkflowViewStateService.ViewState>
-                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                            </scg:Dictionary>
-                          </sap:WorkflowViewStateService.ViewState>
-                          <Assign DisplayName="Assign day to weekday" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_55">
-                            <Assign.To>
-                              <OutArgument x:TypeArguments="x:String">[StartDay]</OutArgument>
-                            </Assign.To>
-                            <Assign.Value>
-                              <InArgument x:TypeArguments="x:String">Weekday</InArgument>
-                            </Assign.Value>
-                          </Assign>
-                        </Sequence>
-                      </If.Else>
-                    </If>
-                  </Sequence>
-                </ActivityAction>
-              </ui:ForEachRow.Body>
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-            </ui:ForEachRow>
-            <ui:LogMessage DisplayName="Log Message - Display weekday" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_57" Level="Info" Message="[&quot;The day is: &quot; + StartDay]" />
-          </Sequence>
-        </If.Else>
-      </If>
-    </Sequence>
-    <Sequence DisplayName="Check if the end day is weekday or PH" sap:VirtualizedContainerService.HintSize="1010.4,245.6" sap2010:WorkflowViewState.IdRef="Sequence_115">
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-      <Assign DisplayName="Assign - fetch the day of start time" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_69">
-        <Assign.To>
-          <OutArgument x:TypeArguments="x:String">[EndDay]</OutArgument>
-        </Assign.To>
-        <Assign.Value>
-          <InArgument x:TypeArguments="x:String">[EndTime1.DayOfWeek.ToString]</InArgument>
-        </Assign.Value>
-      </Assign>
-      <If Condition="[EndDay=&quot;Sunday&quot;]" DisplayName="If - Check if it's weekday or sunday" sap:VirtualizedContainerService.HintSize="262.4,52.8" sap2010:WorkflowViewState.IdRef="If_26">
+      <If Condition="[StartDay=&quot;Sunday&quot;]" DisplayName="If - Check if Start day is weekday or sunday" sap:VirtualizedContainerService.HintSize="333.6,52.8" sap2010:WorkflowViewState.IdRef="If_24">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -559,123 +448,226 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
         <If.Then>
-          <Sequence DisplayName="If day is sunday" sap:VirtualizedContainerService.HintSize="304,152.8" sap2010:WorkflowViewState.IdRef="Sequence_110">
+          <Assign DisplayName="Assign Start day to PH 1" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_56">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[StartDay]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">Public Holiday</InArgument>
+            </Assign.Value>
+          </Assign>
+        </If.Then>
+        <If.Else>
+          <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_PublicHolidaysDT]" DisplayName="For Each Row in Data Table of PH for Start Day " sap:VirtualizedContainerService.HintSize="433.6,184.8" sap2010:WorkflowViewState.IdRef="ForEachRow_4">
+            <ui:ForEachRow.Body>
+              <ActivityAction x:TypeArguments="sd:DataRow">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
+                </ActivityAction.Argument>
+                <Sequence DisplayName="for sundays dt 1" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_96">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Assign DisplayName="Assign PH date 1" sap:VirtualizedContainerService.HintSize="652,60" sap2010:WorkflowViewState.IdRef="Assign_47">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[PHDate]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">[CurrentRow("Date").ToString]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <Assign DisplayName="Assign PHDate1" sap:VirtualizedContainerService.HintSize="652,60" sap2010:WorkflowViewState.IdRef="Assign_49">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[PHDate]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">[PHStartDateTime.ToShortDateString]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <If Condition="[StartDate1= PHDate]" DisplayName="If the start day is public holiday" sap:VirtualizedContainerService.HintSize="652,312" sap2010:WorkflowViewState.IdRef="If_23">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <If.Then>
+                      <Sequence DisplayName="Public Holiday" sap:VirtualizedContainerService.HintSize="304,152.8" sap2010:WorkflowViewState.IdRef="Sequence_97">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Assign DisplayName="Assign start day to public holiday" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_54">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[StartDay]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">Public Holiday</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                      </Sequence>
+                    </If.Then>
+                    <If.Else>
+                      <Sequence DisplayName="Weekday" sap:VirtualizedContainerService.HintSize="304,152.8" sap2010:WorkflowViewState.IdRef="Sequence_98">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Assign DisplayName="Assign start day to weekday" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_55">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[StartDay]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">Weekday</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                      </Sequence>
+                    </If.Else>
+                  </If>
+                </Sequence>
+              </ActivityAction>
+            </ui:ForEachRow.Body>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Assign sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_70">
-              <Assign.To>
-                <OutArgument x:TypeArguments="x:String">[EndDay]</OutArgument>
-              </Assign.To>
-              <Assign.Value>
-                <InArgument x:TypeArguments="x:String">Public Holiday</InArgument>
-              </Assign.Value>
-            </Assign>
-          </Sequence>
+          </ui:ForEachRow>
+        </If.Else>
+      </If>
+      <ui:LogMessage DisplayName="Log Message - Display start day to weekday" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_57" Level="Info" Message="[&quot;The day is: &quot; + StartDay]" />
+    </Sequence>
+    <Sequence DisplayName="Check if the end day is weekday or PH" sap:VirtualizedContainerService.HintSize="794.4,68.8" sap2010:WorkflowViewState.IdRef="Sequence_115">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <Assign DisplayName="Assign - Fetch the end day of start time" sap:VirtualizedContainerService.HintSize="506.4,60" sap2010:WorkflowViewState.IdRef="Assign_69">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[EndDay]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">[EndTime1.DayOfWeek.ToString]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <If Condition="[EndDay=&quot;Sunday&quot;]" DisplayName="If - Check if End day is weekday or sunday" sap:VirtualizedContainerService.HintSize="506.4,219.2" sap2010:WorkflowViewState.IdRef="If_26">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <If.Then>
+          <Assign DisplayName="Assign End Day to PH" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_70">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[EndDay]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">Public Holiday</InArgument>
+            </Assign.Value>
+          </Assign>
         </If.Then>
         <If.Else>
-          <Sequence DisplayName="If check if day is public holidayif its weekday" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_114">
+          <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_PublicHolidaysDT]" DisplayName="For Each Row in Data Table PH for End day" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="ForEachRow_5">
+            <ui:ForEachRow.Body>
+              <ActivityAction x:TypeArguments="sd:DataRow">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
+                </ActivityAction.Argument>
+                <Sequence DisplayName="for sundays dt" sap:VirtualizedContainerService.HintSize="304,345.6" sap2010:WorkflowViewState.IdRef="Sequence_113">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Assign DisplayName="Assign PHDate2 #1" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_71">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[PHDate]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">[CurrentRow("Date").ToString]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <Assign DisplayName="Assign PHDate2 #2" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_72">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[PHDate]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">[PHStartDateTime.ToShortDateString]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <If Condition="[StartDate2= PHDate]" DisplayName="If Start date 2 is PH" sap:VirtualizedContainerService.HintSize="262.4,52.8" sap2010:WorkflowViewState.IdRef="If_25">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <If.Then>
+                      <Sequence DisplayName="End day is Public Holiday" sap:VirtualizedContainerService.HintSize="304,152.8" sap2010:WorkflowViewState.IdRef="Sequence_111">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Assign DisplayName="Assign End day to public holiday" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_73">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[EndDay]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">Public Holiday</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                      </Sequence>
+                    </If.Then>
+                    <If.Else>
+                      <Sequence DisplayName="End day is Weekday " sap:VirtualizedContainerService.HintSize="304,152.8" sap2010:WorkflowViewState.IdRef="Sequence_112">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Assign DisplayName="Assign End day to weekday" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_74">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[EndDay]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">Weekday</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                      </Sequence>
+                    </If.Else>
+                  </If>
+                </Sequence>
+              </ActivityAction>
+            </ui:ForEachRow.Body>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_PublicHolidaysDT]" DisplayName="For Each Row in Data Table PH" sap:VirtualizedContainerService.HintSize="727.2,720.8" sap2010:WorkflowViewState.IdRef="ForEachRow_5">
-              <ui:ForEachRow.Body>
-                <ActivityAction x:TypeArguments="sd:DataRow">
-                  <ActivityAction.Argument>
-                    <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
-                  </ActivityAction.Argument>
-                  <Sequence DisplayName="for sundays dt" sap:VirtualizedContainerService.HintSize="693.6,604.8" sap2010:WorkflowViewState.IdRef="Sequence_113">
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                    <Assign DisplayName="Assign PHDate2" sap:VirtualizedContainerService.HintSize="652,60" sap2010:WorkflowViewState.IdRef="Assign_71">
-                      <Assign.To>
-                        <OutArgument x:TypeArguments="x:String">[PHDate]</OutArgument>
-                      </Assign.To>
-                      <Assign.Value>
-                        <InArgument x:TypeArguments="x:String">[CurrentRow("Date").ToString]</InArgument>
-                      </Assign.Value>
-                    </Assign>
-                    <Assign DisplayName="Assign PHDate2" sap:VirtualizedContainerService.HintSize="652,60" sap2010:WorkflowViewState.IdRef="Assign_72">
-                      <Assign.To>
-                        <OutArgument x:TypeArguments="x:String">[PHDate]</OutArgument>
-                      </Assign.To>
-                      <Assign.Value>
-                        <InArgument x:TypeArguments="x:String">[PHStartDateTime.ToShortDateString]</InArgument>
-                      </Assign.Value>
-                    </Assign>
-                    <If Condition="[StartDate2= PHDate]" DisplayName="If Start date 2 is PH" sap:VirtualizedContainerService.HintSize="652,312" sap2010:WorkflowViewState.IdRef="If_25">
-                      <sap:WorkflowViewStateService.ViewState>
-                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                        </scg:Dictionary>
-                      </sap:WorkflowViewStateService.ViewState>
-                      <If.Then>
-                        <Sequence DisplayName="Public Holiday" sap:VirtualizedContainerService.HintSize="304,152.8" sap2010:WorkflowViewState.IdRef="Sequence_111">
-                          <sap:WorkflowViewStateService.ViewState>
-                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                            </scg:Dictionary>
-                          </sap:WorkflowViewStateService.ViewState>
-                          <Assign DisplayName="Assign day to public holiday" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_73">
-                            <Assign.To>
-                              <OutArgument x:TypeArguments="x:String">[EndDay]</OutArgument>
-                            </Assign.To>
-                            <Assign.Value>
-                              <InArgument x:TypeArguments="x:String">Public Holiday</InArgument>
-                            </Assign.Value>
-                          </Assign>
-                        </Sequence>
-                      </If.Then>
-                      <If.Else>
-                        <Sequence DisplayName="Weekday" sap:VirtualizedContainerService.HintSize="304,152.8" sap2010:WorkflowViewState.IdRef="Sequence_112">
-                          <sap:WorkflowViewStateService.ViewState>
-                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                            </scg:Dictionary>
-                          </sap:WorkflowViewStateService.ViewState>
-                          <Assign DisplayName="Assign day to weekday" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_74">
-                            <Assign.To>
-                              <OutArgument x:TypeArguments="x:String">[EndDay]</OutArgument>
-                            </Assign.To>
-                            <Assign.Value>
-                              <InArgument x:TypeArguments="x:String">Weekday</InArgument>
-                            </Assign.Value>
-                          </Assign>
-                        </Sequence>
-                      </If.Else>
-                    </If>
-                  </Sequence>
-                </ActivityAction>
-              </ui:ForEachRow.Body>
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-            </ui:ForEachRow>
-            <ui:LogMessage DisplayName="Log Message - Display weekday" sap:VirtualizedContainerService.HintSize="727.2,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_59" Level="Info" Message="[&quot;The end day is: &quot; + EndDay]" />
-          </Sequence>
+          </ui:ForEachRow>
         </If.Else>
       </If>
+      <ui:LogMessage DisplayName="Log Message - Display End day weekday" sap:VirtualizedContainerService.HintSize="506.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_59" Level="Info" Message="[&quot;The end day is: &quot; + EndDay]" />
     </Sequence>
-    <ui:ReadRange AddHeaders="True" DataTable="[QuotationDT]" DisplayName="Read Range Workbook - Quotation File" sap:VirtualizedContainerService.HintSize="1010.4,88" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="[in_Config1(&quot;QuotationFileSheetDaily&quot;).ToString]" WorkbookPath="[in_QuotationFilePath1]">
+    <ui:ReadRange AddHeaders="True" DataTable="[QuotationDT]" DisplayName="Read Range Workbook - Quotation File" sap:VirtualizedContainerService.HintSize="794.4,88" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="[in_Config1(&quot;QuotationFileSheetDaily&quot;).ToString]" WorkbookPath="[in_QuotationFilePath1]">
       <ui:ReadRange.Range>
         <InArgument x:TypeArguments="x:String">
           <Literal x:TypeArguments="x:String" Value="" />
         </InArgument>
       </ui:ReadRange.Range>
     </ui:ReadRange>
-    <Sequence DisplayName="Fetch STD OT time" sap:VirtualizedContainerService.HintSize="1010.4,1120.8" sap2010:WorkflowViewState.IdRef="Sequence_105">
+    <Sequence DisplayName="Fetch STD OT time" sap:VirtualizedContainerService.HintSize="794.4,1120.8" sap2010:WorkflowViewState.IdRef="Sequence_105">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -694,7 +686,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </ui:LookupDataTable>
-      <Assign DisplayName="Assign Standard OT time in hours" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_41">
+      <Assign DisplayName="Assign StdOTTimeStartStr" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_41">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">[StdOTTimeStartStr]</OutArgument>
         </Assign.To>
@@ -710,7 +702,7 @@
           <InArgument x:TypeArguments="x:String">[StandardOTTime.Trim.Split("-"c)(1).Trim.Insert(2,":")]</InArgument>
         </Assign.Value>
       </Assign>
-      <Assign DisplayName="Assign Standard OT time in hours" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_57">
+      <Assign DisplayName="Assign StdOTTimeStartStr #1" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_57">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">[StdOTTimeStartStr]</OutArgument>
         </Assign.To>
@@ -718,7 +710,7 @@
           <InArgument x:TypeArguments="x:String">[StartDate1+" "+ StdOTTimeStartStr]</InArgument>
         </Assign.Value>
       </Assign>
-      <Assign DisplayName="Assign StdOTTimeEndStr" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_58">
+      <Assign DisplayName="Assign StdOTTimeEndStr #2" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_58">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">[StdOTTimeEndStr]</OutArgument>
         </Assign.To>
@@ -743,10 +735,10 @@
         </Assign.Value>
       </Assign>
     </Sequence>
-    <Sequence DisplayName="Fetch Prem OT time" sap:VirtualizedContainerService.HintSize="1010.4,1120.8" sap2010:WorkflowViewState.IdRef="Sequence_106">
+    <Sequence DisplayName="Fetch Prem OT time" sap:VirtualizedContainerService.HintSize="794.4,68.8" sap2010:WorkflowViewState.IdRef="Sequence_106">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
@@ -811,10 +803,10 @@
         </Assign.Value>
       </Assign>
     </Sequence>
-    <If Condition="[(EndTime1= StartTime2) and (( StartTime2.ToString.Split(&quot; &quot;c)(1)=&quot;12:00:00&quot;) or ( StartTime2.ToString.Split(&quot; &quot;c)(1)=&quot;13:00:00&quot;))]" DisplayName="If start time and end times are same deduct 1 hour" sap:VirtualizedContainerService.HintSize="1010.4,733.6" sap2010:WorkflowViewState.IdRef="If_3">
+    <If Condition="[(EndTime1= StartTime2) and (( StartTime2.ToString.Split(&quot; &quot;c)(1)=&quot;12:00:00&quot;) or ( StartTime2.ToString.Split(&quot; &quot;c)(1)=&quot;13:00:00&quot;))]" DisplayName="If start time and end times are same deduct 1 hour" sap:VirtualizedContainerService.HintSize="794.4,52.8" sap2010:WorkflowViewState.IdRef="If_3">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
@@ -864,7 +856,7 @@
         </If>
       </If.Then>
       <If.Else>
-        <If Condition="[((StartTime1.ToString.Split(&quot; &quot;c)(1)&lt;&quot;12:00:00&quot;) and ( EndTime1.ToString.Split(&quot; &quot;c)(1)&gt;&quot;13:00:00&quot;))]" sap:VirtualizedContainerService.HintSize="483.2,574.4" sap2010:WorkflowViewState.IdRef="If_31">
+        <If Condition="[((StartTime1.ToString.Split(&quot; &quot;c)(1)&lt;&quot;12:00:00&quot;) and ( EndTime1.ToString.Split(&quot; &quot;c)(1)&gt;&quot;13:00:00&quot;))]" DisplayName="If the time lies between 12-1" sap:VirtualizedContainerService.HintSize="483.2,574.4" sap2010:WorkflowViewState.IdRef="If_31">
           <If.Then>
             <Sequence DisplayName="Deduct hrs" sap:VirtualizedContainerService.HintSize="375.2,385.6" sap2010:WorkflowViewState.IdRef="Sequence_137">
               <sap:WorkflowViewStateService.ViewState>
@@ -872,8 +864,8 @@
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:LogMessage DisplayName="Log Message - DEduct 1 hour" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_72" Level="Info" Message="[&quot;Deducting 1 hour as time lies between lunch time...&quot;]" />
-              <Assign DisplayName="Assign deduct 1 hour" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_97">
+              <ui:LogMessage DisplayName="Log Message - Deduct 1 hour if the time lies between 12-1" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_72" Level="Info" Message="[&quot;Deducting 1 hour as time lies between lunch time...&quot;]" />
+              <Assign DisplayName="Assign deduct 1 hour #1" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_97">
                 <Assign.To>
                   <OutArgument x:TypeArguments="x:Int32">[TimeDiffHours1]</OutArgument>
                 </Assign.To>
@@ -881,7 +873,7 @@
                   <InArgument x:TypeArguments="x:Int32">[TimeDiffHours1-1]</InArgument>
                 </Assign.Value>
               </Assign>
-              <Assign DisplayName="Assign Start time after lunch hours" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_98">
+              <Assign DisplayName="Assign Start time after lunch hours #1" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_98">
                 <Assign.To>
                   <OutArgument x:TypeArguments="s:DateTime">[EndTime1]</OutArgument>
                 </Assign.To>
@@ -918,16 +910,13 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
         <If.Then>
-          <Sequence DisplayName="Calculations" sap:VirtualizedContainerService.HintSize="375.2,523.2" sap2010:WorkflowViewState.IdRef="Sequence_108">
-            <Sequence.Variables>
-              <Variable x:TypeArguments="x:Double" Name="PremTotalWorkingHours1" />
-            </Sequence.Variables>
+          <Sequence DisplayName="Calculations 1" sap:VirtualizedContainerService.HintSize="375.2,523.2" sap2010:WorkflowViewState.IdRef="Sequence_108">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:InvokeCode ContinueOnError="{x:Null}" Code="Dim NDStartTime As Date=CDate(DateAdd(&quot;d&quot;,1,CStr(in_StdOTTimeStart)))&#xA;Dim NDEndTime As Date=CDate(DateAdd(&quot;d&quot;,1,CStr(in_StdOTTimeEnd)))&#xA;&#xA;If in_StartTime&gt;= in_StdOTTimeStart And in_EndTime&lt;= in_StdOTTimeEnd Then&#xA;   &#x9; If in_StartDay=&quot;Weekday&quot;&#xA;&#x9;&#x9;out_StandardHoursWorked= DateDiff(&quot;n&quot;,CStr(in_StartTime) , CStr(in_EndTime))/60&#xA;&#x9; Else&#xA;&#x9;&#x9;out_PremHoursWorked= DateDiff(&quot;n&quot;,CStr(in_StartTime) , CStr(in_EndTime))/60&#xA;&#x9; End If&#xA;&#x9;&#xA;ElseIf in_StartTime&gt;= in_StdOTTimeEnd  And in_EndTime&lt; NDStartTime Then&#xA;&#xA;    out_PremHoursWorked= DateDiff(&quot;n&quot;,CStr(in_StartTime) , CStr(in_EndTime))/60&#xA;&#x9;&#xA;ElseIf in_StartTime&gt;= in_StdOTTimeStart  And in_EndTime&gt; in_StdOTTimeEnd And in_EndTime&lt; NDStartTime Then&#xA;    If in_StartDay=&quot;Weekday&quot;&#xA;   &#x9;&#x9; out_PremHoursWorked= DateDiff(&quot;n&quot;,CStr(in_StdOTTimeEnd) , CStr(in_EndTime))/60&#xA;   &#x9;&#x9; out_StandardHoursWorked= DateDiff(&quot;n&quot;,CStr(in_StartTime) , CStr(in_StdOTTimeEnd))/60&#xA;&#x9;Else&#xA;&#x9;&#x9; out_PremHoursWorked= (DateDiff(&quot;n&quot;,CStr(in_StdOTTimeEnd) , CStr(in_EndTime))/60)+(DateDiff(&quot;n&quot;,CStr(in_StartTime) , CStr(in_StdOTTimeEnd))/60)&#xA;&#x9; End If&#xA;&#x9;&#xA;ElseIf in_StartTime&lt; in_StdOTTimeStart  And in_EndTime&lt; in_StdOTTimeStart&#xA;&#x9; &#xA;&#x9;&#x9;out_PremHoursWorked= DateDiff(&quot;n&quot;,CStr(in_StartTime) , CStr(in_EndTime))/60&#xA;&#xA;ElseIf in_StartTime&lt; in_StdOTTimeStart  And in_EndTime&lt;= in_StdOTTimeEnd&#xA;&#x9;If in_StartDay=&quot;Weekday&quot;&#xA;&#x9;&#x9;out_PremHoursWorked= DateDiff(&quot;n&quot;,CStr(in_StartTime) , CStr(in_StdOTTimeStart))/60&#xA;    &#x9;out_StandardHoursWorked= DateDiff(&quot;n&quot;,CStr(in_StdOTTimeStart) , CStr(in_EndTime))/60&#xA;&#x9;Else&#xA;&#x9;&#x9;out_PremHoursWorked= (DateDiff(&quot;n&quot;,CStr(in_StartTime) , CStr(in_StdOTTimeStart))/60)+(DateDiff(&quot;n&quot;,CStr(in_StdOTTimeStart) , CStr(in_EndTime))/60)&#xA;&#x9;End If&#xA;&#x9;&#x9;&#xA;&#xA;ElseIf in_StartTime&lt; in_StdOTTimeStart  And in_EndTime&gt; in_StdOTTimeEnd And in_EndTime&lt; NDStartTime&#xA;&#x9; &#xA;    If in_StartDay=&quot;Weekday&quot;&#xA;&#x9;&#x9;&#x9;out_PremHoursWorked= (DateDiff(&quot;n&quot;,CStr(in_StartTime) , CStr(in_StdOTTimeStart))/60)+(DateDiff(&quot;n&quot;,CStr(in_StdOTTimeEnd) , CStr(in_EndTime))/60)&#xA;    &#x9;&#x9;out_StandardHoursWorked= DateDiff(&quot;n&quot;,CStr(in_StdOTTimeStart) , CStr(in_StdOTTimeEnd))/60&#xA;&#x9;Else&#xA;&#x9;&#x9; &#x9;out_PremHoursWorked= (DateDiff(&quot;n&quot;,CStr(in_StartTime) , CStr(in_StdOTTimeStart))/60)+(DateDiff(&quot;n&quot;,CStr(in_StdOTTimeEnd) , CStr(in_EndTime))/60)+(DateDiff(&quot;n&quot;,CStr(in_StdOTTimeStart) , CStr(in_StdOTTimeEnd))/60)&#xA;&#x9;&#x9;End If&#xA;&#x9;&#xA;ElseIf in_StartTime&gt; in_StdOTTimeEnd  And in_EndTime&gt; NDStartTime And in_EndTime&lt;=NDEndTime &#xA;&#x9; &#xA;&#x9;If in_EndDay=&quot;Weekday&quot;&#xA;&#x9;&#x9;&#x9;out_PremHoursWorked= DateDiff(&quot;n&quot;,CStr(in_StartTime) , CStr(NDStartTime))/60&#xA;   &#x9;&#x9;    out_StandardHoursWorked= DateDiff(&quot;n&quot;,CStr(NDStartTime), CStr(in_EndTime))/60&#xA;&#x9;Else&#xA;&#x9;&#x9;&#x9;out_PremHoursWorked= (DateDiff(&quot;n&quot;,CStr(in_StartTime) , CStr(NDStartTime))/60)+(DateDiff(&quot;n&quot;,CStr(NDStartTime), CStr(in_EndTime))/60)&#xA;&#x9;End If&#xA;&#x9;&#xA; End If&#xA;&#xA;" DisplayName="Invoke code - for Start Time 1 and End time 1" sap:VirtualizedContainerService.HintSize="333.6,164.8" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
+            <ui:InvokeCode ContinueOnError="{x:Null}" Code="Dim NDStartTime As Date=CDate(DateAdd(&quot;d&quot;,1,CStr(in_StdOTTimeStart)))&#xD;&#xA;Dim NDEndTime As Date=CDate(DateAdd(&quot;d&quot;,1,CStr(in_StdOTTimeEnd)))&#xD;&#xA;&#xD;&#xA;If in_StartTime&gt;= in_StdOTTimeStart And in_EndTime&lt;= in_StdOTTimeEnd Then&#xD;&#xA;   &#x9; If in_StartDay=&quot;Weekday&quot;&#xD;&#xA;&#x9;&#x9;out_StandardHoursWorked= DateDiff(&quot;n&quot;,CStr(in_StartTime) , CStr(in_EndTime))/60&#xD;&#xA;&#x9; Else&#xD;&#xA;&#x9;&#x9;out_PremHoursWorked= DateDiff(&quot;n&quot;,CStr(in_StartTime) , CStr(in_EndTime))/60&#xD;&#xA;&#x9; End If&#xD;&#xA;&#x9;&#xD;&#xA;ElseIf in_StartTime&gt;= in_StdOTTimeEnd  And in_EndTime&lt; NDStartTime Then&#xD;&#xA;&#xD;&#xA;    out_PremHoursWorked= DateDiff(&quot;n&quot;,CStr(in_StartTime) , CStr(in_EndTime))/60&#xD;&#xA;&#x9;&#xD;&#xA;ElseIf in_StartTime&gt;= in_StdOTTimeStart  And in_EndTime&gt; in_StdOTTimeEnd And in_EndTime&lt; NDStartTime Then&#xD;&#xA;    If in_StartDay=&quot;Weekday&quot;&#xD;&#xA;   &#x9;&#x9; out_PremHoursWorked= DateDiff(&quot;n&quot;,CStr(in_StdOTTimeEnd) , CStr(in_EndTime))/60&#xD;&#xA;   &#x9;&#x9; out_StandardHoursWorked= DateDiff(&quot;n&quot;,CStr(in_StartTime) , CStr(in_StdOTTimeEnd))/60&#xD;&#xA;&#x9;Else&#xD;&#xA;&#x9;&#x9; out_PremHoursWorked= (DateDiff(&quot;n&quot;,CStr(in_StdOTTimeEnd) , CStr(in_EndTime))/60)+(DateDiff(&quot;n&quot;,CStr(in_StartTime) , CStr(in_StdOTTimeEnd))/60)&#xD;&#xA;&#x9; End If&#xD;&#xA;&#x9;&#xD;&#xA;ElseIf in_StartTime&lt; in_StdOTTimeStart  And in_EndTime&lt; in_StdOTTimeStart&#xD;&#xA;&#x9; &#xD;&#xA;&#x9;&#x9;out_PremHoursWorked= DateDiff(&quot;n&quot;,CStr(in_StartTime) , CStr(in_EndTime))/60&#xD;&#xA;&#xD;&#xA;ElseIf in_StartTime&lt; in_StdOTTimeStart  And in_EndTime&lt;= in_StdOTTimeEnd&#xD;&#xA;&#x9;If in_StartDay=&quot;Weekday&quot;&#xD;&#xA;&#x9;&#x9;out_PremHoursWorked= DateDiff(&quot;n&quot;,CStr(in_StartTime) , CStr(in_StdOTTimeStart))/60&#xD;&#xA;    &#x9;out_StandardHoursWorked= DateDiff(&quot;n&quot;,CStr(in_StdOTTimeStart) , CStr(in_EndTime))/60&#xD;&#xA;&#x9;Else&#xD;&#xA;&#x9;&#x9;out_PremHoursWorked= (DateDiff(&quot;n&quot;,CStr(in_StartTime) , CStr(in_StdOTTimeStart))/60)+(DateDiff(&quot;n&quot;,CStr(in_StdOTTimeStart) , CStr(in_EndTime))/60)&#xD;&#xA;&#x9;End If&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#xD;&#xA;ElseIf in_StartTime&lt; in_StdOTTimeStart  And in_EndTime&gt; in_StdOTTimeEnd And in_EndTime&lt; NDStartTime&#xD;&#xA;&#x9; &#xD;&#xA;    If in_StartDay=&quot;Weekday&quot;&#xD;&#xA;&#x9;&#x9;&#x9;out_PremHoursWorked= (DateDiff(&quot;n&quot;,CStr(in_StartTime) , CStr(in_StdOTTimeStart))/60)+(DateDiff(&quot;n&quot;,CStr(in_StdOTTimeEnd) , CStr(in_EndTime))/60)&#xD;&#xA;    &#x9;&#x9;out_StandardHoursWorked= DateDiff(&quot;n&quot;,CStr(in_StdOTTimeStart) , CStr(in_StdOTTimeEnd))/60&#xD;&#xA;&#x9;Else&#xD;&#xA;&#x9;&#x9; &#x9;out_PremHoursWorked= (DateDiff(&quot;n&quot;,CStr(in_StartTime) , CStr(in_StdOTTimeStart))/60)+(DateDiff(&quot;n&quot;,CStr(in_StdOTTimeEnd) , CStr(in_EndTime))/60)+(DateDiff(&quot;n&quot;,CStr(in_StdOTTimeStart) , CStr(in_StdOTTimeEnd))/60)&#xD;&#xA;&#x9;&#x9;End If&#xD;&#xA;&#x9;&#xD;&#xA;ElseIf in_StartTime&gt; in_StdOTTimeEnd  And in_EndTime&gt; NDStartTime And in_EndTime&lt;=NDEndTime &#xD;&#xA;&#x9; &#xD;&#xA;&#x9;If in_EndDay=&quot;Weekday&quot;&#xD;&#xA;&#x9;&#x9;&#x9;out_PremHoursWorked= DateDiff(&quot;n&quot;,CStr(in_StartTime) , CStr(NDStartTime))/60&#xD;&#xA;   &#x9;&#x9;    out_StandardHoursWorked= DateDiff(&quot;n&quot;,CStr(NDStartTime), CStr(in_EndTime))/60&#xD;&#xA;&#x9;Else&#xD;&#xA;&#x9;&#x9;&#x9;out_PremHoursWorked= (DateDiff(&quot;n&quot;,CStr(in_StartTime) , CStr(NDStartTime))/60)+(DateDiff(&quot;n&quot;,CStr(NDStartTime), CStr(in_EndTime))/60)&#xD;&#xA;&#x9;End If&#xD;&#xA;&#x9;&#xD;&#xA; End If&#xD;&#xA;&#xD;&#xA;" DisplayName="Invoke code - for Start Time 1 and End time 1" sap:VirtualizedContainerService.HintSize="333.6,164.8" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
               <ui:InvokeCode.Arguments>
                 <InArgument x:TypeArguments="s:DateTime" x:Key="in_StdOTTimeStart">[StdOTStartDateTime]</InArgument>
                 <InArgument x:TypeArguments="s:DateTime" x:Key="in_StdOTTimeEnd">[StdOTEndDateTime]</InArgument>
@@ -979,7 +968,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
         <If.Then>
-          <Sequence DisplayName="Calculations" sap:VirtualizedContainerService.HintSize="375.2,523.2" sap2010:WorkflowViewState.IdRef="Sequence_129">
+          <Sequence DisplayName="Calculations 2" sap:VirtualizedContainerService.HintSize="375.2,523.2" sap2010:WorkflowViewState.IdRef="Sequence_129">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>

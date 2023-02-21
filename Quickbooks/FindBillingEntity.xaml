@@ -6,11 +6,12 @@
     <x:Property Name="io_IOExcelFilePath" Type="InOutArgument(x:String)" />
     <x:Property Name="in_ProcessType" Type="InArgument(x:String)" />
     <x:Property Name="in_TransactionDT" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="in_BillingEntityForHE" Type="InArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>620,1397.6</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>682.4,2257.6</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>FindBillingEntity_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="54">
@@ -46,6 +47,7 @@
       <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
       <x:String>UiPath.Excel</x:String>
       <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -80,16 +82,18 @@
       <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
       <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="FindBillingEntity" sap:VirtualizedContainerService.HintSize="558.4,1332.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Find out the billing entities for the current Company or PO" DisplayName="FindBillingEntity" sap:VirtualizedContainerService.HintSize="558.4,2192.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="CurrentCompanyName" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:ReadRange AddHeaders="True" DataTable="[in_BillingEntityDT1]" DisplayName="Read Range Workbook input file" sap:VirtualizedContainerService.HintSize="516.8,88" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Billing Entity" WorkbookPath="[io_IOExcelFilePath]">
@@ -165,6 +169,75 @@
       </If.Then>
       <If.Else>
         <Sequence sap2010:WorkflowViewState.IdRef="Sequence_7">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </Sequence>
+      </If.Else>
+    </If>
+    <If Condition="[out_BillingEntity.ToLower.Contains(&quot;heavy equipment&quot;)]" DisplayName="If entity is heavy equipments" sap:VirtualizedContainerService.HintSize="516.8,788.8" sap2010:WorkflowViewState.IdRef="If_3">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If.Then>
+        <Sequence DisplayName="Change it in quickbooks" sap:VirtualizedContainerService.HintSize="416.8,600" sap2010:WorkflowViewState.IdRef="Sequence_8">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:RetryScope DisplayName="Retry Scope for changing the billing entity" sap:VirtualizedContainerService.HintSize="375.2,332" sap2010:WorkflowViewState.IdRef="RetryScope_1">
+            <ui:RetryScope.ActivityBody>
+              <ActivityAction>
+                <ui:ClickImage ContinueOnError="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Image 'qbw32.exe HUP'" sap:VirtualizedContainerService.HintSize="333.6,156" sap2010:WorkflowViewState.IdRef="ClickImage_1" KeyModifiers="None" MouseButton="BTN_LEFT">
+                  <ui:ClickImage.CursorPosition>
+                    <ui:CursorPosition OffsetY="25" Position="Center">
+                      <ui:CursorPosition.OffsetX>
+                        <InArgument x:TypeArguments="x:Int32" />
+                      </ui:CursorPosition.OffsetX>
+                    </ui:CursorPosition>
+                  </ui:ClickImage.CursorPosition>
+                  <ui:ClickImage.Image>
+                    <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" InitialScalingFactor="1.25" Profile="Basic" TargetImageBase64="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" />
+                  </ui:ClickImage.Image>
+                  <ui:ClickImage.Target>
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="8fbd2efd-ca95-4368-9ae8-9bf1a992d5ad" Selector="&lt;wnd app='qbw32.exe' cls='MauiFrame' title='HUP HIN HEAVY EQUIPMENT PTE LTD - Reckon Accounts Enterprise: 20*' /&gt;">
+                      <ui:Target.TimeoutMS>
+                        <InArgument x:TypeArguments="x:Int32" />
+                      </ui:Target.TimeoutMS>
+                      <ui:Target.WaitForReady>
+                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                      </ui:Target.WaitForReady>
+                    </ui:Target>
+                  </ui:ClickImage.Target>
+                </ui:ClickImage>
+              </ActivityAction>
+            </ui:RetryScope.ActivityBody>
+            <ui:RetryScope.Condition>
+              <ActivityFunc x:TypeArguments="x:Boolean" />
+            </ui:RetryScope.Condition>
+          </ui:RetryScope>
+          <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into 'Edit'" EmptyField="True" sap:VirtualizedContainerService.HintSize="375.2,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_1" Text="[in_BillingEntityForHE]">
+            <ui:TypeInto.Target>
+              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="4bf715ae-f9a5-458d-ae29-0216aed9fa5b" InformativeScreenshot="801342f77cf7cfb472f98f758bf62d52" Selector="&lt;wnd app='qbw32.exe' cls='MauiFrame' title='HUP HIN HEAVY EQUIPMENT PTE LTD - Reckon Accounts Enterprise: 20*' /&gt;&lt;wnd cls='MauiForm' title='Create Invoices - Account Receivable' /&gt;&lt;wnd cls='Edit' /&gt;">
+                <ui:Target.TimeoutMS>
+                  <InArgument x:TypeArguments="x:Int32" />
+                </ui:Target.TimeoutMS>
+                <ui:Target.WaitForReady>
+                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                </ui:Target.WaitForReady>
+              </ui:Target>
+            </ui:TypeInto.Target>
+          </ui:TypeInto>
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence sap2010:WorkflowViewState.IdRef="Sequence_9">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>

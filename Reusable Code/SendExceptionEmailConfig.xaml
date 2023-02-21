@@ -8,7 +8,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>701,1337</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>682.4,1344</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>SendExceptionEmail_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="68">
@@ -86,7 +86,7 @@
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Sends exception email to required recipients" DisplayName="SendExceptionEmail" sap:VirtualizedContainerService.HintSize="480,1272" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Sends exception email for Config file error to required recipients" DisplayName="SendExceptionEmail" sap:VirtualizedContainerService.HintSize="479.2,1279.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="ScreenshotFilePath" />
     </Sequence.Variables>
@@ -96,9 +96,9 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message: Send exception email started" sap:VirtualizedContainerService.HintSize="438,91" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Send exception email flow - Started&quot;]" />
-    <ui:LogMessage DisplayName="Log Message: Sending email" sap:VirtualizedContainerService.HintSize="438,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Sending exception email&quot;]" />
-    <TryCatch sap2010:Annotation.AnnotationText="Try catch added for sending exception" DisplayName="Try Catch: Send exception email" sap:VirtualizedContainerService.HintSize="438,621" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <ui:LogMessage DisplayName="Log Message: Send exception email started" sap:VirtualizedContainerService.HintSize="437.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Send exception email flow - Started&quot;]" />
+    <ui:LogMessage DisplayName="Log Message: Sending email" sap:VirtualizedContainerService.HintSize="437.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Sending exception email&quot;]" />
+    <TryCatch sap2010:Annotation.AnnotationText="Try catch added for sending exception" DisplayName="Try Catch: Send exception email" sap:VirtualizedContainerService.HintSize="437.6,624" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
