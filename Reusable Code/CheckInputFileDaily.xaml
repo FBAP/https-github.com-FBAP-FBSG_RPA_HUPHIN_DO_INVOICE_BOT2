@@ -9,7 +9,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>660.8,817.6</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1036.8,1595.2</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CreateMasterFileFolders_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="31">
@@ -78,10 +78,9 @@
       <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
       <AssemblyReference>System.Data.Entity</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="This .xaml will check if the input file is available for Daily process on the network drive or input folder specified." DisplayName="Check input file of process" sap:VirtualizedContainerService.HintSize="475.2,752.8" sap2010:WorkflowViewState.IdRef="Sequence_4">
+  <Sequence sap2010:Annotation.AnnotationText="This .xaml will check if the input file is available for Daily process on the network drive or input folder specified." DisplayName="Check input file of process" sap:VirtualizedContainerService.HintSize="1047.2,1530.4" sap2010:WorkflowViewState.IdRef="Sequence_4">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="ProcessInputFileExists" />
     </Sequence.Variables>
@@ -92,17 +91,17 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Try Catch - check input file" sap:VirtualizedContainerService.HintSize="433.6,616" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Try Catch - check input file" sap:VirtualizedContainerService.HintSize="1005.6,1406.4" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <TryCatch.Try>
-        <Sequence DisplayName="Check input file" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_5">
+        <Sequence DisplayName="Check input file" sap:VirtualizedContainerService.HintSize="968.8,1175.2" sap2010:WorkflowViewState.IdRef="Sequence_5">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message - check if file present" sap:VirtualizedContainerService.HintSize="436.8,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Checking if input file for &quot;+ in_ProcessType+&quot; process is available.&quot;]" />
-          <Assign DisplayName="Assign ProcessMasterFilePath" sap:VirtualizedContainerService.HintSize="436.8,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+          <ui:LogMessage DisplayName="Log Message - check if file present" sap:VirtualizedContainerService.HintSize="927.2,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Checking if input file for &quot;+ in_ProcessType+&quot; process is available.&quot;]" />
+          <Assign DisplayName="Assign ProcessMasterFilePath" sap:VirtualizedContainerService.HintSize="927.2,60" sap2010:WorkflowViewState.IdRef="Assign_1">
             <Assign.To>
               <OutArgument x:TypeArguments="x:String">[out_InputOutputFilePath]</OutArgument>
             </Assign.To>
@@ -110,11 +109,11 @@
               <InArgument x:TypeArguments="x:String">[in_Config1("InputExcelPath").ToString+in_ProcessType+"\"+ in_Config1("MasterFileName").ToString+"_"+"Daily"+"_"+now.ToString("dd-MM-yyyy")+".xlsx"]</InArgument>
             </Assign.Value>
           </Assign>
-          <ui:FileExistsX DisplayName="Input File Exists" Exists="[ProcessInputFileExists]" sap:VirtualizedContainerService.HintSize="436.8,134.4" sap2010:WorkflowViewState.IdRef="FileExistsX_1" Path="[out_InputOutputFilePath]" />
-          <If Condition="[ProcessInputFileExists]" DisplayName="If input file exists for process" sap:VirtualizedContainerService.HintSize="436.8,52.8" sap2010:WorkflowViewState.IdRef="If_1">
+          <ui:FileExistsX DisplayName="Input File Exists" Exists="[ProcessInputFileExists]" sap:VirtualizedContainerService.HintSize="927.2,134.4" sap2010:WorkflowViewState.IdRef="FileExistsX_1" Path="[out_InputOutputFilePath]" />
+          <If Condition="[ProcessInputFileExists]" DisplayName="If input file exists for process" sap:VirtualizedContainerService.HintSize="927.2,675.2" sap2010:WorkflowViewState.IdRef="If_1">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
@@ -185,10 +184,10 @@
         </Sequence>
       </TryCatch.Try>
       <TryCatch.Catches>
-        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,451.2" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="972,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_1">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>

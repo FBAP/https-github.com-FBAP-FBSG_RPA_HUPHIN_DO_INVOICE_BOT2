@@ -90,7 +90,6 @@
       <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Mail</AssemblyReference>
       <AssemblyReference>UiPath.Mail.Activities.Design</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <StateMachine InitialState="{x:Reference __ReferenceID3}" sap2010:Annotation.AnnotationText="DO and Invoice Process Automation&#xA;2nd bot for fetching all the manual entries from input file submitted by user and create invoices for indivual customers&#xA;Applications used are Outlook, Excel, Chrome browser." DisplayName="General Business Process" sap:VirtualizedContainerService.HintSize="687.2,831.2" sap2010:WorkflowViewState.IdRef="StateMachine_1">
@@ -242,7 +241,7 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <Transition.To>
-            <State x:Name="__ReferenceID2" sap2010:Annotation.AnnotationText="Process a single transaction. &#xA;The result of the processing can be: 1) Success, 2) Business Exception, 3) System Exception. &#xA;In the case of a system exception, the transaction can be automatically retried.&#xA;Processing will be done and output will be stored in output excel for respective Daily, Consolidated and Monthly scenario." DisplayName="Process Transaction" sap:VirtualizedContainerService.HintSize="604.8,1550.4" sap2010:WorkflowViewState.IdRef="State_3">
+            <State x:Name="__ReferenceID2" sap2010:Annotation.AnnotationText="Process a single transaction. &#xA;The result of the processing can be: 1) Success, 2) Business Exception, 3) System Exception. &#xA;In the case of a system exception, the transaction can be automatically retried.&#xA;Processing will be done and output will be stored in output excel for respective Daily, Consolidated and Monthly scenario." DisplayName="Process Transaction" sap:VirtualizedContainerService.HintSize="230.4,258.4" sap2010:WorkflowViewState.IdRef="State_3">
               <State.Entry>
                 <Sequence DisplayName="Process" sap:VirtualizedContainerService.HintSize="560,1042.4" sap2010:WorkflowViewState.IdRef="Sequence_73">
                   <sap:WorkflowViewStateService.ViewState>
@@ -390,60 +389,24 @@
                               <TryCatch.Try>
                                 <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke SetTransactionStatus (BRE)" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_28" UnSafe="False" WorkflowFileName="Framework\SetTransactionStatus.xaml">
                                   <ui:InvokeWorkflowFile.Arguments>
-                                    <InArgument x:TypeArguments="ui:BusinessRuleException" x:Key="in_BusinessException">
-                                      <mva:VisualBasicValue x:TypeArguments="ui:BusinessRuleException" ExpressionText="BusinessException" />
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_TransactionField1">
-                                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="TransactionField1" />
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_TransactionField2">
-                                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="TransactionField2" />
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_TransactionID">
-                                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="TransactionID" />
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="s:Exception" x:Key="in_SystemException">
-                                      <mva:VisualBasicValue x:TypeArguments="s:Exception" ExpressionText="Nothing" />
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-                                      <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="Config" />
-                                    </InArgument>
-                                    <InOutArgument x:TypeArguments="x:Int32" x:Key="io_RetryNumber">
-                                      <mva:VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="RetryNumber" />
-                                    </InOutArgument>
-                                    <InOutArgument x:TypeArguments="x:Int32" x:Key="io_TransactionNumber">
-                                      <mva:VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="TransactionNumber" />
-                                    </InOutArgument>
-                                    <InOutArgument x:TypeArguments="x:Int32" x:Key="io_ConsecutiveSystemExceptions">
-                                      <mva:VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="ConsecutiveSystemExceptions" />
-                                    </InOutArgument>
-                                    <InOutArgument x:TypeArguments="x:String" x:Key="io_ProcessType">
-                                      <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="ProcessType" />
-                                    </InOutArgument>
-                                    <InOutArgument x:TypeArguments="x:String" x:Key="io_ScreenshotFilePath">
-                                      <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="ScreenshotFilePath" />
-                                    </InOutArgument>
-                                    <InArgument x:TypeArguments="sd:DataTable" x:Key="In_TransactionItem1">
-                                      <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="TransactionItem" />
-                                    </InArgument>
-                                    <InOutArgument x:TypeArguments="x:String" x:Key="io_IOExcelFileDaily">
-                                      <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="IOExcelFilePathDaily" />
-                                    </InOutArgument>
-                                    <InOutArgument x:TypeArguments="x:String" x:Key="io_IOExcelFileConsolidated">
-                                      <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="IOExcelFilePathConso" />
-                                    </InOutArgument>
-                                    <InOutArgument x:TypeArguments="x:String" x:Key="io_IOExcelFileMonthly">
-                                      <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="IOExcelFilePathMonthly" />
-                                    </InOutArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_InvoiceFilePath">
-                                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="InvoiceFilePath" />
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_InvoiceNumber">
-                                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="InvoiceNumber" />
-                                    </InArgument>
-                                    <InOutArgument x:TypeArguments="x:Int32" x:Key="io_UniqueColCount1">
-                                      <mva:VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="UniqueColCount" />
-                                    </InOutArgument>
+                                    <InArgument x:TypeArguments="ui:BusinessRuleException" x:Key="in_BusinessException">[BusinessException]</InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_TransactionField1">[TransactionField1]</InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_TransactionField2">[TransactionField2]</InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_TransactionID">[TransactionID]</InArgument>
+                                    <InArgument x:TypeArguments="s:Exception" x:Key="in_SystemException">[Nothing]</InArgument>
+                                    <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[Config]</InArgument>
+                                    <InOutArgument x:TypeArguments="x:Int32" x:Key="io_RetryNumber">[RetryNumber]</InOutArgument>
+                                    <InOutArgument x:TypeArguments="x:Int32" x:Key="io_TransactionNumber">[TransactionNumber]</InOutArgument>
+                                    <InOutArgument x:TypeArguments="x:Int32" x:Key="io_ConsecutiveSystemExceptions">[ConsecutiveSystemExceptions]</InOutArgument>
+                                    <InOutArgument x:TypeArguments="x:String" x:Key="io_ProcessType">[ProcessType]</InOutArgument>
+                                    <InOutArgument x:TypeArguments="x:String" x:Key="io_ScreenshotFilePath">[ScreenshotFilePath]</InOutArgument>
+                                    <InArgument x:TypeArguments="sd:DataTable" x:Key="In_TransactionItem1">[TransactionItem]</InArgument>
+                                    <InOutArgument x:TypeArguments="x:String" x:Key="io_IOExcelFileDaily">[IOExcelFilePathDaily]</InOutArgument>
+                                    <InOutArgument x:TypeArguments="x:String" x:Key="io_IOExcelFileConsolidated">[IOExcelFilePathConso]</InOutArgument>
+                                    <InOutArgument x:TypeArguments="x:String" x:Key="io_IOExcelFileMonthly">[IOExcelFilePathMonthly]</InOutArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_InvoiceFilePath">[InvoiceFilePath]</InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_InvoiceNumber">[InvoiceNumber]</InArgument>
+                                    <InOutArgument x:TypeArguments="x:Int32" x:Key="io_UniqueColCount1">[UniqueColCount]</InOutArgument>
                                   </ui:InvokeWorkflowFile.Arguments>
                                 </ui:InvokeWorkflowFile>
                               </TryCatch.Try>
@@ -507,60 +470,24 @@
                               <TryCatch.Try>
                                 <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke SetTransactionStatus (SE)" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_29" UnSafe="False" WorkflowFileName="Framework\SetTransactionStatus.xaml">
                                   <ui:InvokeWorkflowFile.Arguments>
-                                    <InArgument x:TypeArguments="ui:BusinessRuleException" x:Key="in_BusinessException">
-                                      <mva:VisualBasicValue x:TypeArguments="ui:BusinessRuleException" ExpressionText="Nothing" />
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_TransactionField1">
-                                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="TransactionField1" />
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_TransactionField2">
-                                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="TransactionField2" />
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_TransactionID">
-                                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="TransactionID" />
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="s:Exception" x:Key="in_SystemException">
-                                      <mva:VisualBasicValue x:TypeArguments="s:Exception" ExpressionText="SystemException" />
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-                                      <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="Config" />
-                                    </InArgument>
-                                    <InOutArgument x:TypeArguments="x:Int32" x:Key="io_RetryNumber">
-                                      <mva:VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="RetryNumber" />
-                                    </InOutArgument>
-                                    <InOutArgument x:TypeArguments="x:Int32" x:Key="io_TransactionNumber">
-                                      <mva:VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="TransactionNumber" />
-                                    </InOutArgument>
-                                    <InOutArgument x:TypeArguments="x:Int32" x:Key="io_ConsecutiveSystemExceptions">
-                                      <mva:VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="ConsecutiveSystemExceptions" />
-                                    </InOutArgument>
-                                    <InOutArgument x:TypeArguments="x:String" x:Key="io_ProcessType">
-                                      <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="ProcessType" />
-                                    </InOutArgument>
-                                    <InOutArgument x:TypeArguments="x:String" x:Key="io_ScreenshotFilePath">
-                                      <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="ScreenshotFilePath" />
-                                    </InOutArgument>
-                                    <InArgument x:TypeArguments="sd:DataTable" x:Key="In_TransactionItem1">
-                                      <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="TransactionItem" />
-                                    </InArgument>
-                                    <InOutArgument x:TypeArguments="x:String" x:Key="io_IOExcelFileDaily">
-                                      <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="IOExcelFilePathDaily" />
-                                    </InOutArgument>
-                                    <InOutArgument x:TypeArguments="x:String" x:Key="io_IOExcelFileConsolidated">
-                                      <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="IOExcelFilePathConso" />
-                                    </InOutArgument>
-                                    <InOutArgument x:TypeArguments="x:String" x:Key="io_IOExcelFileMonthly">
-                                      <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="IOExcelFilePathMonthly" />
-                                    </InOutArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_InvoiceFilePath">
-                                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="InvoiceFilePath" />
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_InvoiceNumber">
-                                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="InvoiceNumber" />
-                                    </InArgument>
-                                    <InOutArgument x:TypeArguments="x:Int32" x:Key="io_UniqueColCount1">
-                                      <mva:VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="UniqueColCount" />
-                                    </InOutArgument>
+                                    <InArgument x:TypeArguments="ui:BusinessRuleException" x:Key="in_BusinessException">[Nothing]</InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_TransactionField1">[TransactionField1]</InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_TransactionField2">[TransactionField2]</InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_TransactionID">[TransactionID]</InArgument>
+                                    <InArgument x:TypeArguments="s:Exception" x:Key="in_SystemException">[SystemException]</InArgument>
+                                    <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[Config]</InArgument>
+                                    <InOutArgument x:TypeArguments="x:Int32" x:Key="io_RetryNumber">[RetryNumber]</InOutArgument>
+                                    <InOutArgument x:TypeArguments="x:Int32" x:Key="io_TransactionNumber">[TransactionNumber]</InOutArgument>
+                                    <InOutArgument x:TypeArguments="x:Int32" x:Key="io_ConsecutiveSystemExceptions">[ConsecutiveSystemExceptions]</InOutArgument>
+                                    <InOutArgument x:TypeArguments="x:String" x:Key="io_ProcessType">[ProcessType]</InOutArgument>
+                                    <InOutArgument x:TypeArguments="x:String" x:Key="io_ScreenshotFilePath">[ScreenshotFilePath]</InOutArgument>
+                                    <InArgument x:TypeArguments="sd:DataTable" x:Key="In_TransactionItem1">[TransactionItem]</InArgument>
+                                    <InOutArgument x:TypeArguments="x:String" x:Key="io_IOExcelFileDaily">[IOExcelFilePathDaily]</InOutArgument>
+                                    <InOutArgument x:TypeArguments="x:String" x:Key="io_IOExcelFileConsolidated">[IOExcelFilePathConso]</InOutArgument>
+                                    <InOutArgument x:TypeArguments="x:String" x:Key="io_IOExcelFileMonthly">[IOExcelFilePathMonthly]</InOutArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_InvoiceFilePath">[InvoiceFilePath]</InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_InvoiceNumber">[InvoiceNumber]</InArgument>
+                                    <InOutArgument x:TypeArguments="x:Int32" x:Key="io_UniqueColCount1">[UniqueColCount]</InOutArgument>
                                   </ui:InvokeWorkflowFile.Arguments>
                                 </ui:InvokeWorkflowFile>
                               </TryCatch.Try>
@@ -965,9 +892,9 @@
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                           <Transition.To>
-                            <State x:Name="__ReferenceID1" sap2010:Annotation.AnnotationText="End process and close all applications used." DisplayName="End Process" sap:VirtualizedContainerService.HintSize="144,122.4" sap2010:WorkflowViewState.IdRef="State_1" IsFinal="True">
+                            <State x:Name="__ReferenceID1" sap2010:Annotation.AnnotationText="End process and close all applications used." DisplayName="End Process" sap:VirtualizedContainerService.HintSize="556.8,910.4" sap2010:WorkflowViewState.IdRef="State_1" IsFinal="True">
                               <State.Entry>
-                                <TryCatch DisplayName="Try to close all aplications" sap:VirtualizedContainerService.HintSize="436.8,481.6" sap2010:WorkflowViewState.IdRef="TryCatch_4">
+                                <TryCatch DisplayName="Try to close all aplications" sap:VirtualizedContainerService.HintSize="512,765.6" sap2010:WorkflowViewState.IdRef="TryCatch_4">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -975,13 +902,30 @@
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
                                   <TryCatch.Try>
-                                    <Sequence DisplayName="Close" sap:VirtualizedContainerService.HintSize="375.2,250.4" sap2010:WorkflowViewState.IdRef="Sequence_54">
+                                    <Sequence DisplayName="Close" sap:VirtualizedContainerService.HintSize="475.2,534.4" sap2010:WorkflowViewState.IdRef="Sequence_54">
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
-                                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="All the applications like outlook, SDMS web portal, Chrome will be closed in this .xaml" DisplayName="Invoke CloseAllApplications workflow" sap:VirtualizedContainerService.HintSize="333.6,157.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_21" UnSafe="False" WorkflowFileName="Framework\CloseAllApplications.xaml">
+                                      <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - Clear the values from Business Sheet" sap:VirtualizedContainerService.HintSize="433.6,244" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" InstanceCachePeriod="3000" WorkbookPath="Data\Bot1_Config.xlsx">
+                                        <ui:ExcelApplicationScope.Body>
+                                          <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+                                            <ActivityAction.Argument>
+                                              <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+                                            </ActivityAction.Argument>
+                                            <ui:ExcelDeleteRange DisplayName="Delete Range - Clear value of Invoice Number" sap:VirtualizedContainerService.HintSize="283.2,134.4" sap2010:WorkflowViewState.IdRef="ExcelDeleteRange_1" Range="B2:B2" SheetName="Business Sheet" ShiftCells="False" ShiftOption="ShiftUp">
+                                              <sap:WorkflowViewStateService.ViewState>
+                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                </scg:Dictionary>
+                                              </sap:WorkflowViewStateService.ViewState>
+                                            </ui:ExcelDeleteRange>
+                                          </ActivityAction>
+                                        </ui:ExcelApplicationScope.Body>
+                                      </ui:ExcelApplicationScope>
+                                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="All the applications like outlook, SDMS web portal, Chrome will be closed in this .xaml" DisplayName="Invoke CloseAllApplications workflow" sap:VirtualizedContainerService.HintSize="433.6,157.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_21" UnSafe="False" WorkflowFileName="Framework\CloseAllApplications.xaml">
                                         <ui:InvokeWorkflowFile.Arguments>
                                           <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[Config]</InArgument>
                                         </ui:InvokeWorkflowFile.Arguments>
@@ -994,7 +938,7 @@
                                     </Sequence>
                                   </TryCatch.Try>
                                   <TryCatch.Catches>
-                                    <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="403.2,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_5">
+                                    <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="478.4,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_5">
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                           <x:Boolean x:Key="IsExpanded">False</x:Boolean>

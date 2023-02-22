@@ -10,7 +10,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>660.8,917.6</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>820.8,2037.6</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>MergeFiles_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="30">
@@ -79,7 +79,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="This sequence will merge all the PDF files like Quotation file, DO/Timesheet file, Invoice file and PO file(if exists)" DisplayName="MergeFiles" sap:VirtualizedContainerService.HintSize="475.2,852.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="This sequence will merge all the PDF files like Quotation file, DO/Timesheet file, Invoice file and PO file(if exists)" DisplayName="MergeFiles" sap:VirtualizedContainerService.HintSize="831.2,1972.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="DOPDFFilePath" />
       <Variable x:TypeArguments="x:String" Name="MergedFilename" />
@@ -95,7 +95,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Try Catch to check if all files are available for merging" sap:VirtualizedContainerService.HintSize="433.6,716" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Try Catch to check if all files are available for merging" sap:VirtualizedContainerService.HintSize="789.6,1848.8" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -103,14 +103,14 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <Sequence DisplayName="Merge files sequence" sap:VirtualizedContainerService.HintSize="475.2,68.8" sap2010:WorkflowViewState.IdRef="Sequence_6">
+        <Sequence DisplayName="Merge files sequence" sap:VirtualizedContainerService.HintSize="752.8,1617.6" sap2010:WorkflowViewState.IdRef="Sequence_6">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Assign DisplayName="Assign MergedFilename 1" sap:VirtualizedContainerService.HintSize="433.6,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+          <Assign DisplayName="Assign MergedFilename 1" sap:VirtualizedContainerService.HintSize="711.2,60" sap2010:WorkflowViewState.IdRef="Assign_2">
             <Assign.To>
               <OutArgument x:TypeArguments="x:String">[MergedFilename]</OutArgument>
             </Assign.To>
@@ -118,7 +118,7 @@
               <InArgument x:TypeArguments="x:String">[in_Config1("MergedFiles").ToString+"\"+"MergedFiles_"+ in_InvoiceNumber.ToString+"_" + io_ProcessType1+".pdf"]</InArgument>
             </Assign.Value>
           </Assign>
-          <Assign DisplayName="Assign Invoice PDF filepath 1" sap:VirtualizedContainerService.HintSize="433.6,60" sap2010:WorkflowViewState.IdRef="Assign_6">
+          <Assign DisplayName="Assign Invoice PDF filepath 1" sap:VirtualizedContainerService.HintSize="711.2,60" sap2010:WorkflowViewState.IdRef="Assign_6">
             <Assign.To>
               <OutArgument x:TypeArguments="x:String">[InvoiceFilePath]</OutArgument>
             </Assign.To>
@@ -126,7 +126,8 @@
               <InArgument x:TypeArguments="x:String">[in_InvoiceFilePath]</InArgument>
             </Assign.Value>
           </Assign>
-          <Assign DisplayName="Assign DO PDF filepath 1" sap:VirtualizedContainerService.HintSize="433.6,60" sap2010:WorkflowViewState.IdRef="Assign_5">
+          <ui:LogMessage DisplayName="Log Message - Display Invoice File Path" sap:VirtualizedContainerService.HintSize="711.2,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Invoice File Path for this transaction is: &quot;+InvoiceFilePath]" />
+          <Assign DisplayName="Assign DO PDF filepath 1" sap:VirtualizedContainerService.HintSize="711.2,60" sap2010:WorkflowViewState.IdRef="Assign_5">
             <Assign.To>
               <OutArgument x:TypeArguments="x:String">[DOPDFFilePath]</OutArgument>
             </Assign.To>
@@ -134,7 +135,8 @@
               <InArgument x:TypeArguments="x:String">[in_TransactionItem(0)("DO or Timesheet File Path").ToString]</InArgument>
             </Assign.Value>
           </Assign>
-          <Assign DisplayName="Assign POPDFFilepath 1" sap:VirtualizedContainerService.HintSize="433.6,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+          <ui:LogMessage DisplayName="Log Message - DO PDF File Path" sap:VirtualizedContainerService.HintSize="711.2,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;DO PDF File Path for this transaction is: &quot;+ DOPDFFilePath]" />
+          <Assign DisplayName="Assign POPDFFilepath 1" sap:VirtualizedContainerService.HintSize="711.2,60" sap2010:WorkflowViewState.IdRef="Assign_3">
             <Assign.To>
               <OutArgument x:TypeArguments="x:String">[POPDFFilePath]</OutArgument>
             </Assign.To>
@@ -142,7 +144,8 @@
               <InArgument x:TypeArguments="x:String">[in_TransactionItem(0)("PO File Path").ToString]</InArgument>
             </Assign.Value>
           </Assign>
-          <Assign DisplayName="Assign QutationFilePath" sap:VirtualizedContainerService.HintSize="433.6,60" sap2010:WorkflowViewState.IdRef="Assign_7">
+          <ui:LogMessage DisplayName="Log Message - Display PO PDF File Path" sap:VirtualizedContainerService.HintSize="711.2,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;PO PDF File Path for this transaction is: &quot;+ POPDFFilePath]" />
+          <Assign DisplayName="Assign QutationFilePath" sap:VirtualizedContainerService.HintSize="711.2,60" sap2010:WorkflowViewState.IdRef="Assign_7">
             <Assign.To>
               <OutArgument x:TypeArguments="x:String">[QuotationFilePath]</OutArgument>
             </Assign.To>
@@ -150,7 +153,8 @@
               <InArgument x:TypeArguments="x:String">[in_TransactionItem(0)("Quotation File Path").ToString]</InArgument>
             </Assign.Value>
           </Assign>
-          <Assign DisplayName="Assign all files to array" sap:VirtualizedContainerService.HintSize="433.6,60" sap2010:WorkflowViewState.IdRef="Assign_11">
+          <ui:LogMessage DisplayName="Log Message - Display Quotation File Path" sap:VirtualizedContainerService.HintSize="711.2,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Quotation PDF File Path for this transaction is: &quot;+ QuotationFilePath]" />
+          <Assign DisplayName="Assign all files to array" sap:VirtualizedContainerService.HintSize="711.2,60" sap2010:WorkflowViewState.IdRef="Assign_11">
             <Assign.To>
               <OutArgument x:TypeArguments="s:String[]">[FilesArray]</OutArgument>
             </Assign.To>
@@ -158,8 +162,8 @@
               <InArgument x:TypeArguments="s:String[]">[{ InvoiceFilePath , DOPDFFilePath, QuotationFilePath, POPDFFilePath}]</InArgument>
             </Assign.Value>
           </Assign>
-          <ui:FileExistsX DisplayName="File Exists for PO" Exists="[POFileExists]" sap:VirtualizedContainerService.HintSize="433.6,134.4" sap2010:WorkflowViewState.IdRef="FileExistsX_1" Path="[POPDFFilePath]" />
-          <If Condition="[POFileExists]" DisplayName="If PO file exists merge all else skip PO file from merging" sap:VirtualizedContainerService.HintSize="433.6,52.8" sap2010:WorkflowViewState.IdRef="If_1">
+          <ui:FileExistsX DisplayName="File Exists for PO" Exists="[POFileExists]" sap:VirtualizedContainerService.HintSize="711.2,134.4" sap2010:WorkflowViewState.IdRef="FileExistsX_1" Path="[POPDFFilePath]" />
+          <If Condition="[POFileExists]" DisplayName="If PO file exists merge all else skip PO file from merging" sap:VirtualizedContainerService.HintSize="711.2,219.2" sap2010:WorkflowViewState.IdRef="If_1">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -176,10 +180,10 @@
         </Sequence>
       </TryCatch.Try>
       <TryCatch.Catches>
-        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,551.2" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="756,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_1">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>

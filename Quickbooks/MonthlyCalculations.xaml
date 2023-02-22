@@ -19,7 +19,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>871.2,5747.2</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>871.2,6980</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>DailyProcessSequence_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="44">
@@ -107,10 +107,9 @@
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>NPOI</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Calculate the number of hours worked and detect if driver has worked on Sundays or public holidays" DisplayName="Calculations for Daily and Consolidated main sequence" sap:VirtualizedContainerService.HintSize="881.6,5682.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Calculate the number of hours worked and detect if driver has worked on Sundays or public holidays" DisplayName="Calculations for Daily and Consolidated main sequence" sap:VirtualizedContainerService.HintSize="881.6,6915.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="s:DateTime" Name="EndTime2" />
       <Variable x:TypeArguments="s:DateTime" Name="StartTime2" />
@@ -158,7 +157,7 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message - fetching Start time 1 and end time 1" sap:VirtualizedContainerService.HintSize="840,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_64" Level="Info" Message="[&quot;Fetching Start Times and End Times&quot;]" />
-    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope - Read monthly excel sheet " sap:VirtualizedContainerService.HintSize="840,52.8" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="[in_TransactionItem1(&quot;Monthly Excel File Path&quot;).ToString]">
+    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope - Read monthly excel sheet " sap:VirtualizedContainerService.HintSize="840,709.6" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="[in_TransactionItem1(&quot;Monthly Excel File Path&quot;).ToString]">
       <ui:ExcelApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
           <ActivityAction.Argument>
@@ -170,7 +169,7 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:ExcelReadRange AddHeaders="True" DataTable="[TimeSheetDT]" DisplayName="Read Range - Timesheet" sap:VirtualizedContainerService.HintSize="752.8,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" SheetName="Sheet1">
+            <ui:ExcelReadRange AddHeaders="True" DataTable="[TimeSheetDT]" DisplayName="Read Range - Timesheet" sap:VirtualizedContainerService.HintSize="752.8,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" PreserveFormat="True" SheetName="Sheet1">
               <ui:ExcelReadRange.Range>
                 <InArgument x:TypeArguments="x:String">
                   <Literal x:TypeArguments="x:String" Value="" />
@@ -204,7 +203,7 @@
       </ui:ExcelApplicationScope.Body>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
@@ -1054,36 +1053,16 @@
                     </sap:WorkflowViewStateService.ViewState>
                     <ui:InvokeCode ContinueOnError="{x:Null}" Code="Dim NDStartTime As Date=CDate(DateAdd(&quot;d&quot;,1,CStr(in_StdOTTimeStart)))&#xA;Dim NDEndTime As Date=CDate(DateAdd(&quot;d&quot;,1,CStr(in_StdOTTimeEnd)))&#xA;&#xA;If in_StartTime&gt;= in_StdOTTimeStart And in_EndTime&lt;= in_StdOTTimeEnd Then&#xA;   &#x9; If in_StartDay=&quot;Weekday&quot;&#xA;&#x9;&#x9;out_StandardHoursWorked= DateDiff(&quot;n&quot;,CStr(in_StartTime) , CStr(in_EndTime))/60&#xA;&#x9; Else&#xA;&#x9;&#x9;out_PremHoursWorked= DateDiff(&quot;n&quot;,CStr(in_StartTime) , CStr(in_EndTime))/60&#xA;&#x9; End If&#xA;&#x9;&#xA;ElseIf in_StartTime&gt;= in_StdOTTimeEnd  And in_EndTime&lt; NDStartTime Then&#xA;&#xA;    out_PremHoursWorked= DateDiff(&quot;n&quot;,CStr(in_StartTime) , CStr(in_EndTime))/60&#xA;&#x9;&#xA;ElseIf in_StartTime&gt;= in_StdOTTimeStart  And in_EndTime&gt; in_StdOTTimeEnd And in_EndTime&lt; NDStartTime Then&#xA;    If in_StartDay=&quot;Weekday&quot;&#xA;   &#x9;&#x9; out_PremHoursWorked= DateDiff(&quot;n&quot;,CStr(in_StdOTTimeEnd) , CStr(in_EndTime))/60&#xA;   &#x9;&#x9; out_StandardHoursWorked= DateDiff(&quot;n&quot;,CStr(in_StartTime) , CStr(in_StdOTTimeEnd))/60&#xA;&#x9;Else&#xA;&#x9;&#x9; out_PremHoursWorked= (DateDiff(&quot;n&quot;,CStr(in_StdOTTimeEnd) , CStr(in_EndTime))/60)+(DateDiff(&quot;n&quot;,CStr(in_StartTime) , CStr(in_StdOTTimeEnd))/60)&#xA;&#x9; End If&#xA;&#x9;&#xA;ElseIf in_StartTime&lt; in_StdOTTimeStart  And in_EndTime&lt; in_StdOTTimeStart&#xA;&#x9; &#xA;&#x9;&#x9;out_PremHoursWorked= DateDiff(&quot;n&quot;,CStr(in_StartTime) , CStr(in_EndTime))/60&#xA;&#xA;ElseIf in_StartTime&lt; in_StdOTTimeStart  And in_EndTime&lt;= in_StdOTTimeEnd&#xA;&#x9;If in_StartDay=&quot;Weekday&quot;&#xA;&#x9;&#x9;out_PremHoursWorked= DateDiff(&quot;n&quot;,CStr(in_StartTime) , CStr(in_StdOTTimeStart))/60&#xA;    &#x9;out_StandardHoursWorked= DateDiff(&quot;n&quot;,CStr(in_StdOTTimeStart) , CStr(in_EndTime))/60&#xA;&#x9;Else&#xA;&#x9;&#x9;out_PremHoursWorked= (DateDiff(&quot;n&quot;,CStr(in_StartTime) , CStr(in_StdOTTimeStart))/60)+(DateDiff(&quot;n&quot;,CStr(in_StdOTTimeStart) , CStr(in_EndTime))/60)&#xA;&#x9;End If&#xA;&#x9;&#x9;&#xA;&#xA;ElseIf in_StartTime&lt; in_StdOTTimeStart  And in_EndTime&gt; in_StdOTTimeEnd And in_EndTime&lt; NDStartTime&#xA;&#x9; &#xA;    If in_StartDay=&quot;Weekday&quot;&#xA;&#x9;&#x9;&#x9;out_PremHoursWorked= (DateDiff(&quot;n&quot;,CStr(in_StartTime) , CStr(in_StdOTTimeStart))/60)+(DateDiff(&quot;n&quot;,CStr(in_StdOTTimeEnd) , CStr(in_EndTime))/60)&#xA;    &#x9;&#x9;out_StandardHoursWorked= DateDiff(&quot;n&quot;,CStr(in_StdOTTimeStart) , CStr(in_StdOTTimeEnd))/60&#xA;&#x9;Else&#xA;&#x9;&#x9; &#x9;out_PremHoursWorked= (DateDiff(&quot;n&quot;,CStr(in_StartTime) , CStr(in_StdOTTimeStart))/60)+(DateDiff(&quot;n&quot;,CStr(in_StdOTTimeEnd) , CStr(in_EndTime))/60)+(DateDiff(&quot;n&quot;,CStr(in_StdOTTimeStart) , CStr(in_StdOTTimeEnd))/60)&#xA;&#x9;&#x9;End If&#xA;&#x9;&#xA;ElseIf in_StartTime&gt; in_StdOTTimeEnd  And in_EndTime&gt; NDStartTime And in_EndTime&lt;=NDEndTime &#xA;&#x9; &#xA;&#x9;If in_EndDay=&quot;Weekday&quot;&#xA;&#x9;&#x9;&#x9;out_PremHoursWorked= DateDiff(&quot;n&quot;,CStr(in_StartTime) , CStr(NDStartTime))/60&#xA;   &#x9;&#x9;    out_StandardHoursWorked= DateDiff(&quot;n&quot;,CStr(NDStartTime), CStr(in_EndTime))/60&#xA;&#x9;Else&#xA;&#x9;&#x9;&#x9;out_PremHoursWorked= (DateDiff(&quot;n&quot;,CStr(in_StartTime) , CStr(NDStartTime))/60)+(DateDiff(&quot;n&quot;,CStr(NDStartTime), CStr(in_EndTime))/60)&#xA;&#x9;End If&#xA;&#x9;&#xA; End If&#xA;&#xA;" DisplayName="Invoke code - for Start Time 1 and End time 1" sap:VirtualizedContainerService.HintSize="333.6,164.8" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
                       <ui:InvokeCode.Arguments>
-                        <InArgument x:TypeArguments="s:DateTime" x:Key="in_StdOTTimeStart">
-                          <mva:VisualBasicValue x:TypeArguments="s:DateTime" ExpressionText="StdOTStartDateTime" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="s:DateTime" x:Key="in_StdOTTimeEnd">
-                          <mva:VisualBasicValue x:TypeArguments="s:DateTime" ExpressionText="StdOTEndDateTime" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="s:DateTime" x:Key="in_StartTime">
-                          <mva:VisualBasicValue x:TypeArguments="s:DateTime" ExpressionText="StartTime1" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="s:DateTime" x:Key="in_EndTime">
-                          <mva:VisualBasicValue x:TypeArguments="s:DateTime" ExpressionText="EndTime1" />
-                        </InArgument>
-                        <OutArgument x:TypeArguments="x:Double" x:Key="out_StandardHoursWorked">
-                          <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="StdTotalWorkingHours1" />
-                        </OutArgument>
-                        <InArgument x:TypeArguments="s:DateTime" x:Key="in_PremOTTimeStart">
-                          <mva:VisualBasicValue x:TypeArguments="s:DateTime" ExpressionText="PremOTStartDateTime" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="s:DateTime" x:Key="in_PremOTTimeEnd">
-                          <mva:VisualBasicValue x:TypeArguments="s:DateTime" ExpressionText="PremOTEndDateTime" />
-                        </InArgument>
-                        <OutArgument x:TypeArguments="x:Double" x:Key="out_PremHoursWorked">
-                          <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="PremTotalWorkingHours1" />
-                        </OutArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_StartDay">
-                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="StartDay" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_EndDay">
-                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="EndDay" />
-                        </InArgument>
+                        <InArgument x:TypeArguments="s:DateTime" x:Key="in_StdOTTimeStart">[StdOTStartDateTime]</InArgument>
+                        <InArgument x:TypeArguments="s:DateTime" x:Key="in_StdOTTimeEnd">[StdOTEndDateTime]</InArgument>
+                        <InArgument x:TypeArguments="s:DateTime" x:Key="in_StartTime">[StartTime1]</InArgument>
+                        <InArgument x:TypeArguments="s:DateTime" x:Key="in_EndTime">[EndTime1]</InArgument>
+                        <OutArgument x:TypeArguments="x:Double" x:Key="out_StandardHoursWorked">[StdTotalWorkingHours1]</OutArgument>
+                        <InArgument x:TypeArguments="s:DateTime" x:Key="in_PremOTTimeStart">[PremOTStartDateTime]</InArgument>
+                        <InArgument x:TypeArguments="s:DateTime" x:Key="in_PremOTTimeEnd">[PremOTEndDateTime]</InArgument>
+                        <OutArgument x:TypeArguments="x:Double" x:Key="out_PremHoursWorked">[PremTotalWorkingHours1]</OutArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_StartDay">[StartDay]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_EndDay">[EndDay]</InArgument>
                       </ui:InvokeCode.Arguments>
                     </ui:InvokeCode>
                     <ui:LogMessage DisplayName="Log Message - Display std working hours1" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_60" Level="Info" Message="[&quot;Std. Working hours for Start Time 1 and End Time 1 are: &quot;+ StdTotalWorkingHours1.ToString]" />
