@@ -3,6 +3,7 @@
     <x:Property Name="in_NetworkFileFolderPath" Type="InArgument(x:String)" />
     <x:Property Name="in_RetryNumber" Type="InArgument(x:Int32)" />
     <x:Property Name="in_Word" Type="InArgument(x:String)" />
+    <x:Property Name="in_RetryIntervalMedium" Type="InArgument(x:TimeSpan)" />
   </x:Members>
   <this:NetworkFolderFileAccessible.in_NetworkFileFolderPath>
     <InArgument x:TypeArguments="x:String" />
@@ -87,7 +88,7 @@
     </sap:WorkflowViewStateService.ViewState>
     <TryCatch DisplayName="Try Catch - PAths are accessible" sap:VirtualizedContainerService.HintSize="914.4,1224" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <TryCatch.Try>
-        <ui:RetryScope DisplayName="Retry Scope - Network file or folder path" sap:VirtualizedContainerService.HintSize="877.6,992.8" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[in_RetryNumber]" RetryInterval="00:00:05">
+        <ui:RetryScope DisplayName="Retry Scope - Network file or folder path" sap:VirtualizedContainerService.HintSize="877.6,992.8" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[in_RetryNumber]" RetryInterval="[in_RetryIntervalMedium]">
           <ui:RetryScope.ActivityBody>
             <ActivityAction>
               <Sequence DisplayName="NetworkFolderFileAccessible" sap:VirtualizedContainerService.HintSize="836,744.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
