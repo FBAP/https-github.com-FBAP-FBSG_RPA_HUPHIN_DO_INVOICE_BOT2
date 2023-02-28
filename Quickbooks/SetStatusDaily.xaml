@@ -1,7 +1,5 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="SetStatusDaily" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
-    <x:Property Name="io_TransactionData1" Type="InOutArgument(sd:DataTable)" />
-    <x:Property Name="in_TransactionItem" Type="InArgument(sd:DataTable)" />
     <x:Property Name="in_FilterFlag" Type="InArgument(x:String)" />
     <x:Property Name="in_IOExcelFileDaily" Type="InArgument(x:String)" />
     <x:Property Name="in_InvoiceFilePath1" Type="InArgument(x:String)" />
@@ -9,6 +7,8 @@
     <x:Property Name="in_Config1" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="in_Status" Type="InArgument(x:String)" />
     <x:Property Name="in_Comments" Type="InArgument(x:String)" />
+    <x:Property Name="io_dt_TransactionData1" Type="InOutArgument(sd:DataTable)" />
+    <x:Property Name="in_dt_TransactionItem" Type="InArgument(sd:DataTable)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
@@ -83,6 +83,7 @@
       <AssemblyReference>NPOI</AssemblyReference>
       <AssemblyReference>System.Collections.Immutable</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="SetStatusDaily" sap:VirtualizedContainerService.HintSize="710.4,7688" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -95,7 +96,7 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message Filter flag" sap:VirtualizedContainerService.HintSize="668.8,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Filter Flag is: &quot;+ in_FilterFlag]" />
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[io_TransactionData1]" DisplayName="For Each Row in Data Table PO Number" sap:VirtualizedContainerService.HintSize="668.8,2095.2" sap2010:WorkflowViewState.IdRef="ForEachRow_5">
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[io_dt_TransactionData1]" DisplayName="For Each Row in Data Table PO Number" sap:VirtualizedContainerService.HintSize="668.8,2095.2" sap2010:WorkflowViewState.IdRef="ForEachRow_5">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
@@ -107,7 +108,7 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <If Condition="[in_FilterFlag=&quot;PO Number&quot; and (CurrentRow(&quot;PO Number&quot;).ToString=in_TransactionItem(0)(&quot;PO Number&quot;).tostring)]" DisplayName="If Flag is PO Number" sap:VirtualizedContainerService.HintSize="483.2,441.6" sap2010:WorkflowViewState.IdRef="If_9">
+            <If Condition="[in_FilterFlag=&quot;PO Number&quot; and (CurrentRow(&quot;PO Number&quot;).ToString=in_dt_TransactionItem(0)(&quot;PO Number&quot;).tostring)]" DisplayName="If Flag is PO Number" sap:VirtualizedContainerService.HintSize="483.2,441.6" sap2010:WorkflowViewState.IdRef="If_9">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -149,7 +150,7 @@
                 </Sequence>
               </If.Else>
             </If>
-            <If Condition="[in_FilterFlag=&quot;Project Code&quot; and (CurrentRow(&quot;Project Code&quot;).ToString=in_TransactionItem(0)(&quot;Project Code&quot;).tostring)]" DisplayName="If Flag is Project Code" sap:VirtualizedContainerService.HintSize="483.2,441.6" sap2010:WorkflowViewState.IdRef="If_10">
+            <If Condition="[in_FilterFlag=&quot;Project Code&quot; and (CurrentRow(&quot;Project Code&quot;).ToString=in_dt_TransactionItem(0)(&quot;Project Code&quot;).tostring)]" DisplayName="If Flag is Project Code" sap:VirtualizedContainerService.HintSize="483.2,441.6" sap2010:WorkflowViewState.IdRef="If_10">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -191,7 +192,7 @@
                 </Sequence>
               </If.Else>
             </If>
-            <If Condition="[in_FilterFlag=&quot;Quotation Number&quot; and (CurrentRow(&quot;Quotation Number&quot;).ToString=in_TransactionItem(0)(&quot;Quotation Number&quot;).tostring)]" DisplayName="If Flag is Quotation Number" sap:VirtualizedContainerService.HintSize="483.2,441.6" sap2010:WorkflowViewState.IdRef="If_11">
+            <If Condition="[in_FilterFlag=&quot;Quotation Number&quot; and (CurrentRow(&quot;Quotation Number&quot;).ToString=in_dt_TransactionItem(0)(&quot;Quotation Number&quot;).tostring)]" DisplayName="If Flag is Quotation Number" sap:VirtualizedContainerService.HintSize="483.2,441.6" sap2010:WorkflowViewState.IdRef="If_11">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -233,7 +234,7 @@
                 </Sequence>
               </If.Else>
             </If>
-            <If Condition="[in_FilterFlag=&quot;DO Number&quot; and (CurrentRow(&quot;DO Number&quot;).ToString=in_TransactionItem(0)(&quot;DO Number&quot;).tostring)]" DisplayName="If Flag is DO Number" sap:VirtualizedContainerService.HintSize="483.2,441.6" sap2010:WorkflowViewState.IdRef="If_12">
+            <If Condition="[in_FilterFlag=&quot;DO Number&quot; and (CurrentRow(&quot;DO Number&quot;).ToString=in_dt_TransactionItem(0)(&quot;DO Number&quot;).tostring)]" DisplayName="If Flag is DO Number" sap:VirtualizedContainerService.HintSize="483.2,441.6" sap2010:WorkflowViewState.IdRef="If_12">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -324,7 +325,7 @@
                         <ActivityAction.Argument>
                           <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
                         </ActivityAction.Argument>
-                        <If Condition="[CurrentRow(&quot;PO Number&quot;).ToString=in_TransactionItem(0)(&quot;PO Number&quot;).tostring]" DisplayName="If Filter matches for Daily Success" sap:VirtualizedContainerService.HintSize="483.2,753.6" sap2010:WorkflowViewState.IdRef="If_13">
+                        <If Condition="[CurrentRow(&quot;PO Number&quot;).ToString=in_dt_TransactionItem(0)(&quot;PO Number&quot;).tostring]" DisplayName="If Filter matches for Daily Success" sap:VirtualizedContainerService.HintSize="483.2,753.6" sap2010:WorkflowViewState.IdRef="If_13">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -403,7 +404,7 @@
                         <ActivityAction.Argument>
                           <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
                         </ActivityAction.Argument>
-                        <If Condition="[CurrentRow(&quot;Project Code&quot;).ToString=in_TransactionItem(0)(&quot;Project Code&quot;).tostring]" DisplayName="If Filter matches for Daily Success Project Code" sap:VirtualizedContainerService.HintSize="483.2,753.6" sap2010:WorkflowViewState.IdRef="If_15">
+                        <If Condition="[CurrentRow(&quot;Project Code&quot;).ToString=in_dt_TransactionItem(0)(&quot;Project Code&quot;).tostring]" DisplayName="If Filter matches for Daily Success Project Code" sap:VirtualizedContainerService.HintSize="483.2,753.6" sap2010:WorkflowViewState.IdRef="If_15">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -482,7 +483,7 @@
                         <ActivityAction.Argument>
                           <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
                         </ActivityAction.Argument>
-                        <If Condition="[CurrentRow(&quot;Quotation Number&quot;).ToString=in_TransactionItem(0)(&quot;Quotation Number&quot;).tostring]" DisplayName="If Filter matches for Daily Success Quotation Number" sap:VirtualizedContainerService.HintSize="483.2,753.6" sap2010:WorkflowViewState.IdRef="If_17">
+                        <If Condition="[CurrentRow(&quot;Quotation Number&quot;).ToString=in_dt_TransactionItem(0)(&quot;Quotation Number&quot;).tostring]" DisplayName="If Filter matches for Daily Success Quotation Number" sap:VirtualizedContainerService.HintSize="483.2,753.6" sap2010:WorkflowViewState.IdRef="If_17">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -561,7 +562,7 @@
                         <ActivityAction.Argument>
                           <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
                         </ActivityAction.Argument>
-                        <If Condition="[CurrentRow(&quot;DO Number&quot;).ToString=in_TransactionItem(0)(&quot;DO Number&quot;).tostring]" DisplayName="If Filter matches for Daily Success DO Number" sap:VirtualizedContainerService.HintSize="483.2,753.6" sap2010:WorkflowViewState.IdRef="If_19">
+                        <If Condition="[CurrentRow(&quot;DO Number&quot;).ToString=in_dt_TransactionItem(0)(&quot;DO Number&quot;).tostring]" DisplayName="If Filter matches for Daily Success DO Number" sap:VirtualizedContainerService.HintSize="483.2,753.6" sap2010:WorkflowViewState.IdRef="If_19">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>

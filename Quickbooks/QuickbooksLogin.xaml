@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="QuickbooksLogin" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="QuickbooksLogin" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_QuickbooksExePath" Type="InArgument(x:String)" />
     <x:Property Name="in_RecipientsEmailList" Type="InArgument(x:String)" />
@@ -8,7 +8,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>698.4,480</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>698.4,466.4</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>QuickbooksLogin_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="41">
@@ -97,7 +97,7 @@
       <AssemblyReference>System.Data.Entity</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Login to Quickbooks to create invoices" DisplayName="Quickbooks Login main" sap:VirtualizedContainerService.HintSize="478.4,415.2" sap2010:WorkflowViewState.IdRef="Sequence_16">
+  <Sequence sap2010:Annotation.AnnotationText="Login to Quickbooks to create invoices" DisplayName="Quickbooks Login main" sap:VirtualizedContainerService.HintSize="241.6,189.6" sap2010:WorkflowViewState.IdRef="Sequence_16">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="LoginSuccess" />
       <Variable x:TypeArguments="x:Boolean" Name="CompanyPopupExists" />
@@ -108,85 +108,50 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Try Catch for Login" sap:VirtualizedContainerService.HintSize="436.8,291.2" sap2010:WorkflowViewState.IdRef="TryCatch_1">
-      <TryCatch.Try>
-        <ui:RetryScope DisplayName="Retry Scope - Quickbooks login" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[Cint(in_Config1(&quot;RetryNumber&quot;))]" RetryInterval="[Timespan.Parse(in_Config1(&quot;RetryIntervalMedium&quot;).ToString)]">
-          <ui:RetryScope.ActivityBody>
-            <ActivityAction>
-              <Sequence DisplayName="Quickbooks Login" sap:VirtualizedContainerService.HintSize="600,1987.2" sap2010:WorkflowViewState.IdRef="Sequence_12">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-                <ui:LogMessage DisplayName="Log Message - login to Quickbooks" sap:VirtualizedContainerService.HintSize="558.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Trying to login to Quickbooks.&quot;]" />
-                <uix:NApplicationCard WebDriverMode="{x:Null}" AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Application: Reckon Accounts Enterprise: 2022" sap:VirtualizedContainerService.HintSize="558.4,1802.4" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" OpenMode="Always" ScopeGuid="b424b09b-93c4-42cf-8298-809c789c5b5b" Version="V2">
-                  <uix:NApplicationCard.Body>
-                    <ActivityAction x:TypeArguments="x:Object">
-                      <ActivityAction.Argument>
-                        <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
-                      </ActivityAction.Argument>
-                      <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="552,2499.2" sap2010:WorkflowViewState.IdRef="Sequence_18">
-                        <Sequence.Variables>
-                          <Variable x:TypeArguments="x:Boolean" Name="PasswordPopupExists" />
-                        </Sequence.Variables>
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                        <ui:UiElementExists DisplayName="Element Exists Password popup" Exists="[PasswordPopupExists]" sap:VirtualizedContainerService.HintSize="510.4,107.2" sap2010:WorkflowViewState.IdRef="UiElementExists_3">
-                          <ui:UiElementExists.Target>
-                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="b42d8abd-4cb9-4095-aad4-e72ec8698490" InformativeScreenshot="630c58e511171d7f9cfad773342a69cb" Selector="&lt;wnd app='qbw32.exe' cls='MauiForm' title='Reckon Accounts Login' /&gt;&lt;wnd cls='MauiPushButton' title='OK' /&gt;" TimeoutMS="[Cint(in_Config1(&quot;TimeoutShort&quot;))]">
-                              <ui:Target.WaitForReady>
-                                <InArgument x:TypeArguments="ui:WaitForReady" />
-                              </ui:Target.WaitForReady>
-                            </ui:Target>
-                          </ui:UiElementExists.Target>
-                        </ui:UiElementExists>
-                        <If Condition="[PasswordPopupExists]" DisplayName="If password popup exists" sap:VirtualizedContainerService.HintSize="510.4,296" sap2010:WorkflowViewState.IdRef="If_3">
-                          <sap:WorkflowViewStateService.ViewState>
-                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                            </scg:Dictionary>
-                          </sap:WorkflowViewStateService.ViewState>
-                          <If.Then>
-                            <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" ContinueOnError="False" DisplayName="Click on cancel" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="Click_11" KeyModifiers="None" MouseButton="BTN_LEFT">
-                              <ui:Click.CursorPosition>
-                                <ui:CursorPosition Position="Center">
-                                  <ui:CursorPosition.OffsetX>
-                                    <InArgument x:TypeArguments="x:Int32" />
-                                  </ui:CursorPosition.OffsetX>
-                                  <ui:CursorPosition.OffsetY>
-                                    <InArgument x:TypeArguments="x:Int32" />
-                                  </ui:CursorPosition.OffsetY>
-                                </ui:CursorPosition>
-                              </ui:Click.CursorPosition>
-                              <ui:Click.Target>
-                                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="c5b6ee08-afbb-4bf5-b93c-238b2986560a" InformativeScreenshot="367d80c28667434b4252962bfe1ce5f0" Selector="&lt;wnd app='qbw32.exe' cls='MauiForm' title='Reckon Accounts Login' /&gt;&lt;wnd cls='MauiPushButton' title='Cancel' /&gt;">
-                                  <ui:Target.TimeoutMS>
-                                    <InArgument x:TypeArguments="x:Int32" />
-                                  </ui:Target.TimeoutMS>
-                                  <ui:Target.WaitForReady>
-                                    <InArgument x:TypeArguments="ui:WaitForReady" />
-                                  </ui:Target.WaitForReady>
-                                </ui:Target>
-                              </ui:Click.Target>
-                            </ui:Click>
-                          </If.Then>
-                          <If.Else>
-                            <Sequence sap2010:WorkflowViewState.IdRef="Sequence_29">
-                              <sap:WorkflowViewStateService.ViewState>
-                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                </scg:Dictionary>
-                              </sap:WorkflowViewStateService.ViewState>
-                            </Sequence>
-                          </If.Else>
-                        </If>
-                        <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click open restore company" sap:VirtualizedContainerService.HintSize="510.4,107.2" sap2010:WorkflowViewState.IdRef="Click_12" KeyModifiers="None" MouseButton="BTN_LEFT">
+    <ui:RetryScope DisplayName="Retry Scope - Quickbooks login" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[Cint(in_Config1(&quot;RetryNumber&quot;))]" RetryInterval="[Timespan.Parse(in_Config1(&quot;RetryIntervalMedium&quot;).ToString)]">
+      <ui:RetryScope.ActivityBody>
+        <ActivityAction>
+          <Sequence DisplayName="Quickbooks Login" sap:VirtualizedContainerService.HintSize="627.2,3016" sap2010:WorkflowViewState.IdRef="Sequence_12">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:LogMessage DisplayName="Log Message - login to Quickbooks" sap:VirtualizedContainerService.HintSize="585.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Trying to login to Quickbooks.&quot;]" />
+            <uix:NApplicationCard WebDriverMode="{x:Null}" AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Application: Reckon Accounts Enterprise: 2022" sap:VirtualizedContainerService.HintSize="585.6,2793.6" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" OpenMode="Always" ScopeGuid="b424b09b-93c4-42cf-8298-809c789c5b5b" Version="V2">
+              <uix:NApplicationCard.Body>
+                <ActivityAction x:TypeArguments="x:Object">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="552,2502.4" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                    <Sequence.Variables>
+                      <Variable x:TypeArguments="x:Boolean" Name="PasswordPopupExists" />
+                    </Sequence.Variables>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:UiElementExists DisplayName="Element Exists Password popup" Exists="[PasswordPopupExists]" sap:VirtualizedContainerService.HintSize="510.4,107.2" sap2010:WorkflowViewState.IdRef="UiElementExists_3">
+                      <ui:UiElementExists.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="b42d8abd-4cb9-4095-aad4-e72ec8698490" InformativeScreenshot="630c58e511171d7f9cfad773342a69cb" Selector="&lt;wnd app='qbw32.exe' cls='MauiForm' title='Reckon Accounts Login' /&gt;&lt;wnd cls='MauiPushButton' title='OK' /&gt;" TimeoutMS="[Cint(in_Config1(&quot;TimeoutShort&quot;))]">
+                          <ui:Target.WaitForReady>
+                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                          </ui:Target.WaitForReady>
+                        </ui:Target>
+                      </ui:UiElementExists.Target>
+                    </ui:UiElementExists>
+                    <If Condition="[PasswordPopupExists]" DisplayName="If password popup exists" sap:VirtualizedContainerService.HintSize="510.4,297.6" sap2010:WorkflowViewState.IdRef="If_3">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <If.Then>
+                        <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" ContinueOnError="False" DisplayName="Click on cancel" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="Click_11" KeyModifiers="None" MouseButton="BTN_LEFT">
                           <ui:Click.CursorPosition>
                             <ui:CursorPosition Position="Center">
                               <ui:CursorPosition.OffsetX>
@@ -198,7 +163,7 @@
                             </ui:CursorPosition>
                           </ui:Click.CursorPosition>
                           <ui:Click.Target>
-                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="be862308-bc87-47db-92f2-6932e1ef2089" InformativeScreenshot="9849f9daf0182b54f118c9c40baf9939" Selector="&lt;wnd aaname='Open or restore an  existing company' cls='MauiPushButton' title='O&amp;amp;pen or restore an  existing company' /&gt;">
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="c5b6ee08-afbb-4bf5-b93c-238b2986560a" InformativeScreenshot="367d80c28667434b4252962bfe1ce5f0" Selector="&lt;wnd app='qbw32.exe' cls='MauiForm' title='Reckon Accounts Login' /&gt;&lt;wnd cls='MauiPushButton' title='Cancel' /&gt;">
                               <ui:Target.TimeoutMS>
                                 <InArgument x:TypeArguments="x:Int32" />
                               </ui:Target.TimeoutMS>
@@ -208,281 +173,266 @@
                             </ui:Target>
                           </ui:Click.Target>
                         </ui:Click>
-                        <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window Open a Qkbook file" sap:VirtualizedContainerService.HintSize="510.4,494.4" sap2010:WorkflowViewState.IdRef="WindowScope_1" InformativeScreenshot="61339d8337b29243f09f353e5d6f7f6a" Selector="&lt;wnd app='qbw32.exe' cls='MauiForm' title='Open Company: Type' /&gt;">
-                          <ui:WindowScope.Body>
-                            <ActivityAction x:TypeArguments="x:Object">
-                              <ActivityAction.Argument>
-                                <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
-                              </ActivityAction.Argument>
-                              <Sequence DisplayName="Do - Open quickbook file" sap:VirtualizedContainerService.HintSize="375.2,347.2" sap2010:WorkflowViewState.IdRef="Sequence_31">
-                                <sap:WorkflowViewStateService.ViewState>
-                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                  </scg:Dictionary>
-                                </sap:WorkflowViewStateService.ViewState>
-                                <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click on open a company file" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="Click_8" KeyModifiers="None" MouseButton="BTN_LEFT">
-                                  <ui:Click.CursorPosition>
-                                    <ui:CursorPosition Position="Center">
-                                      <ui:CursorPosition.OffsetX>
-                                        <InArgument x:TypeArguments="x:Int32" />
-                                      </ui:CursorPosition.OffsetX>
-                                      <ui:CursorPosition.OffsetY>
-                                        <InArgument x:TypeArguments="x:Int32" />
-                                      </ui:CursorPosition.OffsetY>
-                                    </ui:CursorPosition>
-                                  </ui:Click.CursorPosition>
-                                  <ui:Click.Target>
-                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="d6b1d063-16d9-4426-a822-53765248ca57" InformativeScreenshot="ccdd507734cec1d9a8d655415e61c734" Selector="&lt;wnd aaname='Open a company file (.QBW)' cls='MauiRadioButton' title='Open a &amp;amp;company file (.QBW)' /&gt;" WaitForReady="COMPLETE">
-                                      <ui:Target.TimeoutMS>
-                                        <InArgument x:TypeArguments="x:Int32" />
-                                      </ui:Target.TimeoutMS>
-                                    </ui:Target>
-                                  </ui:Click.Target>
-                                </ui:Click>
-                                <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click on next button" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="Click_9" KeyModifiers="None" MouseButton="BTN_LEFT">
-                                  <ui:Click.CursorPosition>
-                                    <ui:CursorPosition Position="Center">
-                                      <ui:CursorPosition.OffsetX>
-                                        <InArgument x:TypeArguments="x:Int32" />
-                                      </ui:CursorPosition.OffsetX>
-                                      <ui:CursorPosition.OffsetY>
-                                        <InArgument x:TypeArguments="x:Int32" />
-                                      </ui:CursorPosition.OffsetY>
-                                    </ui:CursorPosition>
-                                  </ui:Click.CursorPosition>
-                                  <ui:Click.Target>
-                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="b9026fd2-7786-4d38-b2d5-aaad06049bca" InformativeScreenshot="d59825a0436ca6f7b8834125eb5e26de" Selector="&lt;wnd aaname='Next' cls='MauiPushButton' title='&amp;amp;Next' /&gt;">
-                                      <ui:Target.TimeoutMS>
-                                        <InArgument x:TypeArguments="x:Int32" />
-                                      </ui:Target.TimeoutMS>
-                                      <ui:Target.WaitForReady>
-                                        <InArgument x:TypeArguments="ui:WaitForReady" />
-                                      </ui:Target.WaitForReady>
-                                    </ui:Target>
-                                  </ui:Click.Target>
-                                </ui:Click>
-                              </Sequence>
-                            </ActivityAction>
-                          </ui:WindowScope.Body>
-                        </ui:WindowScope>
-                        <ui:UiElementExists DisplayName="Element Exists 'dialog  Open a Company'" Exists="[CompanyPopupExists]" sap:VirtualizedContainerService.HintSize="510.4,107.2" sap2010:WorkflowViewState.IdRef="UiElementExists_2">
-                          <ui:UiElementExists.Target>
-                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="085b0abc-927e-4622-a47f-bd561247cfef" InformativeScreenshot="f3b8a994b9c66fcc3e2da0ee9c116d20" Selector="&lt;wnd app='qbw32.exe' cls='#32770' title='Open a Company' /&gt;&lt;wnd ctrlid='1148' /&gt;&lt;wnd ctrlid='1148' /&gt;&lt;wnd ctrlid='1148' /&gt;" TimeoutMS="[Cint(in_Config1(&quot;TimeoutShort&quot;))]">
-                              <ui:Target.WaitForReady>
-                                <InArgument x:TypeArguments="ui:WaitForReady" />
-                              </ui:Target.WaitForReady>
-                            </ui:Target>
-                          </ui:UiElementExists.Target>
-                        </ui:UiElementExists>
-                        <If Condition="[CompanyPopupExists]" DisplayName="If popup opened for entering company name" sap:VirtualizedContainerService.HintSize="510.4,804" sap2010:WorkflowViewState.IdRef="If_2">
+                      </If.Then>
+                      <If.Else>
+                        <Sequence sap2010:WorkflowViewState.IdRef="Sequence_29">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <If.Then>
-                            <Sequence DisplayName="Exists" sap:VirtualizedContainerService.HintSize="475.2,615.2" sap2010:WorkflowViewState.IdRef="Sequence_26">
-                              <sap:WorkflowViewStateService.ViewState>
-                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                </scg:Dictionary>
-                              </sap:WorkflowViewStateService.ViewState>
-                              <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window for typing quickbook filename" sap:VirtualizedContainerService.HintSize="433.6,522.4" sap2010:WorkflowViewState.IdRef="WindowScope_2" InformativeScreenshot="4d369c8a465984c827b654d753cde96c" Selector="&lt;wnd app='qbw32.exe' cls='#32770' title='Open a Company' /&gt;">
-                                <ui:WindowScope.Body>
-                                  <ActivityAction x:TypeArguments="x:Object">
-                                    <ActivityAction.Argument>
-                                      <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
-                                    </ActivityAction.Argument>
-                                    <Sequence DisplayName="Do - Open file" sap:VirtualizedContainerService.HintSize="375.2,375.2" sap2010:WorkflowViewState.IdRef="Sequence_32">
-                                      <sap:WorkflowViewStateService.ViewState>
-                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                        </scg:Dictionary>
-                                      </sap:WorkflowViewStateService.ViewState>
-                                      <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into filepath" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_2" Text="[in_CurrentBillingEntity]">
-                                        <ui:TypeInto.Target>
-                                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="36012dab-b6b1-4805-8570-46cf7a686e08" InformativeScreenshot="b6a0ed8761ccd09a1e296fa8450ba1ac" Selector="&lt;wnd ctrlid='1148' aaname='File name:' /&gt;">
-                                            <ui:Target.TimeoutMS>
-                                              <InArgument x:TypeArguments="x:Int32" />
-                                            </ui:Target.TimeoutMS>
-                                            <ui:Target.WaitForReady>
-                                              <InArgument x:TypeArguments="ui:WaitForReady" />
-                                            </ui:Target.WaitForReady>
-                                          </ui:Target>
-                                        </ui:TypeInto.Target>
-                                      </ui:TypeInto>
-                                      <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click open 'Button'" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="Click_10" KeyModifiers="None" MouseButton="BTN_LEFT">
-                                        <ui:Click.CursorPosition>
-                                          <ui:CursorPosition Position="Center">
-                                            <ui:CursorPosition.OffsetX>
-                                              <InArgument x:TypeArguments="x:Int32" />
-                                            </ui:CursorPosition.OffsetX>
-                                            <ui:CursorPosition.OffsetY>
-                                              <InArgument x:TypeArguments="x:Int32" />
-                                            </ui:CursorPosition.OffsetY>
-                                          </ui:CursorPosition>
-                                        </ui:Click.CursorPosition>
-                                        <ui:Click.Target>
-                                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="d1331737-3564-472d-b768-92d33e5a4022" InformativeScreenshot="3aa912bc10b4dc50561f51ede8f0bbfa" Selector="&lt;wnd ctrlid='1' title='*Open' aaname='Open' /&gt;">
-                                            <ui:Target.TimeoutMS>
-                                              <InArgument x:TypeArguments="x:Int32" />
-                                            </ui:Target.TimeoutMS>
-                                            <ui:Target.WaitForReady>
-                                              <InArgument x:TypeArguments="ui:WaitForReady" />
-                                            </ui:Target.WaitForReady>
-                                          </ui:Target>
-                                        </ui:Click.Target>
-                                      </ui:Click>
-                                    </Sequence>
-                                  </ActivityAction>
-                                </ui:WindowScope.Body>
-                              </ui:WindowScope>
-                            </Sequence>
-                          </If.Then>
-                          <If.Else>
-                            <Sequence sap2010:WorkflowViewState.IdRef="Sequence_27">
-                              <sap:WorkflowViewStateService.ViewState>
-                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                </scg:Dictionary>
-                              </sap:WorkflowViewStateService.ViewState>
-                            </Sequence>
-                          </If.Else>
-                        </If>
-                        <uix:NClick ClickType="Single" DisplayName="Click 'OK'" sap:VirtualizedContainerService.HintSize="510.4,157.6" sap2010:WorkflowViewState.IdRef="NClick_5" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="b424b09b-93c4-42cf-8298-809c789c5b5b" Version="V1">
-                          <uix:NClick.Target>
-                            <uix:TargetAnchorable DesignTimeRectangle="63, 235, 109, 28" FriendlyName="'OK'" FullSelectorArgument="&lt;wnd cls='MauiPushButton' title='OK' /&gt;" FuzzySelectorArgument="&lt;wnd cls='MauiPushButton' title='OK' check:text='OK' /&gt;" Guid="e77da4cb-0510-4110-9051-1a0f17a1c22b" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAHEAAAAgCAYAAAAlrJeCAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAALwSURBVGhD7dbfS5NRHMdx/4OoCOmiuyCILvplGSIumJWRiekkXVs/qExJWlpTzJhmDdxMdIk/yLVU/FHNkTrTFZpTx9xInU6nz3Lbswsh8Gb/waep0xZq2N3Z8Vy8bs45z/fmzfM8JyoQCICJbCwiBVhECmyKaF5YRuePXwzhRrnl7SOmtfCIKppnCJfZxrOIkW5HEY+oOGjNXoYwhyu4nUeM1XDw+/0MYU5Vs4gRj0WkAItIARaRAhRHnIClR4damQyyDZXQ6Eywru7z8M+aoG//jA7DGGZX1nge1o9KVGvq0dAVWosAlEacxnh/LWpkEohOCyEUhsSmIkNShpd6MyaDET3WGhTmKpBX3IExzomJAS2qniZDfF+O4sYBTG05mzwURuTh5VqhykqEJDkHL3rD9gbrob4nxbGYR6ib98BpWYv4UP4efUOdqJUeQHpZC1qHXGHzyEddRN7nha1RjLxn5Sh6NwrXYti+h8P35lIoJCcgUI1i5EvlasTbGdmoUmYhocQAo2UWbk/wUxs2k3RURrTWXEOOQo2SzslN+w7jG7yVJyKmdBjDfWoUipJw8uAhnIk/h5T6eVicvk3PkG7XRZzorkKdLP5PRPF1XDibALEkBRdT1WgacGDy59/PkI6+fyLvxdSHPDwpKEC+qgvmmbC9uXH0aAqRmyaASGuH9evrtYvNYzUMnyqQfUKAG/Jm6AanMRc+k3BUXmz8/m7U3b2MO0lS5DfZYbeHtL/Cc+ktHD9fho7gOVfY7XQ8GNjX9gBxRzNxU9ECg5PD4pbzyUNhxBWL4Jx6NJdIcGVfNKKjQ/YLkCSphG7KBXcwIh8eMfgG+90z6FeKcDUuHck5jejZcjZ5KI24Yg4Oiwm9Wi20GwzoNtkws36Gs8E8OIahEQe40Bpn64dRb1w9N71+jnAUR9w9WEQKsIgUYBEp8F8R95YuQNjgZgizR7Gw84gM2f4Zsdy0hEtNPoZwym9L20dkIg+LSAEWMeIF8BuVKy+g1Czh9AAAAABJRU5ErkJggg==" InformativeScreenshot="5c5cff5c25f3ba9a5fb2afc1971c4f9a.png" ScopeSelectorArgument="&lt;wnd app='qbw32.exe' cls='MauiForm' title='Reckon Accounts Login' /&gt;" SearchSteps="Selector, FuzzySelector, Image" Visibility="Interactive" WaitForReadyArgument="Complete">
-                              <uix:TargetAnchorable.Anchors>
-                                <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
-                                  <uix:Target DesignTimeRectangle="195, 161, 150, 16" ElementType="InputBox" FriendlyName="'Robot'" FullSelectorArgument="&lt;wnd cls='Edit' /&gt;" FuzzySelectorArgument="&lt;wnd cls='Edit' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAJoAAAAUCAYAAAB1RSS/AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAPUSURBVGhD7ZlrTJtVGID33zQhIUGzX0aN+sPonw0Z0elmlmkMSxzeMONisi4LMGBDnR1UO6EUJgrIfYzCYEO2sU0qMDqgCOgIt40NymUVGmWlBlqmIHRcxuNHbRwLnZgoJDbnSd4/73veL+fHk3Pek29DT28/xr5BESLWLDo6u9kwPz+PQLCWjNvsQjTB2iNEE6wLQjTBuvDfijZlwW6sRVM9wPD4tCspELgTzXGbqZ86qamuQqfTOaO2qY2ukRkW7i66Fj2A0Q5M5w7iFVFJfb/NlfyH3PmV6dFeanusjE3OupICT2GlaJY2Bk4EIfN+GG+fR9i40YentgYSlHmDsekFFv7OtX8jmrWL4YoYvCO/QW8cdyUFnoJ70cqjkYUVU9FixGJp4lKBmvBn5eT1TDPqcK1zhxBN8ADci3b2ELJwHY2DdinRT3tZDjFPHORr6wxjCzDyg5bi+AACAlwRkUvRdyYmlkQrk+O1K4x3Xt9NmLMuJ0ReSsvUHX6TvnbrSjEly3vDcyg0NNLRkMnRTY/x0KOb8Xs5jrSznQw5NyTwBNyLVrIXmf8ewiI/QqWK4xNFKikJBoyOeX7pq+G8NoE45QdSTeWMQ5GRKI9fQNfciOn0Pry2y9l3QIFaqikOxBAdJOdw4whXW3VcLErkSHzs/b35+eSdyqXgbT9kvu8SHFHAxWYTo64tCf7/uBetKBTZk1vw3/Y8mx5/ju2vxpLTL83r0mn2Y2koSelpJBkmXA1ga1CRkpWLMrtCOtGipBMtj7PXLExJNcdwE51577FZ3Uppwlto0r8gsf5er93wGZ9nZROXdV5cnR7MKldnPVWqEKJ3BvNx5SS35xZpS9+BJi2FrPY5VwMsmMvILChBmVi4YkZbtLRzszwKn+gqjoX7kvxlEl+1Le8tJ/tECXEJWiGaB7OKaFYc5kvoNEre8D1GzaSD62f2sz/+U0KKe10N0hyviyUpI1O6PitXiPa7yUBrZiAvpXZRkRpKeLySPdoeZ20J67cfkpyRQdxxnRDNg1n9MTBr5+fmM+S/H8iLu9LR6mspLDxMVPDWvwb6HbsjOKK9TGv395hOhuL1tD9btu101l4L2subR7XU9U9gHb5OjVZBVMj9vYpCPVcGrzGiV+D3zAu8Ih4DHsdK0SZvYevVk1Q9gNk240zN2oYYaihGnVBJi9nGTeNl6k7+Ocw7I7uauhvSTLb0Z+DqOTTqhHu1DC0ZDWYcc3ed37L11VFfsry3Cn231CsJPWk2cCpZjUZ1WjwGPIyVogkEa4AQTbAuCNEE64IQTbAujNvs/AE0rmZdqCy60AAAAABJRU5ErkJggg==" SearchSteps="Selector, FuzzySelector, Image" />
-                                </scg:List>
-                              </uix:TargetAnchorable.Anchors>
-                            </uix:TargetAnchorable>
-                          </uix:NClick.Target>
-                        </uix:NClick>
-                        <uix:NCheckState Exists="{x:Null}" DisplayName="Check App State 'Home'" sap:VirtualizedContainerService.HintSize="333.6,52.8" sap2010:WorkflowViewState.IdRef="NCheckState_5" ScopeIdentifier="b424b09b-93c4-42cf-8298-809c789c5b5b" Timeout="[Cint(in_Config1(&quot;DelayLong&quot;))]" Version="V1">
-                          <uix:NCheckState.IfExists>
-                            <Sequence DisplayName="Target appears - Quickbooks opened" sap:VirtualizedContainerService.HintSize="375.2,288.8" sap2010:WorkflowViewState.IdRef="Sequence_19">
-                              <sap:WorkflowViewStateService.ViewState>
-                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                </scg:Dictionary>
-                              </sap:WorkflowViewStateService.ViewState>
-                              <Assign DisplayName="Assign - Login Success to true" sap:VirtualizedContainerService.HintSize="333.6,61.6" sap2010:WorkflowViewState.IdRef="Assign_4">
-                                <Assign.To>
-                                  <OutArgument x:TypeArguments="x:Boolean">[LoginSuccess]</OutArgument>
-                                </Assign.To>
-                                <Assign.Value>
-                                  <InArgument x:TypeArguments="x:Boolean">True</InArgument>
-                                </Assign.Value>
-                              </Assign>
-                              <ui:LogMessage DisplayName="Log Message - Login successful" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_15" Level="Info" Message="[&quot;Login to Quickbooks is successful.&quot;]" />
-                            </Sequence>
-                          </uix:NCheckState.IfExists>
-                          <uix:NCheckState.IfNotExists>
-                            <Sequence DisplayName="Target does not appear - Quickbooks not opened" sap:VirtualizedContainerService.HintSize="375.2,288.8" sap2010:WorkflowViewState.IdRef="Sequence_20">
-                              <sap:WorkflowViewStateService.ViewState>
-                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                </scg:Dictionary>
-                              </sap:WorkflowViewStateService.ViewState>
-                              <Assign DisplayName="Assign - Login Success to false" sap:VirtualizedContainerService.HintSize="333.6,61.6" sap2010:WorkflowViewState.IdRef="Assign_3">
-                                <Assign.To>
-                                  <OutArgument x:TypeArguments="x:Boolean">[LoginSuccess]</OutArgument>
-                                </Assign.To>
-                                <Assign.Value>
-                                  <InArgument x:TypeArguments="x:Boolean">False</InArgument>
-                                </Assign.Value>
-                              </Assign>
-                              <ui:LogMessage DisplayName="Log Message - Login not successful" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_16" Level="Info" Message="[&quot;Failed to login to Quickbooks.&quot;]" />
-                            </Sequence>
-                          </uix:NCheckState.IfNotExists>
-                          <uix:NCheckState.Target>
-                            <uix:TargetAnchorable DesignTimeRectangle="12, 66, 78, 50" ElementType="Button" FriendlyName="'Home'" FullSelectorArgument="&lt;wnd cls='ToolbarWindow32' idx='2' /&gt;&lt;ctrl name='*Home*' role='push button' /&gt;" FuzzySelectorArgument="&lt;wnd cls='ToolbarWindow32' /&gt;&lt;ctrl name='*Home*' role='push button' automationid='' check:text='Home' /&gt;" Guid="dd28f3bb-865f-4344-a5ac-a0d4ff2c30c0" ImageBase64="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" InformativeScreenshot="3c4130db90d066be1e4db28dd3bb2f40.png" ScopeSelectorArgument="&lt;wnd app='qbw32.exe' cls='MauiFrame' title='HUP HIN TRANSPORT CO PTE LTD - Reckon Accounts Enterprise: 2022 *' /&gt;" SearchSteps="Selector, FuzzySelector, Image" Visibility="Interactive" />
-                          </uix:NCheckState.Target>
+                        </Sequence>
+                      </If.Else>
+                    </If>
+                    <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click open restore company" sap:VirtualizedContainerService.HintSize="510.4,107.2" sap2010:WorkflowViewState.IdRef="Click_12" KeyModifiers="None" MouseButton="BTN_LEFT">
+                      <ui:Click.CursorPosition>
+                        <ui:CursorPosition Position="Center">
+                          <ui:CursorPosition.OffsetX>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:CursorPosition.OffsetX>
+                          <ui:CursorPosition.OffsetY>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:CursorPosition.OffsetY>
+                        </ui:CursorPosition>
+                      </ui:Click.CursorPosition>
+                      <ui:Click.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="be862308-bc87-47db-92f2-6932e1ef2089" InformativeScreenshot="9849f9daf0182b54f118c9c40baf9939" Selector="&lt;wnd aaname='Open or restore an  existing company' cls='MauiPushButton' title='O&amp;amp;pen or restore an  existing company' /&gt;">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                          <ui:Target.WaitForReady>
+                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                          </ui:Target.WaitForReady>
+                        </ui:Target>
+                      </ui:Click.Target>
+                    </ui:Click>
+                    <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window Open a Qkbook file" sap:VirtualizedContainerService.HintSize="510.4,494.4" sap2010:WorkflowViewState.IdRef="WindowScope_1" InformativeScreenshot="61339d8337b29243f09f353e5d6f7f6a" Selector="&lt;wnd app='qbw32.exe' cls='MauiForm' title='Open Company: Type' /&gt;">
+                      <ui:WindowScope.Body>
+                        <ActivityAction x:TypeArguments="x:Object">
+                          <ActivityAction.Argument>
+                            <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+                          </ActivityAction.Argument>
+                          <Sequence DisplayName="Do - Open quickbook file" sap:VirtualizedContainerService.HintSize="375.2,347.2" sap2010:WorkflowViewState.IdRef="Sequence_31">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click on open a company file" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="Click_8" KeyModifiers="None" MouseButton="BTN_LEFT">
+                              <ui:Click.CursorPosition>
+                                <ui:CursorPosition Position="Center">
+                                  <ui:CursorPosition.OffsetX>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:CursorPosition.OffsetX>
+                                  <ui:CursorPosition.OffsetY>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:CursorPosition.OffsetY>
+                                </ui:CursorPosition>
+                              </ui:Click.CursorPosition>
+                              <ui:Click.Target>
+                                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="d6b1d063-16d9-4426-a822-53765248ca57" InformativeScreenshot="ccdd507734cec1d9a8d655415e61c734" Selector="&lt;wnd aaname='Open a company file (.QBW)' cls='MauiRadioButton' title='Open a &amp;amp;company file (.QBW)' /&gt;" WaitForReady="COMPLETE">
+                                  <ui:Target.TimeoutMS>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:Target.TimeoutMS>
+                                </ui:Target>
+                              </ui:Click.Target>
+                            </ui:Click>
+                            <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click on next button" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="Click_9" KeyModifiers="None" MouseButton="BTN_LEFT">
+                              <ui:Click.CursorPosition>
+                                <ui:CursorPosition Position="Center">
+                                  <ui:CursorPosition.OffsetX>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:CursorPosition.OffsetX>
+                                  <ui:CursorPosition.OffsetY>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:CursorPosition.OffsetY>
+                                </ui:CursorPosition>
+                              </ui:Click.CursorPosition>
+                              <ui:Click.Target>
+                                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="b9026fd2-7786-4d38-b2d5-aaad06049bca" InformativeScreenshot="d59825a0436ca6f7b8834125eb5e26de" Selector="&lt;wnd aaname='Next' cls='MauiPushButton' title='&amp;amp;Next' /&gt;">
+                                  <ui:Target.TimeoutMS>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:Target.TimeoutMS>
+                                  <ui:Target.WaitForReady>
+                                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                                  </ui:Target.WaitForReady>
+                                </ui:Target>
+                              </ui:Click.Target>
+                            </ui:Click>
+                          </Sequence>
+                        </ActivityAction>
+                      </ui:WindowScope.Body>
+                    </ui:WindowScope>
+                    <ui:UiElementExists DisplayName="Element Exists 'dialog  Open a Company'" Exists="[CompanyPopupExists]" sap:VirtualizedContainerService.HintSize="510.4,107.2" sap2010:WorkflowViewState.IdRef="UiElementExists_2">
+                      <ui:UiElementExists.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="085b0abc-927e-4622-a47f-bd561247cfef" InformativeScreenshot="f3b8a994b9c66fcc3e2da0ee9c116d20" Selector="&lt;wnd app='qbw32.exe' cls='#32770' title='Open a Company' /&gt;&lt;wnd ctrlid='1148' /&gt;&lt;wnd ctrlid='1148' /&gt;&lt;wnd ctrlid='1148' /&gt;" TimeoutMS="[Cint(in_Config1(&quot;TimeoutShort&quot;))]">
+                          <ui:Target.WaitForReady>
+                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                          </ui:Target.WaitForReady>
+                        </ui:Target>
+                      </ui:UiElementExists.Target>
+                    </ui:UiElementExists>
+                    <If Condition="[CompanyPopupExists]" DisplayName="If popup opened for entering company name" sap:VirtualizedContainerService.HintSize="510.4,804" sap2010:WorkflowViewState.IdRef="If_2">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <If.Then>
+                        <Sequence DisplayName="Exists" sap:VirtualizedContainerService.HintSize="475.2,615.2" sap2010:WorkflowViewState.IdRef="Sequence_26">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                        </uix:NCheckState>
-                      </Sequence>
-                    </ActivityAction>
-                  </uix:NApplicationCard.Body>
-                  <uix:NApplicationCard.TargetApp>
-                    <uix:TargetApp Area="-10, -10, 1620, 870" FilePath="[in_QuickbooksExePath.ToString]" IconBase64="iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAT9SURBVFhHvVf7bxRVFF5/VKzGGvqkLxBsUFvQYIkJIBFbaGkBqRARqaUFKcYHBhKrBjRUrVLBauAHEuMv/gUmavARA61WRWiL3S7QFujShzC7O7O7s+3uzsy3nnNnd7vbNqZ0257kS3bP3Hu+79w5c+89llAoZAEgYBiGRR/13+v5qGlP/0s1vitLCmBNzYE1LXd6oLm9+ctg37Dp/M3ybSWaV72LOSJ8jKgAQ9PuVk6errevXOPoW7AY1uQM2FKycZkCJQIRY34WejMXacOFKy4NHXxnJ3PFCTA0fZ7c9Hlbf9ZidNGk3vRcDGUshCNz0YyAY3HMLlqRodx8MBdzRgW4vjj1tp2y7ia1AzRYypw58gg45iDF5hVhLuYUAoxA4L4bRauc/M6YfLLJUwLPTcuDRMstEUk8cui5OY45mIs5db8/yTJ8pKGuj5a+l5wJZZ6WA7miEoGL7dC6uhHsspr4xwr1s2Y4WASNYw7mYs6hw0f3WW5W1fqsyZmJv/PUbCg7q6HLCnRFARUarbBpQWs3jRmLz1zMad9Vq1p68gtDNlInxQabDjgBWmZnwQp4Xj0gREQseLGDnuVFxzIXc159uBAWW1pu6DJVaFyw6YAESClZkJ8tg+50CWJj1A9D1ycIYDBnN30VFlt63h0JkOZnw5EeH0yAik0u2wKt3y7IdUmC+u77MFQfgu2dkwugWpi6AM5wwUNQNm2Dc/lKSDTZXHbyUyby2vXQb90W5IaqwvPGQTiXLofucML/61mqEbMII7gzAUxEg0e+/gbGyAi0vuuQizcKYkFOv7Ub/YJcl2W4a+qgNjZBPd4MZfN2uJ4umbBqUxfAGdJk35enxPuMmD4wCNdTawX0wUHhM3w+eA/VQympEP/Z9H9vwf/TL7QC8RxTE8DktLH4Tn9FkUxyrecadLcn/LtXgE33eKj634REZ4hSuUP4IhZo/X0aAsKZq00n6DsKiuwDf/wFJ2WsNjSKbCPGv30ffgKlfKv4EtxbxwlomY4A2ih8zSejG0qwvQPKC1UiY/VIAzwHDglihue1t6C+9wEV2zlI96cmKIALLn0hvEc/Bp0TlJ6B4N8XoJRuhma7YgZs+xO3H8iAu7YOnv2vw1t/WIwLnG0hAWmJCZAosPfT4zBo2dmCV3ugbNkO7dp1QcIWOPebeNcu+vSCHZ204YyG/a2JCDC/aS9tHuCAnHnnJbG1uqv3hkOZJgTwCjz/YthjWmICCJ6a/eayk+l2O5xFq8Vx6q5+RfgiFhUwvtoTFrB7n9hIAucvQF5fAfXYCUhJKXMkgF6Bc8ljglihcz1os8F/5mdI9yTPkQA6LNy7aqEPDcPwesVE/48kYN6DcyigqjY8xbRZFxB3HP+fgN3jBFDASQW0kLDJBLS2xQkYu5AUjBOw4+XwFNP8358xBVTGf27+b78TRMrG58Ie0/w/0Hj2Ux3FGteSg86UiICYK5kvpgjpOsV3drrRyMXlAq5lReYxShdI+ZkNUb/z0SdMP90P5DXFkNeVEsrgfORx00+x5FXraA77S+FYyn7aZ8gfeykd5ktprIDIARSB2Jaj/rFncf7oHHMjm+gnRPyE6LX8ydXmtTxOwCwitjHhDizamMyFgGhrRpn3U1ekxLZmLIC/x8kay5kAZ9xNBxc3vNz4cgMc15yygFkDXfm57xio2uPzNh7bi0AgiXvRMYQs/wEhe2Grf+kmRwAAAABJRU5ErkJggg==" InformativeScreenshot="cb8c703d4043bbe67688b18cba428175.png" Selector="&lt;wnd app='qbw32.exe' cls='MauiFrame' title='Reckon Accounts Enterprise*' /&gt;" />
-                  </uix:NApplicationCard.TargetApp>
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                </uix:NApplicationCard>
-              </Sequence>
-            </ActivityAction>
-          </ui:RetryScope.ActivityBody>
-          <ui:RetryScope.Condition>
-            <ActivityFunc x:TypeArguments="x:Boolean">
-              <ui:CheckTrue ErrorMessage="{x:Null}" DisplayName="Check True for Login Success" Expression="[LoginSuccess]" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="CheckTrue_1" />
-            </ActivityFunc>
-          </ui:RetryScope.Condition>
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-        </ui:RetryScope>
-      </TryCatch.Try>
-      <TryCatch.Catches>
-        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="403.2,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_1">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <ActivityAction x:TypeArguments="s:Exception">
-            <ActivityAction.Argument>
-              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
-            </ActivityAction.Argument>
-            <Sequence DisplayName="catch of login" sap:VirtualizedContainerService.HintSize="375.2,501.6" sap2010:WorkflowViewState.IdRef="Sequence_30">
-              <Sequence.Variables>
-                <Variable x:TypeArguments="x:String" Name="Process" />
-              </Sequence.Variables>
+                          <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window for typing quickbook filename" sap:VirtualizedContainerService.HintSize="433.6,522.4" sap2010:WorkflowViewState.IdRef="WindowScope_2" InformativeScreenshot="4d369c8a465984c827b654d753cde96c" Selector="&lt;wnd app='qbw32.exe' cls='#32770' title='Open a Company' /&gt;">
+                            <ui:WindowScope.Body>
+                              <ActivityAction x:TypeArguments="x:Object">
+                                <ActivityAction.Argument>
+                                  <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+                                </ActivityAction.Argument>
+                                <Sequence DisplayName="Do - Open file" sap:VirtualizedContainerService.HintSize="375.2,375.2" sap2010:WorkflowViewState.IdRef="Sequence_32">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into filepath" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_2" Text="[in_CurrentBillingEntity]">
+                                    <ui:TypeInto.Target>
+                                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="36012dab-b6b1-4805-8570-46cf7a686e08" InformativeScreenshot="b6a0ed8761ccd09a1e296fa8450ba1ac" Selector="&lt;wnd ctrlid='1148' aaname='File name:' /&gt;">
+                                        <ui:Target.TimeoutMS>
+                                          <InArgument x:TypeArguments="x:Int32" />
+                                        </ui:Target.TimeoutMS>
+                                        <ui:Target.WaitForReady>
+                                          <InArgument x:TypeArguments="ui:WaitForReady" />
+                                        </ui:Target.WaitForReady>
+                                      </ui:Target>
+                                    </ui:TypeInto.Target>
+                                  </ui:TypeInto>
+                                  <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click open 'Button'" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="Click_10" KeyModifiers="None" MouseButton="BTN_LEFT">
+                                    <ui:Click.CursorPosition>
+                                      <ui:CursorPosition Position="Center">
+                                        <ui:CursorPosition.OffsetX>
+                                          <InArgument x:TypeArguments="x:Int32" />
+                                        </ui:CursorPosition.OffsetX>
+                                        <ui:CursorPosition.OffsetY>
+                                          <InArgument x:TypeArguments="x:Int32" />
+                                        </ui:CursorPosition.OffsetY>
+                                      </ui:CursorPosition>
+                                    </ui:Click.CursorPosition>
+                                    <ui:Click.Target>
+                                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="d1331737-3564-472d-b768-92d33e5a4022" InformativeScreenshot="3aa912bc10b4dc50561f51ede8f0bbfa" Selector="&lt;wnd ctrlid='1' title='*Open' aaname='Open' /&gt;">
+                                        <ui:Target.TimeoutMS>
+                                          <InArgument x:TypeArguments="x:Int32" />
+                                        </ui:Target.TimeoutMS>
+                                        <ui:Target.WaitForReady>
+                                          <InArgument x:TypeArguments="ui:WaitForReady" />
+                                        </ui:Target.WaitForReady>
+                                      </ui:Target>
+                                    </ui:Click.Target>
+                                  </ui:Click>
+                                </Sequence>
+                              </ActivityAction>
+                            </ui:WindowScope.Body>
+                          </ui:WindowScope>
+                        </Sequence>
+                      </If.Then>
+                      <If.Else>
+                        <Sequence sap2010:WorkflowViewState.IdRef="Sequence_27">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </Sequence>
+                      </If.Else>
+                    </If>
+                    <uix:NClick ClickType="Single" DisplayName="Click 'OK'" sap:VirtualizedContainerService.HintSize="510.4,157.6" sap2010:WorkflowViewState.IdRef="NClick_5" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="b424b09b-93c4-42cf-8298-809c789c5b5b" Version="V1">
+                      <uix:NClick.Target>
+                        <uix:TargetAnchorable DesignTimeRectangle="63, 235, 109, 28" FriendlyName="'OK'" FullSelectorArgument="&lt;wnd cls='MauiPushButton' title='OK' /&gt;" FuzzySelectorArgument="&lt;wnd cls='MauiPushButton' title='OK' check:text='OK' /&gt;" Guid="e77da4cb-0510-4110-9051-1a0f17a1c22b" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAHEAAAAgCAYAAAAlrJeCAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAALwSURBVGhD7dbfS5NRHMdx/4OoCOmiuyCILvplGSIumJWRiekkXVs/qExJWlpTzJhmDdxMdIk/yLVU/FHNkTrTFZpTx9xInU6nz3Lbswsh8Gb/waep0xZq2N3Z8Vy8bs45z/fmzfM8JyoQCICJbCwiBVhECmyKaF5YRuePXwzhRrnl7SOmtfCIKppnCJfZxrOIkW5HEY+oOGjNXoYwhyu4nUeM1XDw+/0MYU5Vs4gRj0WkAItIARaRAhRHnIClR4damQyyDZXQ6Eywru7z8M+aoG//jA7DGGZX1nge1o9KVGvq0dAVWosAlEacxnh/LWpkEohOCyEUhsSmIkNShpd6MyaDET3WGhTmKpBX3IExzomJAS2qniZDfF+O4sYBTG05mzwURuTh5VqhykqEJDkHL3rD9gbrob4nxbGYR6ib98BpWYv4UP4efUOdqJUeQHpZC1qHXGHzyEddRN7nha1RjLxn5Sh6NwrXYti+h8P35lIoJCcgUI1i5EvlasTbGdmoUmYhocQAo2UWbk/wUxs2k3RURrTWXEOOQo2SzslN+w7jG7yVJyKmdBjDfWoUipJw8uAhnIk/h5T6eVicvk3PkG7XRZzorkKdLP5PRPF1XDibALEkBRdT1WgacGDy59/PkI6+fyLvxdSHPDwpKEC+qgvmmbC9uXH0aAqRmyaASGuH9evrtYvNYzUMnyqQfUKAG/Jm6AanMRc+k3BUXmz8/m7U3b2MO0lS5DfZYbeHtL/Cc+ktHD9fho7gOVfY7XQ8GNjX9gBxRzNxU9ECg5PD4pbzyUNhxBWL4Jx6NJdIcGVfNKKjQ/YLkCSphG7KBXcwIh8eMfgG+90z6FeKcDUuHck5jejZcjZ5KI24Yg4Oiwm9Wi20GwzoNtkws36Gs8E8OIahEQe40Bpn64dRb1w9N71+jnAUR9w9WEQKsIgUYBEp8F8R95YuQNjgZgizR7Gw84gM2f4Zsdy0hEtNPoZwym9L20dkIg+LSAEWMeIF8BuVKy+g1Czh9AAAAABJRU5ErkJggg==" InformativeScreenshot="5c5cff5c25f3ba9a5fb2afc1971c4f9a.png" ScopeSelectorArgument="&lt;wnd app='qbw32.exe' cls='MauiForm' title='Reckon Accounts Login' /&gt;" SearchSteps="Selector, FuzzySelector, Image" Visibility="Interactive" WaitForReadyArgument="Complete">
+                          <uix:TargetAnchorable.Anchors>
+                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                              <uix:Target DesignTimeRectangle="195, 161, 150, 16" ElementType="InputBox" FriendlyName="'Robot'" FullSelectorArgument="&lt;wnd cls='Edit' /&gt;" FuzzySelectorArgument="&lt;wnd cls='Edit' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAJoAAAAUCAYAAAB1RSS/AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAPUSURBVGhD7ZlrTJtVGID33zQhIUGzX0aN+sPonw0Z0elmlmkMSxzeMONisi4LMGBDnR1UO6EUJgrIfYzCYEO2sU0qMDqgCOgIt40NymUVGmWlBlqmIHRcxuNHbRwLnZgoJDbnSd4/73veL+fHk3Pek29DT28/xr5BESLWLDo6u9kwPz+PQLCWjNvsQjTB2iNEE6wLQjTBuvDfijZlwW6sRVM9wPD4tCspELgTzXGbqZ86qamuQqfTOaO2qY2ukRkW7i66Fj2A0Q5M5w7iFVFJfb/NlfyH3PmV6dFeanusjE3OupICT2GlaJY2Bk4EIfN+GG+fR9i40YentgYSlHmDsekFFv7OtX8jmrWL4YoYvCO/QW8cdyUFnoJ70cqjkYUVU9FixGJp4lKBmvBn5eT1TDPqcK1zhxBN8ADci3b2ELJwHY2DdinRT3tZDjFPHORr6wxjCzDyg5bi+AACAlwRkUvRdyYmlkQrk+O1K4x3Xt9NmLMuJ0ReSsvUHX6TvnbrSjEly3vDcyg0NNLRkMnRTY/x0KOb8Xs5jrSznQw5NyTwBNyLVrIXmf8ewiI/QqWK4xNFKikJBoyOeX7pq+G8NoE45QdSTeWMQ5GRKI9fQNfciOn0Pry2y9l3QIFaqikOxBAdJOdw4whXW3VcLErkSHzs/b35+eSdyqXgbT9kvu8SHFHAxWYTo64tCf7/uBetKBTZk1vw3/Y8mx5/ju2vxpLTL83r0mn2Y2koSelpJBkmXA1ga1CRkpWLMrtCOtGipBMtj7PXLExJNcdwE51577FZ3Uppwlto0r8gsf5er93wGZ9nZROXdV5cnR7MKldnPVWqEKJ3BvNx5SS35xZpS9+BJi2FrPY5VwMsmMvILChBmVi4YkZbtLRzszwKn+gqjoX7kvxlEl+1Le8tJ/tECXEJWiGaB7OKaFYc5kvoNEre8D1GzaSD62f2sz/+U0KKe10N0hyviyUpI1O6PitXiPa7yUBrZiAvpXZRkRpKeLySPdoeZ20J67cfkpyRQdxxnRDNg1n9MTBr5+fmM+S/H8iLu9LR6mspLDxMVPDWvwb6HbsjOKK9TGv395hOhuL1tD9btu101l4L2subR7XU9U9gHb5OjVZBVMj9vYpCPVcGrzGiV+D3zAu8Ih4DHsdK0SZvYevVk1Q9gNk240zN2oYYaihGnVBJi9nGTeNl6k7+Ocw7I7uauhvSTLb0Z+DqOTTqhHu1DC0ZDWYcc3ed37L11VFfsry3Cn231CsJPWk2cCpZjUZ1WjwGPIyVogkEa4AQTbAuCNEE64IQTbAujNvs/AE0rmZdqCy60AAAAABJRU5ErkJggg==" SearchSteps="Selector, FuzzySelector, Image" />
+                            </scg:List>
+                          </uix:TargetAnchorable.Anchors>
+                        </uix:TargetAnchorable>
+                      </uix:NClick.Target>
+                    </uix:NClick>
+                    <uix:NCheckState Exists="{x:Null}" DisplayName="Check App State 'Home'" sap:VirtualizedContainerService.HintSize="333.6,52.8" sap2010:WorkflowViewState.IdRef="NCheckState_5" ScopeIdentifier="b424b09b-93c4-42cf-8298-809c789c5b5b" Timeout="[Cint(in_Config1(&quot;DelayLong&quot;))]" Version="V1">
+                      <uix:NCheckState.IfExists>
+                        <Sequence DisplayName="Target appears - Quickbooks opened" sap:VirtualizedContainerService.HintSize="375.2,288.8" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <Assign DisplayName="Assign - Login Success to true" sap:VirtualizedContainerService.HintSize="333.6,61.6" sap2010:WorkflowViewState.IdRef="Assign_4">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:Boolean">[LoginSuccess]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <ui:LogMessage DisplayName="Log Message - Login successful" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_15" Level="Info" Message="[&quot;Login to Quickbooks is successful.&quot;]" />
+                        </Sequence>
+                      </uix:NCheckState.IfExists>
+                      <uix:NCheckState.IfNotExists>
+                        <Sequence DisplayName="Target does not appear - Quickbooks not opened" sap:VirtualizedContainerService.HintSize="375.2,288.8" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <Assign DisplayName="Assign - Login Success to false" sap:VirtualizedContainerService.HintSize="333.6,61.6" sap2010:WorkflowViewState.IdRef="Assign_3">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:Boolean">[LoginSuccess]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <ui:LogMessage DisplayName="Log Message - Login not successful" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_16" Level="Info" Message="[&quot;Failed to login to Quickbooks.&quot;]" />
+                        </Sequence>
+                      </uix:NCheckState.IfNotExists>
+                      <uix:NCheckState.Target>
+                        <uix:TargetAnchorable DesignTimeRectangle="12, 66, 78, 50" ElementType="Button" FriendlyName="'Home'" FullSelectorArgument="&lt;wnd cls='ToolbarWindow32' idx='2' /&gt;&lt;ctrl name='*Home*' role='push button' /&gt;" FuzzySelectorArgument="&lt;wnd cls='ToolbarWindow32' /&gt;&lt;ctrl name='*Home*' role='push button' automationid='' check:text='Home' /&gt;" Guid="dd28f3bb-865f-4344-a5ac-a0d4ff2c30c0" ImageBase64="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" InformativeScreenshot="3c4130db90d066be1e4db28dd3bb2f40.png" ScopeSelectorArgument="&lt;wnd app='qbw32.exe' cls='MauiFrame' title='HUP HIN TRANSPORT CO PTE LTD - Reckon Accounts Enterprise: 2022 *' /&gt;" SearchSteps="Selector, FuzzySelector, Image" Visibility="Interactive" />
+                      </uix:NCheckState.Target>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </uix:NCheckState>
+                  </Sequence>
+                </ActivityAction>
+              </uix:NApplicationCard.Body>
+              <uix:NApplicationCard.TargetApp>
+                <uix:TargetApp Area="-10, -10, 1620, 870" FilePath="[in_QuickbooksExePath.ToString]" IconBase64="iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAT9SURBVFhHvVf7bxRVFF5/VKzGGvqkLxBsUFvQYIkJIBFbaGkBqRARqaUFKcYHBhKrBjRUrVLBauAHEuMv/gUmavARA61WRWiL3S7QFujShzC7O7O7s+3uzsy3nnNnd7vbNqZ0257kS3bP3Hu+79w5c+89llAoZAEgYBiGRR/13+v5qGlP/0s1vitLCmBNzYE1LXd6oLm9+ctg37Dp/M3ybSWaV72LOSJ8jKgAQ9PuVk6errevXOPoW7AY1uQM2FKycZkCJQIRY34WejMXacOFKy4NHXxnJ3PFCTA0fZ7c9Hlbf9ZidNGk3vRcDGUshCNz0YyAY3HMLlqRodx8MBdzRgW4vjj1tp2y7ia1AzRYypw58gg45iDF5hVhLuYUAoxA4L4bRauc/M6YfLLJUwLPTcuDRMstEUk8cui5OY45mIs5db8/yTJ8pKGuj5a+l5wJZZ6WA7miEoGL7dC6uhHsspr4xwr1s2Y4WASNYw7mYs6hw0f3WW5W1fqsyZmJv/PUbCg7q6HLCnRFARUarbBpQWs3jRmLz1zMad9Vq1p68gtDNlInxQabDjgBWmZnwQp4Xj0gREQseLGDnuVFxzIXc159uBAWW1pu6DJVaFyw6YAESClZkJ8tg+50CWJj1A9D1ycIYDBnN30VFlt63h0JkOZnw5EeH0yAik0u2wKt3y7IdUmC+u77MFQfgu2dkwugWpi6AM5wwUNQNm2Dc/lKSDTZXHbyUyby2vXQb90W5IaqwvPGQTiXLofucML/61mqEbMII7gzAUxEg0e+/gbGyAi0vuuQizcKYkFOv7Ub/YJcl2W4a+qgNjZBPd4MZfN2uJ4umbBqUxfAGdJk35enxPuMmD4wCNdTawX0wUHhM3w+eA/VQympEP/Z9H9vwf/TL7QC8RxTE8DktLH4Tn9FkUxyrecadLcn/LtXgE33eKj634REZ4hSuUP4IhZo/X0aAsKZq00n6DsKiuwDf/wFJ2WsNjSKbCPGv30ffgKlfKv4EtxbxwlomY4A2ih8zSejG0qwvQPKC1UiY/VIAzwHDglihue1t6C+9wEV2zlI96cmKIALLn0hvEc/Bp0TlJ6B4N8XoJRuhma7YgZs+xO3H8iAu7YOnv2vw1t/WIwLnG0hAWmJCZAosPfT4zBo2dmCV3ugbNkO7dp1QcIWOPebeNcu+vSCHZ204YyG/a2JCDC/aS9tHuCAnHnnJbG1uqv3hkOZJgTwCjz/YthjWmICCJ6a/eayk+l2O5xFq8Vx6q5+RfgiFhUwvtoTFrB7n9hIAucvQF5fAfXYCUhJKXMkgF6Bc8ljglihcz1os8F/5mdI9yTPkQA6LNy7aqEPDcPwesVE/48kYN6DcyigqjY8xbRZFxB3HP+fgN3jBFDASQW0kLDJBLS2xQkYu5AUjBOw4+XwFNP8358xBVTGf27+b78TRMrG58Ie0/w/0Hj2Ux3FGteSg86UiICYK5kvpgjpOsV3drrRyMXlAq5lReYxShdI+ZkNUb/z0SdMP90P5DXFkNeVEsrgfORx00+x5FXraA77S+FYyn7aZ8gfeykd5ktprIDIARSB2Jaj/rFncf7oHHMjm+gnRPyE6LX8ydXmtTxOwCwitjHhDizamMyFgGhrRpn3U1ekxLZmLIC/x8kay5kAZ9xNBxc3vNz4cgMc15yygFkDXfm57xio2uPzNh7bi0AgiXvRMYQs/wEhe2Grf+kmRwAAAABJRU5ErkJggg==" InformativeScreenshot="cb8c703d4043bbe67688b18cba428175.png" Selector="&lt;wnd app='qbw32.exe' cls='MauiFrame' title='Reckon Accounts Enterprise*' /&gt;" />
+              </uix:NApplicationCard.TargetApp>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:LogMessage DisplayName="Log Message Quickbooks Login" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_17" Level="Error" Message="[&quot;In the catch of Quickbooks login sequence...&quot;]" />
-              <Assign DisplayName="Assignn process" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_5">
-                <Assign.To>
-                  <OutArgument x:TypeArguments="x:String">[Process]</OutArgument>
-                </Assign.To>
-                <Assign.Value>
-                  <InArgument x:TypeArguments="x:String">No Process</InArgument>
-                </Assign.Value>
-              </Assign>
-              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke SendExceptionEmail workflow 6" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Reusable Code\SendExceptionEmail.xaml">
-                <ui:InvokeWorkflowFile.Arguments>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_Subject">[in_Config1("QuickbooksLoginSubject").ToString]</InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_Body">[in_Config1("QuickbooksLoginBody").ToString]</InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_CcEmailList">[in_Config1("CCEmailList").ToString]</InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_RecipientsEmailList1">[in_Config1("RecipientsEmailList").ToString]</InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_ExScreenshotsFolderPath">[in_Config1("ExScreenshotsFolderPath").ToString]</InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionOccured">[exception.Message]</InArgument>
-                  <InOutArgument x:TypeArguments="x:String" x:Key="io_ProcessType1">[Process]</InOutArgument>
-                </ui:InvokeWorkflowFile.Arguments>
-              </ui:InvokeWorkflowFile>
-              <Rethrow DisplayName="Rethrow current exception" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="Rethrow_1" />
-            </Sequence>
-          </ActivityAction>
-        </Catch>
-      </TryCatch.Catches>
-    </TryCatch>
+            </uix:NApplicationCard>
+          </Sequence>
+        </ActivityAction>
+      </ui:RetryScope.ActivityBody>
+      <ui:RetryScope.Condition>
+        <ActivityFunc x:TypeArguments="x:Boolean">
+          <ui:CheckTrue ErrorMessage="{x:Null}" DisplayName="Check True for Login Success" Expression="[LoginSuccess]" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="CheckTrue_1" />
+        </ActivityFunc>
+      </ui:RetryScope.Condition>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:RetryScope>
   </Sequence>
 </Activity>

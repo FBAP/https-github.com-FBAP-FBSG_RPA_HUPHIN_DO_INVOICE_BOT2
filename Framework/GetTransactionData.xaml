@@ -1,27 +1,27 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="GetTransactionData" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
-    <x:Property sap2010:Annotation.AnnotationText="Transaction item to be processed." Name="out_TransactionItem" Type="OutArgument(sd:DataTable)" />
     <x:Property sap2010:Annotation.AnnotationText="Allow the optional addition of information about the transaction item." Name="out_TransactionField1" Type="OutArgument(x:String)" />
     <x:Property sap2010:Annotation.AnnotationText="Allow the optional addition of information about the transaction item." Name="out_TransactionField2" Type="OutArgument(x:String)" />
     <x:Property sap2010:Annotation.AnnotationText="Transaction ID used for information and logging purposes. Ideally, the ID should be unique for each transaction. " Name="out_TransactionID" Type="OutArgument(x:String)" />
     <x:Property sap2010:Annotation.AnnotationText="This variable can be used in case transactions are stored in a DataTable (for example, after being retrieved from a spreadsheet)." Name="io_dt_TransactionData" Type="InOutArgument(sd:DataTable)" />
     <x:Property Name="io_ProcessType" Type="InOutArgument(x:String)" />
-    <x:Property Name="io_ScheduleDetailsDT" Type="InOutArgument(sd:DataTable)" />
     <x:Property Name="io_ProcessCounter" Type="InOutArgument(x:Int32)" />
     <x:Property sap2010:Annotation.AnnotationText="Sequential counter of transaction items." Name="io_TransactionNumber" Type="InOutArgument(x:Int32)" />
-    <x:Property Name="io_FilteredDT" Type="InOutArgument(sd:DataTable)" />
     <x:Property Name="io_IOExcelFilePathDaily" Type="InOutArgument(x:String)" />
     <x:Property Name="io_IOExcelFilePathConso" Type="InOutArgument(x:String)" />
     <x:Property Name="io_IOExcelFilePathMonthly" Type="InOutArgument(x:String)" />
     <x:Property Name="io_ProcessedRowCount" Type="InOutArgument(x:Int32)" />
     <x:Property Name="io_FilterFlag" Type="InOutArgument(x:String)" />
     <x:Property Name="io_UniqueColCount" Type="InOutArgument(x:Int32)" />
+    <x:Property sap2010:Annotation.AnnotationText="Transaction item to be processed." Name="out_dt_TransactionItem" Type="OutArgument(sd:DataTable)" />
+    <x:Property Name="io_dt_FilteredDT" Type="InOutArgument(sd:DataTable)" />
+    <x:Property Name="io_dt_ScheduleDetailsDT" Type="InOutArgument(sd:DataTable)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>964.8,2770.4</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1916.8,5660</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>GetTransactionData_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="43">
@@ -71,7 +71,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="40">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="78">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -113,7 +113,7 @@
       <AssemblyReference>UiPath.Mail.Activities.Design</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Get a transaction item from a specified source (e.g., Orchestrator queues, spreadsheets, databases, mailboxes or web APIs). &#xA;&#xA;If there are no transaction items remaining, out_TransactionItem is set to Nothing, which leads to the End Process state. &#xA;&#xA;For cases in which there is only a single transaction (i.e., a linear process), use an If activity to check whether the argument in_TransactionNumber has the value 1 (meaning it is the first and only transaction) and assign the transaction item to out_TransactionItem. For any other value of in_TransactionNumber, out_TransactionItem should be set to Nothing.&#xA;&#xA;If there are multiple transactions, use the argument in_TransactionNumber as an index to retrieve the correct transaction to be processed. If there are no more transactions left, it is necessary to set out_TransactionItem to Nothing, thus ending the process." DisplayName="Get Transaction Data" sap:VirtualizedContainerService.HintSize="975.2,2705.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Get a transaction item from a specified source (e.g., Orchestrator queues, spreadsheets, databases, mailboxes or web APIs). &#xA;&#xA;If there are no transaction items remaining, out_TransactionItem is set to Nothing, which leads to the End Process state. &#xA;&#xA;For cases in which there is only a single transaction (i.e., a linear process), use an If activity to check whether the argument in_TransactionNumber has the value 1 (meaning it is the first and only transaction) and assign the transaction item to out_TransactionItem. For any other value of in_TransactionNumber, out_TransactionItem should be set to Nothing.&#xA;&#xA;If there are multiple transactions, use the argument in_TransactionNumber as an index to retrieve the correct transaction to be processed. If there are no more transactions left, it is necessary to set out_TransactionItem to Nothing, thus ending the process." DisplayName="Get Transaction Data" sap:VirtualizedContainerService.HintSize="1948,5456" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="s:String[]" Name="ArrayOfColumns" />
       <Variable x:TypeArguments="x:String" Name="ColumnToFilter" />
@@ -126,22 +126,22 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message Get Transaction Item" sap:VirtualizedContainerService.HintSize="933.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Get the transaction item&quot;]" />
-    <If Condition="[io_dt_TransactionData is Nothing]" DisplayName="if row count is greater than transaction number Assign transaction datatable to nothing" sap:VirtualizedContainerService.HintSize="933.6,52.8" sap2010:WorkflowViewState.IdRef="If_25">
+    <ui:LogMessage DisplayName="Log Message Get Transaction Item" sap:VirtualizedContainerService.HintSize="1906.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Get the transaction item&quot;]" />
+    <If Condition="[io_dt_TransactionData is Nothing]" DisplayName="if row count is greater than transaction number Assign transaction datatable to nothing" sap:VirtualizedContainerService.HintSize="1906.4,1614.4" sap2010:WorkflowViewState.IdRef="If_25">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <Sequence DisplayName="transacation data is empty" sap:VirtualizedContainerService.HintSize="1071.2,564" sap2010:WorkflowViewState.IdRef="Sequence_88">
+        <Sequence DisplayName="transacation data is empty" sap:VirtualizedContainerService.HintSize="1071.2,630.4" sap2010:WorkflowViewState.IdRef="Sequence_88">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <If Condition="[io_ProcessCounter=0]" DisplayName="If - Check process counter" sap:VirtualizedContainerService.HintSize="1029.6,471.2" sap2010:WorkflowViewState.IdRef="If_34">
+          <If Condition="[io_ProcessCounter=0]" DisplayName="If - Check process counter" sap:VirtualizedContainerService.HintSize="1029.6,537.6" sap2010:WorkflowViewState.IdRef="If_34">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -149,7 +149,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <If.Then>
-              <Sequence DisplayName="Process Counter is 0" sap:VirtualizedContainerService.HintSize="375.2,278.4" sap2010:WorkflowViewState.IdRef="Sequence_123">
+              <Sequence DisplayName="Process Counter is 0" sap:VirtualizedContainerService.HintSize="375.2,378.4" sap2010:WorkflowViewState.IdRef="Sequence_123">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -169,20 +169,20 @@
                       <ActivityAction.Argument>
                         <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
                       </ActivityAction.Argument>
-                      <Sequence DisplayName="Read file " sap:VirtualizedContainerService.HintSize="936,1081.6" sap2010:WorkflowViewState.IdRef="Sequence_150">
+                      <Sequence DisplayName="Read file " sap:VirtualizedContainerService.HintSize="936,1113.6" sap2010:WorkflowViewState.IdRef="Sequence_150">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ui:ExcelReadRange AddHeaders="True" DataTable="[io_ScheduleDetailsDT]" DisplayName="Read Range - io_ScheduleDetailsDT" sap:VirtualizedContainerService.HintSize="894.4,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" SheetName="ScheduleDetails">
+                        <ui:ExcelReadRange AddHeaders="True" DataTable="[io_dt_ScheduleDetailsDT]" DisplayName="Read Range - io_ScheduleDetailsDT" sap:VirtualizedContainerService.HintSize="894.4,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" SheetName="ScheduleDetails">
                           <ui:ExcelReadRange.Range>
                             <InArgument x:TypeArguments="x:String">
                               <Literal x:TypeArguments="x:String" Value="" />
                             </InArgument>
                           </ui:ExcelReadRange.Range>
                         </ui:ExcelReadRange>
-                        <If Condition="[io_ScheduleDetailsDT.Rows.Count&gt;0]" DisplayName="Check if Schedule details file not empty" sap:VirtualizedContainerService.HintSize="894.4,920.8" sap2010:WorkflowViewState.IdRef="If_40">
+                        <If Condition="[io_dt_ScheduleDetailsDT.Rows.Count&gt;0]" DisplayName="Check if Schedule details file not empty" sap:VirtualizedContainerService.HintSize="894.4,888.8" sap2010:WorkflowViewState.IdRef="If_40">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -196,7 +196,7 @@
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <ui:FilterDataTable DataTable="[io_ScheduleDetailsDT]" DisplayName="Filter Schedule details Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="433.6,162.4" sap2010:WorkflowViewState.IdRef="FilterDataTable_7" OutputDataTable="[io_ScheduleDetailsDT]" SelectColumnsMode="Keep">
+                              <ui:FilterDataTable DataTable="[io_dt_ScheduleDetailsDT]" DisplayName="Filter Schedule details Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="433.6,162.4" sap2010:WorkflowViewState.IdRef="FilterDataTable_7" OutputDataTable="[io_dt_ScheduleDetailsDT]" SelectColumnsMode="Keep">
                                 <ui:FilterDataTable.Filters>
                                   <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
                                     <ui:FilterOperationArgument BooleanOperator="And" Operator="CONTAINS">
@@ -223,8 +223,8 @@
                                   </scg:List>
                                 </ui:FilterDataTable.SelectColumns>
                               </ui:FilterDataTable>
-                              <ui:LogMessage DisplayName="Log Message - show total no. of processes" sap:VirtualizedContainerService.HintSize="433.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_57" Level="Info" Message="[&quot;Total number of processes to run today: &quot;+ io_ScheduleDetailsDT.Rows.Count.ToString]" />
-                              <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[io_ScheduleDetailsDT]" DisplayName="For Each Row in schedule details DT" sap:VirtualizedContainerService.HintSize="433.6,301.6" sap2010:WorkflowViewState.IdRef="ForEachRow_3">
+                              <ui:LogMessage DisplayName="Log Message - show total no. of processes" sap:VirtualizedContainerService.HintSize="433.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_57" Level="Info" Message="[&quot;Total number of processes to run today: &quot;+ io_dt_ScheduleDetailsDT.Rows.Count.ToString]" />
+                              <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[io_dt_ScheduleDetailsDT]" DisplayName="For Each Row in schedule details DT" sap:VirtualizedContainerService.HintSize="433.6,301.6" sap2010:WorkflowViewState.IdRef="ForEachRow_3">
                                 <ui:ForEachRow.Body>
                                   <ActivityAction x:TypeArguments="sd:DataRow">
                                     <ActivityAction.Argument>
@@ -264,6 +264,14 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:ExcelApplicationScope>
+                <Assign DisplayName="Assign io_dt_TransactionData" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_70">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="sd:DataTable">[io_dt_TransactionData]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="sd:DataTable">[new DataTable]</InArgument>
+                  </Assign.Value>
+                </Assign>
               </Sequence>
             </If.Then>
             <If.Else>
@@ -274,7 +282,7 @@
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <If Condition="[io_ScheduleDetailsDT.Rows.Count&gt;io_ProcessCounter]" DisplayName="If process counter is less than scheduled details dt" sap:VirtualizedContainerService.HintSize="568.8,219.2" sap2010:WorkflowViewState.IdRef="If_35">
+                <If Condition="[io_dt_ScheduleDetailsDT.Rows.Count&gt;io_ProcessCounter]" DisplayName="If process counter is less than scheduled details dt" sap:VirtualizedContainerService.HintSize="568.8,219.2" sap2010:WorkflowViewState.IdRef="If_35">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -294,7 +302,7 @@
                   <If.Else>
                     <Assign DisplayName="Assign Transaction Item" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_35">
                       <Assign.To>
-                        <OutArgument x:TypeArguments="sd:DataTable">[out_TransactionItem]</OutArgument>
+                        <OutArgument x:TypeArguments="sd:DataTable">[out_dt_TransactionItem]</OutArgument>
                       </Assign.To>
                       <Assign.Value>
                         <InArgument x:TypeArguments="sd:DataTable">[Nothing]</InArgument>
@@ -308,14 +316,14 @@
         </Sequence>
       </If.Then>
       <If.Else>
-        <Sequence DisplayName="Assign transaction data to nothing if processing is done for respective process" sap:VirtualizedContainerService.HintSize="770.4,1427.2" sap2010:WorkflowViewState.IdRef="Sequence_89">
+        <Sequence DisplayName="Assign transaction data to nothing if processing is done for respective process" sap:VirtualizedContainerService.HintSize="791.2,1455.2" sap2010:WorkflowViewState.IdRef="Sequence_89">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <If Condition="[io_ProcessedRowCount&gt;= io_dt_TransactionData.Rows.Count]" DisplayName="If processing is done for one process" sap:VirtualizedContainerService.HintSize="728.8,1334.4" sap2010:WorkflowViewState.IdRef="If_26">
+          <If Condition="[io_ProcessedRowCount&gt;= io_dt_TransactionData.Rows.Count]" DisplayName="If processing is done for one process" sap:VirtualizedContainerService.HintSize="749.6,1362.4" sap2010:WorkflowViewState.IdRef="If_26">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -323,14 +331,14 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <If.Then>
-              <Sequence DisplayName="Assign transaction data to nothing" sap:VirtualizedContainerService.HintSize="693.6,1145.6" sap2010:WorkflowViewState.IdRef="Sequence_90">
+              <Sequence DisplayName="Assign transaction data to nothing" sap:VirtualizedContainerService.HintSize="714.4,1173.6" sap2010:WorkflowViewState.IdRef="Sequence_90">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <Assign DisplayName="Assign Unique Count" sap:VirtualizedContainerService.HintSize="652,60" sap2010:WorkflowViewState.IdRef="Assign_43">
+                <Assign DisplayName="Assign Unique Count" sap:VirtualizedContainerService.HintSize="672.8,60" sap2010:WorkflowViewState.IdRef="Assign_43">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:Int32">[io_UniqueColCount]</OutArgument>
                   </Assign.To>
@@ -338,7 +346,7 @@
                     <InArgument x:TypeArguments="x:Int32">0</InArgument>
                   </Assign.Value>
                 </Assign>
-                <Assign DisplayName="Assign io_ProcessedRowCount" sap:VirtualizedContainerService.HintSize="652,60" sap2010:WorkflowViewState.IdRef="Assign_68">
+                <Assign DisplayName="Assign io_ProcessedRowCount" sap:VirtualizedContainerService.HintSize="672.8,60" sap2010:WorkflowViewState.IdRef="Assign_68">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:Int32">[io_ProcessedRowCount]</OutArgument>
                   </Assign.To>
@@ -346,8 +354,8 @@
                     <InArgument x:TypeArguments="x:Int32">0</InArgument>
                   </Assign.Value>
                 </Assign>
-                <ui:ClearDataTable DataTable="[io_FilteredDT]" DisplayName="Clear Data Table filtered DT" sap:VirtualizedContainerService.HintSize="652,80.8" sap2010:WorkflowViewState.IdRef="ClearDataTable_1" />
-                <Assign DisplayName="Assign process counter" sap:VirtualizedContainerService.HintSize="652,60" sap2010:WorkflowViewState.IdRef="Assign_29">
+                <ui:ClearDataTable DataTable="[io_dt_FilteredDT]" DisplayName="Clear Data Table filtered DT" sap:VirtualizedContainerService.HintSize="672.8,80.8" sap2010:WorkflowViewState.IdRef="ClearDataTable_1" />
+                <Assign DisplayName="Assign process counter" sap:VirtualizedContainerService.HintSize="672.8,60" sap2010:WorkflowViewState.IdRef="Assign_29">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:Int32">[io_ProcessCounter]</OutArgument>
                   </Assign.To>
@@ -355,7 +363,7 @@
                     <InArgument x:TypeArguments="x:Int32">[io_ProcessCounter+1]</InArgument>
                   </Assign.Value>
                 </Assign>
-                <Switch x:TypeArguments="x:String" DisplayName="Switch - Send report" Expression="[io_ProcessType]" sap:VirtualizedContainerService.HintSize="652,180" sap2010:WorkflowViewState.IdRef="Switch`1_6">
+                <Switch x:TypeArguments="x:String" DisplayName="Switch - Send report" Expression="[io_ProcessType]" sap:VirtualizedContainerService.HintSize="672.8,187.2" sap2010:WorkflowViewState.IdRef="Switch`1_6">
                   <Switch.Default>
                     <ui:LogMessage DisplayName="Default option" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_56" Level="Info" Message="[&quot;No process was supposed to run now.&quot;]" />
                   </Switch.Default>
@@ -396,7 +404,7 @@
                     </ui:InvokeWorkflowFile.Arguments>
                   </ui:InvokeWorkflowFile>
                 </Switch>
-                <If Condition="[io_ScheduleDetailsDT.Rows.Count&gt;io_ProcessCounter]" DisplayName="check if schedule details DT has rows" sap:VirtualizedContainerService.HintSize="652,412" sap2010:WorkflowViewState.IdRef="If_31">
+                <If Condition="[io_dt_ScheduleDetailsDT.Rows.Count&gt;io_ProcessCounter]" DisplayName="check if schedule details DT has rows" sap:VirtualizedContainerService.HintSize="672.8,432.8" sap2010:WorkflowViewState.IdRef="If_31">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -404,21 +412,14 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <If.Then>
-                    <Sequence DisplayName="if Schedule details has more rows to process" sap:VirtualizedContainerService.HintSize="304,252.8" sap2010:WorkflowViewState.IdRef="Sequence_114">
+                    <Sequence DisplayName="if Schedule details has more rows to process" sap:VirtualizedContainerService.HintSize="324.8,273.6" sap2010:WorkflowViewState.IdRef="Sequence_114">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <Assign DisplayName="Assign transaction DT to nothing" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_23">
-                        <Assign.To>
-                          <OutArgument x:TypeArguments="sd:DataTable">[io_dt_TransactionData]</OutArgument>
-                        </Assign.To>
-                        <Assign.Value>
-                          <InArgument x:TypeArguments="sd:DataTable">[Nothing]</InArgument>
-                        </Assign.Value>
-                      </Assign>
-                      <Assign DisplayName="Assign - Initialize transaction item to 1" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_24">
+                      <ui:ClearDataTable DataTable="[io_dt_TransactionData]" DisplayName="Clear Data Table transaction dt" sap:VirtualizedContainerService.HintSize="283.2,80.8" sap2010:WorkflowViewState.IdRef="ClearDataTable_4" />
+                      <Assign DisplayName="Assign - Initialize transaction item to 1" sap:VirtualizedContainerService.HintSize="283.2,60" sap2010:WorkflowViewState.IdRef="Assign_24">
                         <Assign.To>
                           <OutArgument x:TypeArguments="x:Int32">[io_TransactionNumber]</OutArgument>
                         </Assign.To>
@@ -437,7 +438,7 @@
                       </sap:WorkflowViewStateService.ViewState>
                       <Assign DisplayName="Assign - Transaction Item to nothing" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_32">
                         <Assign.To>
-                          <OutArgument x:TypeArguments="sd:DataTable">[out_TransactionItem]</OutArgument>
+                          <OutArgument x:TypeArguments="sd:DataTable">[out_dt_TransactionItem]</OutArgument>
                         </Assign.To>
                         <Assign.Value>
                           <InArgument x:TypeArguments="sd:DataTable">[Nothing]</InArgument>
@@ -461,9 +462,9 @@
         </Sequence>
       </If.Else>
     </If>
-    <ui:InterruptibleWhile CurrentIndex="{x:Null}" Condition="[io_dt_TransactionData is Nothing]" DisplayName="While transacation datatable is null" sap:VirtualizedContainerService.HintSize="608.8,896" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
+    <ui:InterruptibleWhile CurrentIndex="{x:Null}" Condition="[io_dt_TransactionData.RowCount=0]" DisplayName="While transacation datatable is null" sap:VirtualizedContainerService.HintSize="608.8,731.2" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
       <ui:InterruptibleWhile.Body>
-        <If Condition="[io_ScheduleDetailsDT.Rows.Count&gt;io_ProcessCounter and io_dt_TransactionData is nothing]" DisplayName="If bot is running for first time for every process extract input" sap:VirtualizedContainerService.HintSize="573.6,728.8" sap2010:WorkflowViewState.IdRef="If_20">
+        <If Condition="[io_dt_ScheduleDetailsDT.Rows.Count&gt;io_ProcessCounter]" DisplayName="If bot is running for first time for every process extract input" sap:VirtualizedContainerService.HintSize="573.6,564" sap2010:WorkflowViewState.IdRef="If_20">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -471,7 +472,7 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <If.Then>
-            <Sequence DisplayName="Run process for each row" sap:VirtualizedContainerService.HintSize="538.4,540" sap2010:WorkflowViewState.IdRef="Sequence_84">
+            <Sequence DisplayName="Run process for each row" sap:VirtualizedContainerService.HintSize="538.4,375.2" sap2010:WorkflowViewState.IdRef="Sequence_84">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -482,10 +483,10 @@
                   <OutArgument x:TypeArguments="x:String">[io_ProcessType]</OutArgument>
                 </Assign.To>
                 <Assign.Value>
-                  <InArgument x:TypeArguments="x:String">[io_ScheduleDetailsDT.Rows( io_ProcessCounter)("Report_Freq").ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String">[io_dt_ScheduleDetailsDT.Rows( io_ProcessCounter)("Report_Freq").ToString]</InArgument>
                 </Assign.Value>
               </Assign>
-              <Switch x:TypeArguments="x:String" DisplayName="Switch go to current process #1" Expression="[io_ProcessType]" sap:VirtualizedContainerService.HintSize="496.8,347.2" sap2010:WorkflowViewState.IdRef="Switch`1_5">
+              <Switch x:TypeArguments="x:String" DisplayName="Switch go to current process #1" Expression="[io_ProcessType]" sap:VirtualizedContainerService.HintSize="496.8,182.4" sap2010:WorkflowViewState.IdRef="Switch`1_5">
                 <Switch.Default>
                   <ui:LogMessage DisplayName="If no process is to run #1" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_30" Level="Info" Message="[&quot;No process was supposed to run now.&quot;]" />
                 </Switch.Default>
@@ -525,504 +526,463 @@
               </Switch>
             </Sequence>
           </If.Then>
-          <If.Else>
-            <Sequence sap2010:WorkflowViewState.IdRef="Sequence_70">
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-            </Sequence>
-          </If.Else>
         </If>
       </ui:InterruptibleWhile.Body>
     </ui:InterruptibleWhile>
-    <If Condition="[Not io_dt_TransactionData is nothing]" DisplayName="If Fresh Run then read schedule details file" sap:VirtualizedContainerService.HintSize="933.6,1439.2" sap2010:WorkflowViewState.IdRef="If_41">
+    <If Condition="[(io_dt_TransactionData.Rows.Count&gt;0) and (io_dt_ScheduleDetailsDT.Rows.Count&gt; io_ProcessCounter)]" DisplayName="If Fresh Run then read schedule details file" sap:VirtualizedContainerService.HintSize="1885.6,2680.8" sap2010:WorkflowViewState.IdRef="If_41">
       <If.Then>
-        <If Condition="[io_ScheduleDetailsDT.Rows.Count&gt; io_ProcessCounter]" DisplayName="If io_ScheduleDetails file has more rows than io_ProcessCounter" sap:VirtualizedContainerService.HintSize="898.4,1250.4" sap2010:WorkflowViewState.IdRef="If_42">
+        <Switch x:TypeArguments="x:String" DisplayName="Switch go to current process" Expression="[io_ProcessType]" sap:VirtualizedContainerService.HintSize="1400.8,2492" sap2010:WorkflowViewState.IdRef="Switch`1_7">
+          <Switch.Default>
+            <ui:LogMessage DisplayName="If no process is to run" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_60" Level="Info" Message="[&quot;No process was supposed to run now.&quot;]" />
+          </Switch.Default>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <If.Then>
-            <Switch x:TypeArguments="x:String" DisplayName="Switch go to current process" Expression="[io_ProcessType]" sap:VirtualizedContainerService.HintSize="863.2,1061.6" sap2010:WorkflowViewState.IdRef="Switch`1_7">
-              <Switch.Default>
-                <ui:LogMessage DisplayName="If no process is to run" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_60" Level="Info" Message="[&quot;No process was supposed to run now.&quot;]" />
-              </Switch.Default>
+          <Sequence x:Key="Daily" DisplayName="Daily #1" sap:VirtualizedContainerService.HintSize="1360.8,2258.4" sap2010:WorkflowViewState.IdRef="Sequence_154">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="sd:DataRow[]" Name="RowCountForQuery" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Assign DisplayName="Assign ArrayOfColumns" sap:VirtualizedContainerService.HintSize="1319.2,60" sap2010:WorkflowViewState.IdRef="Assign_51">
+              <Assign.To>
+                <OutArgument x:TypeArguments="s:String[]">[ArrayOfColumns]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="s:String[]">[{"PO Number", "Project Code", "Quotation Number", "DO Number"}]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign DisplayName="Assign Count to run loop " sap:VirtualizedContainerService.HintSize="1319.2,60" sap2010:WorkflowViewState.IdRef="Assign_53">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Int32">[Count]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Int32">0</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:InterruptibleWhile CurrentIndex="{x:Null}" Condition="[Count&lt;= ArrayOfColumns.Count and out_dt_TransactionItem is Nothing]" DisplayName="While out_Transaction item is nothing" sap:VirtualizedContainerService.HintSize="1319.2,1965.6" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_5">
+              <ui:InterruptibleWhile.Body>
+                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="1284,1798.4" sap2010:WorkflowViewState.IdRef="Sequence_172">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Assign DisplayName="Assign ColumnToFilter" sap:VirtualizedContainerService.HintSize="1242.4,60" sap2010:WorkflowViewState.IdRef="Assign_52">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[ColumnToFilter]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">[ArrayOfColumns( Count)]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <If Condition="[Not ColumnToFilter=&quot;DO Number&quot;]" DisplayName="Check If Filter Flag is DO Number or other" sap:VirtualizedContainerService.HintSize="1242.4,1605.6" sap2010:WorkflowViewState.IdRef="If_46">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <If.Then>
+                      <Sequence DisplayName="If Same Column Values present" sap:VirtualizedContainerService.HintSize="723.2,1446.4" sap2010:WorkflowViewState.IdRef="Sequence_165">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:ClearDataTable DataTable="[dt_Filtered]" DisplayName="Clear Data Table dt_Filtered" sap:VirtualizedContainerService.HintSize="681.6,80.8" sap2010:WorkflowViewState.IdRef="ClearDataTable_2" />
+                        <Assign DisplayName="Assign RowCountForQuery" sap:VirtualizedContainerService.HintSize="681.6,64" sap2010:WorkflowViewState.IdRef="Assign_69">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="sd:DataRow[]">[RowCountForQuery]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="sd:DataRow[]" xml:space="preserve">[(From p In io_dt_TransactionData.Select() 
+Where( From q In io_dt_TransactionData.Select() 
+Where q( ColumnToFilter).Equals(p( ColumnToFilter)) Select q).ToArray.Count&gt;1 Select p).ToArray]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <If Condition="[RowCountForQuery.Count&gt;0]" DisplayName="If Check if it has rows" sap:VirtualizedContainerService.HintSize="681.6,544" sap2010:WorkflowViewState.IdRef="If_49">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <If.Then>
+                            <Sequence DisplayName="If dt has more than 1 row to compare" sap:VirtualizedContainerService.HintSize="475.2,355.2" sap2010:WorkflowViewState.IdRef="Sequence_182">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <Assign DisplayName="Assign Filtered dt with Column names" sap:VirtualizedContainerService.HintSize="433.6,60" sap2010:WorkflowViewState.IdRef="Assign_44">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="sd:DataTable">[dt_Filtered]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="sd:DataTable" xml:space="preserve">[(From p in  io_dt_TransactionData.Select() where( From q in  io_dt_TransactionData.Select() where q( ColumnToFilter).Equals(p( ColumnToFilter)) Select q).ToArray.Count&gt;1 Select p).ToArray.CopyToDataTable()]</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                              <ui:FilterDataTable DataTable="[dt_Filtered]" DisplayName="Filter Data Table for dt_Filtered" FilterRowsMode="Remove" sap:VirtualizedContainerService.HintSize="433.6,162.4" sap2010:WorkflowViewState.IdRef="FilterDataTable_9" OutputDataTable="[dt_Filtered]" SelectColumnsMode="Keep">
+                                <ui:FilterDataTable.Filters>
+                                  <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+                                    <ui:FilterOperationArgument Operand="{x:Null}" BooleanOperator="And" Operator="EMPTY">
+                                      <ui:FilterOperationArgument.Column>
+                                        <InArgument x:TypeArguments="x:String">[ColumnToFilter]</InArgument>
+                                      </ui:FilterOperationArgument.Column>
+                                    </ui:FilterOperationArgument>
+                                    <ui:FilterOperationArgument Operand="{x:Null}" BooleanOperator="Or" Operator="NOTEMPTY">
+                                      <ui:FilterOperationArgument.Column>
+                                        <InArgument x:TypeArguments="x:String">["Status Bot2"]</InArgument>
+                                      </ui:FilterOperationArgument.Column>
+                                    </ui:FilterOperationArgument>
+                                  </scg:List>
+                                </ui:FilterDataTable.Filters>
+                                <ui:FilterDataTable.SelectColumns>
+                                  <scg:List x:TypeArguments="InArgument" Capacity="4">
+                                    <x:Null />
+                                  </scg:List>
+                                </ui:FilterDataTable.SelectColumns>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </ui:FilterDataTable>
+                            </Sequence>
+                          </If.Then>
+                          <If.Else>
+                            <Sequence sap2010:WorkflowViewState.IdRef="Sequence_180">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </Sequence>
+                          </If.Else>
+                        </If>
+                        <If Condition="[dt_Filtered.RowCount&gt;0]" DisplayName="If We have some same Column values" sap:VirtualizedContainerService.HintSize="681.6,544.8" sap2010:WorkflowViewState.IdRef="If_43">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <If.Then>
+                            <Sequence DisplayName="Column Values are same" sap:VirtualizedContainerService.HintSize="375.2,385.6" sap2010:WorkflowViewState.IdRef="Sequence_155">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <Assign DisplayName="Assign FilterFlag #1" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_57">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:String">[io_FilterFlag]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:String">[ColumnToFilter]</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                              <ui:LogMessage DisplayName="Log Message - Some Column Values are same #1" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_62" Level="Info" Message="[&quot;Records present for Same &quot;+ ColumnToFilter+&quot;: &quot;+ dt_Filtered.Rows(0).ToString]" />
+                              <Assign DisplayName="Assign out_TransactionItem #1" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_45">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="sd:DataTable">[out_dt_TransactionItem]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="sd:DataTable">[dt_Filtered]</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                            </Sequence>
+                          </If.Then>
+                          <If.Else>
+                            <Assign DisplayName="Assign Count" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_54">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:Int32">[Count]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:Int32">[Count+1]</InArgument>
+                              </Assign.Value>
+                            </Assign>
+                          </If.Else>
+                        </If>
+                      </Sequence>
+                    </If.Then>
+                    <If.Else>
+                      <Sequence DisplayName="Check records by DO Number" sap:VirtualizedContainerService.HintSize="475.2,448" sap2010:WorkflowViewState.IdRef="Sequence_166">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:FilterDataTable DataTable="[io_dt_TransactionData]" DisplayName="Filter Data Table for dt_Filtered #1" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="433.6,162.4" sap2010:WorkflowViewState.IdRef="FilterDataTable_13" OutputDataTable="[dt_Filtered]" SelectColumnsMode="Keep">
+                          <ui:FilterDataTable.Filters>
+                            <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+                              <ui:FilterOperationArgument Operand="{x:Null}" BooleanOperator="And" Operator="EMPTY">
+                                <ui:FilterOperationArgument.Column>
+                                  <InArgument x:TypeArguments="x:String">["Status Bot2"]</InArgument>
+                                </ui:FilterOperationArgument.Column>
+                              </ui:FilterOperationArgument>
+                            </scg:List>
+                          </ui:FilterDataTable.Filters>
+                          <ui:FilterDataTable.SelectColumns>
+                            <scg:List x:TypeArguments="InArgument" Capacity="4">
+                              <x:Null />
+                            </scg:List>
+                          </ui:FilterDataTable.SelectColumns>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:FilterDataTable>
+                        <Assign DisplayName="Assign Filtered transactionDT" sap:VirtualizedContainerService.HintSize="433.6,60" sap2010:WorkflowViewState.IdRef="Assign_55">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="sd:DataTable">[io_dt_FilteredDT]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="sd:DataTable">[dt_Filtered.DefaultView.ToTable(true,"DO Number")]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <If Condition="[io_dt_FilteredDT.RowCount&gt; 0]" DisplayName="If - new transaction is available" sap:VirtualizedContainerService.HintSize="433.6,52.8" sap2010:WorkflowViewState.IdRef="If_47">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <If.Then>
+                            <Sequence DisplayName="if new process available" sap:VirtualizedContainerService.HintSize="475.2,355.2" sap2010:WorkflowViewState.IdRef="Sequence_167">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <Assign DisplayName="Assign FilterFlag" sap:VirtualizedContainerService.HintSize="433.6,60" sap2010:WorkflowViewState.IdRef="Assign_58">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:String">[io_FilterFlag]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:String">[ColumnToFilter]</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                              <ui:FilterDataTable DataTable="[io_dt_TransactionData]" DisplayName="Filter Data Table Based on DO Number #1" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="433.6,162.4" sap2010:WorkflowViewState.IdRef="FilterDataTable_12" OutputDataTable="[out_dt_TransactionItem]" SelectColumnsMode="Keep">
+                                <ui:FilterDataTable.Filters>
+                                  <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+                                    <ui:FilterOperationArgument BooleanOperator="And" Operator="EQ">
+                                      <ui:FilterOperationArgument.Column>
+                                        <InArgument x:TypeArguments="x:String">["DO Number"]</InArgument>
+                                      </ui:FilterOperationArgument.Column>
+                                      <ui:FilterOperationArgument.Operand>
+                                        <InArgument x:TypeArguments="x:String">[(io_dt_FilteredDT(0)("DO Number")).tostring]</InArgument>
+                                      </ui:FilterOperationArgument.Operand>
+                                    </ui:FilterOperationArgument>
+                                  </scg:List>
+                                </ui:FilterDataTable.Filters>
+                                <ui:FilterDataTable.SelectColumns>
+                                  <scg:List x:TypeArguments="InArgument" Capacity="4">
+                                    <x:Null />
+                                  </scg:List>
+                                </ui:FilterDataTable.SelectColumns>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </ui:FilterDataTable>
+                            </Sequence>
+                          </If.Then>
+                          <If.Else>
+                            <Sequence DisplayName="Break loop if no items left" sap:VirtualizedContainerService.HintSize="304,215.2" sap2010:WorkflowViewState.IdRef="Sequence_168">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <Assign DisplayName="Assign out_transaction item" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_56">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="sd:DataTable">[out_dt_TransactionItem]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="sd:DataTable">[Nothing]</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                              <ui:Break DisplayName="Break if No transaction left" sap:VirtualizedContainerService.HintSize="262.4,22.4" sap2010:WorkflowViewState.IdRef="Break_1" />
+                            </Sequence>
+                          </If.Else>
+                        </If>
+                      </Sequence>
+                    </If.Else>
+                  </If>
+                </Sequence>
+              </ui:InterruptibleWhile.Body>
+            </ui:InterruptibleWhile>
+          </Sequence>
+          <Sequence x:Key="Consolidated" DisplayName="Filter based on Company Name" sap:VirtualizedContainerService.HintSize="823.2,828" sap2010:WorkflowViewState.IdRef="Sequence_170">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:ClearDataTable DataTable="[io_dt_FilteredDT]" DisplayName="Clear Data Table io_FilteredDT" sap:VirtualizedContainerService.HintSize="781.6,80.8" sap2010:WorkflowViewState.IdRef="ClearDataTable_3" />
+            <Assign DisplayName="Assign Filtered DT Conso" sap:VirtualizedContainerService.HintSize="781.6,60" sap2010:WorkflowViewState.IdRef="Assign_59">
+              <Assign.To>
+                <OutArgument x:TypeArguments="sd:DataTable">[io_dt_FilteredDT]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="sd:DataTable">[io_dt_TransactionData.DefaultView.ToTable(true,"Company Name")]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <If Condition="[io_dt_FilteredDT.RowCount&gt; io_UniqueColCount]" DisplayName="If - new transaction is available for Conso" sap:VirtualizedContainerService.HintSize="781.6,514.4" sap2010:WorkflowViewState.IdRef="If_48">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Sequence x:Key="Daily" DisplayName="Daily #1" sap:VirtualizedContainerService.HintSize="1360.8,2516" sap2010:WorkflowViewState.IdRef="Sequence_154">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-                <Assign DisplayName="Assign ArrayOfColumns" sap:VirtualizedContainerService.HintSize="1319.2,60" sap2010:WorkflowViewState.IdRef="Assign_51">
-                  <Assign.To>
-                    <OutArgument x:TypeArguments="s:String[]">[ArrayOfColumns]</OutArgument>
-                  </Assign.To>
-                  <Assign.Value>
-                    <InArgument x:TypeArguments="s:String[]">[{"PO Number", "Project Code", "Quotation Number", "DO Number"}]</InArgument>
-                  </Assign.Value>
-                </Assign>
-                <Assign DisplayName="Assign Count to run loop " sap:VirtualizedContainerService.HintSize="1319.2,60" sap2010:WorkflowViewState.IdRef="Assign_53">
-                  <Assign.To>
-                    <OutArgument x:TypeArguments="x:Int32">[Count]</OutArgument>
-                  </Assign.To>
-                  <Assign.Value>
-                    <InArgument x:TypeArguments="x:Int32">0</InArgument>
-                  </Assign.Value>
-                </Assign>
-                <ui:InterruptibleWhile CurrentIndex="{x:Null}" Condition="[Count&lt;= ArrayOfColumns.Count and out_TransactionItem is Nothing]" DisplayName="While out_Transaction item is nothing" sap:VirtualizedContainerService.HintSize="1319.2,2224.8" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_5">
-                  <ui:InterruptibleWhile.Body>
-                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="1284,2057.6" sap2010:WorkflowViewState.IdRef="Sequence_172">
-                      <sap:WorkflowViewStateService.ViewState>
-                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                        </scg:Dictionary>
-                      </sap:WorkflowViewStateService.ViewState>
-                      <Assign DisplayName="Assign ColumnToFilter" sap:VirtualizedContainerService.HintSize="1242.4,60" sap2010:WorkflowViewState.IdRef="Assign_52">
-                        <Assign.To>
-                          <OutArgument x:TypeArguments="x:String">[ColumnToFilter]</OutArgument>
-                        </Assign.To>
-                        <Assign.Value>
-                          <InArgument x:TypeArguments="x:String">[ArrayOfColumns( Count)]</InArgument>
-                        </Assign.Value>
-                      </Assign>
-                      <If Condition="[Not ColumnToFilter=&quot;DO Number&quot;]" DisplayName="Check If Filter Flag is DO Number or other" sap:VirtualizedContainerService.HintSize="1242.4,1864.8" sap2010:WorkflowViewState.IdRef="If_46">
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                        <If.Then>
-                          <Sequence DisplayName="If Same Column Values present" sap:VirtualizedContainerService.HintSize="723.2,1705.6" sap2010:WorkflowViewState.IdRef="Sequence_165">
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                            <ui:ClearDataTable DataTable="[dt_Filtered]" DisplayName="Clear Data Table dt_Filtered" sap:VirtualizedContainerService.HintSize="681.6,80.8" sap2010:WorkflowViewState.IdRef="ClearDataTable_2" />
-                            <If Condition="[dt_Filtered.RowCount&gt;0]" DisplayName="If Check if it has rows" sap:VirtualizedContainerService.HintSize="681.6,907.2" sap2010:WorkflowViewState.IdRef="If_49">
-                              <sap:WorkflowViewStateService.ViewState>
-                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                </scg:Dictionary>
-                              </sap:WorkflowViewStateService.ViewState>
-                              <If.Then>
-                                <Sequence DisplayName="If dt has more than 1 row to compare" sap:VirtualizedContainerService.HintSize="475.2,718.4" sap2010:WorkflowViewState.IdRef="Sequence_182">
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                  <TryCatch DisplayName="Try Catch for LinQ Query" sap:VirtualizedContainerService.HintSize="433.6,423.2" sap2010:WorkflowViewState.IdRef="TryCatch_1">
-                                    <sap:WorkflowViewStateService.ViewState>
-                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                      </scg:Dictionary>
-                                    </sap:WorkflowViewStateService.ViewState>
-                                    <TryCatch.Try>
-                                      <Assign DisplayName="Assign Filtered dt with Column names" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_44">
-                                        <Assign.To>
-                                          <OutArgument x:TypeArguments="sd:DataTable">[dt_Filtered]</OutArgument>
-                                        </Assign.To>
-                                        <Assign.Value>
-                                          <InArgument x:TypeArguments="sd:DataTable" xml:space="preserve">[(From p in  io_dt_TransactionData.Select() where( From q in  io_dt_TransactionData.Select() where q( ColumnToFilter).Equals(p( ColumnToFilter)) Select q).ToArray.Count&gt;1 Select p).ToArray.CopyToDataTable()]</InArgument>
-                                        </Assign.Value>
-                                      </Assign>
-                                    </TryCatch.Try>
-                                    <TryCatch.Catches>
-                                      <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,258.4" sap2010:WorkflowViewState.IdRef="Catch`1_1">
-                                        <sap:WorkflowViewStateService.ViewState>
-                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                          </scg:Dictionary>
-                                        </sap:WorkflowViewStateService.ViewState>
-                                        <ActivityAction x:TypeArguments="s:Exception">
-                                          <ActivityAction.Argument>
-                                            <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
-                                          </ActivityAction.Argument>
-                                          <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;}]" DataTable="[dt_Filtered]" DisplayName="Add Empty Data Row" sap:VirtualizedContainerService.HintSize="333.6,188" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
-                                        </ActivityAction>
-                                      </Catch>
-                                    </TryCatch.Catches>
-                                  </TryCatch>
-                                  <ui:FilterDataTable DataTable="[dt_Filtered]" DisplayName="Filter Data Table for dt_Filtered" FilterRowsMode="Remove" sap:VirtualizedContainerService.HintSize="433.6,162.4" sap2010:WorkflowViewState.IdRef="FilterDataTable_9" OutputDataTable="[dt_Filtered]" SelectColumnsMode="Keep">
-                                    <ui:FilterDataTable.Filters>
-                                      <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
-                                        <ui:FilterOperationArgument Operand="{x:Null}" BooleanOperator="And" Operator="EMPTY">
-                                          <ui:FilterOperationArgument.Column>
-                                            <InArgument x:TypeArguments="x:String">[ColumnToFilter]</InArgument>
-                                          </ui:FilterOperationArgument.Column>
-                                        </ui:FilterOperationArgument>
-                                        <ui:FilterOperationArgument Operand="{x:Null}" BooleanOperator="Or" Operator="NOTEMPTY">
-                                          <ui:FilterOperationArgument.Column>
-                                            <InArgument x:TypeArguments="x:String">["Status Bot2"]</InArgument>
-                                          </ui:FilterOperationArgument.Column>
-                                        </ui:FilterOperationArgument>
-                                      </scg:List>
-                                    </ui:FilterDataTable.Filters>
-                                    <ui:FilterDataTable.SelectColumns>
-                                      <scg:List x:TypeArguments="InArgument" Capacity="4">
-                                        <x:Null />
-                                      </scg:List>
-                                    </ui:FilterDataTable.SelectColumns>
-                                    <sap:WorkflowViewStateService.ViewState>
-                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                      </scg:Dictionary>
-                                    </sap:WorkflowViewStateService.ViewState>
-                                  </ui:FilterDataTable>
-                                </Sequence>
-                              </If.Then>
-                              <If.Else>
-                                <Sequence sap2010:WorkflowViewState.IdRef="Sequence_180">
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                </Sequence>
-                              </If.Else>
-                            </If>
-                            <If Condition="[dt_Filtered.RowCount&gt;0]" DisplayName="If We have some same Column values" sap:VirtualizedContainerService.HintSize="681.6,544.8" sap2010:WorkflowViewState.IdRef="If_43">
-                              <sap:WorkflowViewStateService.ViewState>
-                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                </scg:Dictionary>
-                              </sap:WorkflowViewStateService.ViewState>
-                              <If.Then>
-                                <Sequence DisplayName="Column Values are same" sap:VirtualizedContainerService.HintSize="375.2,385.6" sap2010:WorkflowViewState.IdRef="Sequence_155">
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                  <Assign DisplayName="Assign FilterFlag #1" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_57">
-                                    <Assign.To>
-                                      <OutArgument x:TypeArguments="x:String">[io_FilterFlag]</OutArgument>
-                                    </Assign.To>
-                                    <Assign.Value>
-                                      <InArgument x:TypeArguments="x:String">[ColumnToFilter]</InArgument>
-                                    </Assign.Value>
-                                  </Assign>
-                                  <ui:LogMessage DisplayName="Log Message - Some Column Values are same #1" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_62" Level="Info" Message="[&quot;Records present for Same &quot;+ ColumnToFilter+&quot;: &quot;+ dt_Filtered.Rows(0).ToString]" />
-                                  <Assign DisplayName="Assign out_TransactionItem #1" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_45">
-                                    <Assign.To>
-                                      <OutArgument x:TypeArguments="sd:DataTable">[out_TransactionItem]</OutArgument>
-                                    </Assign.To>
-                                    <Assign.Value>
-                                      <InArgument x:TypeArguments="sd:DataTable">[dt_Filtered]</InArgument>
-                                    </Assign.Value>
-                                  </Assign>
-                                </Sequence>
-                              </If.Then>
-                              <If.Else>
-                                <Assign DisplayName="Assign Count" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_54">
-                                  <Assign.To>
-                                    <OutArgument x:TypeArguments="x:Int32">[Count]</OutArgument>
-                                  </Assign.To>
-                                  <Assign.Value>
-                                    <InArgument x:TypeArguments="x:Int32">[Count+1]</InArgument>
-                                  </Assign.Value>
-                                </Assign>
-                              </If.Else>
-                            </If>
-                          </Sequence>
-                        </If.Then>
-                        <If.Else>
-                          <Sequence DisplayName="Check records by DO Number" sap:VirtualizedContainerService.HintSize="475.2,448" sap2010:WorkflowViewState.IdRef="Sequence_166">
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                            <ui:FilterDataTable DataTable="[io_dt_TransactionData]" DisplayName="Filter Data Table for dt_Filtered #1" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="433.6,162.4" sap2010:WorkflowViewState.IdRef="FilterDataTable_13" OutputDataTable="[dt_Filtered]" SelectColumnsMode="Keep">
-                              <ui:FilterDataTable.Filters>
-                                <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
-                                  <ui:FilterOperationArgument Operand="{x:Null}" BooleanOperator="And" Operator="EMPTY">
-                                    <ui:FilterOperationArgument.Column>
-                                      <InArgument x:TypeArguments="x:String">["Status Bot2"]</InArgument>
-                                    </ui:FilterOperationArgument.Column>
-                                  </ui:FilterOperationArgument>
-                                </scg:List>
-                              </ui:FilterDataTable.Filters>
-                              <ui:FilterDataTable.SelectColumns>
-                                <scg:List x:TypeArguments="InArgument" Capacity="4">
-                                  <x:Null />
-                                </scg:List>
-                              </ui:FilterDataTable.SelectColumns>
-                              <sap:WorkflowViewStateService.ViewState>
-                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                </scg:Dictionary>
-                              </sap:WorkflowViewStateService.ViewState>
-                            </ui:FilterDataTable>
-                            <Assign DisplayName="Assign Filtered transactionDT" sap:VirtualizedContainerService.HintSize="433.6,60" sap2010:WorkflowViewState.IdRef="Assign_55">
-                              <Assign.To>
-                                <OutArgument x:TypeArguments="sd:DataTable">[io_FilteredDT]</OutArgument>
-                              </Assign.To>
-                              <Assign.Value>
-                                <InArgument x:TypeArguments="sd:DataTable">[dt_Filtered.DefaultView.ToTable(true,"DO Number")]</InArgument>
-                              </Assign.Value>
-                            </Assign>
-                            <If Condition="[io_FilteredDT.RowCount&gt; 0]" DisplayName="If - new transaction is available" sap:VirtualizedContainerService.HintSize="433.6,52.8" sap2010:WorkflowViewState.IdRef="If_47">
-                              <sap:WorkflowViewStateService.ViewState>
-                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                </scg:Dictionary>
-                              </sap:WorkflowViewStateService.ViewState>
-                              <If.Then>
-                                <Sequence DisplayName="if new process available" sap:VirtualizedContainerService.HintSize="475.2,355.2" sap2010:WorkflowViewState.IdRef="Sequence_167">
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                  <Assign DisplayName="Assign FilterFlag" sap:VirtualizedContainerService.HintSize="433.6,60" sap2010:WorkflowViewState.IdRef="Assign_58">
-                                    <Assign.To>
-                                      <OutArgument x:TypeArguments="x:String">[io_FilterFlag]</OutArgument>
-                                    </Assign.To>
-                                    <Assign.Value>
-                                      <InArgument x:TypeArguments="x:String">[ColumnToFilter]</InArgument>
-                                    </Assign.Value>
-                                  </Assign>
-                                  <ui:FilterDataTable DataTable="[io_dt_TransactionData]" DisplayName="Filter Data Table Based on DO Number #1" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="433.6,162.4" sap2010:WorkflowViewState.IdRef="FilterDataTable_12" OutputDataTable="[out_TransactionItem]" SelectColumnsMode="Keep">
-                                    <ui:FilterDataTable.Filters>
-                                      <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
-                                        <ui:FilterOperationArgument BooleanOperator="And" Operator="EQ">
-                                          <ui:FilterOperationArgument.Column>
-                                            <InArgument x:TypeArguments="x:String">["DO Number"]</InArgument>
-                                          </ui:FilterOperationArgument.Column>
-                                          <ui:FilterOperationArgument.Operand>
-                                            <InArgument x:TypeArguments="x:String">[(io_FilteredDT(0)("DO Number")).tostring]</InArgument>
-                                          </ui:FilterOperationArgument.Operand>
-                                        </ui:FilterOperationArgument>
-                                      </scg:List>
-                                    </ui:FilterDataTable.Filters>
-                                    <ui:FilterDataTable.SelectColumns>
-                                      <scg:List x:TypeArguments="InArgument" Capacity="4">
-                                        <x:Null />
-                                      </scg:List>
-                                    </ui:FilterDataTable.SelectColumns>
-                                    <sap:WorkflowViewStateService.ViewState>
-                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                      </scg:Dictionary>
-                                    </sap:WorkflowViewStateService.ViewState>
-                                  </ui:FilterDataTable>
-                                </Sequence>
-                              </If.Then>
-                              <If.Else>
-                                <Sequence DisplayName="Break loop if no items left" sap:VirtualizedContainerService.HintSize="304,215.2" sap2010:WorkflowViewState.IdRef="Sequence_168">
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                  <Assign DisplayName="Assign out_transaction item" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_56">
-                                    <Assign.To>
-                                      <OutArgument x:TypeArguments="sd:DataTable">[out_TransactionItem]</OutArgument>
-                                    </Assign.To>
-                                    <Assign.Value>
-                                      <InArgument x:TypeArguments="sd:DataTable">[Nothing]</InArgument>
-                                    </Assign.Value>
-                                  </Assign>
-                                  <ui:Break DisplayName="Break if No transaction left" sap:VirtualizedContainerService.HintSize="262.4,22.4" sap2010:WorkflowViewState.IdRef="Break_1" />
-                                </Sequence>
-                              </If.Else>
-                            </If>
-                          </Sequence>
-                        </If.Else>
-                      </If>
-                    </Sequence>
-                  </ui:InterruptibleWhile.Body>
-                </ui:InterruptibleWhile>
-              </Sequence>
-              <Sequence x:Key="Consolidated" DisplayName="Filter based on Company Name" sap:VirtualizedContainerService.HintSize="823.2,828" sap2010:WorkflowViewState.IdRef="Sequence_170">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-                <ui:ClearDataTable DataTable="[io_FilteredDT]" DisplayName="Clear Data Table io_FilteredDT" sap:VirtualizedContainerService.HintSize="781.6,80.8" sap2010:WorkflowViewState.IdRef="ClearDataTable_3" />
-                <Assign DisplayName="Assign Filtered DT Conso" sap:VirtualizedContainerService.HintSize="781.6,60" sap2010:WorkflowViewState.IdRef="Assign_59">
-                  <Assign.To>
-                    <OutArgument x:TypeArguments="sd:DataTable">[io_FilteredDT]</OutArgument>
-                  </Assign.To>
-                  <Assign.Value>
-                    <InArgument x:TypeArguments="sd:DataTable">[io_dt_TransactionData.DefaultView.ToTable(true,"Company Name")]</InArgument>
-                  </Assign.Value>
-                </Assign>
-                <If Condition="[io_FilteredDT.RowCount&gt; io_UniqueColCount]" DisplayName="If - new transaction is available for Conso" sap:VirtualizedContainerService.HintSize="781.6,514.4" sap2010:WorkflowViewState.IdRef="If_48">
+              <If.Then>
+                <Sequence DisplayName="if new process available Conso" sap:VirtualizedContainerService.HintSize="475.2,355.2" sap2010:WorkflowViewState.IdRef="Sequence_169">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <If.Then>
-                    <Sequence DisplayName="if new process available Conso" sap:VirtualizedContainerService.HintSize="475.2,355.2" sap2010:WorkflowViewState.IdRef="Sequence_169">
-                      <sap:WorkflowViewStateService.ViewState>
-                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                        </scg:Dictionary>
-                      </sap:WorkflowViewStateService.ViewState>
-                      <Assign DisplayName="Assign io_FilterFlag to Company Name #1" sap:VirtualizedContainerService.HintSize="433.6,60" sap2010:WorkflowViewState.IdRef="Assign_61">
-                        <Assign.To>
-                          <OutArgument x:TypeArguments="x:String">[io_FilterFlag]</OutArgument>
-                        </Assign.To>
-                        <Assign.Value>
-                          <InArgument x:TypeArguments="x:String">Company Name</InArgument>
-                        </Assign.Value>
-                      </Assign>
-                      <ui:FilterDataTable DataTable="[io_dt_TransactionData]" DisplayName="Filter Data Table Based on Company Name #1" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="433.6,162.4" sap2010:WorkflowViewState.IdRef="FilterDataTable_14" OutputDataTable="[out_TransactionItem]" SelectColumnsMode="Keep">
-                        <ui:FilterDataTable.Filters>
-                          <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
-                            <ui:FilterOperationArgument BooleanOperator="And" Operator="EQ">
-                              <ui:FilterOperationArgument.Column>
-                                <InArgument x:TypeArguments="x:String">["Company Name"]</InArgument>
-                              </ui:FilterOperationArgument.Column>
-                              <ui:FilterOperationArgument.Operand>
-                                <InArgument x:TypeArguments="x:String">[(io_FilteredDT( io_UniqueColCount)("Company Name")).tostring]</InArgument>
-                              </ui:FilterOperationArgument.Operand>
-                            </ui:FilterOperationArgument>
-                          </scg:List>
-                        </ui:FilterDataTable.Filters>
-                        <ui:FilterDataTable.SelectColumns>
-                          <scg:List x:TypeArguments="InArgument" Capacity="4">
-                            <x:Null />
-                          </scg:List>
-                        </ui:FilterDataTable.SelectColumns>
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                      </ui:FilterDataTable>
-                    </Sequence>
-                  </If.Then>
-                  <If.Else>
-                    <Assign DisplayName="Assign out_transaction item Conso" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_60">
-                      <Assign.To>
-                        <OutArgument x:TypeArguments="sd:DataTable">[out_TransactionItem]</OutArgument>
-                      </Assign.To>
-                      <Assign.Value>
-                        <InArgument x:TypeArguments="sd:DataTable">[Nothing]</InArgument>
-                      </Assign.Value>
-                    </Assign>
-                  </If.Else>
-                </If>
-              </Sequence>
-              <Sequence x:Key="Monthly" DisplayName="Filter based on DO Number" sap:VirtualizedContainerService.HintSize="823.2,707.2" sap2010:WorkflowViewState.IdRef="Sequence_153">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-                <Assign DisplayName="Assign Filtered DT Monthly" sap:VirtualizedContainerService.HintSize="781.6,60" sap2010:WorkflowViewState.IdRef="Assign_37">
+                  <Assign DisplayName="Assign io_FilterFlag to Company Name #1" sap:VirtualizedContainerService.HintSize="433.6,60" sap2010:WorkflowViewState.IdRef="Assign_61">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[io_FilterFlag]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">Company Name</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <ui:FilterDataTable DataTable="[io_dt_TransactionData]" DisplayName="Filter Data Table Based on Company Name #1" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="433.6,162.4" sap2010:WorkflowViewState.IdRef="FilterDataTable_14" OutputDataTable="[out_dt_TransactionItem]" SelectColumnsMode="Keep">
+                    <ui:FilterDataTable.Filters>
+                      <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+                        <ui:FilterOperationArgument BooleanOperator="And" Operator="EQ">
+                          <ui:FilterOperationArgument.Column>
+                            <InArgument x:TypeArguments="x:String">["Company Name"]</InArgument>
+                          </ui:FilterOperationArgument.Column>
+                          <ui:FilterOperationArgument.Operand>
+                            <InArgument x:TypeArguments="x:String">[(io_dt_FilteredDT( io_UniqueColCount)("Company Name")).tostring]</InArgument>
+                          </ui:FilterOperationArgument.Operand>
+                        </ui:FilterOperationArgument>
+                      </scg:List>
+                    </ui:FilterDataTable.Filters>
+                    <ui:FilterDataTable.SelectColumns>
+                      <scg:List x:TypeArguments="InArgument" Capacity="4">
+                        <x:Null />
+                      </scg:List>
+                    </ui:FilterDataTable.SelectColumns>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:FilterDataTable>
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Assign DisplayName="Assign out_transaction item Conso" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_60">
                   <Assign.To>
-                    <OutArgument x:TypeArguments="sd:DataTable">[io_FilteredDT]</OutArgument>
+                    <OutArgument x:TypeArguments="sd:DataTable">[out_dt_TransactionItem]</OutArgument>
                   </Assign.To>
                   <Assign.Value>
-                    <InArgument x:TypeArguments="sd:DataTable">[io_dt_TransactionData.DefaultView.ToTable(true,"DO Number")]</InArgument>
+                    <InArgument x:TypeArguments="sd:DataTable">[Nothing]</InArgument>
                   </Assign.Value>
                 </Assign>
-                <Assign DisplayName="Assign io_FilterFlag to Company Name" sap:VirtualizedContainerService.HintSize="781.6,60" sap2010:WorkflowViewState.IdRef="Assign_62">
-                  <Assign.To>
-                    <OutArgument x:TypeArguments="x:String">[io_FilterFlag]</OutArgument>
-                  </Assign.To>
-                  <Assign.Value>
-                    <InArgument x:TypeArguments="x:String">DO Number</InArgument>
-                  </Assign.Value>
-                </Assign>
-                <If Condition="[io_FilteredDT.RowCount&gt; io_UniqueColCount]" DisplayName="If - new transaction is available Monthly" sap:VirtualizedContainerService.HintSize="781.6,414.4" sap2010:WorkflowViewState.IdRef="If_38">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <If.Then>
-                    <Sequence DisplayName="if new process available Monthly" sap:VirtualizedContainerService.HintSize="475.2,255.2" sap2010:WorkflowViewState.IdRef="Sequence_151">
-                      <sap:WorkflowViewStateService.ViewState>
-                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                        </scg:Dictionary>
-                      </sap:WorkflowViewStateService.ViewState>
-                      <ui:FilterDataTable DataTable="[io_dt_TransactionData]" DisplayName="Filter Data Table Based on DO Number" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="433.6,162.4" sap2010:WorkflowViewState.IdRef="FilterDataTable_5" OutputDataTable="[out_TransactionItem]" SelectColumnsMode="Keep">
-                        <ui:FilterDataTable.Filters>
-                          <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
-                            <ui:FilterOperationArgument BooleanOperator="And" Operator="EQ">
-                              <ui:FilterOperationArgument.Column>
-                                <InArgument x:TypeArguments="x:String">["DO Number"]</InArgument>
-                              </ui:FilterOperationArgument.Column>
-                              <ui:FilterOperationArgument.Operand>
-                                <InArgument x:TypeArguments="x:String">[(io_FilteredDT( io_UniqueColCount)("DO Number")).tostring]</InArgument>
-                              </ui:FilterOperationArgument.Operand>
-                            </ui:FilterOperationArgument>
-                          </scg:List>
-                        </ui:FilterDataTable.Filters>
-                        <ui:FilterDataTable.SelectColumns>
-                          <scg:List x:TypeArguments="InArgument" Capacity="4">
-                            <x:Null />
-                          </scg:List>
-                        </ui:FilterDataTable.SelectColumns>
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                      </ui:FilterDataTable>
-                    </Sequence>
-                  </If.Then>
-                  <If.Else>
-                    <Assign DisplayName="Assign out_transaction item Monthly" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_41">
-                      <Assign.To>
-                        <OutArgument x:TypeArguments="sd:DataTable">[out_TransactionItem]</OutArgument>
-                      </Assign.To>
-                      <Assign.Value>
-                        <InArgument x:TypeArguments="sd:DataTable">[Nothing]</InArgument>
-                      </Assign.Value>
-                    </Assign>
-                  </If.Else>
-                </If>
-              </Sequence>
-            </Switch>
-          </If.Then>
-          <If.Else>
-            <Sequence sap2010:WorkflowViewState.IdRef="Sequence_152">
+              </If.Else>
+            </If>
+          </Sequence>
+          <Sequence x:Key="Monthly" DisplayName="Filter based on DO Number" sap:VirtualizedContainerService.HintSize="823.2,707.2" sap2010:WorkflowViewState.IdRef="Sequence_153">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Assign DisplayName="Assign Filtered DT Monthly" sap:VirtualizedContainerService.HintSize="781.6,60" sap2010:WorkflowViewState.IdRef="Assign_37">
+              <Assign.To>
+                <OutArgument x:TypeArguments="sd:DataTable">[io_dt_FilteredDT]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="sd:DataTable">[io_dt_TransactionData.DefaultView.ToTable(true,"DO Number")]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign DisplayName="Assign io_FilterFlag to Company Name" sap:VirtualizedContainerService.HintSize="781.6,60" sap2010:WorkflowViewState.IdRef="Assign_62">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[io_FilterFlag]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">DO Number</InArgument>
+              </Assign.Value>
+            </Assign>
+            <If Condition="[io_dt_FilteredDT.RowCount&gt; io_UniqueColCount]" DisplayName="If - new transaction is available Monthly" sap:VirtualizedContainerService.HintSize="781.6,414.4" sap2010:WorkflowViewState.IdRef="If_38">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-            </Sequence>
-          </If.Else>
-        </If>
+              <If.Then>
+                <Sequence DisplayName="if new process available Monthly" sap:VirtualizedContainerService.HintSize="475.2,255.2" sap2010:WorkflowViewState.IdRef="Sequence_151">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:FilterDataTable DataTable="[io_dt_TransactionData]" DisplayName="Filter Data Table Based on DO Number" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="433.6,162.4" sap2010:WorkflowViewState.IdRef="FilterDataTable_5" OutputDataTable="[out_dt_TransactionItem]" SelectColumnsMode="Keep">
+                    <ui:FilterDataTable.Filters>
+                      <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+                        <ui:FilterOperationArgument BooleanOperator="And" Operator="EQ">
+                          <ui:FilterOperationArgument.Column>
+                            <InArgument x:TypeArguments="x:String">["DO Number"]</InArgument>
+                          </ui:FilterOperationArgument.Column>
+                          <ui:FilterOperationArgument.Operand>
+                            <InArgument x:TypeArguments="x:String">[(io_dt_FilteredDT( io_UniqueColCount)("DO Number")).tostring]</InArgument>
+                          </ui:FilterOperationArgument.Operand>
+                        </ui:FilterOperationArgument>
+                      </scg:List>
+                    </ui:FilterDataTable.Filters>
+                    <ui:FilterDataTable.SelectColumns>
+                      <scg:List x:TypeArguments="InArgument" Capacity="4">
+                        <x:Null />
+                      </scg:List>
+                    </ui:FilterDataTable.SelectColumns>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:FilterDataTable>
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Assign DisplayName="Assign out_transaction item Monthly" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_41">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="sd:DataTable">[out_dt_TransactionItem]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="sd:DataTable">[Nothing]</InArgument>
+                  </Assign.Value>
+                </Assign>
+              </If.Else>
+            </If>
+          </Sequence>
+        </Switch>
       </If.Then>
       <If.Else>
         <Sequence sap2010:WorkflowViewState.IdRef="Sequence_149">

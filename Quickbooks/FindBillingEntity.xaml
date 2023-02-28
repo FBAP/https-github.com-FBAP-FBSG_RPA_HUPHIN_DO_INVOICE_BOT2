@@ -1,17 +1,17 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="FindBillingEntity" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="out_BillingEntity" Type="OutArgument(x:String)" />
-    <x:Property Name="in_BillingEntityDT1" Type="InArgument(sd:DataTable)" />
     <x:Property Name="in_DefaultBusinessEntity" Type="InArgument(x:String)" />
     <x:Property Name="io_IOExcelFilePath" Type="InOutArgument(x:String)" />
     <x:Property Name="in_ProcessType" Type="InArgument(x:String)" />
-    <x:Property Name="in_TransactionDT" Type="InArgument(sd:DataTable)" />
     <x:Property Name="in_BillingEntityForHE" Type="InArgument(x:String)" />
+    <x:Property Name="in_dt_BillingEntity1" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="in_dt_TransactionItem" Type="InArgument(sd:DataTable)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>682.4,2257.6</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>698.4,2257.6</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>FindBillingEntity_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="54">
@@ -96,7 +96,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ReadRange AddHeaders="True" DataTable="[in_BillingEntityDT1]" DisplayName="Read Range Workbook input file" sap:VirtualizedContainerService.HintSize="516.8,88" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Billing Entity" WorkbookPath="[io_IOExcelFilePath]">
+    <ui:ReadRange AddHeaders="True" DataTable="[in_dt_BillingEntity1]" DisplayName="Read Range Workbook input file" sap:VirtualizedContainerService.HintSize="516.8,88" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Billing Entity" WorkbookPath="[io_IOExcelFilePath]">
       <ui:ReadRange.Range>
         <InArgument x:TypeArguments="x:String">
           <Literal x:TypeArguments="x:String" Value="" />
@@ -108,11 +108,11 @@
         <OutArgument x:TypeArguments="x:String">[CurrentCompanyName]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:String">[in_TransactionDT(0)("Company Name").ToString]</InArgument>
+        <InArgument x:TypeArguments="x:String">[in_dt_TransactionItem(0)("Company Name").ToString]</InArgument>
       </Assign.Value>
     </Assign>
     <ui:LogMessage DisplayName="Log Message - Find out billing entity" sap:VirtualizedContainerService.HintSize="516.8,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Finding out billing entity for Company name: &quot;+ CurrentCompanyName]" />
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_BillingEntityDT1]" DisplayName="For Each Row in Business Entity Data Table" sap:VirtualizedContainerService.HintSize="516.8,364.8" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_dt_BillingEntity1]" DisplayName="For Each Row in Business Entity Data Table" sap:VirtualizedContainerService.HintSize="516.8,364.8" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>

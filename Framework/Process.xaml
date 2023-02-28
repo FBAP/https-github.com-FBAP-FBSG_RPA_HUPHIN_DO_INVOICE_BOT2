@@ -1,23 +1,23 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="Process" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
-    <x:Property sap2010:Annotation.AnnotationText="Transaction item to be processed." Name="in_TransactionItem" Type="InArgument(sd:DataTable)" />
     <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="io_ProcessType" Type="InOutArgument(x:String)" />
     <x:Property Name="io_TransactionNumber" Type="InOutArgument(x:Int32)" />
-    <x:Property Name="in_SundaysDT" Type="InArgument(sd:DataTable)" />
-    <x:Property Name="in_PublicHolidaysDT" Type="InArgument(sd:DataTable)" />
-    <x:Property Name="io_VehicleTypeMapDT" Type="InOutArgument(sd:DataTable)" />
     <x:Property Name="io_IOExcelFilePathDaily" Type="InOutArgument(x:String)" />
     <x:Property Name="io_IOExcelFilePathConso" Type="InOutArgument(x:String)" />
     <x:Property Name="io_IOExcelFilePathMonthly" Type="InOutArgument(x:String)" />
     <x:Property Name="out_InvoiceNumber" Type="OutArgument(x:String)" />
     <x:Property Name="out_InvoiceFilePath" Type="OutArgument(x:String)" />
-    <x:Property Name="in_BillingEntityDT" Type="InArgument(sd:DataTable)" />
+    <x:Property sap2010:Annotation.AnnotationText="Transaction item to be processed." Name="in_dt_TransactionItem" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="io_dt_VehicleTypeMap" Type="InOutArgument(sd:DataTable)" />
+    <x:Property Name="in_dt_Sundays" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="in_dt_PublicHolidays" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="in_dt_BillingEntity" Type="InArgument(sd:DataTable)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>596,918.4</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>592.8,1824</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="48">
@@ -114,9 +114,10 @@
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.Mail</AssemblyReference>
       <AssemblyReference>UiPath.Mail.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="This sequence wll enter all the data into quickbooks application for all Daily, Consolidated and Monthyl scenarios. Quickbooks will generate the invoices and the PDF files will be merged." DisplayName="Process" sap:VirtualizedContainerService.HintSize="538.4,853.6" sap2010:WorkflowViewState.IdRef="Sequence_107">
+  <Sequence sap2010:Annotation.AnnotationText="This sequence wll enter all the data into quickbooks application for all Daily, Consolidated and Monthyl scenarios. Quickbooks will generate the invoices and the PDF files will be merged." DisplayName="Process" sap:VirtualizedContainerService.HintSize="538.4,1759.2" sap2010:WorkflowViewState.IdRef="Sequence_107">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -125,7 +126,7 @@
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="496.8,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started Process&quot;]" />
     <ui:LogMessage DisplayName="Log Message Processing for" sap:VirtualizedContainerService.HintSize="496.8,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_36" Level="Info" Message="[&quot;Processing for: &quot;+ io_ProcessType.ToString]" />
-    <Switch x:TypeArguments="x:String" sap2010:Annotation.AnnotationText="Processing steps for Daily process. Calculations are done in this step and entering the data to quickbooks" DisplayName="Switch to Select process" Expression="[io_ProcessType]" sap:VirtualizedContainerService.HintSize="496.8,302.4" sap2010:WorkflowViewState.IdRef="Switch`1_2">
+    <Switch x:TypeArguments="x:String" sap2010:Annotation.AnnotationText="Processing steps for Daily process. Calculations are done in this step and entering the data to quickbooks" DisplayName="Switch to Select process" Expression="[io_ProcessType]" sap:VirtualizedContainerService.HintSize="496.8,1208" sap2010:WorkflowViewState.IdRef="Switch`1_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -133,22 +134,22 @@
           <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Sequence x:Key="Daily" DisplayName="Daily processing" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_102">
+      <Sequence x:Key="Daily" DisplayName="Daily processing" sap:VirtualizedContainerService.HintSize="392,820.8" sap2010:WorkflowViewState.IdRef="Sequence_102">
         <Sequence.Variables>
           <Variable x:TypeArguments="x:String" Name="QuotationFilePathDaily" />
           <Variable x:TypeArguments="x:String" Name="InvoicePdfFolderPathDaily" />
         </Sequence.Variables>
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
         <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CheckInputDataAvailable workflow Daily" sap:VirtualizedContainerService.HintSize="350.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_26" UnSafe="False" WorkflowFileName="Reusable Code\CheckInputDataAvailable.xaml">
           <ui:InvokeWorkflowFile.Arguments>
-            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_TransactionItem1">[in_TransactionItem]</InArgument>
             <InOutArgument x:TypeArguments="x:String" x:Key="io_ProcessType1">[io_ProcessType]</InOutArgument>
             <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config1">[in_Config]</InArgument>
+            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_TransactionItem1">[in_dt_TransactionItem]</InArgument>
           </ui:InvokeWorkflowFile.Arguments>
         </ui:InvokeWorkflowFile>
         <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CreateInvoicePath workflow Daily" sap:VirtualizedContainerService.HintSize="350.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_16" UnSafe="False" WorkflowFileName="Reusable Code\CreateInvoicePath.xaml">
@@ -162,53 +163,77 @@
           <ui:InvokeWorkflowFile.Arguments>
             <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config1">[in_Config]</InArgument>
             <OutArgument x:TypeArguments="x:String" x:Key="out_QuotationFilePath">[QuotationFilePathDaily]</OutArgument>
-            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_TransactionItem1">[in_TransactionItem]</InArgument>
             <InOutArgument x:TypeArguments="x:String" x:Key="io_ProcessType1">[io_ProcessType]</InOutArgument>
+            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_TransactionItem1">[in_dt_TransactionItem]</InArgument>
           </ui:InvokeWorkflowFile.Arguments>
         </ui:InvokeWorkflowFile>
         <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke QuickbooksProcess workflow Daily" sap:VirtualizedContainerService.HintSize="350.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Quickbooks\QuickbooksProcess.xaml">
           <ui:InvokeWorkflowFile.Arguments>
-            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_VehicleTypeMapDT1">[io_VehicleTypeMapDT]</InArgument>
-            <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayAfterShort">[Cint(in_Config("DelayAfterShort").ToString)]</InArgument>
-            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_TransactionItem1">[in_TransactionItem]</InArgument>
-            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config1">[in_Config]</InArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="in_QuotationFilePath">[QuotationFilePathDaily]</InArgument>
-            <InOutArgument x:TypeArguments="x:Int32" x:Key="io_TransactionNumber1">[io_TransactionNumber]</InOutArgument>
-            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_SundaysDT1">[in_SundaysDT]</InArgument>
-            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_PublicHolidaysDT1">[in_PublicHolidaysDT]</InArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="in_InvoicePdfFolderPath">[InvoicePdfFolderPathDaily]</InArgument>
-            <InOutArgument x:TypeArguments="x:String" x:Key="io_ProcessType1">[io_ProcessType]</InOutArgument>
-            <OutArgument x:TypeArguments="x:String" x:Key="out_InvoiceFilePath1">[out_InvoiceFilePath]</OutArgument>
-            <OutArgument x:TypeArguments="x:String" x:Key="out_InvoiceNumber1">[out_InvoiceNumber]</OutArgument>
+            <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayAfterShort">
+              <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="Cint(in_Config(&quot;DelayAfterShort&quot;).ToString)" />
+            </InArgument>
+            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config1">
+              <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
+            </InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_QuotationFilePath">
+              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="QuotationFilePathDaily" />
+            </InArgument>
+            <InOutArgument x:TypeArguments="x:Int32" x:Key="io_TransactionNumber1">
+              <mva:VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="io_TransactionNumber" />
+            </InOutArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_InvoicePdfFolderPath">
+              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="InvoicePdfFolderPathDaily" />
+            </InArgument>
+            <InOutArgument x:TypeArguments="x:String" x:Key="io_ProcessType1">
+              <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="io_ProcessType" />
+            </InOutArgument>
+            <OutArgument x:TypeArguments="x:String" x:Key="out_InvoiceFilePath1">
+              <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_InvoiceFilePath" />
+            </OutArgument>
+            <OutArgument x:TypeArguments="x:String" x:Key="out_InvoiceNumber1">
+              <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_InvoiceNumber" />
+            </OutArgument>
+            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_Sundays1">
+              <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="in_dt_Sundays" />
+            </InArgument>
+            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_PublicHolidays1">
+              <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="in_dt_PublicHolidays" />
+            </InArgument>
+            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_VehicleTypeMap1">
+              <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="io_dt_VehicleTypeMap" />
+            </InArgument>
+            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_TransactionItem1">
+              <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="in_dt_TransactionItem" />
+            </InArgument>
           </ui:InvokeWorkflowFile.Arguments>
         </ui:InvokeWorkflowFile>
         <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke MergeFiles workflow Daily" sap:VirtualizedContainerService.HintSize="350.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Quickbooks\MergeFiles.xaml">
           <ui:InvokeWorkflowFile.Arguments>
             <InArgument x:TypeArguments="x:String" x:Key="in_InvoiceNumber">[out_InvoiceNumber]</InArgument>
             <InArgument x:TypeArguments="x:String" x:Key="in_InvoiceFilePath">[out_InvoiceFilePath]</InArgument>
-            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
             <InArgument x:TypeArguments="x:String" x:Key="in_InvoicePath">[in_Config("InvoicePath").ToString]</InArgument>
             <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config1">[in_Config]</InArgument>
             <InOutArgument x:TypeArguments="x:String" x:Key="io_ProcessType2">[io_ProcessType]</InOutArgument>
+            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_TransactionItem1">[in_dt_TransactionItem]</InArgument>
           </ui:InvokeWorkflowFile.Arguments>
         </ui:InvokeWorkflowFile>
       </Sequence>
-      <Sequence x:Key="Consolidated" DisplayName="Consolidated workflow" sap:VirtualizedContainerService.HintSize="392,68.8" sap2010:WorkflowViewState.IdRef="Sequence_100">
+      <Sequence x:Key="Consolidated" DisplayName="Consolidated workflow" sap:VirtualizedContainerService.HintSize="392,820.8" sap2010:WorkflowViewState.IdRef="Sequence_100">
         <Sequence.Variables>
           <Variable x:TypeArguments="x:String" Name="QuotationFilePathConso" />
           <Variable x:TypeArguments="x:String" Name="InvoicePdfFolderPathConso" />
         </Sequence.Variables>
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
         <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CheckInputDataAvailable workflow Consolidated" sap:VirtualizedContainerService.HintSize="350.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_27" UnSafe="False" WorkflowFileName="Reusable Code\CheckInputDataAvailable.xaml">
           <ui:InvokeWorkflowFile.Arguments>
-            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_TransactionItem1">[in_TransactionItem]</InArgument>
             <InOutArgument x:TypeArguments="x:String" x:Key="io_ProcessType1">[io_ProcessType]</InOutArgument>
             <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config1">[in_Config]</InArgument>
+            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_TransactionItem1">[in_dt_TransactionItem]</InArgument>
           </ui:InvokeWorkflowFile.Arguments>
         </ui:InvokeWorkflowFile>
         <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CreateDOFolder workflow Consolidated" sap:VirtualizedContainerService.HintSize="350.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_15" UnSafe="False" WorkflowFileName="Reusable Code\CreateInvoicePath.xaml">
@@ -222,38 +247,62 @@
           <ui:InvokeWorkflowFile.Arguments>
             <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config1">[in_Config]</InArgument>
             <OutArgument x:TypeArguments="x:String" x:Key="out_QuotationFilePath">[QuotationFilePathConso]</OutArgument>
-            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_TransactionItem1">[in_TransactionItem]</InArgument>
             <InOutArgument x:TypeArguments="x:String" x:Key="io_ProcessType1">[io_ProcessType]</InOutArgument>
+            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_TransactionItem1">[in_dt_TransactionItem]</InArgument>
           </ui:InvokeWorkflowFile.Arguments>
         </ui:InvokeWorkflowFile>
         <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke QuickbooksProcess workflow Consolidated" sap:VirtualizedContainerService.HintSize="350.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" UnSafe="False" WorkflowFileName="Quickbooks\QuickbooksProcess.xaml">
           <ui:InvokeWorkflowFile.Arguments>
-            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_VehicleTypeMapDT1">[io_VehicleTypeMapDT]</InArgument>
-            <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayAfterShort">[Cint(in_Config("DelayAfterShort").ToString)]</InArgument>
-            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_TransactionItem1">[in_TransactionItem]</InArgument>
-            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config1">[in_Config]</InArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="in_QuotationFilePath">[QuotationFilePathConso]</InArgument>
-            <InOutArgument x:TypeArguments="x:Int32" x:Key="io_TransactionNumber1">[io_TransactionNumber]</InOutArgument>
-            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_SundaysDT1">[in_SundaysDT]</InArgument>
-            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_PublicHolidaysDT1">[in_PublicHolidaysDT]</InArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="in_InvoicePdfFolderPath">[InvoicePdfFolderPathConso]</InArgument>
-            <InOutArgument x:TypeArguments="x:String" x:Key="io_ProcessType1">[io_ProcessType]</InOutArgument>
-            <OutArgument x:TypeArguments="x:String" x:Key="out_InvoiceFilePath1">[out_InvoiceFilePath]</OutArgument>
-            <OutArgument x:TypeArguments="x:String" x:Key="out_InvoiceNumber1">[out_InvoiceNumber]</OutArgument>
+            <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayAfterShort">
+              <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="Cint(in_Config(&quot;DelayAfterShort&quot;).ToString)" />
+            </InArgument>
+            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config1">
+              <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
+            </InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_QuotationFilePath">
+              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="QuotationFilePathConso" />
+            </InArgument>
+            <InOutArgument x:TypeArguments="x:Int32" x:Key="io_TransactionNumber1">
+              <mva:VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="io_TransactionNumber" />
+            </InOutArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_InvoicePdfFolderPath">
+              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="InvoicePdfFolderPathConso" />
+            </InArgument>
+            <InOutArgument x:TypeArguments="x:String" x:Key="io_ProcessType1">
+              <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="io_ProcessType" />
+            </InOutArgument>
+            <OutArgument x:TypeArguments="x:String" x:Key="out_InvoiceFilePath1">
+              <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_InvoiceFilePath" />
+            </OutArgument>
+            <OutArgument x:TypeArguments="x:String" x:Key="out_InvoiceNumber1">
+              <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_InvoiceNumber" />
+            </OutArgument>
+            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_Sundays1">
+              <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="in_dt_Sundays" />
+            </InArgument>
+            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_PublicHolidays1">
+              <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="in_dt_PublicHolidays" />
+            </InArgument>
+            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_VehicleTypeMap1">
+              <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="io_dt_VehicleTypeMap" />
+            </InArgument>
+            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_TransactionItem1">
+              <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="in_dt_TransactionItem" />
+            </InArgument>
           </ui:InvokeWorkflowFile.Arguments>
         </ui:InvokeWorkflowFile>
         <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke MergeFiles workflow Consolidated" sap:VirtualizedContainerService.HintSize="350.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_13" UnSafe="False" WorkflowFileName="Quickbooks\MergeFiles.xaml">
           <ui:InvokeWorkflowFile.Arguments>
             <InArgument x:TypeArguments="x:String" x:Key="in_InvoiceNumber">[out_InvoiceNumber]</InArgument>
             <InArgument x:TypeArguments="x:String" x:Key="in_InvoiceFilePath">[out_InvoiceFilePath]</InArgument>
-            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
             <InArgument x:TypeArguments="x:String" x:Key="in_InvoicePath">[in_Config("InvoicePath").ToString]</InArgument>
             <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config1">[in_Config]</InArgument>
             <InOutArgument x:TypeArguments="x:String" x:Key="io_ProcessType2">[io_ProcessType]</InOutArgument>
+            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_TransactionItem1">[in_dt_TransactionItem]</InArgument>
           </ui:InvokeWorkflowFile.Arguments>
         </ui:InvokeWorkflowFile>
       </Sequence>
-      <Sequence x:Key="Monthly" DisplayName="Monthly workflow" sap:VirtualizedContainerService.HintSize="404.8,68.8" sap2010:WorkflowViewState.IdRef="Sequence_106">
+      <Sequence x:Key="Monthly" DisplayName="Monthly workflow" sap:VirtualizedContainerService.HintSize="404.8,974.4" sap2010:WorkflowViewState.IdRef="Sequence_106">
         <Sequence.Variables>
           <Variable x:TypeArguments="x:String" Name="CurrentBillingEntity" />
           <Variable x:TypeArguments="x:String" Name="QuotationFilePathMonthly" />
@@ -261,15 +310,15 @@
         </Sequence.Variables>
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
         <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CheckInputDataAvailable workflow Monthly" sap:VirtualizedContainerService.HintSize="363.2,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_28" UnSafe="False" WorkflowFileName="Reusable Code\CheckInputDataAvailable.xaml">
           <ui:InvokeWorkflowFile.Arguments>
-            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_TransactionItem1">[in_TransactionItem]</InArgument>
             <InOutArgument x:TypeArguments="x:String" x:Key="io_ProcessType1">[io_ProcessType]</InOutArgument>
             <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config1">[in_Config]</InArgument>
+            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_TransactionItem1">[in_dt_TransactionItem]</InArgument>
           </ui:InvokeWorkflowFile.Arguments>
         </ui:InvokeWorkflowFile>
         <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CreateDOFolder workflow Monthly" sap:VirtualizedContainerService.HintSize="363.2,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_18" UnSafe="False" WorkflowFileName="Reusable Code\CreateInvoicePath.xaml">
@@ -282,46 +331,82 @@
         <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke FindBillingEntity workflow Monthly" sap:VirtualizedContainerService.HintSize="363.2,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_19" UnSafe="False" WorkflowFileName="Quickbooks\FindBillingEntity.xaml">
           <ui:InvokeWorkflowFile.Arguments>
             <OutArgument x:TypeArguments="x:String" x:Key="out_BillingEntity">[CurrentBillingEntity]</OutArgument>
-            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_BillingEntityDT1">[in_BillingEntityDT]</InArgument>
             <InArgument x:TypeArguments="x:String" x:Key="in_DefaultBusinessEntity">[in_Config("DefaultBusinessEntity").ToString]</InArgument>
             <InOutArgument x:TypeArguments="x:String" x:Key="io_IOExcelFilePath">[io_IOExcelFilePathMonthly]</InOutArgument>
             <InArgument x:TypeArguments="x:String" x:Key="in_ProcessType">[io_ProcessType]</InArgument>
-            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_TransactionDT">[in_TransactionItem]</InArgument>
             <InArgument x:TypeArguments="x:String" x:Key="in_BillingEntityForHE">[in_Config("BillingEntityForHE").ToString]</InArgument>
+            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_BillingEntity1">[in_dt_BillingEntity]</InArgument>
+            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_TransactionItem">[in_dt_TransactionItem]</InArgument>
           </ui:InvokeWorkflowFile.Arguments>
         </ui:InvokeWorkflowFile>
         <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke GetQuotationFile workflow Monthly" sap:VirtualizedContainerService.HintSize="363.2,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_22" UnSafe="False" WorkflowFileName="Reusable Code\CheckQuotationFileMonthly.xaml">
           <ui:InvokeWorkflowFile.Arguments>
             <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config1">[in_Config]</InArgument>
             <OutArgument x:TypeArguments="x:String" x:Key="out_QuotationFilePath">[QuotationFilePathMonthly]</OutArgument>
-            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_TransactionItem1">[in_TransactionItem]</InArgument>
             <InOutArgument x:TypeArguments="x:String" x:Key="io_ProcessType1">[io_ProcessType]</InOutArgument>
+            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_TransactionItem1">[in_dt_TransactionItem]</InArgument>
           </ui:InvokeWorkflowFile.Arguments>
         </ui:InvokeWorkflowFile>
         <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke QuickbooksProcess workflow Monthly" sap:VirtualizedContainerService.HintSize="363.2,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_23" UnSafe="False" WorkflowFileName="Quickbooks\QuickbooksProcessMonthly.xaml">
           <ui:InvokeWorkflowFile.Arguments>
-            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_VehicleTypeMapDT1">[io_VehicleTypeMapDT]</InArgument>
-            <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayAfterShort">[Cint(in_Config("DelayAfterShort").ToString)]</InArgument>
-            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_TransactionItem1">[in_TransactionItem]</InArgument>
-            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config1">[in_Config]</InArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="in_QuotationFilePath">[QuotationFilePathMonthly]</InArgument>
-            <InOutArgument x:TypeArguments="x:Int32" x:Key="io_TransactionNumber1">[io_TransactionNumber]</InOutArgument>
-            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_SundaysDT1">[in_SundaysDT]</InArgument>
-            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_PublicHolidaysDT1">[in_PublicHolidaysDT]</InArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="in_InvoicePdfFolderPath">[InvoicePdfFolderPathMonthly]</InArgument>
-            <OutArgument x:TypeArguments="x:String" x:Key="out_InvoiceNumber1">[out_InvoiceNumber]</OutArgument>
-            <OutArgument x:TypeArguments="x:String" x:Key="out_InvoiceFilePath1">[out_InvoiceFilePath]</OutArgument>
-            <InOutArgument x:TypeArguments="x:String" x:Key="io_ProcessType1">[io_ProcessType]</InOutArgument>
+            <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayAfterShort">
+              <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="Cint(in_Config(&quot;DelayAfterShort&quot;).ToString)" />
+            </InArgument>
+            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config1">
+              <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
+            </InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_QuotationFilePath">
+              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="QuotationFilePathMonthly" />
+            </InArgument>
+            <InOutArgument x:TypeArguments="x:Int32" x:Key="io_TransactionNumber1">
+              <mva:VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="io_TransactionNumber" />
+            </InOutArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_InvoicePdfFolderPath">
+              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="InvoicePdfFolderPathMonthly" />
+            </InArgument>
+            <OutArgument x:TypeArguments="x:String" x:Key="out_InvoiceNumber1">
+              <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_InvoiceNumber" />
+            </OutArgument>
+            <OutArgument x:TypeArguments="x:String" x:Key="out_InvoiceFilePath1">
+              <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_InvoiceFilePath" />
+            </OutArgument>
+            <InOutArgument x:TypeArguments="x:String" x:Key="io_ProcessType1">
+              <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="io_ProcessType" />
+            </InOutArgument>
+            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_VehicleTypeMap">
+              <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="io_dt_VehicleTypeMap" />
+            </InArgument>
+            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_TransactionItem1">
+              <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="in_dt_TransactionItem" />
+            </InArgument>
+            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_PublicHolidays">
+              <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="in_dt_PublicHolidays" />
+            </InArgument>
+            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_Sundays">
+              <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="in_dt_Sundays" />
+            </InArgument>
           </ui:InvokeWorkflowFile.Arguments>
         </ui:InvokeWorkflowFile>
         <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Merge Files workflow Monthly" sap:VirtualizedContainerService.HintSize="363.2,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_25" UnSafe="False" WorkflowFileName="Quickbooks\MergeFiles.xaml">
           <ui:InvokeWorkflowFile.Arguments>
-            <InArgument x:TypeArguments="x:String" x:Key="in_InvoiceNumber">[out_InvoiceNumber]</InArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="in_InvoiceFilePath">[out_InvoiceFilePath]</InArgument>
-            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="in_InvoicePath">[in_Config("InvoicePath").ToString]</InArgument>
-            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config1">[in_Config]</InArgument>
-            <InOutArgument x:TypeArguments="x:String" x:Key="io_ProcessType2">[io_ProcessType]</InOutArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_InvoiceNumber">
+              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="out_InvoiceNumber" />
+            </InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_InvoiceFilePath">
+              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="out_InvoiceFilePath" />
+            </InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_InvoicePath">
+              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;InvoicePath&quot;).ToString" />
+            </InArgument>
+            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config1">
+              <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
+            </InArgument>
+            <InOutArgument x:TypeArguments="x:String" x:Key="io_ProcessType2">
+              <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="io_ProcessType" />
+            </InOutArgument>
+            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_TransactionItem1">
+              <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="in_dt_TransactionItem" />
+            </InArgument>
           </ui:InvokeWorkflowFile.Arguments>
         </ui:InvokeWorkflowFile>
       </Sequence>

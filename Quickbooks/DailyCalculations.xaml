@@ -6,15 +6,15 @@
     <x:Property Name="out_TotalStdWorkingHours" Type="OutArgument(x:Double)" />
     <x:Property Name="out_TotalPremWorkingHours" Type="OutArgument(x:Double)" />
     <x:Property Name="in_QuotationFilePath1" Type="InArgument(x:String)" />
-    <x:Property Name="in_SundaysDT" Type="InArgument(sd:DataTable)" />
-    <x:Property Name="in_PublicHolidaysDT" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="in_dt_Sundays" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="in_dt_PublicHolidays" Type="InArgument(sd:DataTable)" />
   </x:Members>
-  <this:DailyProcessSequence.in_SundaysDT>
+  <this:DailyProcessSequence.in_dt_Sundays>
     <InArgument x:TypeArguments="sd:DataTable" />
-  </this:DailyProcessSequence.in_SundaysDT>
-  <this:DailyProcessSequence.in_PublicHolidaysDT>
+  </this:DailyProcessSequence.in_dt_Sundays>
+  <this:DailyProcessSequence.in_dt_PublicHolidays>
     <InArgument x:TypeArguments="sd:DataTable" />
-  </this:DailyProcessSequence.in_PublicHolidaysDT>
+  </this:DailyProcessSequence.in_dt_PublicHolidays>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
@@ -458,7 +458,7 @@
           </Assign>
         </If.Then>
         <If.Else>
-          <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_PublicHolidaysDT]" DisplayName="For Each Row in Data Table of PH for Start Day " sap:VirtualizedContainerService.HintSize="433.6,184.8" sap2010:WorkflowViewState.IdRef="ForEachRow_4">
+          <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_dt_PublicHolidays]" DisplayName="For Each Row in Data Table of PH for Start Day " sap:VirtualizedContainerService.HintSize="433.6,184.8" sap2010:WorkflowViewState.IdRef="ForEachRow_4">
             <ui:ForEachRow.Body>
               <ActivityAction x:TypeArguments="sd:DataRow">
                 <ActivityAction.Argument>
@@ -576,7 +576,7 @@
           </Assign>
         </If.Then>
         <If.Else>
-          <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_PublicHolidaysDT]" DisplayName="For Each Row in Data Table PH for End day" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="ForEachRow_5">
+          <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_dt_PublicHolidays]" DisplayName="For Each Row in Data Table PH for End day" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="ForEachRow_5">
             <ui:ForEachRow.Body>
               <ActivityAction x:TypeArguments="sd:DataRow">
                 <ActivityAction.Argument>

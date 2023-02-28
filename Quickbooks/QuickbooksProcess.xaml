@@ -8,15 +8,15 @@
     <x:Property Name="io_ProcessType1" Type="InOutArgument(x:String)" />
     <x:Property Name="out_InvoiceFilePath1" Type="OutArgument(x:String)" />
     <x:Property Name="out_InvoiceNumber1" Type="OutArgument(x:String)" />
-    <x:Property Name="in_dt_SundaysDT1" Type="InArgument(sd:DataTable)" />
-    <x:Property Name="in_dt_PublicHolidaysDT1" Type="InArgument(sd:DataTable)" />
-    <x:Property Name="in_dt_VehicleTypeMapDT1" Type="InArgument(sd:DataTable)" />
-    <x:Property Name="in_TransactionItem1" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="in_dt_Sundays1" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="in_dt_PublicHolidays1" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="in_dt_VehicleTypeMap1" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="in_dt_TransactionItem1" Type="InArgument(sd:DataTable)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1892.8,13336.8</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1296,23019.2</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Sequence_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="41">
@@ -64,7 +64,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="37">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="74">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -104,7 +104,7 @@
       <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="This will create invoice in the quickbooks as per Daily and Consolidated scenario. It will also calculate the total number of standard and premium working hours." DisplayName="Quickbooks Process" sap:VirtualizedContainerService.HintSize="1903.2,13272" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="This will create invoice in the quickbooks as per Daily and Consolidated scenario. It will also calculate the total number of standard and premium working hours." DisplayName="Quickbooks Process" sap:VirtualizedContainerService.HintSize="1306.4,22954.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Double" Name="TotalPremWorkingHours" />
       <Variable x:TypeArguments="x:Double" Name="TotalStdWorkingHours" />
@@ -128,7 +128,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Try Catch for process" sap:VirtualizedContainerService.HintSize="1861.6,13148" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Try Catch for process" sap:VirtualizedContainerService.HintSize="1264.8,22830.4" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <TryCatch.Variables>
         <Variable x:TypeArguments="x:String" Name="VehicleTypeDescription" />
         <Variable x:TypeArguments="sd:DataTable" Name="dt_ColBCRange" />
@@ -138,19 +138,19 @@
         <Variable x:TypeArguments="x:String" Name="Columns" />
       </TryCatch.Variables>
       <TryCatch.Try>
-        <Sequence DisplayName="Process" sap:VirtualizedContainerService.HintSize="1824.8,12893.6" sap2010:WorkflowViewState.IdRef="Sequence_55">
+        <Sequence DisplayName="Process" sap:VirtualizedContainerService.HintSize="1228,22576" sap2010:WorkflowViewState.IdRef="Sequence_55">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <uix:NApplicationCard WebDriverMode="{x:Null}" AttachMode="ByInstance" DisplayName="Use Application: HUP HIN TRANSPORT CO PTE LTD - Reckon Accounts Enterprise: 2022" sap:VirtualizedContainerService.HintSize="1783.2,12708" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" ScopeGuid="2dae4886-49e6-4870-8326-df39a69e44a1" Version="V2">
+          <uix:NApplicationCard WebDriverMode="{x:Null}" AttachMode="ByInstance" DisplayName="Use Application: HUP HIN TRANSPORT CO PTE LTD - Reckon Accounts Enterprise: 2022" sap:VirtualizedContainerService.HintSize="1186.4,21875.2" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" ScopeGuid="2dae4886-49e6-4870-8326-df39a69e44a1" Version="V2">
             <uix:NApplicationCard.Body>
               <ActivityAction x:TypeArguments="x:Object">
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
                 </ActivityAction.Argument>
-                <Sequence DisplayName="HUP HIN TRANSPORT CO PTE LTD " sap:VirtualizedContainerService.HintSize="1749.6,12416.8" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                <Sequence DisplayName="HUP HIN TRANSPORT CO PTE LTD " sap:VirtualizedContainerService.HintSize="1152.8,21584" sap2010:WorkflowViewState.IdRef="Sequence_10">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="x:Double" Name="MinWorkingHours" />
                     <Variable x:TypeArguments="x:String" Name="MinHoursLine" />
@@ -165,7 +165,7 @@
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'menu item  Customers'" sap:VirtualizedContainerService.HintSize="1708,107.2" sap2010:WorkflowViewState.IdRef="Click_12" KeyModifiers="None" MouseButton="BTN_LEFT">
+                  <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'menu item  Customers'" sap:VirtualizedContainerService.HintSize="1111.2,107.2" sap2010:WorkflowViewState.IdRef="Click_35" KeyModifiers="None" MouseButton="BTN_LEFT">
                     <ui:Click.CursorPosition>
                       <ui:CursorPosition Position="Center">
                         <ui:CursorPosition.OffsetX>
@@ -177,14 +177,14 @@
                       </ui:CursorPosition>
                     </ui:Click.CursorPosition>
                     <ui:Click.Target>
-                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="7f621d45-4925-4b73-8383-7b2e5955522e" InformativeScreenshot="b9221e16ab08e4cc45fd1358daa71f4e" Selector="&lt;ctrl automationid='MenuBar' name='Application' role='menu bar' /&gt;&lt;ctrl name='Customers' role='menu item' /&gt;" WaitForReady="NONE">
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="7f621d45-4925-4b73-8383-7b2e5955522e" InformativeScreenshot="21d0d95f9c8bbf8ff90e7e000e767ceb" Selector="&lt;wnd app='qbw32.exe' cls='MauiFrame' title='*HUP HIN TRANSPORT CO PTE LTD - Reckon Accounts Enterprise*' /&gt;&lt;ctrl automationid='MenuBar' name='Application' role='menu bar' /&gt;&lt;ctrl name='Customers' role='menu item' /&gt;" WaitForReady="NONE">
                         <ui:Target.TimeoutMS>
                           <InArgument x:TypeArguments="x:Int32" />
                         </ui:Target.TimeoutMS>
                       </ui:Target>
                     </ui:Click.Target>
                   </ui:Click>
-                  <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'menu item' 1" sap:VirtualizedContainerService.HintSize="1708,107.2" sap2010:WorkflowViewState.IdRef="Click_13" KeyModifiers="None" MouseButton="BTN_LEFT">
+                  <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'menu item' 1" sap:VirtualizedContainerService.HintSize="1111.2,107.2" sap2010:WorkflowViewState.IdRef="Click_36" KeyModifiers="None" MouseButton="BTN_LEFT">
                     <ui:Click.CursorPosition>
                       <ui:CursorPosition Position="Center">
                         <ui:CursorPosition.OffsetX>
@@ -196,15 +196,15 @@
                       </ui:CursorPosition>
                     </ui:Click.CursorPosition>
                     <ui:Click.Target>
-                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="f775a212-e9de-47ea-a19e-dcfb7ad2f8af" InformativeScreenshot="ce382f78b75bebc5fa300d010ae947a6" Selector="&lt;wnd app='qbw32.exe' cls='#32768' /&gt;&lt;ctrl name='Customers' role='popup menu' /&gt;&lt;ctrl automationid='165' /&gt;" WaitForReady="NONE">
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="f775a212-e9de-47ea-a19e-dcfb7ad2f8af" InformativeScreenshot="b6fdb23a367e0ffa7ca0e8e94662beca" Selector="&lt;wnd app='qbw32.exe' cls='#32768' /&gt;&lt;ctrl name='Customers' role='popup menu' /&gt;&lt;ctrl automationid='165' /&gt;" WaitForReady="NONE">
                         <ui:Target.TimeoutMS>
                           <InArgument x:TypeArguments="x:Int32" />
                         </ui:Target.TimeoutMS>
                       </ui:Target>
                     </ui:Click.Target>
                   </ui:Click>
-                  <ui:LogMessage DisplayName="Log Message - Maximizing the window" sap:VirtualizedContainerService.HintSize="1708,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Info" Message="[&quot;Maximising the window...&quot;]" />
-                  <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" ContinueOnError="True" DisplayName="Click on maximize button" sap:VirtualizedContainerService.HintSize="1708,107.2" sap2010:WorkflowViewState.IdRef="Click_14" KeyModifiers="None" MouseButton="BTN_LEFT">
+                  <ui:LogMessage DisplayName="Log Message - Maximizing the window" sap:VirtualizedContainerService.HintSize="1111.2,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Info" Message="[&quot;Maximising the window...&quot;]" />
+                  <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" ContinueOnError="True" DisplayName="Click on maximize button" sap:VirtualizedContainerService.HintSize="1111.2,107.2" sap2010:WorkflowViewState.IdRef="Click_14" KeyModifiers="None" MouseButton="BTN_LEFT">
                     <ui:Click.CursorPosition>
                       <ui:CursorPosition Position="Center">
                         <ui:CursorPosition.OffsetX>
@@ -223,20 +223,20 @@
                       </ui:Target>
                     </ui:Click.Target>
                   </ui:Click>
-                  <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope Check Quotation file Sheets available" sap:VirtualizedContainerService.HintSize="1708,1745.6" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_3" InstanceCachePeriod="3000" Visible="False" WorkbookPath="[in_QuotationFilePath]">
+                  <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope Check Quotation file Sheets available" sap:VirtualizedContainerService.HintSize="1111.2,1424.8" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_3" InstanceCachePeriod="3000" Visible="False" WorkbookPath="[in_QuotationFilePath]">
                     <ui:ExcelApplicationScope.Body>
                       <ActivityAction x:TypeArguments="ui:WorkbookApplication">
                         <ActivityAction.Argument>
                           <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
                         </ActivityAction.Argument>
-                        <Sequence DisplayName="Do - Check if required sheet is present" sap:VirtualizedContainerService.HintSize="836,1636" sap2010:WorkflowViewState.IdRef="Sequence_70">
+                        <Sequence DisplayName="Do - Check if required sheet is present" sap:VirtualizedContainerService.HintSize="836,1315.2" sap2010:WorkflowViewState.IdRef="Sequence_70">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                           <ui:ExcelGetWorkbookSheets DisplayName="Get Workbook Sheets" sap:VirtualizedContainerService.HintSize="794.4,22.4" sap2010:WorkflowViewState.IdRef="ExcelGetWorkbookSheets_1" Sheets="[SheetsPresent]" />
-                          <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each Sheet" sap:VirtualizedContainerService.HintSize="794.4,373.6" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[SheetsPresent]">
+                          <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each Sheet" sap:VirtualizedContainerService.HintSize="794.4,52.8" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[SheetsPresent]">
                             <ui:ForEach.Body>
                               <ActivityAction x:TypeArguments="x:String">
                                 <ActivityAction.Argument>
@@ -264,7 +264,7 @@
                             </ui:ForEach.Body>
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
@@ -314,7 +314,7 @@
                                     <InArgument x:TypeArguments="x:String">[QuotationRefNumber.Replace("/", "-")]</InArgument>
                                   </Assign.Value>
                                 </Assign>
-                                <If Condition="[QuotationRefNumber.ToUpper.Trim= in_TransactionItem1(0)(&quot;Quotation Number&quot;).tostring.toupper.trim]" DisplayName="If -  check if Quotation number matches with Quotation file" sap:VirtualizedContainerService.HintSize="333.6,52.8" sap2010:WorkflowViewState.IdRef="If_16">
+                                <If Condition="[QuotationRefNumber.ToUpper.Trim= in_dt_TransactionItem1(0)(&quot;Quotation Number&quot;).tostring.toupper.trim]" DisplayName="If -  check if Quotation number matches with Quotation file" sap:VirtualizedContainerService.HintSize="333.6,52.8" sap2010:WorkflowViewState.IdRef="If_16">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -331,8 +331,8 @@
                                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
-                                      <ui:LogMessage DisplayName="Log Message - display numbers are not matching" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_45" Level="Info" Message="[&quot;Quotation reference number from quotation file and excel are not same. From Quotation file: &quot;+ QuotationRefNumber+&quot; and From Input file: &quot;+in_TransactionItem1(0)(&quot;Quotation Number&quot;).tostring]" />
-                                      <Throw DisplayName="Throw Quotation number not matching" Exception="[new BusinessRuleException(&quot;Quotation reference number &quot;+in_TransactionItem1(0)(&quot;Quotation Number&quot;).tostring+&quot; from Quotation file and Input Excel file are not matching.&quot;)]" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="Throw_5" />
+                                      <ui:LogMessage DisplayName="Log Message - display numbers are not matching" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_45" Level="Info" Message="[&quot;Quotation reference number from quotation file and excel are not same. From Quotation file: &quot;+ QuotationRefNumber+&quot; and From Input file: &quot;+in_dt_TransactionItem1(0)(&quot;Quotation Number&quot;).tostring]" />
+                                      <Throw DisplayName="Throw Quotation number not matching" Exception="[new BusinessRuleException(&quot;Quotation reference number &quot;+in_dt_TransactionItem1(0)(&quot;Quotation Number&quot;).tostring+&quot; from Quotation file and Input Excel file are not matching.&quot;)]" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="Throw_5" />
                                     </Sequence>
                                   </If.Else>
                                 </If>
@@ -368,7 +368,7 @@
                                     <InArgument x:TypeArguments="x:String">[QuotationRefNumber.Replace("/", "-")]</InArgument>
                                   </Assign.Value>
                                 </Assign>
-                                <If Condition="[QuotationRefNumber= in_TransactionItem1(0)(&quot;Quotation Number&quot;).tostring]" DisplayName="If -  check if Std Quotation number matches with Quotation file" sap:VirtualizedContainerService.HintSize="333.6,52.8" sap2010:WorkflowViewState.IdRef="If_22">
+                                <If Condition="[QuotationRefNumber= in_dt_TransactionItem1(0)(&quot;Quotation Number&quot;).tostring]" DisplayName="If -  check if Std Quotation number matches with Quotation file" sap:VirtualizedContainerService.HintSize="333.6,52.8" sap2010:WorkflowViewState.IdRef="If_22">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -385,12 +385,12 @@
                                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
-                                      <ui:LogMessage DisplayName="Log Message - display numbers are not matching #1" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_54" Level="Info" Message="[&quot;Quotation reference number from quotation file and excel are not same. From Quotation file: &quot;+ QuotationRefNumber+&quot; and From Input file: &quot;+in_TransactionItem1(0)(&quot;Quotation Number&quot;).tostring]" />
+                                      <ui:LogMessage DisplayName="Log Message - display numbers are not matching #1" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_54" Level="Info" Message="[&quot;Quotation reference number from quotation file and excel are not same. From Quotation file: &quot;+ QuotationRefNumber+&quot; and From Input file: &quot;+in_dt_TransactionItem1(0)(&quot;Quotation Number&quot;).tostring]" />
                                       <Throw DisplayName="Throw Quotation number not matching #1" Exception="[new BusinessRuleException(&quot;Quotation reference number from Quotation file and Input Excel file are not matching.&quot;)]" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="Throw_8" />
                                     </Sequence>
                                   </If.Else>
                                 </If>
-                                <Sequence DisplayName="Write Hours in respective rows" sap:VirtualizedContainerService.HintSize="375.2,338.4" sap2010:WorkflowViewState.IdRef="Sequence_85">
+                                <Sequence DisplayName="Write Hours in respective rows" sap:VirtualizedContainerService.HintSize="333.6,68.8" sap2010:WorkflowViewState.IdRef="Sequence_85">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -524,8 +524,8 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </ui:ExcelApplicationScope>
-                  <ui:LogMessage DisplayName="Log Message - Clicking on Selecting customers" sap:VirtualizedContainerService.HintSize="1708,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Info" Message="[&quot;Selecting the Company Name from dropdown&quot;]" />
-                  <ui:RetryScope DisplayName="Retry Scope - customer job" sap:VirtualizedContainerService.HintSize="1708,332" sap2010:WorkflowViewState.IdRef="RetryScope_4" NumberOfRetries="[Cint(in_Config1(&quot;RetryNumber&quot;))]" RetryInterval="[Timespan.Parse(in_Config1(&quot;RetryIntervalMedium&quot;).ToString)]">
+                  <ui:LogMessage DisplayName="Log Message - Clicking on Selecting customers" sap:VirtualizedContainerService.HintSize="1111.2,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Info" Message="[&quot;Selecting the Company Name from dropdown&quot;]" />
+                  <ui:RetryScope DisplayName="Retry Scope - customer job" sap:VirtualizedContainerService.HintSize="1111.2,332" sap2010:WorkflowViewState.IdRef="RetryScope_4" NumberOfRetries="[Cint(in_Config1(&quot;RetryNumber&quot;))]" RetryInterval="[Timespan.Parse(in_Config1(&quot;RetryIntervalMedium&quot;).ToString)]">
                     <ui:RetryScope.ActivityBody>
                       <ActivityAction>
                         <ui:ClickImage ContinueOnError="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Image on customer job" sap:VirtualizedContainerService.HintSize="333.6,156" sap2010:WorkflowViewState.IdRef="ClickImage_7" KeyModifiers="None" MouseButton="BTN_LEFT">
@@ -556,7 +556,7 @@
                       <ActivityFunc x:TypeArguments="x:Boolean" />
                     </ui:RetryScope.Condition>
                   </ui:RetryScope>
-                  <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DelayMS="[in_DelayAfterShort]" DisplayName="Type Into company name 1" sap:VirtualizedContainerService.HintSize="1708,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_6" Text="[in_TransactionItem1(0)(&quot;Company Name&quot;).ToString+ &quot;[k(tab)]&quot;]">
+                  <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" EmptyField="{x:Null}" SimulateType="{x:Null}" Activate="True" DelayMS="[in_DelayAfterShort]" DisplayName="Type Into company name 1" sap:VirtualizedContainerService.HintSize="1111.2,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_6" SendWindowMessages="True" Text="[in_dt_TransactionItem1(0)(&quot;Company Name&quot;).ToString+ &quot;[k(tab)]&quot;]">
                     <ui:TypeInto.Target>
                       <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="b651add7-aeb4-44f7-930e-6c9b3a0cfd37" InformativeScreenshot="c0bbd58f8dfd60db1eaa1a98375ffbd4" Selector="&lt;wnd app='qbw32.exe' cls='MauiFrame' title='HUP HIN TRANSPORT CO PTE LTD - Reckon Accounts Enterprise: 2022 *' /&gt;&lt;wnd cls='MauiForm' title='Create Invoices - Account Receivable' /&gt;&lt;wnd cls='Edit' /&gt;" WaitForReady="NONE">
                         <ui:Target.TimeoutMS>
@@ -565,15 +565,15 @@
                       </ui:Target>
                     </ui:TypeInto.Target>
                   </ui:TypeInto>
-                  <ui:UiElementExists DisplayName="Element Exists fast add btn" Exists="[CompanyNameNotExists]" sap:VirtualizedContainerService.HintSize="1708,107.2" sap2010:WorkflowViewState.IdRef="UiElementExists_3">
+                  <ui:UiElementExists DisplayName="Element Exists fast add btn" Exists="[CompanyNameNotExists]" sap:VirtualizedContainerService.HintSize="1111.2,107.2" sap2010:WorkflowViewState.IdRef="UiElementExists_3">
                     <ui:UiElementExists.Target>
                       <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="8fe9a5da-62a3-418e-91f7-b8fa99c641db" InformativeScreenshot="a1db7d5f31388f60676529d452b0a602" Selector="&lt;wnd app='qbw32.exe' cls='MauuiMessage' title='Customer:Job Not Found' /&gt;&lt;wnd aaname='Fast Add' cls='MauiPushButton' title='*Fast Add' /&gt;" TimeoutMS="[CInt( in_Config1(&quot;TimeoutShort&quot;))]" WaitForReady="COMPLETE" />
                     </ui:UiElementExists.Target>
                   </ui:UiElementExists>
-                  <If Condition="[CompanyNameNotExists]" DisplayName="If Company name not exists" sap:VirtualizedContainerService.HintSize="1708,52.8" sap2010:WorkflowViewState.IdRef="If_3">
+                  <If Condition="[CompanyNameNotExists]" DisplayName="If Company name not exists" sap:VirtualizedContainerService.HintSize="1111.2,587.2" sap2010:WorkflowViewState.IdRef="If_3">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
@@ -611,21 +611,21 @@
                       </Sequence>
                     </If.Then>
                   </If>
-                  <ui:LogMessage DisplayName="Log Message - checking if exclude popup exists" sap:VirtualizedContainerService.HintSize="1708,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="Info" Message="[&quot;Checking if the exclude popup exists...&quot;]" />
-                  <ui:UiElementExists DisplayName="Element Exists exclude popup" Exists="[ExcludePopupExists]" sap:VirtualizedContainerService.HintSize="1708,107.2" sap2010:WorkflowViewState.IdRef="UiElementExists_4">
+                  <ui:LogMessage DisplayName="Log Message - checking if exclude popup exists" sap:VirtualizedContainerService.HintSize="1111.2,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="Info" Message="[&quot;Checking if the exclude popup exists...&quot;]" />
+                  <ui:UiElementExists DisplayName="Element Exists exclude popup" Exists="[ExcludePopupExists]" sap:VirtualizedContainerService.HintSize="1111.2,107.2" sap2010:WorkflowViewState.IdRef="UiElementExists_4">
                     <ui:UiElementExists.Target>
                       <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="8c820740-8da4-4e18-8bf0-355eca5fe1ae" InformativeScreenshot="38e9f25c0994f8283f5ddee58d7fb2c3" Selector="&lt;wnd app='qbw32.exe' cls='MauiForm' title='Billable Time/Costs' /&gt;&lt;wnd cls='MauiRadioButton' title='Exclude outstanding billable time and costs at this time? (You m*' /&gt;" TimeoutMS="[CInt( in_Config1(&quot;TimeoutShort&quot;))]" WaitForReady="NONE" />
                     </ui:UiElementExists.Target>
                   </ui:UiElementExists>
-                  <If Condition="[ExcludePopupExists]" DisplayName="if Exclude popup exists click on close" sap:VirtualizedContainerService.HintSize="1708,52.8" sap2010:WorkflowViewState.IdRef="If_4">
+                  <If Condition="[ExcludePopupExists]" DisplayName="if Exclude popup exists click on close" sap:VirtualizedContainerService.HintSize="1111.2,495.2" sap2010:WorkflowViewState.IdRef="If_4">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                     <If.Then>
-                      <Sequence DisplayName="if Exclude popup exists" sap:VirtualizedContainerService.HintSize="375.2,332.8" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                      <Sequence DisplayName="if Exclude popup exists" sap:VirtualizedContainerService.HintSize="375.2,334.4" sap2010:WorkflowViewState.IdRef="Sequence_14">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -657,7 +657,7 @@
                       </Sequence>
                     </If.Then>
                     <If.Else>
-                      <Sequence DisplayName="Exclude popup doesn't exist" sap:VirtualizedContainerService.HintSize="375.2,185.6" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                      <Sequence DisplayName="Exclude popup doesn't exist" sap:VirtualizedContainerService.HintSize="375.2,187.2" sap2010:WorkflowViewState.IdRef="Sequence_15">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -667,8 +667,8 @@
                       </Sequence>
                     </If.Else>
                   </If>
-                  <ui:LogMessage DisplayName="Log Message - Click on date" sap:VirtualizedContainerService.HintSize="1708,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_15" Level="Info" Message="[&quot;Clicking on date field...&quot;]" />
-                  <ui:RetryScope DisplayName="Retry Scope #1" sap:VirtualizedContainerService.HintSize="1708,52.8" sap2010:WorkflowViewState.IdRef="RetryScope_3" NumberOfRetries="[Cint(in_Config1(&quot;RetryNumber&quot;))]" RetryInterval="[Timespan.Parse(in_Config1(&quot;RetryIntervalMedium&quot;).ToString)]">
+                  <ui:LogMessage DisplayName="Log Message - Click on date" sap:VirtualizedContainerService.HintSize="1111.2,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_15" Level="Info" Message="[&quot;Clicking on date field...&quot;]" />
+                  <ui:RetryScope DisplayName="Retry Scope #1" sap:VirtualizedContainerService.HintSize="1111.2,332" sap2010:WorkflowViewState.IdRef="RetryScope_3" NumberOfRetries="[Cint(in_Config1(&quot;RetryNumber&quot;))]" RetryInterval="[Timespan.Parse(in_Config1(&quot;RetryIntervalMedium&quot;).ToString)]">
                     <ui:RetryScope.ActivityBody>
                       <ActivityAction>
                         <ui:ClickImage ContinueOnError="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Image - Date" sap:VirtualizedContainerService.HintSize="333.6,156" sap2010:WorkflowViewState.IdRef="ClickImage_4" KeyModifiers="None" MouseButton="BTN_LEFT">
@@ -697,12 +697,12 @@
                     </ui:RetryScope.Condition>
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </ui:RetryScope>
-                  <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey 1" sap:VirtualizedContainerService.HintSize="1708,136.8" sap2010:WorkflowViewState.IdRef="SendHotkey_2" Key="tab" KeyModifiers="None" SpecialKey="True">
+                  <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey 1" sap:VirtualizedContainerService.HintSize="1111.2,136.8" sap2010:WorkflowViewState.IdRef="SendHotkey_2" Key="tab" KeyModifiers="None" SpecialKey="True">
                     <ui:SendHotkey.Target>
                       <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="50d3bcab-725b-480c-8473-1a8198cca555" WaitForReady="NONE">
                         <ui:Target.TimeoutMS>
@@ -711,8 +711,8 @@
                       </ui:Target>
                     </ui:SendHotkey.Target>
                   </ui:SendHotkey>
-                  <ui:LogMessage DisplayName="Log Message - getting the invoice number" sap:VirtualizedContainerService.HintSize="1708,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_16" Level="Info" Message="[&quot;Fetching the Invoice number...&quot;]" />
-                  <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text Invoice Number" sap:VirtualizedContainerService.HintSize="1708,107.2" sap2010:WorkflowViewState.IdRef="GetValue_1">
+                  <ui:LogMessage DisplayName="Log Message - getting the invoice number" sap:VirtualizedContainerService.HintSize="1111.2,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_16" Level="Info" Message="[&quot;Fetching the Invoice number...&quot;]" />
+                  <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text Invoice Number" sap:VirtualizedContainerService.HintSize="1111.2,107.2" sap2010:WorkflowViewState.IdRef="GetValue_1">
                     <ui:GetValue.Target>
                       <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="73b7780f-a025-4fc2-8671-a1d79d4d599f" InformativeScreenshot="4d4f4e371ac9a199a674c9f363800199" Selector="&lt;wnd app='qbw32.exe' cls='MauiFrame' title='HUP HIN TRANSPORT CO PTE LTD - Reckon Accounts Enterprise: 2022 *' /&gt;&lt;wnd cls='MauiForm' title='Create Invoices - Account Receivable' /&gt;&lt;wnd cls='Edit' /&gt;" WaitForReady="INTERACTIVE">
                         <ui:Target.TimeoutMS>
@@ -724,11 +724,11 @@
                       <OutArgument x:TypeArguments="x:String">[out_InvoiceNumber1]</OutArgument>
                     </ui:GetValue.Value>
                   </ui:GetValue>
-                  <ui:LogMessage DisplayName="Log Message - Display invoice number" sap:VirtualizedContainerService.HintSize="1708,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_39" Level="Info" Message="[&quot;Invoice Number fetched is: &quot;+ out_InvoiceNumber1.ToString]" />
-                  <If Condition="[Not out_InvoiceNumber1.ToString.SubString(0,2)=&quot;IN&quot;]" DisplayName="If Invoice number does not start with IN change it to user's choice " sap:VirtualizedContainerService.HintSize="1708,52.8" sap2010:WorkflowViewState.IdRef="If_17">
+                  <ui:LogMessage DisplayName="Log Message - Display invoice number" sap:VirtualizedContainerService.HintSize="1111.2,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_39" Level="Info" Message="[&quot;Invoice Number fetched is: &quot;+ out_InvoiceNumber1.ToString]" />
+                  <If Condition="[Not out_InvoiceNumber1.ToString.SubString(0,2)=&quot;IN&quot;]" DisplayName="If Invoice number does not start with IN change it to user's choice " sap:VirtualizedContainerService.HintSize="1111.2,682.4" sap2010:WorkflowViewState.IdRef="If_17">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
@@ -786,7 +786,7 @@
                       </Sequence>
                     </If.Else>
                   </If>
-                  <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey 2" sap:VirtualizedContainerService.HintSize="1708,136.8" sap2010:WorkflowViewState.IdRef="SendHotkey_16" Key="tab" KeyModifiers="None" SpecialKey="True">
+                  <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey 2" sap:VirtualizedContainerService.HintSize="1111.2,136.8" sap2010:WorkflowViewState.IdRef="SendHotkey_16" Key="tab" KeyModifiers="None" SpecialKey="True">
                     <ui:SendHotkey.Target>
                       <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="50d3bcab-725b-480c-8473-1a8198cca555" WaitForReady="NONE">
                         <ui:Target.TimeoutMS>
@@ -795,7 +795,7 @@
                       </ui:Target>
                     </ui:SendHotkey.Target>
                   </ui:SendHotkey>
-                  <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey 3" sap:VirtualizedContainerService.HintSize="1708,136.8" sap2010:WorkflowViewState.IdRef="SendHotkey_17" Key="tab" KeyModifiers="None" SpecialKey="True">
+                  <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey 3" sap:VirtualizedContainerService.HintSize="1111.2,136.8" sap2010:WorkflowViewState.IdRef="SendHotkey_17" Key="tab" KeyModifiers="None" SpecialKey="True">
                     <ui:SendHotkey.Target>
                       <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="50d3bcab-725b-480c-8473-1a8198cca555" WaitForReady="NONE">
                         <ui:Target.TimeoutMS>
@@ -804,8 +804,8 @@
                       </ui:Target>
                     </ui:SendHotkey.Target>
                   </ui:SendHotkey>
-                  <ui:LogMessage DisplayName="Log Message - clicking on PO Number" sap:VirtualizedContainerService.HintSize="1708,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_17" Level="Info" Message="[&quot;Entering the PO Number...&quot;]" />
-                  <ui:TypeInto AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" ClickBeforeTyping="True" DisplayName="Type Into PO Number" sap:VirtualizedContainerService.HintSize="1708,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_8" Text="[in_TransactionItem1(0)(&quot;PO Number&quot;).ToString+ &quot;[k(tab)]&quot;]">
+                  <ui:LogMessage DisplayName="Log Message - clicking on PO Number" sap:VirtualizedContainerService.HintSize="1111.2,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_17" Level="Info" Message="[&quot;Entering the PO Number...&quot;]" />
+                  <ui:TypeInto AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SimulateType="{x:Null}" Activate="True" ClickBeforeTyping="True" DisplayName="Type Into PO Number" sap:VirtualizedContainerService.HintSize="1111.2,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_8" SendWindowMessages="True" Text="[in_dt_TransactionItem1(0)(&quot;PO Number&quot;).ToString+ &quot;[k(tab)]&quot;]">
                     <ui:TypeInto.Target>
                       <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="b6452131-c613-4217-9978-879066034cd2" InformativeScreenshot="508eb8baac741ca45c4c031c32afd6f5" Selector="&lt;wnd app='qbw32.exe' cls='MauiFrame' title='HUP HIN TRANSPORT CO PTE LTD - Reckon Accounts Enterprise: 2022 *' /&gt;&lt;wnd cls='MauiForm' title='Create Invoices - Account Receivable' /&gt;&lt;wnd cls='Edit' /&gt;" WaitForReady="NONE">
                         <ui:Target.TimeoutMS>
@@ -814,7 +814,7 @@
                       </ui:Target>
                     </ui:TypeInto.Target>
                   </ui:TypeInto>
-                  <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey 4" sap:VirtualizedContainerService.HintSize="1708,136.8" sap2010:WorkflowViewState.IdRef="SendHotkey_4" Key="tab" KeyModifiers="None" SpecialKey="True">
+                  <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey 4" sap:VirtualizedContainerService.HintSize="1111.2,136.8" sap2010:WorkflowViewState.IdRef="SendHotkey_4" Key="tab" KeyModifiers="None" SpecialKey="True">
                     <ui:SendHotkey.Target>
                       <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="5d033285-d6ae-448d-8b6d-686d0a9d3e81" WaitForReady="NONE">
                         <ui:Target.TimeoutMS>
@@ -823,7 +823,7 @@
                       </ui:Target>
                     </ui:SendHotkey.Target>
                   </ui:SendHotkey>
-                  <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey 5" sap:VirtualizedContainerService.HintSize="1708,136.8" sap2010:WorkflowViewState.IdRef="SendHotkey_5" Key="tab" KeyModifiers="None" SpecialKey="True">
+                  <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey 5" sap:VirtualizedContainerService.HintSize="1111.2,136.8" sap2010:WorkflowViewState.IdRef="SendHotkey_5" Key="tab" KeyModifiers="None" SpecialKey="True">
                     <ui:SendHotkey.Target>
                       <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="5d033285-d6ae-448d-8b6d-686d0a9d3e81" WaitForReady="NONE">
                         <ui:Target.TimeoutMS>
@@ -832,8 +832,8 @@
                       </ui:Target>
                     </ui:SendHotkey.Target>
                   </ui:SendHotkey>
-                  <ui:LogMessage DisplayName="Log Message - Entering the project code" sap:VirtualizedContainerService.HintSize="1708,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_18" Message="[&quot;Entering the Project Code...&quot;]" />
-                  <ui:TypeInto AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" ClickBeforeTyping="True" DisplayName="Type Into PO No." sap:VirtualizedContainerService.HintSize="1708,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_17" Text="[in_TransactionItem1(0)(&quot;Project Code&quot;).ToString+ &quot;[k(tab)]&quot;]">
+                  <ui:LogMessage DisplayName="Log Message - Entering the project code" sap:VirtualizedContainerService.HintSize="1111.2,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_18" Message="[&quot;Entering the Project Code...&quot;]" />
+                  <ui:TypeInto AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SimulateType="{x:Null}" Activate="True" ClickBeforeTyping="True" DisplayName="Type Into PO No." sap:VirtualizedContainerService.HintSize="1111.2,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_17" SendWindowMessages="True" Text="[in_dt_TransactionItem1(0)(&quot;Project Code&quot;).ToString+ &quot;[k(tab)]&quot;]">
                     <ui:TypeInto.Target>
                       <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="b6452131-c613-4217-9978-879066034cd2" InformativeScreenshot="e78f3e530316d6f7ec39aff0d9b166c1" Selector="&lt;wnd app='qbw32.exe' cls='MauiFrame' title='HUP HIN TRANSPORT CO PTE LTD - Reckon Accounts Enterprise: 2022 *' /&gt;&lt;wnd cls='MauiForm' title='Create Invoices - Account Receivable' /&gt;&lt;wnd cls='Edit' /&gt;" WaitForReady="NONE">
                         <ui:Target.TimeoutMS>
@@ -842,7 +842,7 @@
                       </ui:Target>
                     </ui:TypeInto.Target>
                   </ui:TypeInto>
-                  <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey 6" sap:VirtualizedContainerService.HintSize="1708,136.8" sap2010:WorkflowViewState.IdRef="SendHotkey_7" Key="tab" KeyModifiers="None" SpecialKey="True">
+                  <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey 6" sap:VirtualizedContainerService.HintSize="1111.2,136.8" sap2010:WorkflowViewState.IdRef="SendHotkey_7" Key="tab" KeyModifiers="None" SpecialKey="True">
                     <ui:SendHotkey.Target>
                       <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="064fd534-bddb-43f1-b49c-2da799e4f283" WaitForReady="NONE">
                         <ui:Target.TimeoutMS>
@@ -851,7 +851,7 @@
                       </ui:Target>
                     </ui:SendHotkey.Target>
                   </ui:SendHotkey>
-                  <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey 7" sap:VirtualizedContainerService.HintSize="1708,136.8" sap2010:WorkflowViewState.IdRef="SendHotkey_8" Key="tab" KeyModifiers="None" SpecialKey="True">
+                  <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey 7" sap:VirtualizedContainerService.HintSize="1111.2,136.8" sap2010:WorkflowViewState.IdRef="SendHotkey_8" Key="tab" KeyModifiers="None" SpecialKey="True">
                     <ui:SendHotkey.Target>
                       <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="064fd534-bddb-43f1-b49c-2da799e4f283" WaitForReady="NONE">
                         <ui:Target.TimeoutMS>
@@ -860,8 +860,8 @@
                       </ui:Target>
                     </ui:SendHotkey.Target>
                   </ui:SendHotkey>
-                  <ui:LogMessage DisplayName="Log Message - Entering the Company details and ref number" sap:VirtualizedContainerService.HintSize="1708,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_19" Level="Info" Message="[&quot;Entering the Company details and Quotation Reference number...&quot;]" />
-                  <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into description column #3" sap:VirtualizedContainerService.HintSize="1708,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_24" Text="[&quot;OUR REF: &quot;+ QuotationRefNumber.ToString+&quot; SITE: &quot;+in_TransactionItem1(0)(&quot;Job Site address&quot;).ToString + &quot;[k(tab)]&quot;]">
+                  <ui:LogMessage DisplayName="Log Message - Entering the Company details and ref number" sap:VirtualizedContainerService.HintSize="1111.2,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_19" Level="Info" Message="[&quot;Entering the Company details and Quotation Reference number...&quot;]" />
+                  <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into description column #3" sap:VirtualizedContainerService.HintSize="1111.2,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_24" SendWindowMessages="True" Text="[&quot;OUR REF: &quot;+ QuotationRefNumber.ToString+&quot; SITE: &quot;+in_dt_TransactionItem1(0)(&quot;Job Site address&quot;).ToString + &quot;[k(tab)]&quot;]">
                     <ui:TypeInto.Target>
                       <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="345e2739-2f62-4c7c-8335-7176c66f396e" InformativeScreenshot="49b3b93a9ef79db56a2ceb69bd4db95e" Selector="&lt;wnd app='qbw32.exe' cls='MauiFrame' title='HUP HIN TRANSPORT CO PTE LTD - Reckon Accounts Enterprise: 2022 *' /&gt;&lt;wnd cls='MauiForm' title='Create Invoices - Account Receivable' /&gt;&lt;wnd cls='Edit' /&gt;" WaitForReady="NONE">
                         <ui:Target.TimeoutMS>
@@ -870,7 +870,7 @@
                       </ui:Target>
                     </ui:TypeInto.Target>
                   </ui:TypeInto>
-                  <Assign DisplayName="Assign RowCount" sap:VirtualizedContainerService.HintSize="1708,61.6" sap2010:WorkflowViewState.IdRef="Assign_2">
+                  <Assign DisplayName="Assign RowCount" sap:VirtualizedContainerService.HintSize="1111.2,61.6" sap2010:WorkflowViewState.IdRef="Assign_2">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:Int32">[RowCount]</OutArgument>
                     </Assign.To>
@@ -878,19 +878,19 @@
                       <InArgument x:TypeArguments="x:Int32">0</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_TransactionItem1]" DisplayName="For Each Row in transaction Data Table" sap:VirtualizedContainerService.HintSize="1708,2929.6" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+                  <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_dt_TransactionItem1]" DisplayName="For Each Row in transaction Data Table" sap:VirtualizedContainerService.HintSize="1111.2,10532" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
                     <ui:ForEachRow.Body>
                       <ActivityAction x:TypeArguments="sd:DataRow">
                         <ActivityAction.Argument>
                           <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
                         </ActivityAction.Argument>
-                        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="1077.6,2812" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="1077.6,10414.4" sap2010:WorkflowViewState.IdRef="Sequence_24">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey 8" sap:VirtualizedContainerService.HintSize="1036,52.8" sap2010:WorkflowViewState.IdRef="SendHotkey_9" Key="tab" KeyModifiers="None" SpecialKey="True">
+                          <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey 8" sap:VirtualizedContainerService.HintSize="1036,136.8" sap2010:WorkflowViewState.IdRef="SendHotkey_9" Key="tab" KeyModifiers="None" SpecialKey="True">
                             <ui:SendHotkey.Target>
                               <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="064fd534-bddb-43f1-b49c-2da799e4f283" WaitForReady="COMPLETE">
                                 <ui:Target.TimeoutMS>
@@ -900,12 +900,12 @@
                             </ui:SendHotkey.Target>
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
                           </ui:SendHotkey>
-                          <If Condition="[DailySheetPresent]" DisplayName="If Daily sheet present" sap:VirtualizedContainerService.HintSize="1036,2108.8" sap2010:WorkflowViewState.IdRef="If_24">
+                          <If Condition="[DailySheetPresent]" DisplayName="If Daily sheet present" sap:VirtualizedContainerService.HintSize="1036,2148.8" sap2010:WorkflowViewState.IdRef="If_24">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -913,7 +913,7 @@
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
                             <If.Then>
-                              <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - Daily Quotation Sheet" sap:VirtualizedContainerService.HintSize="433.6,1127.2" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" InstanceCachePeriod="3000" Visible="False" WorkbookPath="[in_QuotationFilePath]">
+                              <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - Daily Quotation Sheet" sap:VirtualizedContainerService.HintSize="433.6,1167.2" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" InstanceCachePeriod="3000" Visible="False" WorkbookPath="[in_QuotationFilePath]">
                                 <ui:ExcelApplicationScope.Body>
                                   <ActivityAction x:TypeArguments="ui:WorkbookApplication">
                                     <ActivityAction.Argument>
@@ -977,7 +977,7 @@
                                         </Assign.Value>
                                       </Assign>
                                       <ui:LogMessage DisplayName="Log Message - Fetching Vehicle type for Quickbooks." sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_21" Level="Info" Message="[&quot;Fetching Vehicle type for Quickbooks...&quot;]" />
-                                      <ui:LookupDataTable LookupColumnIndex="{x:Null}" LookupDataColumn="{x:Null}" RowIndex="{x:Null}" TargetColumnIndex="{x:Null}" TargetDataColumn="{x:Null}" DataTable="[in_dt_VehicleTypeMapDT1]" DisplayName="Lookup Data Table - qkbk veh type" sap:VirtualizedContainerService.HintSize="333.6,52.8" sap2010:WorkflowViewState.IdRef="LookupDataTable_1" LookupColumnName="[in_Config1(&quot;JobTypeColFromMasterFile&quot;).ToString]" LookupValue="[CurrentRow(&quot;Job Type&quot;).ToString]" TargetColumnName="QBkVName">
+                                      <ui:LookupDataTable LookupColumnIndex="{x:Null}" LookupDataColumn="{x:Null}" RowIndex="{x:Null}" TargetColumnIndex="{x:Null}" TargetDataColumn="{x:Null}" DataTable="[in_dt_VehicleTypeMap1]" DisplayName="Lookup Data Table - qkbk veh type" sap:VirtualizedContainerService.HintSize="333.6,52.8" sap2010:WorkflowViewState.IdRef="LookupDataTable_1" LookupColumnName="[in_Config1(&quot;JobTypeColFromMasterFile&quot;).ToString]" LookupValue="[CurrentRow(&quot;Job Type&quot;).ToString]" TargetColumnName="QBkVName">
                                         <ui:LookupDataTable.CellValue>
                                           <OutArgument x:TypeArguments="x:String">[VehicleTypeQkbk]</OutArgument>
                                         </ui:LookupDataTable.CellValue>
@@ -1020,7 +1020,7 @@
                               </ui:ExcelApplicationScope>
                             </If.Then>
                             <If.Else>
-                              <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - Daily Quotation Sheet for Std Quotation" sap:VirtualizedContainerService.HintSize="558.4,1948" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_5" InstanceCachePeriod="3000" Visible="False" WorkbookPath="[in_QuotationFilePath]">
+                              <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - Daily Quotation Sheet for Std Quotation" sap:VirtualizedContainerService.HintSize="558.4,1988" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_5" InstanceCachePeriod="3000" Visible="False" WorkbookPath="[in_QuotationFilePath]">
                                 <ui:ExcelApplicationScope.Body>
                                   <ActivityAction x:TypeArguments="ui:WorkbookApplication">
                                     <ActivityAction.Argument>
@@ -1033,7 +1033,7 @@
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
                                       <ui:LogMessage DisplayName="Log Message - Fetching Vehicle type for Quickbooks for Std Quotation" sap:VirtualizedContainerService.HintSize="483.2,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_58" Level="Info" Message="[&quot;Fetching Vehicle type for Quickbooks...&quot;]" />
-                                      <ui:LookupDataTable LookupColumnIndex="{x:Null}" LookupDataColumn="{x:Null}" RowIndex="{x:Null}" TargetColumnIndex="{x:Null}" TargetDataColumn="{x:Null}" DataTable="[in_dt_VehicleTypeMapDT1]" DisplayName="Lookup Data Table - qkbk veh type for Std Quotation" sap:VirtualizedContainerService.HintSize="483.2,295.2" sap2010:WorkflowViewState.IdRef="LookupDataTable_8" LookupColumnName="[in_Config1(&quot;JobTypeColFromMasterFile&quot;).ToString]" LookupValue="[CurrentRow(&quot;Job Type&quot;).ToString]" TargetColumnName="[in_Config1(&quot;QBkvVehicleTypeFromMasterFile&quot;).ToString]">
+                                      <ui:LookupDataTable LookupColumnIndex="{x:Null}" LookupDataColumn="{x:Null}" RowIndex="{x:Null}" TargetColumnIndex="{x:Null}" TargetDataColumn="{x:Null}" DataTable="[in_dt_VehicleTypeMap1]" DisplayName="Lookup Data Table - qkbk veh type for Std Quotation" sap:VirtualizedContainerService.HintSize="483.2,295.2" sap2010:WorkflowViewState.IdRef="LookupDataTable_8" LookupColumnName="[in_Config1(&quot;JobTypeColFromMasterFile&quot;).ToString]" LookupValue="[CurrentRow(&quot;Job Type&quot;).ToString]" TargetColumnName="[in_Config1(&quot;QBkvVehicleTypeFromMasterFile&quot;).ToString]">
                                         <ui:LookupDataTable.CellValue>
                                           <OutArgument x:TypeArguments="x:String">[VehicleTypeQkbk]</OutArgument>
                                         </ui:LookupDataTable.CellValue>
@@ -1065,7 +1065,7 @@
                                         </If.Else>
                                       </If>
                                       <ui:LogMessage DisplayName="Log Message - Fetching Vehicle Descriptn for Quickbooks  for Std Quotation" sap:VirtualizedContainerService.HintSize="483.2,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_59" Level="Info" Message="[&quot;Fetching Vehicle Description for Standard Quotation...&quot;]" />
-                                      <ui:LookupDataTable LookupColumnIndex="{x:Null}" LookupDataColumn="{x:Null}" RowIndex="{x:Null}" TargetColumnIndex="{x:Null}" TargetDataColumn="{x:Null}" DataTable="[in_dt_VehicleTypeMapDT1]" DisplayName="Lookup Data Table - Vehicle Type Descrpton Quickbooks  for Std Quotation" sap:VirtualizedContainerService.HintSize="483.2,295.2" sap2010:WorkflowViewState.IdRef="LookupDataTable_9" LookupColumnName="[in_Config1(&quot;JobTypeColFromMasterFile&quot;).ToString]" LookupValue="[CurrentRow(&quot;Job Type&quot;).ToString]" TargetColumnName="[in_Config1(&quot;DecriptionForStandardQuotation&quot;).ToString]">
+                                      <ui:LookupDataTable LookupColumnIndex="{x:Null}" LookupDataColumn="{x:Null}" RowIndex="{x:Null}" TargetColumnIndex="{x:Null}" TargetDataColumn="{x:Null}" DataTable="[in_dt_VehicleTypeMap1]" DisplayName="Lookup Data Table - Vehicle Type Descrpton Quickbooks  for Std Quotation" sap:VirtualizedContainerService.HintSize="483.2,295.2" sap2010:WorkflowViewState.IdRef="LookupDataTable_9" LookupColumnName="[in_Config1(&quot;JobTypeColFromMasterFile&quot;).ToString]" LookupValue="[CurrentRow(&quot;Job Type&quot;).ToString]" TargetColumnName="[in_Config1(&quot;DecriptionForStandardQuotation&quot;).ToString]">
                                         <ui:LookupDataTable.CellValue>
                                           <OutArgument x:TypeArguments="x:String">[VehicleTypeDescription]</OutArgument>
                                         </ui:LookupDataTable.CellValue>
@@ -1128,19 +1128,19 @@
                               <OutArgument x:TypeArguments="x:Double" x:Key="out_TotalStdWorkingHours">[TotalStdWorkingHours]</OutArgument>
                               <OutArgument x:TypeArguments="x:Double" x:Key="out_TotalPremWorkingHours">[TotalPremWorkingHours]</OutArgument>
                               <InArgument x:TypeArguments="x:String" x:Key="in_QuotationFilePath1">[in_QuotationFilePath]</InArgument>
-                              <InArgument x:TypeArguments="sd:DataTable" x:Key="in_SundaysDT">[in_dt_SundaysDT1]</InArgument>
-                              <InArgument x:TypeArguments="sd:DataTable" x:Key="in_PublicHolidaysDT">[in_dt_PublicHolidaysDT1]</InArgument>
+                              <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_Sundays">[in_dt_Sundays1]</InArgument>
+                              <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_PublicHolidays">[in_dt_PublicHolidays1]</InArgument>
                             </ui:InvokeWorkflowFile.Arguments>
                           </ui:InvokeWorkflowFile>
-                          <If Condition="[TotalStdWorkingHours&gt;0]" DisplayName="If std working hours &gt;0" sap:VirtualizedContainerService.HintSize="1036,52.8" sap2010:WorkflowViewState.IdRef="If_8">
+                          <If Condition="[TotalStdWorkingHours&gt;0]" DisplayName="If std working hours &gt;0" sap:VirtualizedContainerService.HintSize="1036,4669.6" sap2010:WorkflowViewState.IdRef="If_8">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
                             <If.Then>
-                              <Sequence DisplayName="Enter info #1" sap:VirtualizedContainerService.HintSize="877.6,3968" sap2010:WorkflowViewState.IdRef="Sequence_40">
+                              <Sequence DisplayName="Enter info #1" sap:VirtualizedContainerService.HintSize="877.6,4479.2" sap2010:WorkflowViewState.IdRef="Sequence_40">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1158,7 +1158,7 @@
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
                                 </ui:LookupDataTable>
-                                <If Condition="[TotalStdWorkingHours&lt;MinWorkingHours]" DisplayName="If - check if min working hours" sap:VirtualizedContainerService.HintSize="836,743.2" sap2010:WorkflowViewState.IdRef="If_12">
+                                <If Condition="[TotalStdWorkingHours&lt;MinWorkingHours]" DisplayName="If - check if min working hours" sap:VirtualizedContainerService.HintSize="836,744.8" sap2010:WorkflowViewState.IdRef="If_12">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1186,15 +1186,15 @@
                                     </Sequence>
                                   </If.Then>
                                 </If>
-                                <Sequence DisplayName="Enter Invoice items for std hrs" sap:VirtualizedContainerService.HintSize="836,2624" sap2010:WorkflowViewState.IdRef="Sequence_28">
+                                <Sequence DisplayName="Enter Invoice items for std hrs" sap:VirtualizedContainerService.HintSize="836,3132" sap2010:WorkflowViewState.IdRef="Sequence_28">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
-                                  <ui:LogMessage DisplayName="Log Message - Entering Date" sap:VirtualizedContainerService.HintSize="483.2,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_22" Level="Info" Message="[&quot;Entering Date..&quot;]" />
-                                  <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into Date field #1" sap:VirtualizedContainerService.HintSize="483.2,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_9" Text="[now.ToString(&quot;dd/MM/yyyy&quot;)+ &quot;[k(tab)]&quot;]">
+                                  <ui:LogMessage DisplayName="Log Message - Entering Date" sap:VirtualizedContainerService.HintSize="794.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_22" Level="Info" Message="[&quot;Entering Date..&quot;]" />
+                                  <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into Date field #1" sap:VirtualizedContainerService.HintSize="794.4,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_9" SendWindowMessages="True" Text="[now.ToString(&quot;dd/MM/yyyy&quot;)+ &quot;[k(tab)]&quot;]">
                                     <ui:TypeInto.Target>
                                       <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="4ce3e15a-d3cf-476d-8ddd-53ef0ae2b2ee" InformativeScreenshot="02088f052a11791029b0dc339b2949c5" Selector="&lt;wnd app='qbw32.exe' cls='MauiFrame' title='HUP HIN TRANSPORT CO PTE LTD - Reckon Accounts Enterprise: 2022 *' /&gt;&lt;wnd cls='MauiForm' title='Create Invoices - Account Receivable' /&gt;&lt;wnd cls='Edit' /&gt;" WaitForReady="COMPLETE">
                                         <ui:Target.TimeoutMS>
@@ -1203,8 +1203,8 @@
                                       </ui:Target>
                                     </ui:TypeInto.Target>
                                   </ui:TypeInto>
-                                  <ui:LogMessage DisplayName="Log Message - Entering Types #1" sap:VirtualizedContainerService.HintSize="483.2,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_23" Level="Info" Message="[&quot;Entering Types...&quot;]" />
-                                  <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into Types field #1" sap:VirtualizedContainerService.HintSize="483.2,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_11" Text="[VehicleTypeQkbk+ &quot;[k(tab)]&quot;]">
+                                  <ui:LogMessage DisplayName="Log Message - Entering Types #1" sap:VirtualizedContainerService.HintSize="794.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_23" Level="Info" Message="[&quot;Entering Types...&quot;]" />
+                                  <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into Types field #1" sap:VirtualizedContainerService.HintSize="794.4,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_11" SendWindowMessages="True" Text="[VehicleTypeQkbk+ &quot;[k(tab)]&quot;]">
                                     <ui:TypeInto.Target>
                                       <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="ac79847b-3616-47a1-9d7d-21b225fbce9f" InformativeScreenshot="3a4923c99b2666342b14cef2cab83c03" Selector="&lt;wnd app='qbw32.exe' cls='MauiFrame' title='HUP HIN TRANSPORT CO PTE LTD - Reckon Accounts Enterprise: 2022 *' /&gt;&lt;wnd cls='MauiForm' title='Create Invoices - Account Receivable' /&gt;&lt;wnd cls='Edit' /&gt;" WaitForReady="COMPLETE">
                                         <ui:Target.TimeoutMS>
@@ -1213,20 +1213,20 @@
                                       </ui:Target>
                                     </ui:TypeInto.Target>
                                   </ui:TypeInto>
-                                  <ui:UiElementExists DisplayName="Element Exists click on No #1" Exists="[NoTypePopupExists]" sap:VirtualizedContainerService.HintSize="483.2,107.2" sap2010:WorkflowViewState.IdRef="UiElementExists_5">
+                                  <ui:UiElementExists DisplayName="Element Exists click on No #1" Exists="[NoTypePopupExists]" sap:VirtualizedContainerService.HintSize="794.4,107.2" sap2010:WorkflowViewState.IdRef="UiElementExists_5">
                                     <ui:UiElementExists.Target>
                                       <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="87435f68-d2a2-4d19-8680-a7899293ae73" InformativeScreenshot="b9f142aee4af984df0a3345928eedabb" Selector="&lt;wnd app='qbw32.exe' cls='MauuiMessage' title='Item Not Found' /&gt;&lt;wnd aaname='No' cls='MauiPushButton' title='&amp;amp;No' /&gt;" TimeoutMS="[Cint(in_Config1(&quot;TimeoutShort&quot;))]" WaitForReady="COMPLETE" />
                                     </ui:UiElementExists.Target>
                                   </ui:UiElementExists>
-                                  <If Condition="[NoTypePopupExists]" DisplayName="If vehicle type doesnt exist in quick books" sap:VirtualizedContainerService.HintSize="483.2,52.8" sap2010:WorkflowViewState.IdRef="If_5">
+                                  <If Condition="[NoTypePopupExists]" DisplayName="If vehicle type doesnt exist in quick books" sap:VirtualizedContainerService.HintSize="794.4,557.6" sap2010:WorkflowViewState.IdRef="If_5">
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                       </scg:Dictionary>
                                     </sap:WorkflowViewStateService.ViewState>
                                     <If.Then>
-                                      <Sequence DisplayName="If vehicle type doesn't exists" sap:VirtualizedContainerService.HintSize="375.2,395.2" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                                      <Sequence DisplayName="If vehicle type doesn't exists" sap:VirtualizedContainerService.HintSize="375.2,396.8" sap2010:WorkflowViewState.IdRef="Sequence_22">
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1259,7 +1259,7 @@
                                       </Sequence>
                                     </If.Then>
                                     <If.Else>
-                                      <Sequence DisplayName="Vehicle type doesn't exist in quickbooks" sap:VirtualizedContainerService.HintSize="375.2,185.6" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                                      <Sequence DisplayName="Vehicle type doesn't exist in quickbooks" sap:VirtualizedContainerService.HintSize="375.2,187.2" sap2010:WorkflowViewState.IdRef="Sequence_18">
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1269,8 +1269,8 @@
                                       </Sequence>
                                     </If.Else>
                                   </If>
-                                  <ui:LogMessage DisplayName="Log Message - Entering Description  #1" sap:VirtualizedContainerService.HintSize="483.2,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_24" Level="Info" Message="[&quot;Entering Description...&quot;]" />
-                                  <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into description column #1" sap:VirtualizedContainerService.HintSize="483.2,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_12" Text="[CurrentRow(&quot;Item Serial&quot;).ToString+&quot;, &quot;+&quot;D/O &quot;+ CurrentRow(&quot;DO Number&quot;).ToString+ &quot;[k(tab)]&quot;]">
+                                  <ui:LogMessage DisplayName="Log Message - Entering Description  #1" sap:VirtualizedContainerService.HintSize="794.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_24" Level="Info" Message="[&quot;Entering Description...&quot;]" />
+                                  <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into description column #1" sap:VirtualizedContainerService.HintSize="794.4,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_12" SendWindowMessages="True" Text="[CurrentRow(&quot;Item Serial&quot;).ToString+&quot;, &quot;+&quot;D/O &quot;+ CurrentRow(&quot;DO Number&quot;).ToString+ &quot;[k(tab)]&quot;]">
                                     <ui:TypeInto.Target>
                                       <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="345e2739-2f62-4c7c-8335-7176c66f396e" InformativeScreenshot="49b3b93a9ef79db56a2ceb69bd4db95e" Selector="&lt;wnd app='qbw32.exe' cls='MauiFrame' title='HUP HIN TRANSPORT CO PTE LTD - Reckon Accounts Enterprise: 2022 *' /&gt;&lt;wnd cls='MauiForm' title='Create Invoices - Account Receivable' /&gt;&lt;wnd cls='Edit' /&gt;" WaitForReady="COMPLETE">
                                         <ui:Target.TimeoutMS>
@@ -1279,8 +1279,8 @@
                                       </ui:Target>
                                     </ui:TypeInto.Target>
                                   </ui:TypeInto>
-                                  <ui:LogMessage DisplayName="Log Message - Entering Quantity #1" sap:VirtualizedContainerService.HintSize="483.2,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_25" Level="Info" Message="[&quot;Entering Quantity...&quot;]" />
-                                  <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into Quantity #1" sap:VirtualizedContainerService.HintSize="483.2,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_13" Text="[TotalStdWorkingHours.ToString+ &quot;[k(tab)]&quot;]">
+                                  <ui:LogMessage DisplayName="Log Message - Entering Quantity #1" sap:VirtualizedContainerService.HintSize="794.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_25" Level="Info" Message="[&quot;Entering Quantity...&quot;]" />
+                                  <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into Quantity #1" sap:VirtualizedContainerService.HintSize="794.4,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_13" SendWindowMessages="True" Text="[TotalStdWorkingHours.ToString+ &quot;[k(tab)]&quot;]">
                                     <ui:TypeInto.Target>
                                       <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="dca8a033-8820-4fb4-9041-36898b2497a5" InformativeScreenshot="39ab1a93790af2de5fc56690ac10a405" Selector="&lt;wnd app='qbw32.exe' cls='MauiFrame' title='HUP HIN TRANSPORT CO PTE LTD - Reckon Accounts Enterprise: 2022 *' /&gt;&lt;wnd cls='MauiForm' title='Create Invoices - Account Receivable' /&gt;&lt;wnd cls='Edit' /&gt;" WaitForReady="COMPLETE">
                                         <ui:Target.TimeoutMS>
@@ -1289,8 +1289,8 @@
                                       </ui:Target>
                                     </ui:TypeInto.Target>
                                   </ui:TypeInto>
-                                  <ui:LogMessage DisplayName="Log Message - Entering Hours #1" sap:VirtualizedContainerService.HintSize="483.2,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_26" Level="Info" Message="[&quot;Entering Hours...&quot;]" />
-                                  <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into Trip/hour #1" sap:VirtualizedContainerService.HintSize="483.2,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_14" Text="HOUR[k(tab)]">
+                                  <ui:LogMessage DisplayName="Log Message - Entering Hours #1" sap:VirtualizedContainerService.HintSize="794.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_26" Level="Info" Message="[&quot;Entering Hours...&quot;]" />
+                                  <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into Trip/hour #1" sap:VirtualizedContainerService.HintSize="794.4,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_14" SendWindowMessages="True" Text="HOUR[k(tab)]">
                                     <ui:TypeInto.Target>
                                       <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="532c7e93-823a-43ef-8695-02d457bdacef" InformativeScreenshot="f4c5037e39d44bafd28c204387960cec" Selector="&lt;wnd app='qbw32.exe' cls='MauiFrame' title='HUP HIN TRANSPORT CO PTE LTD - Reckon Accounts Enterprise: 2022 *' /&gt;&lt;wnd cls='MauiForm' title='Create Invoices - Account Receivable' /&gt;&lt;wnd cls='Edit' /&gt;" WaitForReady="COMPLETE">
                                         <ui:Target.TimeoutMS>
@@ -1299,8 +1299,8 @@
                                       </ui:Target>
                                     </ui:TypeInto.Target>
                                   </ui:TypeInto>
-                                  <ui:LogMessage DisplayName="Log Message - Entering Rate #1" sap:VirtualizedContainerService.HintSize="483.2,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_27" Level="Info" Message="[&quot;Entering Rate...&quot;]" />
-                                  <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into Rate #1" sap:VirtualizedContainerService.HintSize="483.2,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_16" Text="[StdRate.ToString+ &quot;[k(tab)]&quot;]">
+                                  <ui:LogMessage DisplayName="Log Message - Entering Rate #1" sap:VirtualizedContainerService.HintSize="794.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_27" Level="Info" Message="[&quot;Entering Rate...&quot;]" />
+                                  <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into Rate #1" sap:VirtualizedContainerService.HintSize="794.4,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_16" SendWindowMessages="True" Text="[StdRate.ToString+ &quot;[k(tab)]&quot;]">
                                     <ui:TypeInto.Target>
                                       <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="22cb8e23-d675-4af7-bf0e-578d217817eb" InformativeScreenshot="fd6125b8e1a8bb2fc4403da349aa40fc" Selector="&lt;wnd app='qbw32.exe' cls='MauiFrame' title='HUP HIN TRANSPORT CO PTE LTD - Reckon Accounts Enterprise: 2022 *' /&gt;&lt;wnd cls='MauiForm' title='Create Invoices - Account Receivable' /&gt;&lt;wnd cls='Edit' /&gt;" WaitForReady="COMPLETE">
                                         <ui:Target.TimeoutMS>
@@ -1309,12 +1309,12 @@
                                       </ui:Target>
                                     </ui:TypeInto.Target>
                                   </ui:TypeInto>
-                                  <ui:UiElementExists DisplayName="Element Exists popup" Exists="[PopupExists]" sap:VirtualizedContainerService.HintSize="483.2,107.2" sap2010:WorkflowViewState.IdRef="UiElementExists_8">
+                                  <ui:UiElementExists DisplayName="Element Exists popup" Exists="[PopupExists]" sap:VirtualizedContainerService.HintSize="794.4,107.2" sap2010:WorkflowViewState.IdRef="UiElementExists_8">
                                     <ui:UiElementExists.Target>
                                       <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="bfc49c1a-9a7b-4daa-b580-751e2f4e3030" InformativeScreenshot="07aa0ca5312d914fc4e3f1238d2336b7" Selector="&lt;wnd app='qbw32.exe' cls='MauiForm' title='Price Levels' /&gt;&lt;wnd cls='MauiPushButton' title='OK' /&gt;" TimeoutMS="[Cint(in_Config1(&quot;TimeoutShort&quot;))]" WaitForReady="COMPLETE" />
                                     </ui:UiElementExists.Target>
                                   </ui:UiElementExists>
-                                  <If Condition="[PopupExists]" DisplayName="If popup exists" sap:VirtualizedContainerService.HintSize="483.2,296" sap2010:WorkflowViewState.IdRef="If_13">
+                                  <If Condition="[PopupExists]" DisplayName="If popup exists" sap:VirtualizedContainerService.HintSize="794.4,297.6" sap2010:WorkflowViewState.IdRef="If_13">
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1368,22 +1368,22 @@
                               </Sequence>
                             </If.Else>
                           </If>
-                          <If Condition="[TotalPremWorkingHours&gt;0]" DisplayName="If prem working hours &gt;0" sap:VirtualizedContainerService.HintSize="1036,52.8" sap2010:WorkflowViewState.IdRef="If_10">
+                          <If Condition="[TotalPremWorkingHours&gt;0]" DisplayName="If prem working hours &gt;0" sap:VirtualizedContainerService.HintSize="1036,2914.4" sap2010:WorkflowViewState.IdRef="If_10">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
                             <If.Then>
-                              <Sequence DisplayName="Enter info" sap:VirtualizedContainerService.HintSize="375.2,2716" sap2010:WorkflowViewState.IdRef="Sequence_41">
+                              <Sequence DisplayName="Enter info" sap:VirtualizedContainerService.HintSize="375.2,2724" sap2010:WorkflowViewState.IdRef="Sequence_41">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey 9" sap:VirtualizedContainerService.HintSize="333.6,133.6" sap2010:WorkflowViewState.IdRef="SendHotkey_20" Key="tab" KeyModifiers="None" SpecialKey="True">
+                                <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey 9" sap:VirtualizedContainerService.HintSize="333.6,136.8" sap2010:WorkflowViewState.IdRef="SendHotkey_20" Key="tab" KeyModifiers="None" SpecialKey="True">
                                   <ui:SendHotkey.Target>
                                     <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="064fd534-bddb-43f1-b49c-2da799e4f283" WaitForReady="COMPLETE">
                                       <ui:Target.TimeoutMS>
@@ -1392,7 +1392,7 @@
                                     </ui:Target>
                                   </ui:SendHotkey.Target>
                                 </ui:SendHotkey>
-                                <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey 10" sap:VirtualizedContainerService.HintSize="333.6,133.6" sap2010:WorkflowViewState.IdRef="SendHotkey_21" Key="tab" KeyModifiers="None" SpecialKey="True">
+                                <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey 10" sap:VirtualizedContainerService.HintSize="333.6,136.8" sap2010:WorkflowViewState.IdRef="SendHotkey_21" Key="tab" KeyModifiers="None" SpecialKey="True">
                                   <ui:SendHotkey.Target>
                                     <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="064fd534-bddb-43f1-b49c-2da799e4f283" WaitForReady="COMPLETE">
                                       <ui:Target.TimeoutMS>
@@ -1414,7 +1414,7 @@
                                   </sap:WorkflowViewStateService.ViewState>
                                 </ui:LookupDataTable>
                                 <ui:LogMessage DisplayName="Log Message - Entering Date #2" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_29" Level="Info" Message="[&quot;Entering Date..&quot;]" />
-                                <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into Date #2" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_18" Text="[now.ToString(&quot;dd/MM/yyyy&quot;)+ &quot;[k(tab)]&quot;]">
+                                <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into Date #2" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_18" SendWindowMessages="True" Text="[now.ToString(&quot;dd/MM/yyyy&quot;)+ &quot;[k(tab)]&quot;]">
                                   <ui:TypeInto.Target>
                                     <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="4ce3e15a-d3cf-476d-8ddd-53ef0ae2b2ee" InformativeScreenshot="02088f052a11791029b0dc339b2949c5" Selector="&lt;wnd app='qbw32.exe' cls='MauiFrame' title='HUP HIN TRANSPORT CO PTE LTD - Reckon Accounts Enterprise: 2022 *' /&gt;&lt;wnd cls='MauiForm' title='Create Invoices - Account Receivable' /&gt;&lt;wnd cls='Edit' /&gt;" WaitForReady="COMPLETE">
                                       <ui:Target.TimeoutMS>
@@ -1424,7 +1424,7 @@
                                   </ui:TypeInto.Target>
                                 </ui:TypeInto>
                                 <ui:LogMessage DisplayName="Log Message - Entering Types #2" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_30" Level="Info" Message="[&quot;Entering Types...&quot;]" />
-                                <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into Types #2" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_19" Text="[VehicleTypeQkbk+ &quot;[k(tab)]&quot;]">
+                                <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into Types #2" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_19" SendWindowMessages="True" Text="[VehicleTypeQkbk+ &quot;[k(tab)]&quot;]">
                                   <ui:TypeInto.Target>
                                     <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="ac79847b-3616-47a1-9d7d-21b225fbce9f" InformativeScreenshot="3a4923c99b2666342b14cef2cab83c03" Selector="&lt;wnd app='qbw32.exe' cls='MauiFrame' title='HUP HIN TRANSPORT CO PTE LTD - Reckon Accounts Enterprise: 2022 *' /&gt;&lt;wnd cls='MauiForm' title='Create Invoices - Account Receivable' /&gt;&lt;wnd cls='Edit' /&gt;" WaitForReady="COMPLETE">
                                       <ui:Target.TimeoutMS>
@@ -1434,7 +1434,7 @@
                                   </ui:TypeInto.Target>
                                 </ui:TypeInto>
                                 <ui:LogMessage DisplayName="Log Message - Entering Description #2" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_31" Level="Info" Message="[&quot;Entering Description...&quot;]" />
-                                <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into description column #2" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_20" Text="[CurrentRow(&quot;Item Serial&quot;).ToString+&quot;, &quot;+&quot;D/O &quot;+ CurrentRow(&quot;DO Number &quot;).ToString+&quot;(Premium OT Rate)&quot;+ &quot;[k(tab)]&quot;]">
+                                <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into description column #2" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_20" SendWindowMessages="True" Text="[CurrentRow(&quot;Item Serial&quot;).ToString+&quot;, &quot;+&quot;D/O &quot;+ CurrentRow(&quot;DO Number &quot;).ToString+&quot;(Premium OT Rate)&quot;+ &quot;[k(tab)]&quot;]">
                                   <ui:TypeInto.Target>
                                     <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="345e2739-2f62-4c7c-8335-7176c66f396e" InformativeScreenshot="49b3b93a9ef79db56a2ceb69bd4db95e" Selector="&lt;wnd app='qbw32.exe' cls='MauiFrame' title='HUP HIN TRANSPORT CO PTE LTD - Reckon Accounts Enterprise: 2022 *' /&gt;&lt;wnd cls='MauiForm' title='Create Invoices - Account Receivable' /&gt;&lt;wnd cls='Edit' /&gt;" WaitForReady="COMPLETE">
                                       <ui:Target.TimeoutMS>
@@ -1444,7 +1444,7 @@
                                   </ui:TypeInto.Target>
                                 </ui:TypeInto>
                                 <ui:LogMessage DisplayName="Log Message - Entering Quantity #2" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_32" Level="Info" Message="[&quot;Entering Quantity...&quot;]" />
-                                <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into Quantity #2" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_21" Text="[TotalPremWorkingHours.ToString+ &quot;[k(tab)]&quot;]">
+                                <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into Quantity #2" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_21" SendWindowMessages="True" Text="[TotalPremWorkingHours.ToString+ &quot;[k(tab)]&quot;]">
                                   <ui:TypeInto.Target>
                                     <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="dca8a033-8820-4fb4-9041-36898b2497a5" InformativeScreenshot="39ab1a93790af2de5fc56690ac10a405" Selector="&lt;wnd app='qbw32.exe' cls='MauiFrame' title='HUP HIN TRANSPORT CO PTE LTD - Reckon Accounts Enterprise: 2022 *' /&gt;&lt;wnd cls='MauiForm' title='Create Invoices - Account Receivable' /&gt;&lt;wnd cls='Edit' /&gt;" WaitForReady="COMPLETE">
                                       <ui:Target.TimeoutMS>
@@ -1454,7 +1454,7 @@
                                   </ui:TypeInto.Target>
                                 </ui:TypeInto>
                                 <ui:LogMessage DisplayName="Log Message - Entering Hours #2" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_33" Level="Info" Message="[&quot;Entering Hours...&quot;]" />
-                                <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into trip/hour #2" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_22" Text="HOUR[k(tab)]">
+                                <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into trip/hour #2" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_22" SendWindowMessages="True" Text="HOUR[k(tab)]">
                                   <ui:TypeInto.Target>
                                     <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="532c7e93-823a-43ef-8695-02d457bdacef" InformativeScreenshot="f4c5037e39d44bafd28c204387960cec" Selector="&lt;wnd app='qbw32.exe' cls='MauiFrame' title='HUP HIN TRANSPORT CO PTE LTD - Reckon Accounts Enterprise: 2022 *' /&gt;&lt;wnd cls='MauiForm' title='Create Invoices - Account Receivable' /&gt;&lt;wnd cls='Edit' /&gt;" WaitForReady="COMPLETE">
                                       <ui:Target.TimeoutMS>
@@ -1464,7 +1464,7 @@
                                   </ui:TypeInto.Target>
                                 </ui:TypeInto>
                                 <ui:LogMessage DisplayName="Log Message - Entering Rate #2" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_34" Level="Info" Message="[&quot;Entering Rate...&quot;]" />
-                                <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into #2" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_23" Text="[PremRate.ToString+ &quot;[k(tab)]&quot;]">
+                                <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into #2" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_23" SendWindowMessages="True" Text="[PremRate.ToString+ &quot;[k(tab)]&quot;]">
                                   <ui:TypeInto.Target>
                                     <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="22cb8e23-d675-4af7-bf0e-578d217817eb" InformativeScreenshot="fd6125b8e1a8bb2fc4403da349aa40fc" Selector="&lt;wnd app='qbw32.exe' cls='MauiFrame' title='HUP HIN TRANSPORT CO PTE LTD - Reckon Accounts Enterprise: 2022 *' /&gt;&lt;wnd cls='MauiForm' title='Create Invoices - Account Receivable' /&gt;&lt;wnd cls='Edit' /&gt;" WaitForReady="COMPLETE">
                                       <ui:Target.TimeoutMS>
@@ -1504,8 +1504,8 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </ui:ForEachRow>
-                  <ui:LogMessage DisplayName="Log Message - Enter customer msg" sap:VirtualizedContainerService.HintSize="903.2,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_36" Level="Info" Message="[&quot;Entering Customer message...&quot;]" />
-                  <ui:RetryScope DisplayName="Retry Scope - Customer msg" sap:VirtualizedContainerService.HintSize="1288.8,622.4" sap2010:WorkflowViewState.IdRef="RetryScope_2" NumberOfRetries="[Cint(in_Config1(&quot;RetryNumber&quot;))]" RetryInterval="[Timespan.Parse(in_Config1(&quot;RetryIntervalShort&quot;).ToString)]">
+                  <ui:LogMessage DisplayName="Log Message - Enter customer msg" sap:VirtualizedContainerService.HintSize="1111.2,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_36" Level="Info" Message="[&quot;Entering Customer message...&quot;]" />
+                  <ui:RetryScope DisplayName="Retry Scope - Customer msg" sap:VirtualizedContainerService.HintSize="1111.2,622.4" sap2010:WorkflowViewState.IdRef="RetryScope_2" NumberOfRetries="[Cint(in_Config1(&quot;RetryNumber&quot;))]" RetryInterval="[Timespan.Parse(in_Config1(&quot;RetryIntervalShort&quot;).ToString)]">
                     <ui:RetryScope.ActivityBody>
                       <ActivityAction>
                         <Sequence DisplayName="Action #2" sap:VirtualizedContainerService.HintSize="375.2,446.4" sap2010:WorkflowViewState.IdRef="Sequence_59">
@@ -1554,8 +1554,8 @@
                       <ActivityFunc x:TypeArguments="x:Boolean" />
                     </ui:RetryScope.Condition>
                   </ui:RetryScope>
-                  <ui:LogMessage DisplayName="Log Message - Clicking on save #1" sap:VirtualizedContainerService.HintSize="903.2,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_37" Level="Info" Message="[&quot;Clicking on Print...&quot;]" />
-                  <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" ContinueOnError="False" DisplayName="Click on Print" sap:VirtualizedContainerService.HintSize="1708,107.2" sap2010:WorkflowViewState.IdRef="Click_23" KeyModifiers="None" MouseButton="BTN_LEFT">
+                  <ui:LogMessage DisplayName="Log Message - Clicking on save #1" sap:VirtualizedContainerService.HintSize="1111.2,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_37" Level="Info" Message="[&quot;Clicking on Print...&quot;]" />
+                  <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" ContinueOnError="False" DisplayName="Click on Print" sap:VirtualizedContainerService.HintSize="1111.2,107.2" sap2010:WorkflowViewState.IdRef="Click_23" KeyModifiers="None" MouseButton="BTN_LEFT">
                     <ui:Click.CursorPosition>
                       <ui:CursorPosition Position="Center">
                         <ui:CursorPosition.OffsetX>
@@ -1574,7 +1574,7 @@
                       </ui:Target>
                     </ui:Click.Target>
                   </ui:Click>
-                  <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click on Print #1" sap:VirtualizedContainerService.HintSize="1708,107.2" sap2010:WorkflowViewState.IdRef="Click_24" KeyModifiers="None" MouseButton="BTN_LEFT">
+                  <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click on Print #1" sap:VirtualizedContainerService.HintSize="1111.2,107.2" sap2010:WorkflowViewState.IdRef="Click_24" KeyModifiers="None" MouseButton="BTN_LEFT">
                     <ui:Click.CursorPosition>
                       <ui:CursorPosition Position="Center">
                         <ui:CursorPosition.OffsetX>
@@ -1593,8 +1593,8 @@
                       </ui:Target>
                     </ui:Click.Target>
                   </ui:Click>
-                  <ui:LogMessage DisplayName="Log Message - Clicking on save" sap:VirtualizedContainerService.HintSize="1708,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_38" Level="Info" Message="[&quot;Clicking on Save button...&quot;]" />
-                  <ui:UiElementExists DisplayName="Element Exists Save" Exists="[SavePopupExists]" sap:VirtualizedContainerService.HintSize="1708,107.2" sap2010:WorkflowViewState.IdRef="UiElementExists_6">
+                  <ui:LogMessage DisplayName="Log Message - Clicking on save" sap:VirtualizedContainerService.HintSize="1111.2,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_38" Level="Info" Message="[&quot;Clicking on Save button...&quot;]" />
+                  <ui:UiElementExists DisplayName="Element Exists Save" Exists="[SavePopupExists]" sap:VirtualizedContainerService.HintSize="1111.2,107.2" sap2010:WorkflowViewState.IdRef="UiElementExists_6">
                     <ui:UiElementExists.Target>
                       <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="39385270-db03-477a-9883-8d4fbc1bb825" InformativeScreenshot="10b9c8c237446335a5f61bea6fd591f7" Selector="&lt;wnd app='qbw32.exe' cls='#32770' title='Save Print Output As' /&gt;&lt;wnd ctrlid='1' title='&amp;amp;Save' /&gt;" WaitForReady="COMPLETE">
                         <ui:Target.TimeoutMS>
@@ -1603,7 +1603,7 @@
                       </ui:Target>
                     </ui:UiElementExists.Target>
                   </ui:UiElementExists>
-                  <If Condition="[SavePopupExists]" DisplayName="If save popup exists" sap:VirtualizedContainerService.HintSize="1708,1203.2" sap2010:WorkflowViewState.IdRef="If_6">
+                  <If Condition="[SavePopupExists]" DisplayName="If save popup exists" sap:VirtualizedContainerService.HintSize="1111.2,1203.2" sap2010:WorkflowViewState.IdRef="If_6">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1637,7 +1637,7 @@
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into pdf path" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_15" Text="[out_InvoiceFilePath1]">
+                                <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into pdf path" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_15" SendWindowMessages="True" Text="[out_InvoiceFilePath1]">
                                   <ui:TypeInto.Target>
                                     <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="839aac89-7d6d-490a-847e-e3f81bc5b6ad" InformativeScreenshot="f7e5d1be6db1fd4c8084f16496eb9b0b" Selector="&lt;wnd aaname='File name:' cls='ComboBox' /&gt;&lt;wnd ctrlid='1001' /&gt;" WaitForReady="COMPLETE">
                                       <ui:Target.TimeoutMS>
@@ -1658,7 +1658,7 @@
                                     </ui:CursorPosition>
                                   </ui:Click.CursorPosition>
                                   <ui:Click.Target>
-                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="cb7bb452-c479-4799-b3f2-c4e4d35bde61" InformativeScreenshot="66fa2c8fd474951ed626f48e8b0eb335" Selector="&lt;wnd ctrlid='1' title='*Save' aaname='save' /&gt;" WaitForReady="COMPLETE">
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="cb7bb452-c479-4799-b3f2-c4e4d35bde61" InformativeScreenshot="66fa2c8fd474951ed626f48e8b0eb335" Selector="&lt;wnd ctrlid='1' title='*Save' aaname='*ave' /&gt;" WaitForReady="COMPLETE">
                                       <ui:Target.TimeoutMS>
                                         <InArgument x:TypeArguments="x:Int32" />
                                       </ui:Target.TimeoutMS>
@@ -1732,10 +1732,10 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </uix:NApplicationCard>
-          <ui:RetryScope DisplayName="Retry Scope -  check if file is not downloaded" sap:VirtualizedContainerService.HintSize="1364,52.8" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[Cint(in_Config1(&quot;RetryNumber&quot;))]" RetryInterval="[Timespan.Parse(in_Config1(&quot;RetryIntervalMedium&quot;).ToString)]">
+          <ui:RetryScope DisplayName="Retry Scope -  check if file is not downloaded" sap:VirtualizedContainerService.HintSize="1186.4,568" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[Cint(in_Config1(&quot;RetryNumber&quot;))]" RetryInterval="[Timespan.Parse(in_Config1(&quot;RetryIntervalMedium&quot;).ToString)]">
             <ui:RetryScope.ActivityBody>
               <ActivityAction>
-                <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="836,672" sap2010:WorkflowViewState.IdRef="Sequence_50">
+                <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="475.2,320" sap2010:WorkflowViewState.IdRef="Sequence_50">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1756,7 +1756,7 @@
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ui:LogMessage DisplayName="Log Message -File downloaded successfully" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[&quot;Invoice PDF downloaded successfully for Company Name: &quot;+ in_TransactionItem1(0)(&quot;Company Name&quot;).tostring]" />
+                        <ui:LogMessage DisplayName="Log Message -File downloaded successfully" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[&quot;Invoice PDF downloaded successfully for Company Name: &quot;+ in_dt_TransactionItem1(0)(&quot;Company Name&quot;).tostring]" />
                         <Assign DisplayName="Assign Invoice PDF Download to true" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_12">
                           <Assign.To>
                             <OutArgument x:TypeArguments="x:Boolean">[InvoicePDFDownloadSuccess]</OutArgument>
@@ -1774,7 +1774,7 @@
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ui:LogMessage DisplayName="Log Message -File downloaded failed" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Error" Message="[&quot;Failed to download Invoice PDF for Company Name: &quot;+ in_TransactionItem1(0)(&quot;Company Name&quot;).tostring]" />
+                        <ui:LogMessage DisplayName="Log Message -File downloaded failed" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Error" Message="[&quot;Failed to download Invoice PDF for Company Name: &quot;+ in_dt_TransactionItem1(0)(&quot;Company Name&quot;).tostring]" />
                         <Assign DisplayName="Assign Invoice PDF Download to false" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_13">
                           <Assign.To>
                             <OutArgument x:TypeArguments="x:Boolean">[InvoicePDFDownloadSuccess]</OutArgument>
@@ -1796,7 +1796,7 @@
             </ui:RetryScope.Condition>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
@@ -1804,7 +1804,7 @@
         </Sequence>
       </TryCatch.Try>
       <TryCatch.Catches>
-        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="1408.8,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="1231.2,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_1">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -1833,7 +1833,7 @@
             </Sequence>
           </ActivityAction>
         </Catch>
-        <Catch x:TypeArguments="ui:BusinessRuleException" sap:VirtualizedContainerService.HintSize="1408.8,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+        <Catch x:TypeArguments="ui:BusinessRuleException" sap:VirtualizedContainerService.HintSize="1231.2,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_2">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">False</x:Boolean>

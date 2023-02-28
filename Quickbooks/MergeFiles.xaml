@@ -2,15 +2,15 @@
   <x:Members>
     <x:Property Name="in_InvoiceNumber" Type="InArgument(x:String)" />
     <x:Property Name="in_InvoiceFilePath" Type="InArgument(x:String)" />
-    <x:Property Name="in_TransactionItem" Type="InArgument(sd:DataTable)" />
     <x:Property Name="in_InvoicePath" Type="InArgument(x:String)" />
     <x:Property Name="in_Config1" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="io_ProcessType2" Type="InOutArgument(x:String)" />
+    <x:Property Name="in_dt_TransactionItem1" Type="InArgument(sd:DataTable)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>698.4,2868.8</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>693.6,2868.8</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>MergeFiles_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="34">
@@ -143,7 +143,7 @@
               <OutArgument x:TypeArguments="x:String">[DOPDFFilePath]</OutArgument>
             </Assign.To>
             <Assign.Value>
-              <InArgument x:TypeArguments="x:String">[in_TransactionItem(0)("DO or Timesheet File Path").ToString]</InArgument>
+              <InArgument x:TypeArguments="x:String">[in_dt_TransactionItem1(0)("DO or Timesheet File Path").ToString]</InArgument>
             </Assign.Value>
           </Assign>
           <ui:LogMessage DisplayName="Log Message - DO PDF File Path" sap:VirtualizedContainerService.HintSize="584,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;DO PDF File Path for this transaction is: &quot;+ DOPDFFilePath]" />
@@ -152,7 +152,7 @@
               <OutArgument x:TypeArguments="x:String">[POPDFFilePath]</OutArgument>
             </Assign.To>
             <Assign.Value>
-              <InArgument x:TypeArguments="x:String">[in_TransactionItem(0)("PO File Path").ToString]</InArgument>
+              <InArgument x:TypeArguments="x:String">[in_dt_TransactionItem1(0)("PO File Path").ToString]</InArgument>
             </Assign.Value>
           </Assign>
           <ui:LogMessage DisplayName="Log Message - Display PO PDF File Path" sap:VirtualizedContainerService.HintSize="584,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;PO PDF File Path for this transaction is: &quot;+ POPDFFilePath]" />
@@ -161,7 +161,7 @@
               <OutArgument x:TypeArguments="x:String">[QuotationExcelFilePath]</OutArgument>
             </Assign.To>
             <Assign.Value>
-              <InArgument x:TypeArguments="x:String">[in_TransactionItem(0)("Quotation File Path").ToString]</InArgument>
+              <InArgument x:TypeArguments="x:String">[in_dt_TransactionItem1(0)("Quotation File Path").ToString]</InArgument>
             </Assign.Value>
           </Assign>
           <ui:LogMessage DisplayName="Log Message - Display Quotation File Path #1" sap:VirtualizedContainerService.HintSize="584,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Quotation Excel File Path for this transaction is: &quot;+ QuotationExcelFilePath]" />
@@ -170,7 +170,7 @@
               <OutArgument x:TypeArguments="x:String">[QuotationPDFFilePath]</OutArgument>
             </Assign.To>
             <Assign.Value>
-              <InArgument x:TypeArguments="x:String">[Path.GetFileNameWithoutExtension(in_TransactionItem(0)("Quotation File Path").ToString)+".pdf"]</InArgument>
+              <InArgument x:TypeArguments="x:String">[QuotationExcelFilePath.Substring(0, QuotationExcelFilePath.Length-5)+".pdf"]</InArgument>
             </Assign.Value>
           </Assign>
           <ui:LogMessage DisplayName="Log Message - Display Quotation File Path" sap:VirtualizedContainerService.HintSize="584,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;Quotation PDF File Path for this transaction is: &quot;+ QuotationPDFFilePath]" />
@@ -198,7 +198,7 @@
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <ueab:SaveAsPdfX EndPage="{x:Null}" StartPage="{x:Null}" DestinationPdfPath="[QuotationPDFFilePath]" DisplayName="Save Excel File As PDF for Quotation file" sap:VirtualizedContainerService.HintSize="433.6,160" sap2010:WorkflowViewState.IdRef="SaveAsPdfX_1" ReplaceExisting="False" SaveQuality="StandardQuality" Workbook="[Excel]" />
+                          <ueab:SaveAsPdfX EndPage="{x:Null}" StartPage="{x:Null}" DestinationPdfPath="[QuotationPDFFilePath]" DisplayName="Save Excel File As PDF for Quotation file" sap:VirtualizedContainerService.HintSize="433.6,160" sap2010:WorkflowViewState.IdRef="SaveAsPdfX_1" SaveQuality="StandardQuality" Workbook="[Excel]" />
                         </Sequence>
                       </ActivityAction>
                     </ueab:ExcelApplicationCard.Body>

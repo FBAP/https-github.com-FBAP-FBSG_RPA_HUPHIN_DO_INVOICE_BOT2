@@ -7,7 +7,7 @@
     <x:Property sap2010:Annotation.AnnotationText="Used to indicate whether the retry procedure is managed by an Orchestrator queue." Name="in_QueueRetry" Type="InArgument(x:Boolean)" />
     <x:Property Name="io_UniqueColCount1" Type="InOutArgument(x:Int32)" />
     <x:Property Name="io_ProcessedRowCount1" Type="InOutArgument(x:Int32)" />
-    <x:Property Name="in_TransactionItem" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="in_dt_TransactionItem" Type="InArgument(sd:DataTable)" />
   </x:Members>
   <sap:VirtualizedContainerService.HintSize>854.4,934.4</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
@@ -46,7 +46,6 @@
       <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
       <AssemblyReference>System.ValueTuple</AssemblyReference>
       <AssemblyReference>NPOI</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
       <AssemblyReference>System.Data</AssemblyReference>
       <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
       <AssemblyReference>System.Data.Entity</AssemblyReference>
@@ -145,7 +144,7 @@
                           <OutArgument x:TypeArguments="x:Int32">[io_ProcessedRowCount1]</OutArgument>
                         </Assign.To>
                         <Assign.Value>
-                          <InArgument x:TypeArguments="x:Int32">[in_TransactionItem.Rows.Count]</InArgument>
+                          <InArgument x:TypeArguments="x:Int32">[in_dt_TransactionItem.Rows.Count]</InArgument>
                         </Assign.Value>
                       </Assign>
                       <FlowStep.Next>
