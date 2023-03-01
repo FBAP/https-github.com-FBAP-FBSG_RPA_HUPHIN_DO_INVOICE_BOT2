@@ -12,11 +12,13 @@
     <x:Property Name="in_dt_TransactionItem1" Type="InArgument(sd:DataTable)" />
     <x:Property Name="in_dt_PublicHolidays" Type="InArgument(sd:DataTable)" />
     <x:Property Name="in_dt_Sundays" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="in_BillingEntity" Type="InArgument(x:String)" />
+    <x:Property Name="in_BillingEntityForHE" Type="InArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>2019.2,23866.4</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>2019.2,25020</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Sequence_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="40">
@@ -101,9 +103,10 @@
       <AssemblyReference>System.Collections.Immutable</AssemblyReference>
       <AssemblyReference>UiPath.Excel</AssemblyReference>
       <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="This .xaml will create invoices for &#xA;Monthly process. It will also calculate the total standard working hours and working hours on Weekends." DisplayName="Quickbooks Process" sap:VirtualizedContainerService.HintSize="2029.6,23801.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="This .xaml will create invoices for &#xA;Monthly process. It will also calculate the total standard working hours and working hours on Weekends." DisplayName="Quickbooks Process" sap:VirtualizedContainerService.HintSize="2029.6,24955.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Double" Name="TotalPremWorkingHours" />
       <Variable x:TypeArguments="x:Double" Name="TotalStdWorkingHours" />
@@ -136,85 +139,186 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Try Catch for process" sap:VirtualizedContainerService.HintSize="1988,23664.8" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Try Catch for process" sap:VirtualizedContainerService.HintSize="1988,24818.4" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <TryCatch.Try>
-        <Sequence DisplayName="Process" sap:VirtualizedContainerService.HintSize="1951.2,23410.4" sap2010:WorkflowViewState.IdRef="Sequence_55">
+        <Sequence DisplayName="Process" sap:VirtualizedContainerService.HintSize="1951.2,24564" sap2010:WorkflowViewState.IdRef="Sequence_55">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <uix:NApplicationCard WebDriverMode="{x:Null}" AttachMode="ByInstance" DisplayName="Use Application: HUP HIN TRANSPORT CO PTE LTD - Reckon Accounts Enterprise: 2022" sap:VirtualizedContainerService.HintSize="1909.6,22709.6" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" ScopeGuid="2dae4886-49e6-4870-8326-df39a69e44a1" Version="V2">
+          <uix:NApplicationCard WebDriverMode="{x:Null}" AttachMode="ByInstance" DisplayName="Use Application: HUP HIN TRANSPORT CO PTE LTD - Reckon Accounts Enterprise: 2022" sap:VirtualizedContainerService.HintSize="1909.6,23863.2" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" ScopeGuid="2dae4886-49e6-4870-8326-df39a69e44a1" Version="V2">
             <uix:NApplicationCard.Body>
               <ActivityAction x:TypeArguments="x:Object">
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
                 </ActivityAction.Argument>
-                <Sequence DisplayName="HUP HIN TRANSPORT CO PTE LTD " sap:VirtualizedContainerService.HintSize="1876,22378.4" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                <Sequence DisplayName="HUP HIN TRANSPORT CO PTE LTD " sap:VirtualizedContainerService.HintSize="1876,23572" sap2010:WorkflowViewState.IdRef="Sequence_10">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'menu item  Customers'" sap:VirtualizedContainerService.HintSize="1834.4,107.2" sap2010:WorkflowViewState.IdRef="Click_12" KeyModifiers="None" MouseButton="BTN_LEFT">
-                    <ui:Click.CursorPosition>
-                      <ui:CursorPosition Position="Center">
-                        <ui:CursorPosition.OffsetX>
-                          <InArgument x:TypeArguments="x:Int32" />
-                        </ui:CursorPosition.OffsetX>
-                        <ui:CursorPosition.OffsetY>
-                          <InArgument x:TypeArguments="x:Int32" />
-                        </ui:CursorPosition.OffsetY>
-                      </ui:CursorPosition>
-                    </ui:Click.CursorPosition>
-                    <ui:Click.Target>
-                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="7f621d45-4925-4b73-8383-7b2e5955522e" InformativeScreenshot="21d0d95f9c8bbf8ff90e7e000e767ceb" Selector="&lt;wnd app='qbw32.exe' cls='MauiFrame' title='*HUP HIN TRANSPORT CO PTE LTD - Reckon Accounts Enterprise*' /&gt;&lt;ctrl automationid='MenuBar' name='Application' role='menu bar' /&gt;&lt;ctrl name='Customers' role='menu item' /&gt;" WaitForReady="NONE">
-                        <ui:Target.TimeoutMS>
-                          <InArgument x:TypeArguments="x:Int32" />
-                        </ui:Target.TimeoutMS>
-                      </ui:Target>
-                    </ui:Click.Target>
-                  </ui:Click>
-                  <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'menu item' 1" sap:VirtualizedContainerService.HintSize="1834.4,107.2" sap2010:WorkflowViewState.IdRef="Click_13" KeyModifiers="None" MouseButton="BTN_LEFT">
-                    <ui:Click.CursorPosition>
-                      <ui:CursorPosition Position="Center">
-                        <ui:CursorPosition.OffsetX>
-                          <InArgument x:TypeArguments="x:Int32" />
-                        </ui:CursorPosition.OffsetX>
-                        <ui:CursorPosition.OffsetY>
-                          <InArgument x:TypeArguments="x:Int32" />
-                        </ui:CursorPosition.OffsetY>
-                      </ui:CursorPosition>
-                    </ui:Click.CursorPosition>
-                    <ui:Click.Target>
-                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="f775a212-e9de-47ea-a19e-dcfb7ad2f8af" InformativeScreenshot="b6fdb23a367e0ffa7ca0e8e94662beca" Selector="&lt;wnd app='qbw32.exe' cls='#32768' /&gt;&lt;ctrl name='Customers' role='popup menu' /&gt;&lt;ctrl automationid='165' /&gt;" WaitForReady="NONE">
-                        <ui:Target.TimeoutMS>
-                          <InArgument x:TypeArguments="x:Int32" />
-                        </ui:Target.TimeoutMS>
-                      </ui:Target>
-                    </ui:Click.Target>
-                  </ui:Click>
-                  <ui:LogMessage DisplayName="Log Message - Maximizing the window" sap:VirtualizedContainerService.HintSize="1834.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Info" Message="[&quot;Maximising the window...&quot;]" />
-                  <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" ContinueOnError="True" DisplayName="Click 'push button  Maxiize' window" sap:VirtualizedContainerService.HintSize="1834.4,107.2" sap2010:WorkflowViewState.IdRef="Click_14" KeyModifiers="None" MouseButton="BTN_LEFT">
-                    <ui:Click.CursorPosition>
-                      <ui:CursorPosition Position="Center">
-                        <ui:CursorPosition.OffsetX>
-                          <InArgument x:TypeArguments="x:Int32" />
-                        </ui:CursorPosition.OffsetX>
-                        <ui:CursorPosition.OffsetY>
-                          <InArgument x:TypeArguments="x:Int32" />
-                        </ui:CursorPosition.OffsetY>
-                      </ui:CursorPosition>
-                    </ui:Click.CursorPosition>
-                    <ui:Click.Target>
-                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a1b08551-a851-4d43-ac89-5392ae0be9e1" InformativeScreenshot="1074270c0d15c35588cf5d739e1c0f5f" Selector="&lt;wnd cls='MauiForm' title='Create Invoices - Account Receivable' /&gt;&lt;ctrl name='Maximize' role='push button' /&gt;" WaitForReady="NONE">
-                        <ui:Target.TimeoutMS>
-                          <InArgument x:TypeArguments="x:Int32" />
-                        </ui:Target.TimeoutMS>
-                      </ui:Target>
-                    </ui:Click.Target>
-                  </ui:Click>
+                  <ui:RetryScope DisplayName="Retry Scope for openings invoices" sap:VirtualizedContainerService.HintSize="1834.4,894.4" sap2010:WorkflowViewState.IdRef="RetryScope_5" NumberOfRetries="[CInt( in_Config1(&quot;RetryNumber&quot;))]" RetryInterval="[TimeSpan.Parse( in_Config1(&quot;RetryIntervalShort&quot;).ToString)]">
+                    <ui:RetryScope.ActivityBody>
+                      <ActivityAction>
+                        <Sequence DisplayName="Action - Open Invoices" sap:VirtualizedContainerService.HintSize="375.2,627.2" sap2010:WorkflowViewState.IdRef="Sequence_74">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:Click AlterIfDisabled="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DelayBefore="[CInt( in_Config1(&quot;DelayOneThousand&quot;))]" DisplayName="Click 'menu item  Customers'" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="Click_12" KeyModifiers="None" MouseButton="BTN_LEFT">
+                            <ui:Click.CursorPosition>
+                              <ui:CursorPosition Position="Center">
+                                <ui:CursorPosition.OffsetX>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:CursorPosition.OffsetX>
+                                <ui:CursorPosition.OffsetY>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:CursorPosition.OffsetY>
+                              </ui:CursorPosition>
+                            </ui:Click.CursorPosition>
+                            <ui:Click.Target>
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="7f621d45-4925-4b73-8383-7b2e5955522e" InformativeScreenshot="21d0d95f9c8bbf8ff90e7e000e767ceb" Selector="&lt;wnd app='qbw32.exe' cls='MauiFrame' title='HUP HIN *' /&gt;&lt;ctrl automationid='MenuBar' name='Application' role='menu bar' /&gt;&lt;ctrl name='Customers' role='menu item' text='Customers' /&gt;" WaitForReady="NONE">
+                                <ui:Target.TimeoutMS>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:Target.TimeoutMS>
+                              </ui:Target>
+                            </ui:Click.Target>
+                          </ui:Click>
+                          <ui:Click AlterIfDisabled="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DelayBefore="[CInt( in_Config1(&quot;DelayOneThousand&quot;))]" DisplayName="Click on create invoices" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="Click_13" KeyModifiers="None" MouseButton="BTN_LEFT">
+                            <ui:Click.CursorPosition>
+                              <ui:CursorPosition Position="Center">
+                                <ui:CursorPosition.OffsetX>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:CursorPosition.OffsetX>
+                                <ui:CursorPosition.OffsetY>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:CursorPosition.OffsetY>
+                              </ui:CursorPosition>
+                            </ui:Click.CursorPosition>
+                            <ui:Click.Target>
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="f775a212-e9de-47ea-a19e-dcfb7ad2f8af" InformativeScreenshot="b6fdb23a367e0ffa7ca0e8e94662beca" Selector="&lt;wnd app='qbw32.exe' /&gt;&lt;ctrl name='Customers' role='popup menu' /&gt;&lt;ctrl automationid='165' name='Create Invoices*' role='menu item' text='Create Invoices*' /&gt;" WaitForReady="NONE">
+                                <ui:Target.TimeoutMS>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:Target.TimeoutMS>
+                              </ui:Target>
+                            </ui:Click.Target>
+                          </ui:Click>
+                          <ui:LogMessage DisplayName="Log Message - Maximizing the window" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Info" Message="[&quot;Maximising the window...&quot;]" />
+                          <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" ContinueOnError="True" DisplayName="Click 'push button  Maxiize' window" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="Click_14" KeyModifiers="None" MouseButton="BTN_LEFT">
+                            <ui:Click.CursorPosition>
+                              <ui:CursorPosition Position="Center">
+                                <ui:CursorPosition.OffsetX>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:CursorPosition.OffsetX>
+                                <ui:CursorPosition.OffsetY>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:CursorPosition.OffsetY>
+                              </ui:CursorPosition>
+                            </ui:Click.CursorPosition>
+                            <ui:Click.Target>
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a1b08551-a851-4d43-ac89-5392ae0be9e1" InformativeScreenshot="1074270c0d15c35588cf5d739e1c0f5f" Selector="&lt;wnd cls='MauiForm' title='Create Invoices - Account Receivable' /&gt;&lt;ctrl name='Maximize' role='push button' /&gt;" WaitForReady="NONE">
+                                <ui:Target.TimeoutMS>
+                                  <InArgument x:TypeArguments="x:Int32" />
+                                </ui:Target.TimeoutMS>
+                              </ui:Target>
+                            </ui:Click.Target>
+                          </ui:Click>
+                        </Sequence>
+                      </ActivityAction>
+                    </ui:RetryScope.ActivityBody>
+                    <ui:RetryScope.Condition>
+                      <ActivityFunc x:TypeArguments="x:Boolean">
+                        <ui:UiElementExists Exists="{x:Null}" DisplayName="Element Exists SAve and New button" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="UiElementExists_11">
+                          <ui:UiElementExists.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="4afd0bdd-db98-483b-9ceb-9caaf13e99d8" InformativeScreenshot="055144c7d0f8e6afd3b5a7e20aa6c134" Selector="&lt;wnd app='qbw32.exe' cls='MauiFrame' title='HUP HIN *' /&gt;&lt;wnd cls='MauiForm' title='Create Invoices - Account Receivable' /&gt;&lt;wnd aaname='Save*' cls='MauiPushButton' title='Save*' /&gt;">
+                              <ui:Target.TimeoutMS>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:Target.TimeoutMS>
+                              <ui:Target.WaitForReady>
+                                <InArgument x:TypeArguments="ui:WaitForReady" />
+                              </ui:Target.WaitForReady>
+                            </ui:Target>
+                          </ui:UiElementExists.Target>
+                        </ui:UiElementExists>
+                      </ActivityFunc>
+                    </ui:RetryScope.Condition>
+                  </ui:RetryScope>
+                  <If Condition="[in_BillingEntity.ToLower.Contains(&quot;heavy equipment&quot;)]" DisplayName="If the billing enitity is HE" sap:VirtualizedContainerService.HintSize="1834.4,968.8" sap2010:WorkflowViewState.IdRef="If_22">
+                    <If.Then>
+                      <Sequence DisplayName="Change the options to Heavy Equipmemts" sap:VirtualizedContainerService.HintSize="416.8,778.4" sap2010:WorkflowViewState.IdRef="Sequence_73">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:RetryScope DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="375.2,332" sap2010:WorkflowViewState.IdRef="RetryScope_4">
+                          <ui:RetryScope.ActivityBody>
+                            <ActivityAction>
+                              <ui:ClickImage ContinueOnError="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Image 'qbw32.exe HUP'" sap:VirtualizedContainerService.HintSize="333.6,156" sap2010:WorkflowViewState.IdRef="ClickImage_7" KeyModifiers="None" MouseButton="BTN_LEFT">
+                                <ui:ClickImage.CursorPosition>
+                                  <ui:CursorPosition OffsetY="20" Position="Center">
+                                    <ui:CursorPosition.OffsetX>
+                                      <InArgument x:TypeArguments="x:Int32" />
+                                    </ui:CursorPosition.OffsetX>
+                                  </ui:CursorPosition>
+                                </ui:ClickImage.CursorPosition>
+                                <ui:ClickImage.Image>
+                                  <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" InitialScalingFactor="1.25" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAAKMAAAAWCAYAAACsayxGAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAwVSURBVGhD7Zr5V5N3usDvDzPiPefemc6ZjmKn1U5nTqcz0957jlO73C62LrRFLSpVCyoqu6IFK7VaWQRFgbCJyqIIDFA2EZAIRBIIS0iAsCaQBAhLBgTln/jcbwAXlFJjx8Fzyg+fczzv93me75JP3vd9gv8xMTHBz5Xbt28v8Ixg/Tx+1jKq1WoqKysXmGcUCgW3bt36ecuoVCqpqamhvb19gXlCpVIhlUoZHR1dkFGj0WCxWBaYJ7q6uhZktLIg4/zz7Ml4e4yx8XFujd+ZffwpsSDj/PPsydiQQnp2FieLjbOPPyUWZJx/HpHR0t/PJU9PfLZtY9sjhBKdUU3rQx/kvxR5JPEXz+OXpZ99fMzChOoS4RnXyajumT3mCbBJRmM9tfnR+G/dyjbBVivu3/HthXI6xPjQQ/FD/QY6CoL5NjGb1IrWGWMzGDBhUVwgOKVw9jgb531S+ttrqc08jlvsdSo0PbPGPA0ekfGfAwNkBwZy1NubPZtXs+7dv7LiQxfc3L3w9pZwMb+Bzoc+yH8pPybjiJmJ4oM4BJ7jm5ym2WOeAJtk7CrlWtwB3lr+Plt2uomzcWfnzr3sOhTMsSINPf2DM+KH+o10lURx6nIhWfKOGWMz6NNjyfNlnb+EgCu1j47bOO+TYu5UocqP4FByBfIWw6wxT4M5H9O9FfGkndqHQ2wrpuHx6etjjAx001EjpeKGVCQ3oOnoY+jWMGO9zai0zSirqrgprUFZJ/IGOqiXVVApVdCg7aF3eJhRUxM362tRVFaKOGuNKipvtmEYFe+Kd2W80syoQcPNyvLJBUqlN1HUaegyaWmJ3sEHLv64hnyPUtVF79gAepVM1LPGiXlVesxirbcf2MuPYbOMSaF8vD4KaYcRo7jWcyOemOOuLPXJoaVNjaq+BllZGeVFUkpL62hvr6O2VUdbextdbXUUi/mUxcVIi4ooKpNTpWrFaGxAFeHM/207wPbj6cgUWvSi9r07nq3zlqloNxtpVVUhLxPzTF5rFNcGMRu0aFpaUGjvy2bQKmhp0aDVGRnoUokxIz19vRjaGqgrt+YXC5Sou4wYDG3oWlU06i0MDgmBRXyDunGq3pD4UujFv9VtaLp675/bj2CzjHduG2kukxC40o7n/3sxi+3Ws/1oNjJdDcYMN9Z77uHtV17h5UUrWfWhL8nXv2Xd73/HkkV/Zp13HJnVSnSXXbH/6D1e+90S/rDYWuMVlr7ox/mOfnqqpmWML0Sf6sqKZb9hsTVm0XJeX72DYGky3sueZ/kvfskvFr3JOxtOktNzndOfvcDrS0Tc4jd52zGSwrHbjNyZuZ+5+KkyDivTSIs+hL13Oi2V4fjs2sCql5bzl8WvYL/UjfPnXPkiKovo+FiuRLvyn05bcX7uObF/Oxa9tIb3fSIpb0nE98Xf8uLk3lby1mdnKBC1+59w3qXLfUlsknLW9wPWrLATZ/MHcc77idV00XrjNEeCQ3AIL5uWfYiycAdCgo8QkSWj44on68MrKaqroTh6Hy6vWfOfE5+VMwFplZQUR5MV5Yt37jD6vmGa0/bjfvAADqdEPXGHH871xiEghq8z6mee3RzYLKNZeZkciS+fh1ylQlGHqjSRiLhkjp1ORZ+2jxUO3xFySXyDUkMJ8dzC31yi+UdlNVfP7iEwJIzApGtCxr1CxkBOpBSJO4IKeeEl0g87siVByc1/nJySMaOVMXMXTeLbZv0xtCI1iKhv97A5ToYqxpXV+47jHlWCqlys49x2Pj+eQVqRHFVFJumpsewIk9E7ODpjP3PxU2VUZx/jtN9aPjhZTntVBD4f7WOfeyRp4oyUN5V0Z3vheVfGQFd+/bInEYVllCoKOH8sgMA9h0iobRJ7c+GD3YG4nc5HpdFNCfeE8ypkNSgu7MDrxFlCkktQ3MinNC2ELd/kUiYrJjdSQshBCaWWfiF8KZKDIUgic1Gq78t4KforToUdxSuqAMXNchQ5J9kfmkZCRChXLxzFMU5Np0lNztkYvtt9kJBTEq6ZOmmIcyQgIY8kufnR8/sBbJax42oop1z/xAtvbsBp6za2b3qPVZ/sZdO+MJTpniz58gKX5ToG69P4Pvogbx4pRzswSkeWn1hoCH5xBehEnP103KioOaaT03zRhdcCCii4eGxKxjQlg02ZnPJwY+/27Wxeu4q1nznicLYGU/b+e++MfaoCsr2X8ce31rFmw1a2b17Lmk838ecvUqnrtUzWf3hfs2GzjLE+rFq2kvUbnXByduaT7btwPXaW/OpW+usi8dlylMCwAuqt8dPvgj53ZQzz4XnHBMo7TfRZeqlKOk2cvw9RNXqM2T/yzmjDvOaeVq4HvsbHH73N3z/ehLPTp2x0eIdla8K5eF2JPEtCavBhQmUGDLJQDgenIslqpLftvoyR/p+wZ8MbvPquI85bnHD+dCWvrvUnICKK3BwJLruSqa1N5kxsNolBYeRdFI3atVouuLogybnBjZ6H9jAHNsvYWXQSicf/8L8bvNjj4YWXlyBQQqS4O9ZlerHEK5OcWgMTTTlIxbfwbq7+QRlFnP3dOFHT0nqDqog1/OVwAYVJUzK6R2ejTNzEF1s82LXbCzenD9nktPFRGRsLyTuwgrc37sZZxE2u56sgDsdW0Do8+vRkjNsvGon32Oy6m92ikXA/EU+kaCIsg0Ysqih83EL5LroUrTX+YRkl/iz1zaNF3zdZr/ZKNEnHH1NGG+a1yig9+jc2b97AOmcRa433FI/ToCyKGzrpaMyiKCUIj6+vce2kB0HpRWQ1io7+ARmjAhzx+/J93v18Ot/K0QuklEopL/ue4M/9ybzsL3LLyC3KQXY1jF0nznHI8QTfl9VPdvmP7OMHsFnGgYZMricf4asEKVdLrA2DoEaDSlk+U7K5ZLyyD/utQQSfFzEiP+dSFEGe7+B+sZba7LBJGXcGn+fq4VdxDsnmfI6UvJhDnPjqSyGjElPhYZx8jrFXNDCVRXnILu0lIK6QtLzp9VSJx32bmdHxqf8B8jj81Mf0vbGfJGM3xsIANnocYddjNjBzzTvUq0eb7kGYJJGzqdYGRFBcSpGynS6j9fHZRHVJCvtXC8F27CdFVk2TtdYDMqbFf0NS3EmOJ07nW5GrJxsTXbWMPL+d7D/kTtg1ObIeUU8Wj+9OcQd1T6dC3nl/fY/BnDL2yRLJOOPFxoS2ezJOTPTRWh7P8VWigfkvO+zsBKu+ZMOxC0K4Ayw/kEVunZCxJZfyjPB7ud05/oSfCcc/oRBd0jbsn/8Vv1w0nf/Hd1geUIrePMJEtYTElCT8z10VDYwLy+1/MxUjWPLGGjbGNmBqiMV/zRu8bLdKNDDh5JoqiN74e95YMku9h/b0Q9gmYxnFqeE4OMZwo9OI6cExqxSNMfi5hxMcWzYlY383lvyD+MXkEJuYQEbcEV46mI+2u38ypz4zlpQgP2LqhWD1Inf162Jvf59sYPLF+P0GxsZ5LdafehrJ8FvN+penz+a5pdhtE59rVftkXntVBoluS1nqdv+apb2KzgxfHCNkFKvqKYv1Yvdfp/OtrDtCYKZoTEScNtmdl9aGEF2somu6XrL7C6wNKRG54i47uY7HY04Zx8WL7YD4dnX03WL89t0/z41zy9KHQdtAo6qBhgaBtosOQz9jA91ougcYHBHijoqDGDDdyx0b7MHUa6KnRSHeGT2w33GGyMyyqXyNFk3PMGPWOf7ZR79ZdNX9Q5MNjEatmooRNDa3iXojjI/00dPWjKZBi7bDxOC4hd4ONc2N0+t5sN5De/ohbJJxsBdTdxdq0WD0Dg7N/LF5eAiLWUebOJNOXS8Dd68Z22jTGdDp9Rj07SjbjAwMDU/mmA06ujvb0JlFLWtuYz1KuXUfXTMbGFvntVjrm8VZNaJWypHLBdU1yJvFGvqmfpMc7DOgb6mhpuX+NctgH4OGVnH368NkNtOr09JSN51vRd1Ou0HcWUXcQLdWNDyd6ExmBqfrdWtrUIv3YZPYz731PQZzyvhUMNQ+8s74LGCTjAs8Ff79Mg7pMNem83V6LfW6odlj5oEFGeeff7+MzyhWGevq6ujp6Vlgnmhubl6Q0YpVxJKSkgXmmfLy8gUZR0ZGGB4eXmCesT6u79y5w/8Dwr816xBuuhgAAAAASUVORK5CYII=" />
+                                </ui:ClickImage.Image>
+                                <ui:ClickImage.Target>
+                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="e5ab439b-c55b-48ef-811b-de3f4b59b554" WaitForReady="COMPLETE">
+                                    <ui:Target.TimeoutMS>
+                                      <InArgument x:TypeArguments="x:Int32" />
+                                    </ui:Target.TimeoutMS>
+                                  </ui:Target>
+                                </ui:ClickImage.Target>
+                              </ui:ClickImage>
+                            </ActivityAction>
+                          </ui:RetryScope.ActivityBody>
+                          <ui:RetryScope.Condition>
+                            <ActivityFunc x:TypeArguments="x:Boolean" />
+                          </ui:RetryScope.Condition>
+                        </ui:RetryScope>
+                        <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into Type of Entity" EmptyField="True" sap:VirtualizedContainerService.HintSize="375.2,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_37" Text="Hup Hin Heavy Equipment Invoice">
+                          <ui:TypeInto.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="4bf715ae-f9a5-458d-ae29-0216aed9fa5b" InformativeScreenshot="801342f77cf7cfb472f98f758bf62d52" Selector="&lt;wnd app='qbw32.exe' cls='MauiFrame' title='HUP HIN HEAVY EQUIPMENT PTE LTD - Reckon Accounts Enterprise: 20*' /&gt;&lt;wnd cls='MauiForm' title='Create Invoices - Account Receivable' /&gt;&lt;wnd cls='Edit' /&gt;">
+                              <ui:Target.TimeoutMS>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:Target.TimeoutMS>
+                              <ui:Target.WaitForReady>
+                                <InArgument x:TypeArguments="ui:WaitForReady" />
+                              </ui:Target.WaitForReady>
+                            </ui:Target>
+                          </ui:TypeInto.Target>
+                        </ui:TypeInto>
+                        <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBetweenKeys="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DelayBefore="[CInt( in_Config1(&quot;DelayBeforeAfter&quot;))]" DelayMS="[CInt( in_Config1(&quot;DelayBeforeAfter&quot;))]" DisplayName="Send Hotkey" sap:VirtualizedContainerService.HintSize="375.2,136.8" sap2010:WorkflowViewState.IdRef="SendHotkey_23" Key="enter" KeyModifiers="None" SpecialKey="True">
+                          <ui:SendHotkey.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="f7d3be11-bdc6-4285-a940-66fc272e1506">
+                              <ui:Target.TimeoutMS>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:Target.TimeoutMS>
+                              <ui:Target.WaitForReady>
+                                <InArgument x:TypeArguments="ui:WaitForReady" />
+                              </ui:Target.WaitForReady>
+                            </ui:Target>
+                          </ui:SendHotkey.Target>
+                        </ui:SendHotkey>
+                      </Sequence>
+                    </If.Then>
+                    <If.Else>
+                      <Sequence sap2010:WorkflowViewState.IdRef="Sequence_72">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </Sequence>
+                    </If.Else>
+                  </If>
                   <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope -Fetch data from quotation file" sap:VirtualizedContainerService.HintSize="1834.4,937.6" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="[in_QuotationFilePath]">
                     <ui:ExcelApplicationScope.Body>
                       <ActivityAction x:TypeArguments="ui:WorkbookApplication">
@@ -380,7 +484,7 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                     <If.Then>
-                      <ui:LogMessage DisplayName="Log Message - display number are same" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_44" Level="Info" Message="[&quot;Quotation reference number &quot;+in_dt_TransactionItem1(0)(&quot;Quotation Number&quot;).tostring+&quot; from quotation file and excel are same.&quot;]" />
+                      <ui:LogMessage DisplayName="Log Message - display number are same" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_44" Level="Info" Message="[&quot;Quotation reference number &quot;+ QuotationRefNumber+&quot; from Quotation file and Input Excel file &quot;+ in_dt_TransactionItem1(0)(&quot;Quotation Number&quot;).tostring+&quot; are same.&quot;]" />
                     </If.Then>
                     <If.Else>
                       <Sequence DisplayName="Throw exception" sap:VirtualizedContainerService.HintSize="375.2,249.6" sap2010:WorkflowViewState.IdRef="Sequence_58">
@@ -389,8 +493,8 @@
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ui:LogMessage DisplayName="Log Message - display numbers are not matching" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_66" Level="Info" Message="[&quot;Quotation reference number from quotation file and excel are not same. From Quotation file: &quot;+ QuotationRefNumber+&quot; and From Input file: &quot;+in_dt_TransactionItem1(0)(&quot;Quotation Number&quot;).tostring]" />
-                        <Throw DisplayName="Throw Quotation number not matching" Exception="[new BusinessRuleException(&quot;Quotation reference number &quot;+in_dt_TransactionItem1(0)(&quot;Quotation Number&quot;).tostring+&quot; from Quotation file and Input Excel file are not matching.&quot;)]" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="Throw_5" />
+                        <ui:LogMessage DisplayName="Log Message - display numbers are not matching" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_66" Level="Info" Message="[&quot;Quotation Reference Number from Quotation File and Input Excel File are not same. From Quotation file: &quot;+ QuotationRefNumber+&quot; and From Input file: &quot;+in_dt_TransactionItem1(0)(&quot;Quotation Number&quot;).tostring]" />
+                        <Throw DisplayName="Throw Quotation number not matching" Exception="[new BusinessRuleException(&quot;Quotation Reference Number &quot;+ QuotationRefNumber+&quot; from Quotation file and Input Excel file &quot; +in_dt_TransactionItem1(0)(&quot;Quotation Number&quot;).tostring+&quot; are not matching.&quot;)]" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="Throw_5" />
                       </Sequence>
                     </If.Else>
                   </If>
@@ -1439,7 +1543,7 @@
                       </ui:Target>
                     </ui:UiElementExists.Target>
                   </ui:UiElementExists>
-                  <If Condition="[SavePopupExists]" DisplayName="If save popup exists" sap:VirtualizedContainerService.HintSize="1834.4,1041.6" sap2010:WorkflowViewState.IdRef="If_6">
+                  <If Condition="[SavePopupExists]" DisplayName="If save popup exists" sap:VirtualizedContainerService.HintSize="1834.4,866.4" sap2010:WorkflowViewState.IdRef="If_6">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1447,13 +1551,13 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                     <If.Then>
-                      <Sequence DisplayName="Enter invoice path and filename" sap:VirtualizedContainerService.HintSize="475.2,851.2" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                      <Sequence DisplayName="Enter invoice path and filename" sap:VirtualizedContainerService.HintSize="375.2,676" sap2010:WorkflowViewState.IdRef="Sequence_19">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <Assign DisplayName="Assign Invoice Filepath" sap:VirtualizedContainerService.HintSize="433.6,61.6" sap2010:WorkflowViewState.IdRef="Assign_1">
+                        <Assign DisplayName="Assign Invoice Filepath" sap:VirtualizedContainerService.HintSize="333.6,61.6" sap2010:WorkflowViewState.IdRef="Assign_1">
                           <Assign.To>
                             <OutArgument x:TypeArguments="x:String">[out_InvoiceFilePath1]</OutArgument>
                           </Assign.To>
@@ -1461,8 +1565,8 @@
                             <InArgument x:TypeArguments="x:String">[String.Join("\",in_InvoicePdfFolderPath, out_InvoiceNumber1+" - "+ io_ProcessType1+" Scenario"+".pdf")]</InArgument>
                           </Assign.Value>
                         </Assign>
-                        <ui:LogMessage DisplayName="Log Message - Display Invoice filepath" sap:VirtualizedContainerService.HintSize="433.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_65" Level="Info" Message="[out_InvoiceFilePath1]" />
-                        <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window 'qbw32.exe Save'" sap:VirtualizedContainerService.HintSize="433.6,522.4" sap2010:WorkflowViewState.IdRef="WindowScope_1" InformativeScreenshot="746cbce9a8ebc4b059b8d9a6c3e0c2c3" Selector="&lt;wnd app='qbw32.exe' cls='#32770' title='Save Print Output As' /&gt;">
+                        <ui:LogMessage DisplayName="Log Message - Display Invoice filepath" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_65" Level="Info" Message="[out_InvoiceFilePath1]" />
+                        <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window 'qbw32.exe Save'" sap:VirtualizedContainerService.HintSize="333.6,52.8" sap2010:WorkflowViewState.IdRef="WindowScope_1" InformativeScreenshot="746cbce9a8ebc4b059b8d9a6c3e0c2c3" Selector="&lt;wnd app='qbw32.exe' cls='#32770' title='Save Print Output As' /&gt;">
                           <ui:WindowScope.Body>
                             <ActivityAction x:TypeArguments="x:Object">
                               <ActivityAction.Argument>
@@ -1505,7 +1609,51 @@
                               </Sequence>
                             </ActivityAction>
                           </ui:WindowScope.Body>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
                         </ui:WindowScope>
+                        <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click on Close'" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="Click_32" KeyModifiers="None" MouseButton="BTN_LEFT">
+                          <ui:Click.CursorPosition>
+                            <ui:CursorPosition Position="Center">
+                              <ui:CursorPosition.OffsetX>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:CursorPosition.OffsetX>
+                              <ui:CursorPosition.OffsetY>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:CursorPosition.OffsetY>
+                            </ui:CursorPosition>
+                          </ui:Click.CursorPosition>
+                          <ui:Click.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="5761d91d-2014-4e21-b8a3-b9a4712bee8f" InformativeScreenshot="fe24e061cd4967f7defd04bd2a556d62" Selector="&lt;wnd app='qbw32.exe' cls='MauiFrame' title='HUP HIN TRANSPORT CO PTE LTD - Reckon Accounts Enterprise: 2022 *' /&gt;&lt;ctrl automationid='MenuBar' name='Application' role='menu bar' /&gt;&lt;ctrl name='Close' role='push button' /&gt;" WaitForReady="COMPLETE">
+                              <ui:Target.TimeoutMS>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:Target.TimeoutMS>
+                            </ui:Target>
+                          </ui:Click.Target>
+                        </ui:Click>
+                        <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click on yes button" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="Click_33" KeyModifiers="None" MouseButton="BTN_LEFT">
+                          <ui:Click.CursorPosition>
+                            <ui:CursorPosition Position="Center">
+                              <ui:CursorPosition.OffsetX>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:CursorPosition.OffsetX>
+                              <ui:CursorPosition.OffsetY>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:CursorPosition.OffsetY>
+                            </ui:CursorPosition>
+                          </ui:Click.CursorPosition>
+                          <ui:Click.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="1e379250-5186-4b42-a402-99166933b6b6" InformativeScreenshot="b050bbde2abb0d0b4dbd60330bec16fe" Selector="&lt;wnd app='qbw32.exe' cls='MauuiMessage' title='Recording Transaction' /&gt;&lt;wnd aaname='Yes' cls='MauiPushButton' title='&amp;amp;Yes' /&gt;" WaitForReady="COMPLETE">
+                              <ui:Target.TimeoutMS>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:Target.TimeoutMS>
+                            </ui:Target>
+                          </ui:Click.Target>
+                        </ui:Click>
                       </Sequence>
                     </If.Then>
                     <If.Else>

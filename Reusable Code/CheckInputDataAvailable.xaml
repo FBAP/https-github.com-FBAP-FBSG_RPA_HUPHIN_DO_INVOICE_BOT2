@@ -7,7 +7,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>592.8,817.6</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>676,664</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CheckInputDataAvailable_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="31">
@@ -75,16 +75,15 @@
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>NPOI</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Check if Input data is available" sap:VirtualizedContainerService.HintSize="475.2,752.8" sap2010:WorkflowViewState.IdRef="Sequence_10">
+  <Sequence DisplayName="Check if Input data is available" sap:VirtualizedContainerService.HintSize="475.2,599.2" sap2010:WorkflowViewState.IdRef="Sequence_10">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Try Catch Check input data available" sap:VirtualizedContainerService.HintSize="433.6,660" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Try Catch Check input data available" sap:VirtualizedContainerService.HintSize="433.6,506.4" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -92,7 +91,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <Sequence DisplayName="CheckInputDataAvailable" sap:VirtualizedContainerService.HintSize="635.2,1354.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+        <Sequence DisplayName="CheckInputDataAvailable" sap:VirtualizedContainerService.HintSize="635.2,1312.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
           <Sequence.Variables>
             <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" Name="InputDataDictionary" />
           </Sequence.Variables>
@@ -250,10 +249,10 @@
         </Sequence>
       </TryCatch.Try>
       <TryCatch.Catches>
-        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,318.4" sap2010:WorkflowViewState.IdRef="Catch`1_1">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
@@ -268,14 +267,14 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <ui:LogMessage DisplayName="Log Message  - In catch of SE" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Error" Message="[&quot;System Exception: In catch of Process block of: &quot;+ io_ProcessType1]" />
-              <Rethrow DisplayName="Rethrow current system exception #1" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="Rethrow_1" />
+              <Rethrow DisplayName="Rethrow current system exception #2" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="Rethrow_1" />
             </Sequence>
           </ActivityAction>
         </Catch>
-        <Catch x:TypeArguments="ui:BusinessRuleException" sap:VirtualizedContainerService.HintSize="400,472" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+        <Catch x:TypeArguments="ui:BusinessRuleException" sap:VirtualizedContainerService.HintSize="400,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_2">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
@@ -292,27 +291,13 @@
               <ui:LogMessage DisplayName="Log Message  - In catch of BE" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Error" Message="[&quot;Business Exception: In catch of Process block of: &quot;+ io_ProcessType1]" />
               <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke SendExceptionEmail workflow 1" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Reusable Code\SendExceptionEmail.xaml">
                 <ui:InvokeWorkflowFile.Arguments>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_Subject">
-                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config1(&quot;ExceptionSubject&quot;).ToString" />
-                  </InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_Body">
-                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config1(&quot;ExceptionBody&quot;).ToString" />
-                  </InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_CcEmailList">
-                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config1(&quot;CCEmailList&quot;).ToString" />
-                  </InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_RecipientsEmailList1">
-                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config1(&quot;RecipientsEmailList&quot;).ToString" />
-                  </InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_ExScreenshotsFolderPath">
-                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config1(&quot;ExScreenshotsFolderPath&quot;).ToString" />
-                  </InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionOccured">
-                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="exception.Message" />
-                  </InArgument>
-                  <InOutArgument x:TypeArguments="x:String" x:Key="io_ProcessType1">
-                    <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="io_ProcessType1" />
-                  </InOutArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_Subject">[in_Config1("ExceptionSubject").ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_Body">[in_Config1("ExceptionBody").ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_CcEmailList">[in_Config1("CCEmailList").ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_RecipientsEmailList1">[in_Config1("RecipientsEmailList").ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_ExScreenshotsFolderPath">[in_Config1("ExScreenshotsFolderPath").ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionOccured">[exception.Message]</InArgument>
+                  <InOutArgument x:TypeArguments="x:String" x:Key="io_ProcessType1">[io_ProcessType1]</InOutArgument>
                 </ui:InvokeWorkflowFile.Arguments>
               </ui:InvokeWorkflowFile>
               <Rethrow DisplayName="Rethrow current system exception #1" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="Rethrow_2" />

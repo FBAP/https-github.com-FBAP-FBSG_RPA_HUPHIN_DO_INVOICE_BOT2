@@ -8,7 +8,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>698.4,466.4</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>862.4,3459.2</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>QuickbooksLogin_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="41">
@@ -95,9 +95,10 @@
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>NPOI</AssemblyReference>
       <AssemblyReference>System.Data.Entity</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Login to Quickbooks to create invoices" DisplayName="Quickbooks Login main" sap:VirtualizedContainerService.HintSize="241.6,189.6" sap2010:WorkflowViewState.IdRef="Sequence_16">
+  <Sequence sap2010:Annotation.AnnotationText="Login to Quickbooks to create invoices" DisplayName="Quickbooks Login main" sap:VirtualizedContainerService.HintSize="710.4,3394.4" sap2010:WorkflowViewState.IdRef="Sequence_16">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="LoginSuccess" />
       <Variable x:TypeArguments="x:Boolean" Name="CompanyPopupExists" />
@@ -108,23 +109,23 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:RetryScope DisplayName="Retry Scope - Quickbooks login" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[Cint(in_Config1(&quot;RetryNumber&quot;))]" RetryInterval="[Timespan.Parse(in_Config1(&quot;RetryIntervalMedium&quot;).ToString)]">
+    <ui:RetryScope DisplayName="Retry Scope - Quickbooks login" sap:VirtualizedContainerService.HintSize="668.8,3270.4" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[Cint(in_Config1(&quot;RetryNumber&quot;))]" RetryInterval="[Timespan.Parse(in_Config1(&quot;RetryIntervalMedium&quot;).ToString)]">
       <ui:RetryScope.ActivityBody>
         <ActivityAction>
-          <Sequence DisplayName="Quickbooks Login" sap:VirtualizedContainerService.HintSize="627.2,3016" sap2010:WorkflowViewState.IdRef="Sequence_12">
+          <Sequence DisplayName="Quickbooks Login" sap:VirtualizedContainerService.HintSize="627.2,3022.4" sap2010:WorkflowViewState.IdRef="Sequence_12">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <ui:LogMessage DisplayName="Log Message - login to Quickbooks" sap:VirtualizedContainerService.HintSize="585.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Trying to login to Quickbooks.&quot;]" />
-            <uix:NApplicationCard WebDriverMode="{x:Null}" AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Application: Reckon Accounts Enterprise: 2022" sap:VirtualizedContainerService.HintSize="585.6,2793.6" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" OpenMode="Always" ScopeGuid="b424b09b-93c4-42cf-8298-809c789c5b5b" Version="V2">
+            <uix:NApplicationCard WebDriverMode="{x:Null}" AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Application: Reckon Accounts Enterprise: 2022" sap:VirtualizedContainerService.HintSize="585.6,2796.8" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" OpenMode="Always" ScopeGuid="b424b09b-93c4-42cf-8298-809c789c5b5b" Version="V2">
               <uix:NApplicationCard.Body>
                 <ActivityAction x:TypeArguments="x:Object">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="552,2502.4" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="552,2505.6" sap2010:WorkflowViewState.IdRef="Sequence_18">
                     <Sequence.Variables>
                       <Variable x:TypeArguments="x:Boolean" Name="PasswordPopupExists" />
                     </Sequence.Variables>
@@ -136,11 +137,7 @@
                     </sap:WorkflowViewStateService.ViewState>
                     <ui:UiElementExists DisplayName="Element Exists Password popup" Exists="[PasswordPopupExists]" sap:VirtualizedContainerService.HintSize="510.4,107.2" sap2010:WorkflowViewState.IdRef="UiElementExists_3">
                       <ui:UiElementExists.Target>
-                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="b42d8abd-4cb9-4095-aad4-e72ec8698490" InformativeScreenshot="630c58e511171d7f9cfad773342a69cb" Selector="&lt;wnd app='qbw32.exe' cls='MauiForm' title='Reckon Accounts Login' /&gt;&lt;wnd cls='MauiPushButton' title='OK' /&gt;" TimeoutMS="[Cint(in_Config1(&quot;TimeoutShort&quot;))]">
-                          <ui:Target.WaitForReady>
-                            <InArgument x:TypeArguments="ui:WaitForReady" />
-                          </ui:Target.WaitForReady>
-                        </ui:Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="b42d8abd-4cb9-4095-aad4-e72ec8698490" InformativeScreenshot="630c58e511171d7f9cfad773342a69cb" Selector="&lt;wnd app='qbw32.exe' cls='MauiForm' title='Reckon Accounts Login' /&gt;&lt;wnd cls='MauiPushButton' title='OK' /&gt;" TimeoutMS="[Cint(in_Config1(&quot;TimeoutShort&quot;))]" WaitForReady="COMPLETE" />
                       </ui:UiElementExists.Target>
                     </ui:UiElementExists>
                     <If Condition="[PasswordPopupExists]" DisplayName="If password popup exists" sap:VirtualizedContainerService.HintSize="510.4,297.6" sap2010:WorkflowViewState.IdRef="If_3">
@@ -163,13 +160,10 @@
                             </ui:CursorPosition>
                           </ui:Click.CursorPosition>
                           <ui:Click.Target>
-                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="c5b6ee08-afbb-4bf5-b93c-238b2986560a" InformativeScreenshot="367d80c28667434b4252962bfe1ce5f0" Selector="&lt;wnd app='qbw32.exe' cls='MauiForm' title='Reckon Accounts Login' /&gt;&lt;wnd cls='MauiPushButton' title='Cancel' /&gt;">
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="c5b6ee08-afbb-4bf5-b93c-238b2986560a" InformativeScreenshot="367d80c28667434b4252962bfe1ce5f0" Selector="&lt;wnd app='qbw32.exe' cls='MauiForm' title='Reckon Accounts Login' /&gt;&lt;wnd cls='MauiPushButton' title='Cancel' /&gt;" WaitForReady="COMPLETE">
                               <ui:Target.TimeoutMS>
                                 <InArgument x:TypeArguments="x:Int32" />
                               </ui:Target.TimeoutMS>
-                              <ui:Target.WaitForReady>
-                                <InArgument x:TypeArguments="ui:WaitForReady" />
-                              </ui:Target.WaitForReady>
                             </ui:Target>
                           </ui:Click.Target>
                         </ui:Click>
@@ -196,13 +190,10 @@
                         </ui:CursorPosition>
                       </ui:Click.CursorPosition>
                       <ui:Click.Target>
-                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="be862308-bc87-47db-92f2-6932e1ef2089" InformativeScreenshot="9849f9daf0182b54f118c9c40baf9939" Selector="&lt;wnd aaname='Open or restore an  existing company' cls='MauiPushButton' title='O&amp;amp;pen or restore an  existing company' /&gt;">
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="be862308-bc87-47db-92f2-6932e1ef2089" InformativeScreenshot="9849f9daf0182b54f118c9c40baf9939" Selector="&lt;wnd aaname='Open or restore an  existing company' cls='MauiPushButton' title='O&amp;amp;pen or restore an  existing company' /&gt;" WaitForReady="COMPLETE">
                           <ui:Target.TimeoutMS>
                             <InArgument x:TypeArguments="x:Int32" />
                           </ui:Target.TimeoutMS>
-                          <ui:Target.WaitForReady>
-                            <InArgument x:TypeArguments="ui:WaitForReady" />
-                          </ui:Target.WaitForReady>
                         </ui:Target>
                       </ui:Click.Target>
                     </ui:Click>
@@ -249,13 +240,10 @@
                                 </ui:CursorPosition>
                               </ui:Click.CursorPosition>
                               <ui:Click.Target>
-                                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="b9026fd2-7786-4d38-b2d5-aaad06049bca" InformativeScreenshot="d59825a0436ca6f7b8834125eb5e26de" Selector="&lt;wnd aaname='Next' cls='MauiPushButton' title='&amp;amp;Next' /&gt;">
+                                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="b9026fd2-7786-4d38-b2d5-aaad06049bca" InformativeScreenshot="d59825a0436ca6f7b8834125eb5e26de" Selector="&lt;wnd aaname='Next' cls='MauiPushButton' title='&amp;amp;Next' /&gt;" WaitForReady="COMPLETE">
                                   <ui:Target.TimeoutMS>
                                     <InArgument x:TypeArguments="x:Int32" />
                                   </ui:Target.TimeoutMS>
-                                  <ui:Target.WaitForReady>
-                                    <InArgument x:TypeArguments="ui:WaitForReady" />
-                                  </ui:Target.WaitForReady>
                                 </ui:Target>
                               </ui:Click.Target>
                             </ui:Click>
@@ -265,14 +253,10 @@
                     </ui:WindowScope>
                     <ui:UiElementExists DisplayName="Element Exists 'dialog  Open a Company'" Exists="[CompanyPopupExists]" sap:VirtualizedContainerService.HintSize="510.4,107.2" sap2010:WorkflowViewState.IdRef="UiElementExists_2">
                       <ui:UiElementExists.Target>
-                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="085b0abc-927e-4622-a47f-bd561247cfef" InformativeScreenshot="f3b8a994b9c66fcc3e2da0ee9c116d20" Selector="&lt;wnd app='qbw32.exe' cls='#32770' title='Open a Company' /&gt;&lt;wnd ctrlid='1148' /&gt;&lt;wnd ctrlid='1148' /&gt;&lt;wnd ctrlid='1148' /&gt;" TimeoutMS="[Cint(in_Config1(&quot;TimeoutShort&quot;))]">
-                          <ui:Target.WaitForReady>
-                            <InArgument x:TypeArguments="ui:WaitForReady" />
-                          </ui:Target.WaitForReady>
-                        </ui:Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="085b0abc-927e-4622-a47f-bd561247cfef" InformativeScreenshot="f3b8a994b9c66fcc3e2da0ee9c116d20" Selector="&lt;wnd app='qbw32.exe' cls='#32770' title='Open a Company' /&gt;&lt;wnd ctrlid='1148' /&gt;&lt;wnd ctrlid='1148' /&gt;&lt;wnd ctrlid='1148' /&gt;" TimeoutMS="[Cint(in_Config1(&quot;TimeoutShort&quot;))]" WaitForReady="COMPLETE" />
                       </ui:UiElementExists.Target>
                     </ui:UiElementExists>
-                    <If Condition="[CompanyPopupExists]" DisplayName="If popup opened for entering company name" sap:VirtualizedContainerService.HintSize="510.4,804" sap2010:WorkflowViewState.IdRef="If_2">
+                    <If Condition="[CompanyPopupExists]" DisplayName="If popup opened for entering company name" sap:VirtualizedContainerService.HintSize="510.4,807.2" sap2010:WorkflowViewState.IdRef="If_2">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -280,7 +264,7 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                       <If.Then>
-                        <Sequence DisplayName="Exists" sap:VirtualizedContainerService.HintSize="475.2,615.2" sap2010:WorkflowViewState.IdRef="Sequence_26">
+                        <Sequence DisplayName="Exists" sap:VirtualizedContainerService.HintSize="475.2,616.8" sap2010:WorkflowViewState.IdRef="Sequence_26">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -298,15 +282,12 @@
                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
-                                  <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into filepath" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_2" Text="[in_CurrentBillingEntity]">
+                                  <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBetweenKeys="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DelayBefore="[CInt( in_Config1(&quot;DelayBeforeAfter&quot;))]" DelayMS="[CInt( in_Config1(&quot;DelayBeforeAfter&quot;))]" DisplayName="Type Into filepath" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_2" Text="[in_CurrentBillingEntity]">
                                     <ui:TypeInto.Target>
-                                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="36012dab-b6b1-4805-8570-46cf7a686e08" InformativeScreenshot="b6a0ed8761ccd09a1e296fa8450ba1ac" Selector="&lt;wnd ctrlid='1148' aaname='File name:' /&gt;">
+                                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="36012dab-b6b1-4805-8570-46cf7a686e08" InformativeScreenshot="b6a0ed8761ccd09a1e296fa8450ba1ac" Selector="&lt;wnd ctrlid='1148' aaname='File name:' /&gt;" WaitForReady="COMPLETE">
                                         <ui:Target.TimeoutMS>
                                           <InArgument x:TypeArguments="x:Int32" />
                                         </ui:Target.TimeoutMS>
-                                        <ui:Target.WaitForReady>
-                                          <InArgument x:TypeArguments="ui:WaitForReady" />
-                                        </ui:Target.WaitForReady>
                                       </ui:Target>
                                     </ui:TypeInto.Target>
                                   </ui:TypeInto>
@@ -322,13 +303,10 @@
                                       </ui:CursorPosition>
                                     </ui:Click.CursorPosition>
                                     <ui:Click.Target>
-                                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="d1331737-3564-472d-b768-92d33e5a4022" InformativeScreenshot="3aa912bc10b4dc50561f51ede8f0bbfa" Selector="&lt;wnd ctrlid='1' title='*Open' aaname='Open' /&gt;">
+                                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="d1331737-3564-472d-b768-92d33e5a4022" InformativeScreenshot="3aa912bc10b4dc50561f51ede8f0bbfa" Selector="&lt;wnd ctrlid='1' title='*Open' aaname='Open' /&gt;" WaitForReady="COMPLETE">
                                         <ui:Target.TimeoutMS>
                                           <InArgument x:TypeArguments="x:Int32" />
                                         </ui:Target.TimeoutMS>
-                                        <ui:Target.WaitForReady>
-                                          <InArgument x:TypeArguments="ui:WaitForReady" />
-                                        </ui:Target.WaitForReady>
                                       </ui:Target>
                                     </ui:Click.Target>
                                   </ui:Click>
@@ -359,7 +337,7 @@
                         </uix:TargetAnchorable>
                       </uix:NClick.Target>
                     </uix:NClick>
-                    <uix:NCheckState Exists="{x:Null}" DisplayName="Check App State 'Home'" sap:VirtualizedContainerService.HintSize="333.6,52.8" sap2010:WorkflowViewState.IdRef="NCheckState_5" ScopeIdentifier="b424b09b-93c4-42cf-8298-809c789c5b5b" Timeout="[Cint(in_Config1(&quot;DelayLong&quot;))]" Version="V1">
+                    <uix:NCheckState Exists="{x:Null}" DisplayName="Check App State 'Home'" sap:VirtualizedContainerService.HintSize="510.4,52.8" sap2010:WorkflowViewState.IdRef="NCheckState_5" ScopeIdentifier="b424b09b-93c4-42cf-8298-809c789c5b5b" Timeout="[Cint(in_Config1(&quot;DelayLong&quot;))]" Version="V1">
                       <uix:NCheckState.IfExists>
                         <Sequence DisplayName="Target appears - Quickbooks opened" sap:VirtualizedContainerService.HintSize="375.2,288.8" sap2010:WorkflowViewState.IdRef="Sequence_19">
                           <sap:WorkflowViewStateService.ViewState>
@@ -429,7 +407,7 @@
       </ui:RetryScope.Condition>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>

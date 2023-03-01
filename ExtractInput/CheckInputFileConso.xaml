@@ -9,7 +9,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1430.4,2100.8</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1430.4,2200.8</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CreateMasterFileFolders_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="31">
@@ -77,10 +77,9 @@
       <AssemblyReference>UiPath.Excel</AssemblyReference>
       <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="This .xaml will check if the input file is available for Consolidated process on the network drive or input folder specified." DisplayName="Check input file of process" sap:VirtualizedContainerService.HintSize="1440.8,2036" sap2010:WorkflowViewState.IdRef="Sequence_4">
+  <Sequence sap2010:Annotation.AnnotationText="This .xaml will check if the input file is available for Consolidated process on the network drive or input folder specified." DisplayName="Check input file of process" sap:VirtualizedContainerService.HintSize="1440.8,2136" sap2010:WorkflowViewState.IdRef="Sequence_4">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="ProcessInputFileExists" />
     </Sequence.Variables>
@@ -91,9 +90,9 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Try Catch - Checking input file conso" sap:VirtualizedContainerService.HintSize="1399.2,1912" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Try Catch - Checking input file conso" sap:VirtualizedContainerService.HintSize="1399.2,2012" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <TryCatch.Try>
-        <Sequence DisplayName="Check input file Conso" sap:VirtualizedContainerService.HintSize="1362.4,1680.8" sap2010:WorkflowViewState.IdRef="Sequence_5">
+        <Sequence DisplayName="Check input file Conso" sap:VirtualizedContainerService.HintSize="1362.4,1780.8" sap2010:WorkflowViewState.IdRef="Sequence_5">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -107,6 +106,14 @@
             </Assign.To>
             <Assign.Value>
               <InArgument x:TypeArguments="x:String">[String.Join("\",in_Config1("InputExcelPath").ToString+in_ProcessType, in_Config1("MasterFileName").ToString+"_"+"Consolidated"+"_"+now.ToString("dd-MM-yyyy")+".xlsx")]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign DisplayName="Assign out_dt_TransactionData1" sap:VirtualizedContainerService.HintSize="1320.8,60" sap2010:WorkflowViewState.IdRef="Assign_4">
+            <Assign.To>
+              <OutArgument x:TypeArguments="sd:DataTable">[out_dt_TransactionData1]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="sd:DataTable">[new DataTable]</InArgument>
             </Assign.Value>
           </Assign>
           <ui:FileExistsX DisplayName="Input File Exists" Exists="[ProcessInputFileExists]" sap:VirtualizedContainerService.HintSize="1320.8,134.4" sap2010:WorkflowViewState.IdRef="FileExistsX_1" Path="[out_IOExcelFilePath]" />
@@ -167,14 +174,14 @@
                     </Sequence>
                   </If.Then>
                   <If.Else>
-                    <Sequence DisplayName="File does not exists" sap:VirtualizedContainerService.HintSize="408,439.2" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                    <Sequence DisplayName="File does not exists #1" sap:VirtualizedContainerService.HintSize="408,439.2" sap2010:WorkflowViewState.IdRef="Sequence_8">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <ui:LogMessage DisplayName="Log Message - Process input file not exists" sap:VirtualizedContainerService.HintSize="366.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Error" Message="[&quot;Input file has no records for: &quot;+in_ProcessType+&quot; at path: &quot;+ out_IOExcelFilePath]" />
-                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke SendExceptionEmailNoData workflow" sap:VirtualizedContainerService.HintSize="366.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Reusable Code\SendExceptionEmailNoData.xaml">
+                      <ui:LogMessage DisplayName="Log Message - Process input file not exists #1" sap:VirtualizedContainerService.HintSize="366.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Error" Message="[&quot;Input file has no records for: &quot;+in_ProcessType+&quot; at path: &quot;+ out_IOExcelFilePath]" />
+                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke SendExceptionEmailNoData workflow #1" sap:VirtualizedContainerService.HintSize="366.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Reusable Code\SendExceptionEmailNoData.xaml">
                         <ui:InvokeWorkflowFile.Arguments>
                           <InArgument x:TypeArguments="x:String" x:Key="in_Subject">[in_Config1("NoDataSubject").ToString]</InArgument>
                           <InArgument x:TypeArguments="x:String" x:Key="in_Body">[in_Config1("NoDataBodyDaily").ToString]</InArgument>
@@ -183,7 +190,7 @@
                           <InOutArgument x:TypeArguments="x:String" x:Key="io_ProcessType1">[in_ProcessType]</InOutArgument>
                         </ui:InvokeWorkflowFile.Arguments>
                       </ui:InvokeWorkflowFile>
-                      <Assign DisplayName="Assign increase thr process counter" sap:VirtualizedContainerService.HintSize="366.4,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+                      <Assign DisplayName="Assign increase thr process counter #1" sap:VirtualizedContainerService.HintSize="366.4,60" sap2010:WorkflowViewState.IdRef="Assign_3">
                         <Assign.To>
                           <OutArgument x:TypeArguments="x:Int32">[io_ProcessCounter1]</OutArgument>
                         </Assign.To>
