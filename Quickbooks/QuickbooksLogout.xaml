@@ -5,7 +5,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>862.4,2060</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>674.4,2325.6</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>QuickbooksLogout_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="31">
@@ -78,9 +78,10 @@
       <AssemblyReference>System.ValueTuple</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="This .xaml will logout system from Quickbooks." DisplayName="Qwickbooks logout" sap:VirtualizedContainerService.HintSize="684.8,1995.2" sap2010:WorkflowViewState.IdRef="Sequence_6">
+  <Sequence sap2010:Annotation.AnnotationText="This .xaml will logout system from Quickbooks." DisplayName="Qwickbooks logout" sap:VirtualizedContainerService.HintSize="684.8,2260.8" sap2010:WorkflowViewState.IdRef="Sequence_6">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="NoProcess" />
     </Sequence.Variables>
@@ -98,10 +99,11 @@
         <InArgument x:TypeArguments="x:String">No Process</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:RetryScope DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="643.2,1771.2" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[Cint(in_Config1(&quot;RetryNumber&quot;))]" RetryInterval="[TimeSpan.Parse(in_Config1(&quot;RetryIntervalMedium&quot;).ToString)]">
+    <ui:LogMessage DisplayName="Log Message - In logout sequence" sap:VirtualizedContainerService.HintSize="643.2,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;In Quickbooks Logout Sequence&quot;]" />
+    <ui:RetryScope DisplayName="Retry Scope Logout" sap:VirtualizedContainerService.HintSize="643.2,1904" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[Cint(in_Config1(&quot;RetryNumber&quot;))]" RetryInterval="[TimeSpan.Parse(in_Config1(&quot;RetryIntervalMedium&quot;).ToString)]">
       <ui:RetryScope.ActivityBody>
         <ActivityAction>
-          <Sequence DisplayName="QuickbooksLogout" sap:VirtualizedContainerService.HintSize="601.6,1595.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
+          <Sequence DisplayName="QuickbooksLogout" sap:VirtualizedContainerService.HintSize="601.6,1728" sap2010:WorkflowViewState.IdRef="Sequence_1">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:Boolean" Name="ClosePopup" />
               <Variable x:TypeArguments="x:Boolean" Name="RecordTransactionPopup" />
@@ -115,17 +117,18 @@
             </sap:WorkflowViewStateService.ViewState>
             <ui:UiElementExists DisplayName="Element Exists if quickbook is open" Exists="[QuickbookOpened]" sap:VirtualizedContainerService.HintSize="560,107.2" sap2010:WorkflowViewState.IdRef="UiElementExists_3">
               <ui:UiElementExists.Target>
-                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="31301f2b-1f16-4268-a37d-7bb959b5ca00" InformativeScreenshot="5ea20b69c700a3763b5d9bea1111ec8e" Selector="&lt;wnd app='qbw32.exe' cls='MauiFrame' title='HUP HIN TRANSPORT CO PTE LTD*' /&gt;&lt;ctrl name='Close' role='push button' text='Close' /&gt;" TimeoutMS="[CInt( in_Config1(&quot;TimeoutShort&quot;))]" WaitForReady="COMPLETE" />
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="31301f2b-1f16-4268-a37d-7bb959b5ca00" InformativeScreenshot="5ea20b69c700a3763b5d9bea1111ec8e" Selector="&lt;wnd app='qbw32.exe' cls='MauiFrame' title='HUP HIN*' /&gt;&lt;ctrl name='Close' role='push button' text='Close' /&gt;" TimeoutMS="[CInt( in_Config1(&quot;TimeoutShort&quot;))]" WaitForReady="COMPLETE" />
               </ui:UiElementExists.Target>
             </ui:UiElementExists>
-            <If Condition="[QuickbookOpened]" DisplayName="If quickbook is open" sap:VirtualizedContainerService.HintSize="560,1355.2" sap2010:WorkflowViewState.IdRef="If_3">
+            <If Condition="[QuickbookOpened]" DisplayName="If quickbook is open" sap:VirtualizedContainerService.HintSize="560,1488" sap2010:WorkflowViewState.IdRef="If_3">
               <If.Then>
-                <Sequence DisplayName="close it" sap:VirtualizedContainerService.HintSize="524.8,1166.4" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                <Sequence DisplayName="close it" sap:VirtualizedContainerService.HintSize="524.8,1299.2" sap2010:WorkflowViewState.IdRef="Sequence_8">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="Log Message - Opened" sap:VirtualizedContainerService.HintSize="483.2,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Quickbook is opened. Closing it.&quot;]" />
                   <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'push button  Close'" sap:VirtualizedContainerService.HintSize="483.2,107.2" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT">
                     <ui:Click.CursorPosition>
                       <ui:CursorPosition Position="Center">
@@ -138,7 +141,7 @@
                       </ui:CursorPosition>
                     </ui:Click.CursorPosition>
                     <ui:Click.Target>
-                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="b1ab365b-76c3-42cf-be63-d28011481a53" InformativeScreenshot="d866a6ef5c98c205a5a1b9637201a222" Selector="&lt;wnd app='qbw32.exe' cls='MauiFrame' title='HUP HIN TRANSPORT CO PTE LTD*' /&gt;&lt;ctrl name='Close' role='push button' text='Close' /&gt;" WaitForReady="COMPLETE">
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="b1ab365b-76c3-42cf-be63-d28011481a53" InformativeScreenshot="d866a6ef5c98c205a5a1b9637201a222" Selector="&lt;wnd app='qbw32.exe' cls='MauiFrame' title='HUP HIN*' /&gt;&lt;ctrl name='Close' role='push button' text='Close' /&gt;" WaitForReady="COMPLETE">
                         <ui:Target.TimeoutMS>
                           <InArgument x:TypeArguments="x:Int32" />
                         </ui:Target.TimeoutMS>
@@ -147,7 +150,7 @@
                   </ui:Click>
                   <ui:UiElementExists DisplayName="Element Exists close popup" Exists="[ClosePopup]" sap:VirtualizedContainerService.HintSize="483.2,107.2" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
                     <ui:UiElementExists.Target>
-                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="dce77edb-649c-46d6-a9f1-20d718bbec35" InformativeScreenshot="10c163a2e230c9c4f784f6fc15ef6eb6" Selector="&lt;wnd app='qbw32.exe' cls='MauiForm' title='Exiting Reckon Accounts' /&gt;&lt;wnd aaname='Yes' cls='MauiPushButton' title='&amp;amp;Yes' /&gt;" TimeoutMS="[Cint(in_Config1(&quot;TimeoutShort&quot;))]" WaitForReady="COMPLETE" />
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="dce77edb-649c-46d6-a9f1-20d718bbec35" InformativeScreenshot="10c163a2e230c9c4f784f6fc15ef6eb6" Selector="&lt;wnd app='qbw32.exe' cls='MauiForm' title='Exiting Reckon Accounts' /&gt;&lt;wnd aaname='Yes' cls='MauiPushButton' title='*Yes' /&gt;" TimeoutMS="[Cint(in_Config1(&quot;TimeoutShort&quot;))]" WaitForReady="COMPLETE" />
                     </ui:UiElementExists.Target>
                   </ui:UiElementExists>
                   <If Condition="[ClosePopup]" DisplayName="If - close popup" sap:VirtualizedContainerService.HintSize="483.2,296" sap2010:WorkflowViewState.IdRef="If_1">
@@ -190,7 +193,7 @@
                   </If>
                   <ui:UiElementExists DisplayName="Element Exists record transaction" Exists="[RecordTransactionPopup]" sap:VirtualizedContainerService.HintSize="483.2,107.2" sap2010:WorkflowViewState.IdRef="UiElementExists_2">
                     <ui:UiElementExists.Target>
-                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="5a1e6265-84b9-4953-9e56-26604cfb08c4" InformativeScreenshot="f40ee77eac968d69370f443d77d99015" Selector="&lt;wnd app='qbw32.exe' cls='MauuiMessage' title='Recording Transaction' /&gt;&lt;wnd aaname='Yes' cls='MauiPushButton' title='&amp;amp;Yes' /&gt;" TimeoutMS="[Cint(in_Config1(&quot;TimeoutShort&quot;))]" WaitForReady="COMPLETE" />
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="5a1e6265-84b9-4953-9e56-26604cfb08c4" InformativeScreenshot="f40ee77eac968d69370f443d77d99015" Selector="&lt;wnd app='qbw32.exe' cls='MauuiMessage' title='Recording Transaction' /&gt;&lt;wnd aaname='Yes' cls='MauiPushButton' title='*Yes' /&gt;" TimeoutMS="[Cint(in_Config1(&quot;TimeoutShort&quot;))]" WaitForReady="COMPLETE" />
                     </ui:UiElementExists.Target>
                   </ui:UiElementExists>
                   <If Condition="[RecordTransactionPopup]" DisplayName="If - record transaction" sap:VirtualizedContainerService.HintSize="483.2,296" sap2010:WorkflowViewState.IdRef="If_2">
@@ -213,7 +216,7 @@
                           </ui:CursorPosition>
                         </ui:Click.CursorPosition>
                         <ui:Click.Target>
-                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="2035dc8e-480a-41ab-9ea3-aa7e3bf0fc12" InformativeScreenshot="eafa11c07b7f5e69f75adab8aee11522" Selector="&lt;wnd app='qbw32.exe' cls='MauuiMessage' title='Recording Transaction' /&gt;&lt;wnd aaname='No' cls='MauiPushButton' title='&amp;amp;No' /&gt;" WaitForReady="COMPLETE">
+                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="2035dc8e-480a-41ab-9ea3-aa7e3bf0fc12" InformativeScreenshot="eafa11c07b7f5e69f75adab8aee11522" Selector="&lt;wnd app='qbw32.exe' cls='MauuiMessage' title='Recording Transaction' /&gt;&lt;wnd aaname='No' cls='MauiPushButton' title='*No' /&gt;" WaitForReady="COMPLETE">
                             <ui:Target.TimeoutMS>
                               <InArgument x:TypeArguments="x:Int32" />
                             </ui:Target.TimeoutMS>
