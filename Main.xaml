@@ -231,7 +231,7 @@
         </State.Entry>
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <av:Point x:Key="ShapeLocation">224.333333333333,212.333333333333</av:Point>
+            <av:Point x:Key="ShapeLocation">214.8,324.8</av:Point>
             <av:Size x:Key="ShapeSize">250.4,130.4</av:Size>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
             <x:Double x:Key="StateContainerWidth">217</x:Double>
@@ -243,7 +243,7 @@
           <Transition DisplayName="New Transaction" sap:VirtualizedContainerService.HintSize="448.8,805.6" sap2010:WorkflowViewState.IdRef="Transition_11">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <av:PointCollection x:Key="ConnectorLocation">349.533333333333,342.733333333333 349.533333333333,440.666666666667</av:PointCollection>
+                <av:PointCollection x:Key="ConnectorLocation">340,455.2 349.533333333333,455.2 349.533333333333,440.666666666667</av:PointCollection>
                 <x:Int32 x:Key="SrcConnectionPointIndex">39</x:Int32>
                 <x:Int32 x:Key="DestConnectionPointIndex">38</x:Int32>
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -552,7 +552,7 @@
                     </sap:WorkflowViewStateService.ViewState>
                     <Transition.Condition>[SystemException IsNot Nothing]</Transition.Condition>
                     <Transition.To>
-                      <State x:Name="__ReferenceID3" sap2010:Annotation.AnnotationText="Read configuration file and initialize applications used in the process. This will check if all the folders, Shared drives are accessible along with reading Config file. " DisplayName="Initialization" sap:VirtualizedContainerService.HintSize="793.6,4064" sap2010:WorkflowViewState.IdRef="State_8">
+                      <State x:Name="__ReferenceID3" sap2010:Annotation.AnnotationText="Read configuration file and initialize applications used in the process. This will check if all the folders, Shared drives are accessible along with reading Config file. " DisplayName="Initialization" sap:VirtualizedContainerService.HintSize="248.8,155.2" sap2010:WorkflowViewState.IdRef="State_8">
                         <State.Entry>
                           <TryCatch DisplayName="Try initializing settings and applications" sap:VirtualizedContainerService.HintSize="748.8,3631.2" sap2010:WorkflowViewState.IdRef="TryCatch_15">
                             <sap:WorkflowViewStateService.ViewState>
@@ -883,7 +883,7 @@
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Int32 x:Key="SrcConnectionPointIndex">39</x:Int32>
                                 <x:Int32 x:Key="DestConnectionPointIndex">38</x:Int32>
-                                <av:PointCollection x:Key="ConnectorLocation">347.4,161.866666666667 347.4,191.866666666667 349.533333333333,191.866666666667 349.533333333333,212.333333333333</av:PointCollection>
+                                <av:PointCollection x:Key="ConnectorLocation">347.4,161.866666666667 347.4,191.866666666667 340,191.866666666667 340,324.8</av:PointCollection>
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
@@ -1015,7 +1015,7 @@
                   <Transition sap2010:Annotation.AnnotationText="Business Rule Exception" DisplayName="Business Exception" sap:VirtualizedContainerService.HintSize="448.8,540.8" sap2010:WorkflowViewState.IdRef="Transition_9">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <av:PointCollection x:Key="ConnectorLocation">361.053333333333,698.266666666667 361.053333333333,728.266666666667 504.733333333333,728.266666666667 504.733333333333,251.453333333333 474.733333333333,251.453333333333</av:PointCollection>
+                        <av:PointCollection x:Key="ConnectorLocation">361.053333333333,699.066666666667 361.053333333333,723.92 495.2,723.92 495.2,363.92 465.2,363.92</av:PointCollection>
                         <x:Int32 x:Key="SrcConnectionPointIndex">43</x:Int32>
                         <x:Int32 x:Key="DestConnectionPointIndex">20</x:Int32>
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1030,7 +1030,7 @@
                   <Transition sap2010:Annotation.AnnotationText="There is no need for any action in case of successful transaction.&#xA;The process should simply go to next transaction." DisplayName="Success" sap:VirtualizedContainerService.HintSize="448.8,555.2" sap2010:WorkflowViewState.IdRef="Transition_10">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <av:PointCollection x:Key="ConnectorLocation">407.133333333333,698.266666666667 407.133333333333,723.613333333333 504.733333333333,723.613333333333 504.733333333333,303.613333333333 474.733333333333,303.613333333333</av:PointCollection>
+                        <av:PointCollection x:Key="ConnectorLocation">407.133333333333,699.066666666667 407.133333333333,716.08 495.2,716.08 495.2,416.08 465.2,416.08</av:PointCollection>
                         <x:Int32 x:Key="SrcConnectionPointIndex">59</x:Int32>
                         <x:Int32 x:Key="DestConnectionPointIndex">52</x:Int32>
                         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -1053,7 +1053,7 @@
           <Transition sap2010:Annotation.AnnotationText="This is a simple mecanism to stop the process.&#xA;In reallife scenario you can stop the process when there is no more data to process or on a schedule." DisplayName="No Data" sap:VirtualizedContainerService.HintSize="448.8,865.6" sap2010:WorkflowViewState.IdRef="Transition_12">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <av:PointCollection x:Key="ConnectorLocation">349.533333333333,342.733333333333 349.533333333333,372.733333333333 90,372.733333333333 90,330.4</av:PointCollection>
+                <av:PointCollection x:Key="ConnectorLocation">340,455.2 340,485.2 90,485.2 90,330.4</av:PointCollection>
                 <x:Int32 x:Key="SrcConnectionPointIndex">39</x:Int32>
                 <x:Int32 x:Key="DestConnectionPointIndex">39</x:Int32>
                 <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
