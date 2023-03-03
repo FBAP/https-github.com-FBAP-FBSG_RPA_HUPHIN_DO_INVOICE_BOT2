@@ -2,8 +2,6 @@
   <x:Members>
     <x:Property Name="in_FilterFlag" Type="InArgument(x:String)" />
     <x:Property Name="in_IOExcelFileDaily" Type="InArgument(x:String)" />
-    <x:Property Name="in_InvoiceFilePath1" Type="InArgument(x:String)" />
-    <x:Property Name="in_InvoiceNumber1" Type="InArgument(x:String)" />
     <x:Property Name="in_Config1" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="in_Status" Type="InArgument(x:String)" />
     <x:Property Name="in_Comments" Type="InArgument(x:String)" />
@@ -13,7 +11,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>700,7752.8</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>700,7496.8</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>SetStatusDaily_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="32">
@@ -85,7 +83,7 @@
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="SetStatusDaily" sap:VirtualizedContainerService.HintSize="710.4,7688" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="SetStatusDaily" sap:VirtualizedContainerService.HintSize="710.4,7432" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dt_IOFileDTDaily" />
     </Sequence.Variables>
@@ -285,13 +283,13 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ForEachRow>
-    <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope Daily Success" sap:VirtualizedContainerService.HintSize="668.8,5327.2" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" InstanceCachePeriod="3000" Visible="False" WorkbookPath="[in_IOExcelFileDaily]">
+    <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope Daily Success" sap:VirtualizedContainerService.HintSize="668.8,5071.2" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" InstanceCachePeriod="3000" Visible="False" WorkbookPath="[in_IOExcelFileDaily]">
       <ui:ExcelApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do Daily Success" sap:VirtualizedContainerService.HintSize="635.2,5217.6" sap2010:WorkflowViewState.IdRef="Sequence_39">
+          <Sequence DisplayName="Do Daily Success" sap:VirtualizedContainerService.HintSize="635.2,4961.6" sap2010:WorkflowViewState.IdRef="Sequence_39">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -332,7 +330,7 @@
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                           <If.Then>
-                            <Sequence DisplayName="Update for Daily Success PO Number" sap:VirtualizedContainerService.HintSize="375.2,564.8" sap2010:WorkflowViewState.IdRef="Sequence_23">
+                            <Sequence DisplayName="Update for Daily Success PO Number" sap:VirtualizedContainerService.HintSize="375.2,308.8" sap2010:WorkflowViewState.IdRef="Sequence_23">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -341,8 +339,6 @@
                               </sap:WorkflowViewStateService.ViewState>
                               <ui:ExcelWriteCell Cell="[&quot;Y&quot;+  (dt_IOFileDTDaily.Rows.IndexOf( CurrentRow)+2).ToString]" DisplayName="Write Cell - Success for Daily PO Number" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_10" SheetName="[in_Config1(&quot;SheetNameFieldsExtracted&quot;).ToString]" Text="[in_Status]" />
                               <ui:ExcelWriteCell Cell="[&quot;Z&quot;+  (dt_IOFileDTDaily.Rows.IndexOf( CurrentRow)+2).ToString]" DisplayName="Write Cell - Success for Daily PO Number Comments" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_22" SheetName="[in_Config1(&quot;SheetNameFieldsExtracted&quot;).ToString]" Text="[in_Comments]" />
-                              <ui:ExcelWriteCell Cell="[&quot;F&quot;+  (dt_IOFileDTDaily.Rows.IndexOf( CurrentRow)+2).ToString]" DisplayName="Write Cell - Invoice File Path for Daily PO Number" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_11" SheetName="[in_Config1(&quot;SheetNameFieldsExtracted&quot;).ToString]" Text="[in_InvoiceFilePath1]" />
-                              <ui:ExcelWriteCell Cell="[&quot;G&quot;+  (dt_IOFileDTDaily.Rows.IndexOf( CurrentRow)+2).ToString]" DisplayName="Write Cell - Invoice Number for Daily PO Number" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_12" SheetName="[in_Config1(&quot;SheetNameFieldsExtracted&quot;).ToString]" Text="[in_InvoiceNumber1]" />
                             </Sequence>
                           </If.Then>
                           <If.Else>
@@ -411,7 +407,7 @@
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                           <If.Then>
-                            <Sequence DisplayName="Update for Daily Success Project Code" sap:VirtualizedContainerService.HintSize="375.2,564.8" sap2010:WorkflowViewState.IdRef="Sequence_27">
+                            <Sequence DisplayName="Update for Daily Success Project Code" sap:VirtualizedContainerService.HintSize="375.2,308.8" sap2010:WorkflowViewState.IdRef="Sequence_27">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -420,8 +416,6 @@
                               </sap:WorkflowViewStateService.ViewState>
                               <ui:ExcelWriteCell Cell="[&quot;Y&quot;+  (dt_IOFileDTDaily.Rows.IndexOf( CurrentRow)+2).ToString]" DisplayName="Write Cell - Success for Daily Project Code" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_13" SheetName="[in_Config1(&quot;SheetNameFieldsExtracted&quot;).ToString]" Text="[in_Status]" />
                               <ui:ExcelWriteCell Cell="[&quot;Z&quot;+  (dt_IOFileDTDaily.Rows.IndexOf( CurrentRow)+2).ToString]" DisplayName="Write Cell - Success for Daily Project code Comments" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_23" SheetName="[in_Config1(&quot;SheetNameFieldsExtracted&quot;).ToString]" Text="[in_Comments]" />
-                              <ui:ExcelWriteCell Cell="[&quot;F&quot;+  (dt_IOFileDTDaily.Rows.IndexOf( CurrentRow)+2).ToString]" DisplayName="Write Cell - Invoice File Path for Daily Project Code" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_14" SheetName="[in_Config1(&quot;SheetNameFieldsExtracted&quot;).ToString]" Text="[in_InvoiceFilePath1]" />
-                              <ui:ExcelWriteCell Cell="[&quot;G&quot;+  (dt_IOFileDTDaily.Rows.IndexOf( CurrentRow)+2).ToString]" DisplayName="Write Cell - Invoice Number for Daily Project Code" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_15" SheetName="[in_Config1(&quot;SheetNameFieldsExtracted&quot;).ToString]" Text="[in_InvoiceNumber1]" />
                             </Sequence>
                           </If.Then>
                           <If.Else>
@@ -490,7 +484,7 @@
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                           <If.Then>
-                            <Sequence DisplayName="Update for Daily Quotation Number Success" sap:VirtualizedContainerService.HintSize="375.2,564.8" sap2010:WorkflowViewState.IdRef="Sequence_31">
+                            <Sequence DisplayName="Update for Daily Quotation Number Success" sap:VirtualizedContainerService.HintSize="375.2,308.8" sap2010:WorkflowViewState.IdRef="Sequence_31">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -499,8 +493,6 @@
                               </sap:WorkflowViewStateService.ViewState>
                               <ui:ExcelWriteCell Cell="[&quot;Y&quot;+  (dt_IOFileDTDaily.Rows.IndexOf( CurrentRow)+2).ToString]" DisplayName="Write Cell - Success for Daily Quotation Number" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_16" SheetName="[in_Config1(&quot;SheetNameFieldsExtracted&quot;).ToString]" Text="[in_Status]" />
                               <ui:ExcelWriteCell Cell="[&quot;Z&quot;+  (dt_IOFileDTDaily.Rows.IndexOf( CurrentRow)+2).ToString]" DisplayName="Write Cell - Success for Daily Quotation Number Comments" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_24" SheetName="[in_Config1(&quot;SheetNameFieldsExtracted&quot;).ToString]" Text="[in_Comments]" />
-                              <ui:ExcelWriteCell Cell="[&quot;F&quot;+  (dt_IOFileDTDaily.Rows.IndexOf( CurrentRow)+2).ToString]" DisplayName="Write Cell - Invoice File Path for Daily Quotation Number" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_17" SheetName="[in_Config1(&quot;SheetNameFieldsExtracted&quot;).ToString]" Text="[in_InvoiceFilePath1]" />
-                              <ui:ExcelWriteCell Cell="[&quot;G&quot;+  (dt_IOFileDTDaily.Rows.IndexOf( CurrentRow)+2).ToString]" DisplayName="Write Cell - Invoice Number for Daily Quotation Number" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_18" SheetName="[in_Config1(&quot;SheetNameFieldsExtracted&quot;).ToString]" Text="[in_InvoiceNumber1]" />
                             </Sequence>
                           </If.Then>
                           <If.Else>
@@ -534,7 +526,7 @@
                 </Sequence>
               </If.Else>
             </If>
-            <If Condition="[in_FilterFlag=&quot;DO Number&quot;]" DisplayName="If DO Number flag is on" sap:VirtualizedContainerService.HintSize="593.6,1251.2" sap2010:WorkflowViewState.IdRef="If_20">
+            <If Condition="[in_FilterFlag=&quot;DO Number&quot;]" DisplayName="If DO Number flag is on" sap:VirtualizedContainerService.HintSize="593.6,995.2" sap2010:WorkflowViewState.IdRef="If_20">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -542,7 +534,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <If.Then>
-                <Sequence DisplayName="Update info For Same DO Number" sap:VirtualizedContainerService.HintSize="558.4,1062.4" sap2010:WorkflowViewState.IdRef="Sequence_37">
+                <Sequence DisplayName="Update info For Same DO Number" sap:VirtualizedContainerService.HintSize="558.4,806.4" sap2010:WorkflowViewState.IdRef="Sequence_37">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -555,13 +547,13 @@
                       </InArgument>
                     </ui:ExcelReadRange.Range>
                   </ui:ExcelReadRange>
-                  <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_IOFileDTDaily]" DisplayName="For Each Row in Data Table Daily Success DO Number" sap:VirtualizedContainerService.HintSize="516.8,869.6" sap2010:WorkflowViewState.IdRef="ForEachRow_9">
+                  <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_IOFileDTDaily]" DisplayName="For Each Row in Data Table Daily Success DO Number" sap:VirtualizedContainerService.HintSize="516.8,613.6" sap2010:WorkflowViewState.IdRef="ForEachRow_9">
                     <ui:ForEachRow.Body>
                       <ActivityAction x:TypeArguments="sd:DataRow">
                         <ActivityAction.Argument>
                           <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
                         </ActivityAction.Argument>
-                        <If Condition="[CurrentRow(&quot;DO Number&quot;).ToString=in_dt_TransactionItem(0)(&quot;DO Number&quot;).tostring]" DisplayName="If Filter matches for Daily Success DO Number" sap:VirtualizedContainerService.HintSize="483.2,753.6" sap2010:WorkflowViewState.IdRef="If_19">
+                        <If Condition="[CurrentRow(&quot;DO Number&quot;).ToString=in_dt_TransactionItem(0)(&quot;DO Number&quot;).tostring]" DisplayName="If Filter matches for Daily Success DO Number" sap:VirtualizedContainerService.HintSize="483.2,497.6" sap2010:WorkflowViewState.IdRef="If_19">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -569,7 +561,7 @@
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                           <If.Then>
-                            <Sequence DisplayName="Update for Daily Success DO Number" sap:VirtualizedContainerService.HintSize="375.2,564.8" sap2010:WorkflowViewState.IdRef="Sequence_35">
+                            <Sequence DisplayName="Update for Daily Success DO Number" sap:VirtualizedContainerService.HintSize="375.2,308.8" sap2010:WorkflowViewState.IdRef="Sequence_35">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -578,8 +570,6 @@
                               </sap:WorkflowViewStateService.ViewState>
                               <ui:ExcelWriteCell Cell="[&quot;Y&quot;+  (dt_IOFileDTDaily.Rows.IndexOf( CurrentRow)+2).ToString]" DisplayName="Write Cell - Success for Daily DO Number" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_19" SheetName="[in_Config1(&quot;SheetNameFieldsExtracted&quot;).ToString]" Text="[in_Status]" />
                               <ui:ExcelWriteCell Cell="[&quot;Z&quot;+  (dt_IOFileDTDaily.Rows.IndexOf( CurrentRow)+2).ToString]" DisplayName="Write Cell - Success for Daily DO Number Comments" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_25" SheetName="[in_Config1(&quot;SheetNameFieldsExtracted&quot;).ToString]" Text="[in_Comments]" />
-                              <ui:ExcelWriteCell Cell="[&quot;F&quot;+  (dt_IOFileDTDaily.Rows.IndexOf( CurrentRow)+2).ToString]" DisplayName="Write Cell - Invoice File Path for Daily DO Number" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_20" SheetName="[in_Config1(&quot;SheetNameFieldsExtracted&quot;).ToString]" Text="[in_InvoiceFilePath1]" />
-                              <ui:ExcelWriteCell Cell="[&quot;G&quot;+  (dt_IOFileDTDaily.Rows.IndexOf( CurrentRow)+2).ToString]" DisplayName="Write Cell - Invoice Number for Daily DO Number" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_21" SheetName="[in_Config1(&quot;SheetNameFieldsExtracted&quot;).ToString]" Text="[in_InvoiceNumber1]" />
                             </Sequence>
                           </If.Then>
                           <If.Else>
