@@ -116,7 +116,6 @@
       <AssemblyReference>UiPath.CV.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Vision.Core</AssemblyReference>
       <AssemblyReference>UiPath.OCR.Contracts</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence sap2010:Annotation.AnnotationText="This .xaml will create invoices for &#xA;Monthly process. It will also calculate the total standard working hours and working hours on Weekends." DisplayName="Quickbooks Process" sap:VirtualizedContainerService.HintSize="678.4,12455.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -372,7 +371,7 @@
                               <OutArgument x:TypeArguments="x:String">[QuotationRefNumber]</OutArgument>
                             </ui:ExcelReadCell.Result>
                           </ui:ExcelReadCell>
-                          <If Condition="[Not String.IsNullOrEmpty( QuotationRefNumber.ToString)]" DisplayName="If Check if Quotation number is empty" sap:VirtualizedContainerService.HintSize="333.6,52.8" sap2010:WorkflowViewState.IdRef="If_42">
+                          <If Condition="[Not String.IsNullOrEmpty( QuotationRefNumber.ToString)]" DisplayName="If Check if Quotation number is empty" sap:VirtualizedContainerService.HintSize="723.2,407.2" sap2010:WorkflowViewState.IdRef="If_42">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -394,7 +393,7 @@
                                     <InArgument x:TypeArguments="x:String">[QuotationRefNumber.Replace("/", "-")]</InArgument>
                                   </Assign.Value>
                                 </Assign>
-                                <If Condition="[QuotationRefNumber.ToUpper.Trim= in_dt_TransactionItem1(0)(&quot;Quotation Number&quot;).tostring.toupper.trim]" DisplayName="If -  check if Quotation number matches with Quotation file" sap:VirtualizedContainerService.HintSize="262.4,52.8" sap2010:WorkflowViewState.IdRef="If_41">
+                                <If Condition="[QuotationRefNumber.ToUpper.Trim= in_dt_TransactionItem1(0)(&quot;Quotation Number&quot;).tostring.toupper.trim]" DisplayName="If -  check if Quotation number matches with Quotation file #2" sap:VirtualizedContainerService.HintSize="752.8,407.2" sap2010:WorkflowViewState.IdRef="If_41">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -402,17 +401,17 @@
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
                                   <If.Then>
-                                    <ui:LogMessage DisplayName="Log Message - display number are same" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_126" Level="Info" Message="[&quot;Quotation reference number from Quotation file and Input Excel file are same: &quot; + QuotationRefNumber.ToString]" />
+                                    <ui:LogMessage DisplayName="Log Message - display number are same #2" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_126" Level="Info" Message="[&quot;Quotation reference number from Quotation file and Input Excel file are same: &quot; + QuotationRefNumber.ToString]" />
                                   </If.Then>
                                   <If.Else>
-                                    <Sequence DisplayName="Throw exception if Ref number not matching" sap:VirtualizedContainerService.HintSize="375.2,248" sap2010:WorkflowViewState.IdRef="Sequence_119">
+                                    <Sequence DisplayName="Throw exception if Ref number not matching #2" sap:VirtualizedContainerService.HintSize="375.2,248" sap2010:WorkflowViewState.IdRef="Sequence_119">
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
-                                      <ui:LogMessage DisplayName="Log Message - display numbers are not matching" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_127" Level="Error" Message="[&quot;Quotation Reference Number from Quotation file and Input Excel are not same. From Quotation file: &quot;+ QuotationRefNumber+&quot; and From Input file: &quot;+in_dt_TransactionItem1(0)(&quot;Quotation Number&quot;).tostring]" />
-                                      <Throw DisplayName="Throw Quotation number not matching" Exception="[new BusinessRuleException(&quot;Quotation reference number &quot;+in_dt_TransactionItem1(0)(&quot;Quotation Number&quot;).tostring+&quot; from Quotation file and Input Excel file are not matching.&quot;)]" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="Throw_15" />
+                                      <ui:LogMessage DisplayName="Log Message - display numbers are not matching #2" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_127" Level="Error" Message="[&quot;Quotation Reference Number from Quotation file and Input Excel are not same. From Quotation file: &quot;+ QuotationRefNumber+&quot; and From Input file: &quot;+in_dt_TransactionItem1(0)(&quot;Quotation Number&quot;).tostring]" />
+                                      <Throw DisplayName="Throw Quotation number not matching #2" Exception="[new BusinessRuleException(&quot;Quotation reference number &quot;+in_dt_TransactionItem1(0)(&quot;Quotation Number&quot;).tostring+&quot; from Quotation file and Input Excel file are not matching.&quot;)]" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="Throw_15" />
                                     </Sequence>
                                   </If.Else>
                                 </If>
