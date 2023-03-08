@@ -207,7 +207,7 @@
                               <InArgument x:TypeArguments="x:String" x:Key="in_Body">[Config("ExceptionBody").ToString]</InArgument>
                               <InArgument x:TypeArguments="x:String" x:Key="in_CcEmailList">[Config("CCEmailList").ToString]</InArgument>
                               <InArgument x:TypeArguments="x:String" x:Key="in_RecipientsEmailList1">[Config("RecipientsEmailList").ToString]</InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionOccured">[BusinessException.Message]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionOccured">[Exception.Message]</InArgument>
                               <InOutArgument x:TypeArguments="x:String" x:Key="io_ProcessType1">[NoProcess]</InOutArgument>
                             </ui:InvokeWorkflowFile.Arguments>
                           </ui:InvokeWorkflowFile>
@@ -551,7 +551,7 @@
                     </sap:WorkflowViewStateService.ViewState>
                     <Transition.Condition>[SystemException IsNot Nothing]</Transition.Condition>
                     <Transition.To>
-                      <State x:Name="__ReferenceID3" sap2010:Annotation.AnnotationText="Read configuration file and initialize applications used in the process. This will check if all the folders, Shared drives are accessible along with reading Config file. " DisplayName="Initialization" sap:VirtualizedContainerService.HintSize="248.8,155.2" sap2010:WorkflowViewState.IdRef="State_8">
+                      <State x:Name="__ReferenceID3" sap2010:Annotation.AnnotationText="Read configuration file and initialize applications used in the process. This will check if all the folders, Shared drives are accessible along with reading Config file. " DisplayName="Initialization" sap:VirtualizedContainerService.HintSize="793.6,4064" sap2010:WorkflowViewState.IdRef="State_8">
                         <State.Entry>
                           <TryCatch DisplayName="Try initializing settings and applications" sap:VirtualizedContainerService.HintSize="748.8,3631.2" sap2010:WorkflowViewState.IdRef="TryCatch_15">
                             <sap:WorkflowViewStateService.ViewState>
@@ -608,7 +608,7 @@
                                           <InArgument x:TypeArguments="x:Int32">0</InArgument>
                                         </Assign.Value>
                                       </Assign>
-                                      <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope for Config file" sap:VirtualizedContainerService.HintSize="593.6,1509.6" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_3" InstanceCachePeriod="3000" WorkbookPath="Data\Bot2_Config.xlsx">
+                                      <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope for Config file" sap:VirtualizedContainerService.HintSize="593.6,1509.6" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_3" InstanceCachePeriod="3000" Visible="False" WorkbookPath="Data\Bot2_Config.xlsx">
                                         <ui:ExcelApplicationScope.Body>
                                           <ActivityAction x:TypeArguments="ui:WorkbookApplication">
                                             <ActivityAction.Argument>
@@ -925,7 +925,7 @@
                                             <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[Config]</InArgument>
                                           </ui:InvokeWorkflowFile.Arguments>
                                         </ui:InvokeWorkflowFile>
-                                        <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - Clear the values from Business Sheet" sap:VirtualizedContainerService.HintSize="337.6,52.8" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_4" InstanceCachePeriod="3000" WorkbookPath="Data\Bot2_Config.xlsx">
+                                        <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - Clear the values from Business Sheet" sap:VirtualizedContainerService.HintSize="337.6,52.8" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_4" InstanceCachePeriod="3000" Visible="False" WorkbookPath="Data\Bot2_Config.xlsx">
                                           <ui:ExcelApplicationScope.Body>
                                             <ActivityAction x:TypeArguments="ui:WorkbookApplication">
                                               <ActivityAction.Argument>

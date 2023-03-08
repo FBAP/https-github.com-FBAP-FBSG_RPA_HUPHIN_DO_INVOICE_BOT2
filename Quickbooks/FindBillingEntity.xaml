@@ -13,7 +13,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>741.6,3917.6</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>770.4,4383.2</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>FindBillingEntity_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="38">
@@ -100,7 +100,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Find out the billing entities for the current Company or PO" DisplayName="FindBillingEntity" sap:VirtualizedContainerService.HintSize="752,3852.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Find out the billing entities for the current Company or PO" DisplayName="FindBillingEntity" sap:VirtualizedContainerService.HintSize="780.8,4318.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="CurrentCompanyName" />
       <Variable x:TypeArguments="x:Boolean" Name="CompanyPopupExists" />
@@ -111,14 +111,14 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ReadRange AddHeaders="True" DataTable="[in_dt_BillingEntity1]" DisplayName="Read Range Workbook input file" sap:VirtualizedContainerService.HintSize="710.4,88" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Billing Entity" WorkbookPath="[io_IOExcelFilePath]">
+    <ui:ReadRange AddHeaders="True" DataTable="[in_dt_BillingEntity1]" DisplayName="Read Range Workbook input file" sap:VirtualizedContainerService.HintSize="739.2,88" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Billing Entity" WorkbookPath="[io_IOExcelFilePath]">
       <ui:ReadRange.Range>
         <InArgument x:TypeArguments="x:String">
           <Literal x:TypeArguments="x:String" Value="" />
         </InArgument>
       </ui:ReadRange.Range>
     </ui:ReadRange>
-    <Assign DisplayName="Assign Company Name" sap:VirtualizedContainerService.HintSize="710.4,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign DisplayName="Assign Company Name" sap:VirtualizedContainerService.HintSize="739.2,60" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[CurrentCompanyName]</OutArgument>
       </Assign.To>
@@ -126,8 +126,8 @@
         <InArgument x:TypeArguments="x:String">[in_dt_TransactionItem(0)("Company Name").ToString]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:LogMessage DisplayName="Log Message - Find out billing entity" sap:VirtualizedContainerService.HintSize="710.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Finding out billing entity for Company name: &quot;+ CurrentCompanyName]" />
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_dt_BillingEntity1]" DisplayName="For Each Row in Business Entity Data Table" sap:VirtualizedContainerService.HintSize="710.4,364.8" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+    <ui:LogMessage DisplayName="Log Message - Find out billing entity" sap:VirtualizedContainerService.HintSize="739.2,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Finding out billing entity for Company name: &quot;+ CurrentCompanyName]" />
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_dt_BillingEntity1]" DisplayName="For Each Row in Business Entity Data Table" sap:VirtualizedContainerService.HintSize="739.2,364.8" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
@@ -163,7 +163,7 @@
         </ActivityAction>
       </ui:ForEachRow.Body>
     </ui:ForEachRow>
-    <If Condition="[String.IsNullOrEmpty( out_BillingEntity)]" DisplayName="If bot couldnt find billing entity" sap:VirtualizedContainerService.HintSize="710.4,474.4" sap2010:WorkflowViewState.IdRef="If_2">
+    <If Condition="[String.IsNullOrEmpty( out_BillingEntity)]" DisplayName="If bot couldnt find billing entity" sap:VirtualizedContainerService.HintSize="739.2,474.4" sap2010:WorkflowViewState.IdRef="If_2">
       <If.Then>
         <Sequence DisplayName="Set Default entity" sap:VirtualizedContainerService.HintSize="375.2,285.6" sap2010:WorkflowViewState.IdRef="Sequence_6">
           <sap:WorkflowViewStateService.ViewState>
@@ -192,7 +192,7 @@
         </Sequence>
       </If.Else>
     </If>
-    <If Condition="[out_BillingEntity.ToLower.Contains(&quot;heavy equipment&quot;)]" DisplayName="If entity is heavy equipments" sap:VirtualizedContainerService.HintSize="710.4,2448.8" sap2010:WorkflowViewState.IdRef="If_3">
+    <If Condition="[out_BillingEntity.ToLower.Contains(&quot;heavy equipment&quot;)]" DisplayName="If entity is heavy equipments" sap:VirtualizedContainerService.HintSize="739.2,2914.4" sap2010:WorkflowViewState.IdRef="If_3">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -200,25 +200,25 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <Sequence DisplayName="Change it in quickbooks" sap:VirtualizedContainerService.HintSize="675.2,2260" sap2010:WorkflowViewState.IdRef="Sequence_8">
+        <Sequence DisplayName="Change it in quickbooks" sap:VirtualizedContainerService.HintSize="704,2725.6" sap2010:WorkflowViewState.IdRef="Sequence_8">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window 'excel.exe Bot2_Config'" sap:VirtualizedContainerService.HintSize="633.6,2167.2" sap2010:WorkflowViewState.IdRef="WindowScope_3" InformativeScreenshot="851458f36202b00d8dae18fea203561a" Selector="&lt;wnd app='qbw32.exe' cls='MauiFrame' title='HUP HIN*' /&gt;">
+          <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window 'excel.exe Bot2_Config'" sap:VirtualizedContainerService.HintSize="662.4,2632.8" sap2010:WorkflowViewState.IdRef="WindowScope_3" InformativeScreenshot="851458f36202b00d8dae18fea203561a" Selector="&lt;wnd app='qbw32.exe' cls='MauiFrame' title='HUP HIN*' /&gt;">
             <ui:WindowScope.Body>
               <ActivityAction x:TypeArguments="x:Object">
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
                 </ActivityAction.Argument>
-                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="600,2020" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="628.8,2485.6" sap2010:WorkflowViewState.IdRef="Sequence_16">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'menu item  File'" sap:VirtualizedContainerService.HintSize="558.4,107.2" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT">
+                  <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'menu item  File'" sap:VirtualizedContainerService.HintSize="587.2,107.2" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT">
                     <ui:Click.CursorPosition>
                       <ui:CursorPosition Position="Center">
                         <ui:CursorPosition.OffsetX>
@@ -237,7 +237,7 @@
                       </ui:Target>
                     </ui:Click.Target>
                   </ui:Click>
-                  <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'menu item'" sap:VirtualizedContainerService.HintSize="558.4,107.2" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT">
+                  <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'menu item'" sap:VirtualizedContainerService.HintSize="587.2,107.2" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT">
                     <ui:Click.CursorPosition>
                       <ui:CursorPosition Position="Center">
                         <ui:CursorPosition.OffsetX>
@@ -256,7 +256,7 @@
                       </ui:Target>
                     </ui:Click.Target>
                   </ui:Click>
-                  <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window Open a Qkbook file" sap:VirtualizedContainerService.HintSize="558.4,494.4" sap2010:WorkflowViewState.IdRef="WindowScope_1" InformativeScreenshot="61339d8337b29243f09f353e5d6f7f6a" Selector="&lt;wnd app='qbw32.exe' cls='MauiForm' title='Open Company: Type' /&gt;">
+                  <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window Open a Qkbook file" sap:VirtualizedContainerService.HintSize="587.2,494.4" sap2010:WorkflowViewState.IdRef="WindowScope_1" InformativeScreenshot="61339d8337b29243f09f353e5d6f7f6a" Selector="&lt;wnd app='qbw32.exe' cls='MauiForm' title='Open Company: Type' /&gt;">
                     <ui:WindowScope.Body>
                       <ActivityAction x:TypeArguments="x:Object">
                         <ActivityAction.Argument>
@@ -316,19 +316,19 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </ui:WindowScope>
-                  <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window 'qbw32.exe Open'" sap:VirtualizedContainerService.HintSize="558.4,951.2" sap2010:WorkflowViewState.IdRef="WindowScope_4" InformativeScreenshot="e0f89c9b3b21a96b3d00d002d2a6617b" Selector="&lt;wnd app='qbw32.exe' title='Open a Company' /&gt;">
+                  <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window 'qbw32.exe Open'" sap:VirtualizedContainerService.HintSize="587.2,1416.8" sap2010:WorkflowViewState.IdRef="WindowScope_4" InformativeScreenshot="e0f89c9b3b21a96b3d00d002d2a6617b" Selector="&lt;wnd app='qbw32.exe' title='Open a Company' /&gt;">
                     <ui:WindowScope.Body>
                       <ActivityAction x:TypeArguments="x:Object">
                         <ActivityAction.Argument>
                           <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
                         </ActivityAction.Argument>
-                        <Sequence DisplayName="open specific file" sap:VirtualizedContainerService.HintSize="524.8,804" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                        <Sequence DisplayName="open specific file" sap:VirtualizedContainerService.HintSize="553.6,1269.6" sap2010:WorkflowViewState.IdRef="Sequence_17">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <ui:UiElementExists DisplayName="Element Exists 'dialog  Open a Company'" Exists="[CompanyPopupExists]" sap:VirtualizedContainerService.HintSize="483.2,107.2" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
+                          <ui:UiElementExists DisplayName="Element Exists 'dialog  Open a Company'" Exists="[CompanyPopupExists]" sap:VirtualizedContainerService.HintSize="512,107.2" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
                             <ui:UiElementExists.Target>
                               <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="085b0abc-927e-4622-a47f-bd561247cfef" InformativeScreenshot="f3b8a994b9c66fcc3e2da0ee9c116d20" Selector="&lt;wnd ctrlid='1148' aaname='File name:' /&gt;" TimeoutMS="[in_TimeoutShort]" WaitForReady="COMPLETE" />
                             </ui:UiElementExists.Target>
@@ -339,7 +339,7 @@
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
                           </ui:UiElementExists>
-                          <If Condition="[CompanyPopupExists]" DisplayName="If popup opened for entering company name" sap:VirtualizedContainerService.HintSize="483.2,564" sap2010:WorkflowViewState.IdRef="If_4">
+                          <If Condition="[CompanyPopupExists]" DisplayName="If popup opened for entering company name" sap:VirtualizedContainerService.HintSize="512,1029.6" sap2010:WorkflowViewState.IdRef="If_4">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -347,22 +347,43 @@
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
                             <If.Then>
-                              <Sequence DisplayName="Exists" sap:VirtualizedContainerService.HintSize="375.2,375.2" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                              <Sequence DisplayName="Exists" sap:VirtualizedContainerService.HintSize="476.8,840.8" sap2010:WorkflowViewState.IdRef="Sequence_12">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBetweenKeys="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DelayBefore="[CInt( in_Config1(&quot;DelayBeforeAfter&quot;))]" DelayMS="[CInt( in_Config1(&quot;DelayBeforeAfter&quot;))]" DisplayName="Type Into filepath" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_2" Text="[in_HeavyEquipmentPath]">
-                                  <ui:TypeInto.Target>
-                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="36012dab-b6b1-4805-8570-46cf7a686e08" InformativeScreenshot="b6a0ed8761ccd09a1e296fa8450ba1ac" Selector="&lt;wnd ctrlid='1148' aaname='File name:' /&gt;" WaitForReady="COMPLETE">
+                                <ui:SetToClipboard DisplayName="Set To Clipboard Billing entity file" sap:VirtualizedContainerService.HintSize="435.2,60" sap2010:WorkflowViewState.IdRef="SetToClipboard_1" Text="[in_HeavyEquipmentPath]" />
+                                <ui:SendHotkey DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SpecialKey="{x:Null}" Activate="True" ClickBeforeTyping="True" DelayBefore="[CInt( in_Config1(&quot;DelayOneThousand&quot;).ToString)]" DisplayName="Send Hotkey to enter quickbooks path" EmptyField="True" sap:VirtualizedContainerService.HintSize="435.2,154.4" sap2010:WorkflowViewState.IdRef="SendHotkey_1" Key="v" KeyModifiers="Ctrl">
+                                  <ui:SendHotkey.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="2594a134-5ad2-4f57-8167-c25ee52cb563" InformativeScreenshot="fddf3fd876f4c1e03ee66cadcdd7a0a9" Selector="&lt;wnd ctrlid='1148' aaname='File name*' cls='ComboBox' /&gt;" WaitForReady="COMPLETE">
                                       <ui:Target.TimeoutMS>
                                         <InArgument x:TypeArguments="x:Int32" />
                                       </ui:Target.TimeoutMS>
                                     </ui:Target>
-                                  </ui:TypeInto.Target>
-                                </ui:TypeInto>
-                                <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click open 'Button'" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="Click_5" KeyModifiers="None" MouseButton="BTN_LEFT">
+                                  </ui:SendHotkey.Target>
+                                </ui:SendHotkey>
+                                <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="435.2,306.4" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+                                  <ui:CommentOut.Body>
+                                    <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="375.2,228" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBetweenKeys="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DelayBefore="[CInt( in_Config1(&quot;DelayBeforeAfter&quot;))]" DelayMS="[CInt( in_Config1(&quot;DelayBeforeAfter&quot;))]" DisplayName="Type Into filepath" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_2" Text="[in_HeavyEquipmentPath]">
+                                        <ui:TypeInto.Target>
+                                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="36012dab-b6b1-4805-8570-46cf7a686e08" InformativeScreenshot="b6a0ed8761ccd09a1e296fa8450ba1ac" Selector="&lt;wnd ctrlid='1148' aaname='File name:' /&gt;" WaitForReady="COMPLETE">
+                                            <ui:Target.TimeoutMS>
+                                              <InArgument x:TypeArguments="x:Int32" />
+                                            </ui:Target.TimeoutMS>
+                                          </ui:Target>
+                                        </ui:TypeInto.Target>
+                                      </ui:TypeInto>
+                                    </Sequence>
+                                  </ui:CommentOut.Body>
+                                </ui:CommentOut>
+                                <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click open 'Button'" sap:VirtualizedContainerService.HintSize="435.2,107.2" sap2010:WorkflowViewState.IdRef="Click_5" KeyModifiers="None" MouseButton="BTN_LEFT">
                                   <ui:Click.CursorPosition>
                                     <ui:CursorPosition Position="Center">
                                       <ui:CursorPosition.OffsetX>
