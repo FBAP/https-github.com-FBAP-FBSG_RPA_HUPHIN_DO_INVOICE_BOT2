@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="CheckAllColumnsMasterFile" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ue="clr-namespace:UiPath.Excel;assembly=UiPath.Excel.Activities" xmlns:ueab="clr-namespace:UiPath.Excel.Activities.Business;assembly=UiPath.Excel.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="CheckAllColumnsMasterFile" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_Config1" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="out_dt_BillingEntity" Type="OutArgument(sd:DataTable)" />
@@ -8,10 +8,10 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1159.2,4588.8</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1400,4362.4</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CheckAllColumnsMasterFile_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="33">
+    <scg:List x:TypeArguments="x:String" Capacity="66">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -45,10 +45,11 @@
       <x:String>UiPath.Excel.Activities</x:String>
       <x:String>UiPath.Shared.Activities</x:String>
       <x:String>System.Reflection</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="56">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="66">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -85,7 +86,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Check if all required columns are available in the master file." DisplayName="checking if all required columns exists" sap:VirtualizedContainerService.HintSize="1169.6,4524" sap2010:WorkflowViewState.IdRef="Sequence_35">
+  <Sequence sap2010:Annotation.AnnotationText="Check if all required columns are available in the master file." DisplayName="checking if all required columns exists" sap:VirtualizedContainerService.HintSize="1410.4,4297.6" sap2010:WorkflowViewState.IdRef="Sequence_35">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dt_FieldsToBeExtracted" />
     </Sequence.Variables>
@@ -96,17 +97,21 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Try Catch - check master file cols" sap:VirtualizedContainerService.HintSize="1128,4400" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Try Catch - check master file cols" sap:VirtualizedContainerService.HintSize="1368.8,4173.6" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <TryCatch.Try>
-        <Sequence DisplayName="Master File cols" sap:VirtualizedContainerService.HintSize="1091.2,4168.8" sap2010:WorkflowViewState.IdRef="Sequence_57">
+        <Sequence DisplayName="Master File cols" sap:VirtualizedContainerService.HintSize="1332,3942.4" sap2010:WorkflowViewState.IdRef="Sequence_57">
+          <Sequence.Variables>
+            <Variable x:TypeArguments="s:String[]" Name="ColumnNames" />
+            <Variable x:TypeArguments="x:Int32" Name="Index" />
+          </Sequence.Variables>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message - checking if all required columns" sap:VirtualizedContainerService.HintSize="1049.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Checking if all columns exists in input master file.&quot;]" />
-          <Assign DisplayName="Assign new dt" sap:VirtualizedContainerService.HintSize="1049.6,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+          <ui:LogMessage DisplayName="Log Message - checking if all required columns" sap:VirtualizedContainerService.HintSize="1290.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Checking if all columns exists in input master file.&quot;]" />
+          <Assign DisplayName="Assign new dt" sap:VirtualizedContainerService.HintSize="1290.4,60" sap2010:WorkflowViewState.IdRef="Assign_1">
             <Assign.To>
               <OutArgument x:TypeArguments="sd:DataTable">[dt_FieldsToBeExtracted]</OutArgument>
             </Assign.To>
@@ -114,7 +119,7 @@
               <InArgument x:TypeArguments="sd:DataTable">[new DataTable]</InArgument>
             </Assign.Value>
           </Assign>
-          <Assign DisplayName="Assign new dt #1" sap:VirtualizedContainerService.HintSize="1049.6,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+          <Assign DisplayName="Assign new dt #1" sap:VirtualizedContainerService.HintSize="1290.4,60" sap2010:WorkflowViewState.IdRef="Assign_2">
             <Assign.To>
               <OutArgument x:TypeArguments="sd:DataTable">[out_dt_BillingEntity]</OutArgument>
             </Assign.To>
@@ -122,7 +127,7 @@
               <InArgument x:TypeArguments="sd:DataTable">[new DataTable]</InArgument>
             </Assign.Value>
           </Assign>
-          <Assign DisplayName="Assign new dt #2" sap:VirtualizedContainerService.HintSize="1049.6,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+          <Assign DisplayName="Assign new dt #2" sap:VirtualizedContainerService.HintSize="1290.4,60" sap2010:WorkflowViewState.IdRef="Assign_3">
             <Assign.To>
               <OutArgument x:TypeArguments="sd:DataTable">[out_dt_PublicHoliday]</OutArgument>
             </Assign.To>
@@ -130,7 +135,7 @@
               <InArgument x:TypeArguments="sd:DataTable">[new DataTable]</InArgument>
             </Assign.Value>
           </Assign>
-          <Assign DisplayName="Assign new dt #3" sap:VirtualizedContainerService.HintSize="1049.6,60" sap2010:WorkflowViewState.IdRef="Assign_4">
+          <Assign DisplayName="Assign new dt #3" sap:VirtualizedContainerService.HintSize="1290.4,60" sap2010:WorkflowViewState.IdRef="Assign_4">
             <Assign.To>
               <OutArgument x:TypeArguments="sd:DataTable">[out_dt_VehicleTypeMap]</OutArgument>
             </Assign.To>
@@ -138,7 +143,7 @@
               <InArgument x:TypeArguments="sd:DataTable">[new DataTable]</InArgument>
             </Assign.Value>
           </Assign>
-          <ui:ExcelApplicationScope Password="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Excel Application Scope to read the master file" sap:VirtualizedContainerService.HintSize="1049.6,52.8" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" Visible="False" WorkbookPath="[in_Config1(&quot;MasterFilePath&quot;).ToString+in_Config1(&quot;MasterFileName&quot;).ToString+&quot;.xlsx&quot;]">
+          <ui:ExcelApplicationScope Password="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Excel Application Scope to read the master file" sap:VirtualizedContainerService.HintSize="1290.4,562.4" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" Visible="False" WorkbookPath="[in_Config1(&quot;MasterFilePath&quot;).ToString+in_Config1(&quot;MasterFileName&quot;).ToString+&quot;.xlsx&quot;]">
             <ui:ExcelApplicationScope.Body>
               <ActivityAction x:TypeArguments="ui:WorkbookApplication">
                 <ActivityAction.Argument>
@@ -150,13 +155,7 @@
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:ExcelReadRange AddHeaders="True" DataTable="[dt_FieldsToBeExtracted]" DisplayName="Read Range Master file" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" SheetName="[in_Config1(&quot;SheetNameFieldsExtracted&quot;).ToString]">
-                    <ui:ExcelReadRange.Range>
-                      <InArgument x:TypeArguments="x:String">
-                        <Literal x:TypeArguments="x:String" Value="" />
-                      </InArgument>
-                    </ui:ExcelReadRange.Range>
-                  </ui:ExcelReadRange>
+                  <ui:ExcelReadRange AddHeaders="True" DataTable="[dt_FieldsToBeExtracted]" DisplayName="Read Range Master file" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" Range="A1:Z1" SheetName="[in_Config1(&quot;SheetNameFieldsExtracted&quot;).ToString]" />
                   <ui:ExcelReadRange AddHeaders="True" DataTable="[out_dt_BillingEntity]" DisplayName="Read Billing entity range" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_2" SheetName="[in_Config1(&quot;BillingEntitySheetName&quot;).ToString]">
                     <ui:ExcelReadRange.Range>
                       <InArgument x:TypeArguments="x:String">
@@ -183,12 +182,12 @@
             </ui:ExcelApplicationScope.Body>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:ExcelApplicationScope>
-          <If Condition="[dt_FieldsToBeExtracted.Columns.Contains(in_Config1(&quot;QuotationNumCol&quot;).ToString) And dt_FieldsToBeExtracted.Columns.Contains( in_Config1(&quot;QuotationFilePathCol&quot;).ToString) And dt_FieldsToBeExtracted.Columns.Contains(in_Config1(&quot;PONumberCol&quot;).ToString) And dt_FieldsToBeExtracted.Columns.Contains( in_Config1(&quot;POFilePathCol&quot;).ToString) And dt_FieldsToBeExtracted.Columns.Contains(in_Config1(&quot;ProjectCodeCol&quot;).ToString) And dt_FieldsToBeExtracted.Columns.Contains( in_Config1(&quot;InvoiceFilePathCol&quot;).ToString) And dt_FieldsToBeExtracted.Columns.Contains(in_Config1(&quot;InvoiceNumberCol&quot;).ToString) And dt_FieldsToBeExtracted.Columns.Contains( in_Config1(&quot;ToProceedWithInvoiceCol&quot;).ToString) and dt_FieldsToBeExtracted.Columns.Contains(in_Config1(&quot;DONumberCol&quot;).ToString) And dt_FieldsToBeExtracted.Columns.Contains( in_Config1(&quot;CompanyNameCol&quot;).ToString) And dt_FieldsToBeExtracted.Columns.Contains(in_Config1(&quot;ItemGroupCol&quot;).ToString) And dt_FieldsToBeExtracted.Columns.Contains( in_Config1(&quot;ItemSerialCol&quot;).ToString) And dt_FieldsToBeExtracted.Columns.Contains(in_Config1(&quot;JobTypeCol&quot;).ToString) And dt_FieldsToBeExtracted.Columns.Contains( in_Config1(&quot;JobSiteAddressCol&quot;).ToString) And dt_FieldsToBeExtracted.Columns.Contains(in_Config1(&quot;StartTime1Col&quot;).ToString) And dt_FieldsToBeExtracted.Columns.Contains( in_Config1(&quot;EndTime1Col&quot;).ToString) And dt_FieldsToBeExtracted.Columns.Contains(in_Config1(&quot;StartTime2Col&quot;).ToString) And dt_FieldsToBeExtracted.Columns.Contains( in_Config1(&quot;EndTime2Col&quot;).ToString) And dt_FieldsToBeExtracted.Columns.Contains(in_Config1(&quot;SignatureCol&quot;).ToString) And dt_FieldsToBeExtracted.Columns.Contains( in_Config1(&quot;DOorTimesheetFilePathCol&quot;).ToString) And dt_FieldsToBeExtracted.Columns.Contains(in_Config1(&quot;MonthlyExcelFilePathCol&quot;).ToString) and dt_FieldsToBeExtracted.Columns.Contains(&quot;Status Bot1&quot;) and dt_FieldsToBeExtracted.Columns.Contains(&quot;Comments1&quot;)]" DisplayName="If All columns exists" sap:VirtualizedContainerService.HintSize="1049.6,407.2" sap2010:WorkflowViewState.IdRef="If_24">
+          <If Condition="[dt_FieldsToBeExtracted.Columns.Contains( in_Config1(&quot;StatusBot1Col&quot;).tostring) and dt_FieldsToBeExtracted.Columns.Contains( in_Config1(&quot;Comments1Col&quot;).tostring) and dt_FieldsToBeExtracted.Columns.Contains( in_Config1(&quot;StatusBot2Col&quot;).tostring) and dt_FieldsToBeExtracted.Columns.Contains( in_Config1(&quot;Comments2Col&quot;).tostring)]" DisplayName="If Status column exists" sap:VirtualizedContainerService.HintSize="1290.4,875.2" sap2010:WorkflowViewState.IdRef="If_27">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -196,162 +195,124 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <If.Then>
-              <Sequence DisplayName="All col exists" sap:VirtualizedContainerService.HintSize="375.2,185.6" sap2010:WorkflowViewState.IdRef="Sequence_58">
+              <Sequence DisplayName="Status column exists #1" sap:VirtualizedContainerService.HintSize="375.2,185.6" sap2010:WorkflowViewState.IdRef="Sequence_65">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:LogMessage DisplayName="Log Message - Item Group column exists" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_49" Level="Info" Message="[&quot;Alll the columns exist in the master file.&quot;]" />
+                <ui:LogMessage DisplayName="Log Message - Status column exists #1" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_57" Level="Info" Message="[&quot;Status and Comments columns exist in master file.&quot;]" />
               </Sequence>
             </If.Then>
             <If.Else>
-              <Sequence DisplayName="All col not exist" sap:VirtualizedContainerService.HintSize="375.2,248" sap2010:WorkflowViewState.IdRef="Sequence_59">
+              <Sequence DisplayName="Status column not exists #1" sap:VirtualizedContainerService.HintSize="475.2,716" sap2010:WorkflowViewState.IdRef="Sequence_67">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:LogMessage DisplayName="Log Message - Item Group column doesn't exists" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_50" Level="Error" Message="[&quot;All the required columns are not present in the master file. Please check it manually.&quot;]" />
-                <Throw DisplayName="Throw All the column doesn't exists" Exception="[new Exception(&quot;All required columns don't exist in the input master file.&quot;)]" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="Throw_22" />
-              </Sequence>
-            </If.Else>
-          </If>
-          <If Condition="[dt_FieldsToBeExtracted.Columns.Contains( in_Config1(&quot;StatusBot2Col&quot;).ToString)]" DisplayName="If Status column 2 exists" sap:VirtualizedContainerService.HintSize="1049.6,1136.8" sap2010:WorkflowViewState.IdRef="If_16">
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-            <If.Then>
-              <Sequence DisplayName="Status column exists" sap:VirtualizedContainerService.HintSize="375.2,185.6" sap2010:WorkflowViewState.IdRef="Sequence_36">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-                <ui:LogMessage DisplayName="Log Message - Status column exists" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_33" Level="Info" Message="[&quot;Status Bot2 column exists in master file.&quot;]" />
-              </Sequence>
-            </If.Then>
-            <If.Else>
-              <Sequence DisplayName="Status column not exists" sap:VirtualizedContainerService.HintSize="630.4,977.6" sap2010:WorkflowViewState.IdRef="Sequence_39">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-                <ui:LogMessage DisplayName="Log Message - Status column doesn't exists" sap:VirtualizedContainerService.HintSize="588.8,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_34" Level="Info" Message="[&quot;Status Bot2 column does not exist in master file. Creating Status Bot2 column.&quot;]" />
-                <ueab:ExcelProcessScopeX DisplayAlerts="{x:Null}" ExistingProcessAction="{x:Null}" FileConflictResolution="{x:Null}" LaunchMethod="{x:Null}" LaunchTimeout="{x:Null}" MacroSettings="{x:Null}" ProcessMode="{x:Null}" ShowExcelWindow="{x:Null}" DisplayName="Excel Process Scope -  create status col" sap:VirtualizedContainerService.HintSize="588.8,752" sap2010:WorkflowViewState.IdRef="ExcelProcessScopeX_3">
-                  <ueab:ExcelProcessScopeX.Body>
-                    <ActivityAction x:TypeArguments="ui:IExcelProcess">
+                <ui:LogMessage DisplayName="Log Message - Status column doesn't exists #1" sap:VirtualizedContainerService.HintSize="433.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_58" Level="Info" Message="[&quot;Status and Comments columns do not exist in master file. Adding the columns.&quot;]" />
+                <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope - Master file" sap:VirtualizedContainerService.HintSize="433.6,490.4" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_3" InstanceCachePeriod="3000" WorkbookPath="[in_Config1(&quot;MasterFilePath&quot;).ToString+in_Config1(&quot;MasterFileName&quot;).ToString+&quot;.xlsx&quot;]">
+                  <ui:ExcelApplicationScope.Body>
+                    <ActivityAction x:TypeArguments="ui:WorkbookApplication">
                       <ActivityAction.Argument>
-                        <DelegateInArgument x:TypeArguments="ui:IExcelProcess" Name="ExcelProcessScopeTag" />
+                        <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
                       </ActivityAction.Argument>
-                      <Sequence DisplayName="Do #1" sap:VirtualizedContainerService.HintSize="555.2,665.6" sap2010:WorkflowViewState.IdRef="Sequence_38">
+                      <Sequence DisplayName="Do #1" sap:VirtualizedContainerService.HintSize="375.2,380.8" sap2010:WorkflowViewState.IdRef="Sequence_68">
+                        <Sequence.Variables>
+                          <Variable x:TypeArguments="sd:DataTable" Name="dt_ExtraColumns" />
+                        </Sequence.Variables>
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ueab:ExcelApplicationCard Password="{x:Null}" ReadFormatting="{x:Null}" CreateNewFile="False" DisplayName="Use Excel File- Create Status column" sap:VirtualizedContainerService.HintSize="513.6,572.8" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_3" ResizeWindow="None" WorkbookPath="[in_Config1(&quot;MasterFilePath&quot;).ToString+in_Config1(&quot;MasterFileName&quot;).ToString+&quot;.xlsx&quot;]">
-                          <ueab:ExcelApplicationCard.Body>
-                            <ActivityAction x:TypeArguments="ue:IWorkbookQuickHandle">
-                              <ActivityAction.Argument>
-                                <DelegateInArgument x:TypeArguments="ue:IWorkbookQuickHandle" Name="MasterExcel" />
-                              </ActivityAction.Argument>
-                              <Sequence DisplayName="Insert col #1" sap:VirtualizedContainerService.HintSize="480,303.2" sap2010:WorkflowViewState.IdRef="Sequence_37">
-                                <sap:WorkflowViewStateService.ViewState>
-                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                  </scg:Dictionary>
-                                </sap:WorkflowViewStateService.ViewState>
-                                <ueab:InsertColumnX ColumnFormat="{x:Null}" DisplayName="Insert Column #1" HasHeaders="True" sap:VirtualizedContainerService.HintSize="438.4,210.4" sap2010:WorkflowViewState.IdRef="InsertColumnX_3" NewColumnName="[in_Config1(&quot;StatusBot2Col&quot;).ToString]" Range="[MasterExcel.Sheet(in_Config1(&quot;SheetNameFieldsExtracted&quot;).ToString)]" RelativeColumnName="[in_Config1(&quot;Comments1Col&quot;).ToString]" RelativePosition="After" />
-                              </Sequence>
-                            </ActivityAction>
-                          </ueab:ExcelApplicationCard.Body>
-                        </ueab:ExcelApplicationCard>
+                        <ui:BuildDataTable DataTable="[dt_ExtraColumns]" DisplayName="Build Data Table -  add status and comments column" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="BuildDataTable_2" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Status_x0020_Bot1&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Comments1&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;500&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Status_x0020_Bot2&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Comments2&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;500&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
+                        <ui:ExcelWriteRange AddHeaders="True" DataTable="[dt_ExtraColumns]" DisplayName="Write Range - Write cols" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_2" SheetName="[in_Config1(&quot;SheetNameFieldsExtracted&quot;).ToString]" StartingCell="W1:Z1" />
+                        <ui:ExcelReadRange AddHeaders="True" DataTable="[dt_FieldsToBeExtracted]" DisplayName="Read Range Master file #1" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_6" Range="A1:Z1" SheetName="[in_Config1(&quot;SheetNameFieldsExtracted&quot;).ToString]" />
                       </Sequence>
                     </ActivityAction>
-                  </ueab:ExcelProcessScopeX.Body>
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                </ueab:ExcelProcessScopeX>
+                  </ui:ExcelApplicationScope.Body>
+                </ui:ExcelApplicationScope>
               </Sequence>
             </If.Else>
           </If>
-          <If Condition="[dt_FieldsToBeExtracted.Columns.Contains(in_Config1(&quot;Comments2Col&quot;).ToString)]" DisplayName="If Comments column 2  exists" sap:VirtualizedContainerService.HintSize="1049.6,1136.8" sap2010:WorkflowViewState.IdRef="If_17">
+          <Assign DisplayName="Assign Column names array" sap:VirtualizedContainerService.HintSize="1290.4,60" sap2010:WorkflowViewState.IdRef="Assign_5">
+            <Assign.To>
+              <OutArgument x:TypeArguments="s:String[]">[ColumnNames]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="s:String[]">[{in_Config1("QuotationNumCol").ToString, in_Config1("QuotationFilePathCol").ToString,in_Config1("PONumberCol").ToString,in_Config1("POFilePathCol").ToString,in_Config1("ProjectCodeCol").ToString, in_Config1("InvoiceFilePathCol").ToString,in_Config1("InvoiceNumberCol").ToString, in_Config1("CustomerEntityCol").ToString,in_Config1("ToProceedWithInvoiceCol").ToString,in_Config1("DONumberCol").ToString,in_Config1("CompanyNameCol").ToString,in_Config1("ItemGroupCol").ToString, in_Config1("ItemSerialCol").ToString,in_Config1("JobTypeCol").ToString,in_Config1("JobSiteAddressCol").ToString,in_Config1("StartTime1Col").ToString, in_Config1("EndTime1Col").ToString,in_Config1("StartTime2Col").ToString, in_Config1("EndTime2Col").ToString,in_Config1("SignatureCol").ToString, in_Config1("DOorTimesheetFilePathCol").ToString,in_Config1("MonthlyExcelFilePathCol").ToString, in_Config1("StatusBot1Col").ToString, in_Config1("Comments1Col").ToString, in_Config1("StatusBot2Col").ToString, in_Config1("Comments2Col").ToString}]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="[Index]" DisplayName="For Each Column name check" sap:VirtualizedContainerService.HintSize="1290.4,1009.6" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[dt_FieldsToBeExtracted.Columns]">
+            <ui:ForEach.Body>
+              <ActivityAction x:TypeArguments="x:Object">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="x:Object" Name="Col" />
+                </ActivityAction.Argument>
+                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="1255.2,884.8" sap2010:WorkflowViewState.IdRef="Sequence_64">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="Log Message the current column" sap:VirtualizedContainerService.HintSize="1213.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_53" Level="Info" Message="[&quot;Column Name: &quot;+ Col.ToString]" />
+                  <If Condition="[Col.ToString.Contains(&quot;Column&quot;)]" DisplayName="If check column name" sap:VirtualizedContainerService.HintSize="1213.6,659.2" sap2010:WorkflowViewState.IdRef="If_26">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <If.Then>
+                      <Sequence DisplayName="if Column name is empty" sap:VirtualizedContainerService.HintSize="375.2,248" sap2010:WorkflowViewState.IdRef="Sequence_61">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:LogMessage DisplayName="Log Message Column name empty" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_54" Level="Info" Message="[&quot;Column name is Empty in the Master File for: &quot;+ ColumnNames(index).ToString]" />
+                        <Throw DisplayName="Throw Column name is empty" Exception="[new Exception(&quot;Column name is Empty in the Master File for: &quot;+ ColumnNames(index).ToString)]" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="Throw_23" />
+                      </Sequence>
+                    </If.Then>
+                    <If.Else>
+                      <Sequence DisplayName="check if it has correct column name" sap:VirtualizedContainerService.HintSize="794.4,500" sap2010:WorkflowViewState.IdRef="Sequence_63">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <If Condition="[Col.ToString.Trim=( ColumnNames( Index).ToString)]" DisplayName="If column name is correct" sap:VirtualizedContainerService.HintSize="752.8,407.2" sap2010:WorkflowViewState.IdRef="If_25">
+                          <If.Then>
+                            <ui:LogMessage DisplayName="Log Message - Column name correct" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_55" Level="Info" Message="[&quot;Column name exists: &quot;+ ColumnNames(index).ToString]" />
+                          </If.Then>
+                          <If.Else>
+                            <Sequence DisplayName="Column name has spelling error" sap:VirtualizedContainerService.HintSize="375.2,248" sap2010:WorkflowViewState.IdRef="Sequence_62">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:LogMessage DisplayName="Log Message - Spelling error" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_56" Level="Info" Message="[&quot;Please check if column name is correctly mentioned in Master File for: &quot;+ ColumnNames( Index).ToString]" />
+                              <Throw DisplayName="Throw Spelling mistake" Exception="[new Exception(&quot;Please check if column name is correctly mentioned in Master File for: &quot;+ ColumnNames( Index).ToString)]" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="Throw_24" />
+                            </Sequence>
+                          </If.Else>
+                        </If>
+                      </Sequence>
+                    </If.Else>
+                  </If>
+                </Sequence>
+              </ActivityAction>
+            </ui:ForEach.Body>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <If.Then>
-              <Sequence DisplayName="Comments column exists" sap:VirtualizedContainerService.HintSize="375.2,185.6" sap2010:WorkflowViewState.IdRef="Sequence_40">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-                <ui:LogMessage DisplayName="Log Message - Comments column exists" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_35" Level="Info" Message="[&quot;Comments2 column exists in master file.&quot;]" />
-              </Sequence>
-            </If.Then>
-            <If.Else>
-              <Sequence DisplayName="Comments column not exists" sap:VirtualizedContainerService.HintSize="630.4,977.6" sap2010:WorkflowViewState.IdRef="Sequence_43">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-                <ui:LogMessage DisplayName="Log Message - Comments column doesn't exists" sap:VirtualizedContainerService.HintSize="588.8,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_36" Level="Info" Message="[&quot;Comments2 column does not exist in master file in W1 column. Creating Comments2 column.&quot;]" />
-                <ueab:ExcelProcessScopeX DisplayAlerts="{x:Null}" ExistingProcessAction="{x:Null}" FileConflictResolution="{x:Null}" LaunchMethod="{x:Null}" LaunchTimeout="{x:Null}" MacroSettings="{x:Null}" ProcessMode="{x:Null}" ShowExcelWindow="{x:Null}" DisplayName="Excel Process Scope - add comments col" sap:VirtualizedContainerService.HintSize="588.8,752" sap2010:WorkflowViewState.IdRef="ExcelProcessScopeX_4">
-                  <ueab:ExcelProcessScopeX.Body>
-                    <ActivityAction x:TypeArguments="ui:IExcelProcess">
-                      <ActivityAction.Argument>
-                        <DelegateInArgument x:TypeArguments="ui:IExcelProcess" Name="ExcelProcessScopeTag" />
-                      </ActivityAction.Argument>
-                      <Sequence DisplayName="Do #2" sap:VirtualizedContainerService.HintSize="555.2,665.6" sap2010:WorkflowViewState.IdRef="Sequence_42">
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                        <ueab:ExcelApplicationCard Password="{x:Null}" ReadFormatting="{x:Null}" CreateNewFile="False" DisplayName="Use Excel File add comments col" sap:VirtualizedContainerService.HintSize="513.6,572.8" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_4" ResizeWindow="None" WorkbookPath="[in_Config1(&quot;MasterFilePath&quot;).ToString+in_Config1(&quot;MasterFileName&quot;).ToString+&quot;.xlsx&quot;]">
-                          <ueab:ExcelApplicationCard.Body>
-                            <ActivityAction x:TypeArguments="ue:IWorkbookQuickHandle">
-                              <ActivityAction.Argument>
-                                <DelegateInArgument x:TypeArguments="ue:IWorkbookQuickHandle" Name="MasterExcel" />
-                              </ActivityAction.Argument>
-                              <Sequence DisplayName="Insert col" sap:VirtualizedContainerService.HintSize="480,303.2" sap2010:WorkflowViewState.IdRef="Sequence_41">
-                                <sap:WorkflowViewStateService.ViewState>
-                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                  </scg:Dictionary>
-                                </sap:WorkflowViewStateService.ViewState>
-                                <ueab:InsertColumnX ColumnFormat="{x:Null}" DisplayName="Insert Column" HasHeaders="True" sap:VirtualizedContainerService.HintSize="438.4,210.4" sap2010:WorkflowViewState.IdRef="InsertColumnX_4" NewColumnName="[in_Config1(&quot;Comments2Col&quot;).ToString]" Range="[MasterExcel.Sheet(in_Config1(&quot;SheetNameFieldsExtracted&quot;).ToString)]" RelativeColumnName="[in_Config1(&quot;StatusBot2Col&quot;).ToString]" RelativePosition="After" />
-                              </Sequence>
-                            </ActivityAction>
-                          </ueab:ExcelApplicationCard.Body>
-                        </ueab:ExcelApplicationCard>
-                      </Sequence>
-                    </ActivityAction>
-                  </ueab:ExcelProcessScopeX.Body>
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                </ueab:ExcelProcessScopeX>
-              </Sequence>
-            </If.Else>
-          </If>
-          <If Condition="[out_dt_BillingEntity.Columns.Contains(&quot;Customer Name&quot;)]" DisplayName="If Customer Name column exists" sap:VirtualizedContainerService.HintSize="1049.6,52.8" sap2010:WorkflowViewState.IdRef="If_18">
+          </ui:ForEach>
+          <If Condition="[out_dt_BillingEntity.Columns.Contains(&quot;Customer Name&quot;)]" DisplayName="If Customer Name column exists" sap:VirtualizedContainerService.HintSize="1290.4,52.8" sap2010:WorkflowViewState.IdRef="If_18">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -380,7 +341,7 @@
               </Sequence>
             </If.Else>
           </If>
-          <If Condition="[out_dt_BillingEntity.Columns.Contains(&quot;Billing Entity&quot;)]" DisplayName="If Billing Entity column exists" sap:VirtualizedContainerService.HintSize="1049.6,52.8" sap2010:WorkflowViewState.IdRef="If_19">
+          <If Condition="[out_dt_BillingEntity.Columns.Contains(&quot;Billing Entity&quot;)]" DisplayName="If Billing Entity column exists" sap:VirtualizedContainerService.HintSize="1290.4,52.8" sap2010:WorkflowViewState.IdRef="If_19">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -409,7 +370,7 @@
               </Sequence>
             </If.Else>
           </If>
-          <If Condition="[out_dt_BillingEntity.Columns.Contains(&quot;Type&quot;)]" DisplayName="If Type column exists" sap:VirtualizedContainerService.HintSize="1049.6,52.8" sap2010:WorkflowViewState.IdRef="If_20">
+          <If Condition="[out_dt_BillingEntity.Columns.Contains(&quot;Type&quot;)]" DisplayName="If Type column exists" sap:VirtualizedContainerService.HintSize="1290.4,52.8" sap2010:WorkflowViewState.IdRef="If_20">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -438,7 +399,7 @@
               </Sequence>
             </If.Else>
           </If>
-          <If Condition="[out_dt_PublicHoliday.Columns.Contains(&quot;Public Holiday Name&quot;)]" DisplayName="If Public Holiday Name column exists" sap:VirtualizedContainerService.HintSize="1049.6,52.8" sap2010:WorkflowViewState.IdRef="If_21">
+          <If Condition="[out_dt_PublicHoliday.Columns.Contains(&quot;Public Holiday Name&quot;)]" DisplayName="If Public Holiday Name column exists" sap:VirtualizedContainerService.HintSize="1290.4,52.8" sap2010:WorkflowViewState.IdRef="If_21">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -467,7 +428,7 @@
               </Sequence>
             </If.Else>
           </If>
-          <If Condition="[out_dt_VehicleTypeMap.Columns.Contains(in_Config1(&quot;JobTypeColFromMasterFile&quot;).ToString)]" DisplayName="If DOVName / Job Type column exists" sap:VirtualizedContainerService.HintSize="1049.6,52.8" sap2010:WorkflowViewState.IdRef="If_22">
+          <If Condition="[out_dt_VehicleTypeMap.Columns.Contains(in_Config1(&quot;JobTypeColFromMasterFile&quot;).ToString)]" DisplayName="If DOVName / Job Type column exists" sap:VirtualizedContainerService.HintSize="1290.4,52.8" sap2010:WorkflowViewState.IdRef="If_22">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -496,7 +457,7 @@
               </Sequence>
             </If.Else>
           </If>
-          <If Condition="[out_dt_VehicleTypeMap.Columns.Contains(&quot;QBkVName&quot;)]" DisplayName="If QBkVName column exists" sap:VirtualizedContainerService.HintSize="1049.6,52.8" sap2010:WorkflowViewState.IdRef="If_23">
+          <If Condition="[out_dt_VehicleTypeMap.Columns.Contains(&quot;QBkVName&quot;)]" DisplayName="If QBkVName column exists" sap:VirtualizedContainerService.HintSize="1290.4,52.8" sap2010:WorkflowViewState.IdRef="If_23">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>

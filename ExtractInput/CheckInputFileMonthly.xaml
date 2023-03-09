@@ -132,13 +132,7 @@
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:ReadRange AddHeaders="True" DataTable="[out_dt_TransactionData1]" DisplayName="Read Range - Input file" sap:VirtualizedContainerService.HintSize="827.2,88" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="[in_Config1(&quot;SheetNameFieldsExtracted&quot;).ToString]" WorkbookPath="[out_IOExcelFilePath]">
-                  <ui:ReadRange.Range>
-                    <InArgument x:TypeArguments="x:String">
-                      <Literal x:TypeArguments="x:String" Value="" />
-                    </InArgument>
-                  </ui:ReadRange.Range>
-                </ui:ReadRange>
+                <ui:ReadRange AddHeaders="True" DataTable="[out_dt_TransactionData1]" DisplayName="Read Range - Input file" sap:VirtualizedContainerService.HintSize="827.2,88" sap2010:WorkflowViewState.IdRef="ReadRange_1" Range="A1:Z200" SheetName="[in_Config1(&quot;SheetNameFieldsExtracted&quot;).ToString]" WorkbookPath="[out_IOExcelFilePath]" />
                 <ui:FilterDataTable DataTable="[out_dt_TransactionData1]" DisplayName="Filter Data Table - Transaction data" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="827.2,162.4" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[out_dt_TransactionData1]" SelectColumnsMode="Keep">
                   <ui:FilterDataTable.Filters>
                     <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">

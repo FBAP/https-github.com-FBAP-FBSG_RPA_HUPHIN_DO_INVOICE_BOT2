@@ -10,10 +10,10 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>693.6,2868.8</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>668,3851.2</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>MergeFiles_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="34">
+    <scg:List x:TypeArguments="x:String" Capacity="35">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -48,10 +48,11 @@
       <x:String>UiPath.Excel.Model</x:String>
       <x:String>UiPath.Excel.Activities.Business</x:String>
       <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="70">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="35">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -89,16 +90,15 @@
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="This sequence will merge all the PDF files like Quotation file, DO/Timesheet file, Invoice file and PO file(if exists)" DisplayName="MergeFiles" sap:VirtualizedContainerService.HintSize="704,2804" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="This sequence will merge all the PDF files like Quotation file, DO/Timesheet file, Invoice file and PO file(if exists)" DisplayName="MergeFiles" sap:VirtualizedContainerService.HintSize="678.4,3786.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="x:String" Name="DOPDFFilePath" />
       <Variable x:TypeArguments="x:String" Name="MergedFilename" />
-      <Variable x:TypeArguments="x:String" Name="POPDFFilePath" />
       <Variable x:TypeArguments="x:String" Name="QuotationPDFFilePath" />
       <Variable x:TypeArguments="x:String" Name="InvoiceFilePath" />
-      <Variable x:TypeArguments="s:String[]" Name="FilesArray" />
+      <Variable x:TypeArguments="scg:List(x:String)" Name="FilesList" />
       <Variable x:TypeArguments="x:Boolean" Name="POFileExists" />
       <Variable x:TypeArguments="x:String" Name="QuotationExcelFilePath" />
+      <Variable x:TypeArguments="s:String[]" Name="FilesArray" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -106,7 +106,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Try Catch to check if all files are available for merging" sap:VirtualizedContainerService.HintSize="662.4,2680" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Try Catch to check if all files are available for merging" sap:VirtualizedContainerService.HintSize="636.8,3662.4" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -114,14 +114,14 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <Sequence DisplayName="Merge files sequence" sap:VirtualizedContainerService.HintSize="625.6,2448.8" sap2010:WorkflowViewState.IdRef="Sequence_6">
+        <Sequence DisplayName="Merge files sequence" sap:VirtualizedContainerService.HintSize="600,3431.2" sap2010:WorkflowViewState.IdRef="Sequence_6">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Assign DisplayName="Assign MergedFilename 1" sap:VirtualizedContainerService.HintSize="584,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+          <Assign DisplayName="Assign MergedFilename 1" sap:VirtualizedContainerService.HintSize="558.4,60" sap2010:WorkflowViewState.IdRef="Assign_2">
             <Assign.To>
               <OutArgument x:TypeArguments="x:String">[MergedFilename]</OutArgument>
             </Assign.To>
@@ -129,7 +129,7 @@
               <InArgument x:TypeArguments="x:String">[in_Config1("MergedFiles").ToString+"MergedFiles_"+ in_InvoiceNumber.ToString+"_" + io_ProcessType2+".pdf"]</InArgument>
             </Assign.Value>
           </Assign>
-          <Assign DisplayName="Assign Invoice PDF filepath 1" sap:VirtualizedContainerService.HintSize="584,60" sap2010:WorkflowViewState.IdRef="Assign_6">
+          <Assign DisplayName="Assign Invoice PDF filepath 1" sap:VirtualizedContainerService.HintSize="558.4,60" sap2010:WorkflowViewState.IdRef="Assign_6">
             <Assign.To>
               <OutArgument x:TypeArguments="x:String">[InvoiceFilePath]</OutArgument>
             </Assign.To>
@@ -137,109 +137,194 @@
               <InArgument x:TypeArguments="x:String">[in_InvoiceFilePath]</InArgument>
             </Assign.Value>
           </Assign>
-          <ui:LogMessage DisplayName="Log Message - Display Invoice File Path" sap:VirtualizedContainerService.HintSize="584,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Invoice File Path for this transaction is: &quot;+InvoiceFilePath]" />
-          <Assign DisplayName="Assign DO PDF filepath 1" sap:VirtualizedContainerService.HintSize="584,60" sap2010:WorkflowViewState.IdRef="Assign_5">
+          <ui:LogMessage DisplayName="Log Message - Display Invoice File Path" sap:VirtualizedContainerService.HintSize="558.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Invoice File Path for this transaction is: &quot;+InvoiceFilePath]" />
+          <Assign DisplayName="Assign Filelist" sap:VirtualizedContainerService.HintSize="558.4,60" sap2010:WorkflowViewState.IdRef="Assign_16">
             <Assign.To>
-              <OutArgument x:TypeArguments="x:String">[DOPDFFilePath]</OutArgument>
+              <OutArgument x:TypeArguments="scg:List(x:String)">[FilesList]</OutArgument>
             </Assign.To>
             <Assign.Value>
-              <InArgument x:TypeArguments="x:String">[in_dt_TransactionItem1(0)("DO or Timesheet File Path").ToString]</InArgument>
+              <InArgument x:TypeArguments="scg:List(x:String)">[new List(of String)]</InArgument>
             </Assign.Value>
           </Assign>
-          <ui:LogMessage DisplayName="Log Message - DO PDF File Path" sap:VirtualizedContainerService.HintSize="584,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;DO PDF File Path for this transaction is: &quot;+ DOPDFFilePath]" />
-          <Assign DisplayName="Assign POPDFFilepath 1" sap:VirtualizedContainerService.HintSize="584,60" sap2010:WorkflowViewState.IdRef="Assign_3">
-            <Assign.To>
-              <OutArgument x:TypeArguments="x:String">[POPDFFilePath]</OutArgument>
-            </Assign.To>
-            <Assign.Value>
-              <InArgument x:TypeArguments="x:String">[in_dt_TransactionItem1(0)("PO File Path").ToString]</InArgument>
-            </Assign.Value>
-          </Assign>
-          <ui:LogMessage DisplayName="Log Message - Display PO PDF File Path" sap:VirtualizedContainerService.HintSize="584,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;PO PDF File Path for this transaction is: &quot;+ POPDFFilePath]" />
-          <Assign DisplayName="Assign QutationFilePath #1" sap:VirtualizedContainerService.HintSize="584,60" sap2010:WorkflowViewState.IdRef="Assign_7">
-            <Assign.To>
-              <OutArgument x:TypeArguments="x:String">[QuotationExcelFilePath]</OutArgument>
-            </Assign.To>
-            <Assign.Value>
-              <InArgument x:TypeArguments="x:String">[in_dt_TransactionItem1(0)("Quotation File Path").ToString]</InArgument>
-            </Assign.Value>
-          </Assign>
-          <ui:LogMessage DisplayName="Log Message - Display Quotation File Path #1" sap:VirtualizedContainerService.HintSize="584,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Quotation Excel File Path for this transaction is: &quot;+ QuotationExcelFilePath]" />
-          <Assign DisplayName="Assign QutationFilePath" sap:VirtualizedContainerService.HintSize="584,60" sap2010:WorkflowViewState.IdRef="Assign_13">
-            <Assign.To>
-              <OutArgument x:TypeArguments="x:String">[QuotationPDFFilePath]</OutArgument>
-            </Assign.To>
-            <Assign.Value>
-              <InArgument x:TypeArguments="x:String">[QuotationExcelFilePath.Substring(0, QuotationExcelFilePath.Length-5)+".pdf"]</InArgument>
-            </Assign.Value>
-          </Assign>
-          <ui:LogMessage DisplayName="Log Message - Display Quotation File Path" sap:VirtualizedContainerService.HintSize="584,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;Quotation PDF File Path for this transaction is: &quot;+ QuotationPDFFilePath]" />
-          <ueab:ExcelProcessScopeX DisplayAlerts="{x:Null}" ExistingProcessAction="{x:Null}" FileConflictResolution="{x:Null}" LaunchMethod="{x:Null}" LaunchTimeout="{x:Null}" MacroSettings="{x:Null}" ProcessMode="{x:Null}" ShowExcelWindow="{x:Null}" DisplayName="Excel Process Scope to convert Excel to PDF" sap:VirtualizedContainerService.HintSize="584,724.8" sap2010:WorkflowViewState.IdRef="ExcelProcessScopeX_1">
-            <ueab:ExcelProcessScopeX.Body>
-              <ActivityAction x:TypeArguments="ui:IExcelProcess">
+          <AddToCollection x:TypeArguments="x:String" Collection="[FilesList]" DisplayName="Add Invoice file To Collection" sap:VirtualizedContainerService.HintSize="558.4,22.4" sap2010:WorkflowViewState.IdRef="AddToCollection`1_8" Item="[InvoiceFilePath]" />
+          <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_dt_TransactionItem1]" DisplayName="For Each Row in Data Table Transactions" sap:VirtualizedContainerService.HintSize="558.4,2643.2" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+            <ui:ForEachRow.Body>
+              <ActivityAction x:TypeArguments="sd:DataRow">
                 <ActivityAction.Argument>
-                  <DelegateInArgument x:TypeArguments="ui:IExcelProcess" Name="ExcelProcessScopeTag" />
+                  <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
                 </ActivityAction.Argument>
-                <Sequence DisplayName="Do #1" sap:VirtualizedContainerService.HintSize="550.4,638.4" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="524.8,2527.2" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                  <Sequence.Variables>
+                    <Variable x:TypeArguments="x:Boolean" Name="QuotationFileExists" />
+                    <Variable x:TypeArguments="x:Boolean" Name="DOFileExists" />
+                  </Sequence.Variables>
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ueab:ExcelApplicationCard Password="{x:Null}" ReadFormatting="{x:Null}" CreateNewFile="False" DisplayName="Use Excel File" sap:VirtualizedContainerService.HintSize="508.8,545.6" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_1" ResizeWindow="None" UseTemplate="True" WorkbookPath="[QuotationExcelFilePath]">
-                    <ueab:ExcelApplicationCard.Body>
-                      <ActivityAction x:TypeArguments="ue:IWorkbookQuickHandle">
-                        <ActivityAction.Argument>
-                          <DelegateInArgument x:TypeArguments="ue:IWorkbookQuickHandle" Name="Excel" />
-                        </ActivityAction.Argument>
-                        <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="475.2,252.8" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                  <Assign DisplayName="Assign QutationFilePath" sap:VirtualizedContainerService.HintSize="483.2,60" sap2010:WorkflowViewState.IdRef="Assign_17">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[QuotationPDFFilePath]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">[(CurrentRow("Quotation File Path").ToString).Substring(0, (CurrentRow("Quotation File Path").ToString).Length-5)+".pdf"]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <ExistsInCollection x:TypeArguments="x:String" Collection="[FilesList]" DisplayName="Quotation file Exists In Collection" sap:VirtualizedContainerService.HintSize="483.2,22.4" sap2010:WorkflowViewState.IdRef="ExistsInCollection`1_1" Item="[QuotationPDFFilePath]" Result="[QuotationFileExists]" />
+                  <If Condition="[Not QuotationFileExists and not String.IsNullOrEmpty(CurrentRow(&quot;Quotation File Path&quot;).ToString)]" DisplayName="If Quotation file exists" sap:VirtualizedContainerService.HintSize="483.2,928" sap2010:WorkflowViewState.IdRef="If_2">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <If.Then>
+                      <Sequence DisplayName="Add Quotation file to merge collection" sap:VirtualizedContainerService.HintSize="375.2,739.2" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:LogMessage DisplayName="Log Message - Add Quotation File to collection" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[&quot;Adding Quotation file to collection: &quot;+ CurrentRow(&quot;Quotation File Path&quot;).ToString]" />
+                        <ui:LogMessage DisplayName="Log Message - Display Quotation File Path #1" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Info" Message="[&quot;Quotation Excel File Path for this transaction is: &quot;+ CurrentRow(&quot;Quotation File Path&quot;).ToString]" />
+                        <ui:LogMessage DisplayName="Log Message - Display Quotation File Path" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="Info" Message="[&quot;Quotation PDF File Path for this transaction is: &quot;+ QuotationPDFFilePath]" />
+                        <ueab:ExcelProcessScopeX DisplayAlerts="{x:Null}" ExistingProcessAction="{x:Null}" FileConflictResolution="{x:Null}" LaunchMethod="{x:Null}" LaunchTimeout="{x:Null}" MacroSettings="{x:Null}" ProcessMode="{x:Null}" ShowExcelWindow="{x:Null}" DisplayName="Excel Process Scope to convert Excel to PDF" sap:VirtualizedContainerService.HintSize="333.6,52.8" sap2010:WorkflowViewState.IdRef="ExcelProcessScopeX_1">
+                          <ueab:ExcelProcessScopeX.Body>
+                            <ActivityAction x:TypeArguments="ui:IExcelProcess">
+                              <ActivityAction.Argument>
+                                <DelegateInArgument x:TypeArguments="ui:IExcelProcess" Name="ExcelProcessScopeTag" />
+                              </ActivityAction.Argument>
+                              <Sequence DisplayName="Do #1" sap:VirtualizedContainerService.HintSize="550.4,638.4" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ueab:ExcelApplicationCard Password="{x:Null}" ReadFormatting="{x:Null}" CreateNewFile="False" DisplayName="Use Excel File" sap:VirtualizedContainerService.HintSize="508.8,545.6" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_1" ResizeWindow="None" UseTemplate="True" WorkbookPath="[CurrentRow(&quot;Quotation File Path&quot;).ToString]">
+                                  <ueab:ExcelApplicationCard.Body>
+                                    <ActivityAction x:TypeArguments="ue:IWorkbookQuickHandle">
+                                      <ActivityAction.Argument>
+                                        <DelegateInArgument x:TypeArguments="ue:IWorkbookQuickHandle" Name="Excel" />
+                                      </ActivityAction.Argument>
+                                      <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="475.2,252.8" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <ueab:SaveAsPdfX EndPage="{x:Null}" StartPage="{x:Null}" DestinationPdfPath="[QuotationPDFFilePath]" DisplayName="Save Excel File As PDF for Quotation file" sap:VirtualizedContainerService.HintSize="433.6,160" sap2010:WorkflowViewState.IdRef="SaveAsPdfX_1" SaveQuality="StandardQuality" Workbook="[Excel]" />
+                                      </Sequence>
+                                    </ActivityAction>
+                                  </ueab:ExcelApplicationCard.Body>
+                                </ueab:ExcelApplicationCard>
+                              </Sequence>
+                            </ActivityAction>
+                          </ueab:ExcelProcessScopeX.Body>
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <ueab:SaveAsPdfX EndPage="{x:Null}" StartPage="{x:Null}" DestinationPdfPath="[QuotationPDFFilePath]" DisplayName="Save Excel File As PDF for Quotation file" sap:VirtualizedContainerService.HintSize="433.6,160" sap2010:WorkflowViewState.IdRef="SaveAsPdfX_1" SaveQuality="StandardQuality" Workbook="[Excel]" />
-                        </Sequence>
-                      </ActivityAction>
-                    </ueab:ExcelApplicationCard.Body>
-                  </ueab:ExcelApplicationCard>
+                        </ueab:ExcelProcessScopeX>
+                        <ui:LogMessage DisplayName="Log Message - Display Quotation File Path" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Info" Message="[&quot;Quotation PDF File Path for this transaction is: &quot;+ QuotationPDFFilePath]" />
+                        <AddToCollection x:TypeArguments="x:String" Collection="[FilesList]" DisplayName="Add To Collection Quotation file" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="AddToCollection`1_2" Item="[QuotationPDFFilePath]" />
+                      </Sequence>
+                    </If.Then>
+                    <If.Else>
+                      <Sequence sap2010:WorkflowViewState.IdRef="Sequence_11">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </Sequence>
+                    </If.Else>
+                  </If>
+                  <ExistsInCollection x:TypeArguments="x:String" Collection="[FilesList]" DisplayName="PO file Exists In Collection" sap:VirtualizedContainerService.HintSize="483.2,22.4" sap2010:WorkflowViewState.IdRef="ExistsInCollection`1_3" Item="[CurrentRow(&quot;PO File Path&quot;).ToString]" Result="[POFileExists]" />
+                  <If Condition="[Not POFileExists and not String.IsNullOrEmpty(CurrentRow(&quot;PO File Path&quot;).ToString)]" DisplayName="If PO file exists" sap:VirtualizedContainerService.HintSize="483.2,569.6" sap2010:WorkflowViewState.IdRef="If_3">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <If.Then>
+                      <Sequence DisplayName="Add PO file to merge collection" sap:VirtualizedContainerService.HintSize="375.2,380.8" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:LogMessage DisplayName="Log Message - Add PO File to collection" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[&quot;Adding PO file to collection: &quot;+ CurrentRow(&quot;PO File Path&quot;).ToString]" />
+                        <ui:LogMessage DisplayName="Log Message - Display PO PDF File Path" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;PO PDF File Path for this transaction is: &quot;+ CurrentRow(&quot;PO File Path&quot;).ToString]" />
+                        <AddToCollection x:TypeArguments="x:String" Collection="[FilesList]" DisplayName="Add To Collection PO filepth" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="AddToCollection`1_3" Item="[CurrentRow(&quot;PO File Path&quot;).ToString]" />
+                      </Sequence>
+                    </If.Then>
+                    <If.Else>
+                      <Sequence sap:VirtualizedContainerService.HintSize="200,84.8" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </Sequence>
+                    </If.Else>
+                  </If>
+                  <ExistsInCollection x:TypeArguments="x:String" Collection="[FilesList]" DisplayName="DO File Exists In Collection" sap:VirtualizedContainerService.HintSize="483.2,22.4" sap2010:WorkflowViewState.IdRef="ExistsInCollection`1_4" Item="[CurrentRow(&quot;DO or Timesheet File Path&quot;).ToString]" Result="[DOFileExists]" />
+                  <If Condition="[Not DOFileExists and not String.IsNullOrEmpty(CurrentRow(&quot;DO or Timesheet File Path&quot;).ToString)]" DisplayName="If DO file exists" sap:VirtualizedContainerService.HintSize="483.2,569.6" sap2010:WorkflowViewState.IdRef="If_4">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <If.Then>
+                      <Sequence DisplayName="Add DO file to merge collection" sap:VirtualizedContainerService.HintSize="375.2,380.8" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:LogMessage DisplayName="Log Message - Add DO File to collection" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Info" Message="[&quot;Adding DO file to collection: &quot;+ CurrentRow(&quot;DO or Timesheet File Path&quot;).ToString]" />
+                        <ui:LogMessage DisplayName="Log Message - DO PDF File Path" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;DO PDF File Path for this transaction is: &quot;+ CurrentRow(&quot;DO or Timesheet File Path&quot;).ToString]" />
+                        <AddToCollection x:TypeArguments="x:String" Collection="[FilesList]" DisplayName="Add To Collection DO filepth" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="AddToCollection`1_6" Item="[CurrentRow(&quot;DO or Timesheet File Path&quot;).ToString]" />
+                      </Sequence>
+                    </If.Then>
+                    <If.Else>
+                      <Sequence sap2010:WorkflowViewState.IdRef="Sequence_15">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </Sequence>
+                    </If.Else>
+                  </If>
                 </Sequence>
               </ActivityAction>
-            </ueab:ExcelProcessScopeX.Body>
+            </ui:ForEachRow.Body>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-          </ueab:ExcelProcessScopeX>
-          <Assign DisplayName="Assign all files to array" sap:VirtualizedContainerService.HintSize="584,60" sap2010:WorkflowViewState.IdRef="Assign_11">
+          </ui:ForEachRow>
+          <Assign DisplayName="Assign Filesarray" sap:VirtualizedContainerService.HintSize="558.4,60" sap2010:WorkflowViewState.IdRef="Assign_15">
             <Assign.To>
               <OutArgument x:TypeArguments="s:String[]">[FilesArray]</OutArgument>
             </Assign.To>
             <Assign.Value>
-              <InArgument x:TypeArguments="s:String[]">[{ InvoiceFilePath , DOPDFFilePath, QuotationPDFFilePath, POPDFFilePath}]</InArgument>
+              <InArgument x:TypeArguments="s:String[]">[FilesList.ToArray]</InArgument>
             </Assign.Value>
           </Assign>
-          <ui:FileExistsX DisplayName="File Exists for PO" Exists="[POFileExists]" sap:VirtualizedContainerService.HintSize="584,134.4" sap2010:WorkflowViewState.IdRef="FileExistsX_1" Path="[POPDFFilePath]" />
-          <If Condition="[POFileExists]" DisplayName="If PO file exists merge all else skip PO file from merging" sap:VirtualizedContainerService.HintSize="584,52.8" sap2010:WorkflowViewState.IdRef="If_1">
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-            <If.Then>
-              <upap:JoinPDF DisplayName="Join 4 PDF Files" FileList="[{ InvoiceFilePath , DOPDFFilePath, QuotationPDFFilePath, POPDFFilePath}]" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="JoinPDF_1" OutputFileName="[MergedFilename]" />
-            </If.Then>
-            <If.Else>
-              <upap:JoinPDF DisplayName="Join 3 PDF Files" FileList="[{ InvoiceFilePath , DOPDFFilePath, QuotationPDFFilePath}]" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="JoinPDF_2" OutputFileName="[MergedFilename]" />
-            </If.Else>
-          </If>
+          <upap:JoinPDF DisplayName="Join Available PDF Files" FileList="[FilesArray]" sap:VirtualizedContainerService.HintSize="558.4,60" sap2010:WorkflowViewState.IdRef="JoinPDF_1" OutputFileName="[MergedFilename]" />
         </Sequence>
       </TryCatch.Try>
       <TryCatch.Catches>
-        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="628.8,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="603.2,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_1">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">False</x:Boolean>

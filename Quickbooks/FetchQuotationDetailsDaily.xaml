@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="FetchQuotationDetails" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="FetchQuotationDetails" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_DailySheetPresent" Type="InArgument(x:Boolean)" />
     <x:Property Name="in_QuotationFilePath" Type="InArgument(x:String)" />
@@ -26,7 +26,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1731.2,4762.4</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1731.2,4547.2</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>FetchQuotationDetails_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="31">
@@ -94,9 +94,10 @@
       <AssemblyReference>NPOI</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
       <AssemblyReference>System.Data.Entity</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="FetchQuotationDetails" sap:VirtualizedContainerService.HintSize="1741.6,4697.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="FetchQuotationDetails" sap:VirtualizedContainerService.HintSize="1741.6,4482.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="MinHoursLine" />
       <Variable x:TypeArguments="x:Int32" Name="HoursIndex" />
@@ -108,7 +109,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <If Condition="[in_DailySheetPresent]" DisplayName="If Daily sheet present" sap:VirtualizedContainerService.HintSize="1700,4604.8" sap2010:WorkflowViewState.IdRef="If_5">
+    <If Condition="[in_DailySheetPresent]" DisplayName="If Daily sheet present" sap:VirtualizedContainerService.HintSize="1700,4389.6" sap2010:WorkflowViewState.IdRef="If_5">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -116,13 +117,13 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - Daily Quotation Sheet" sap:VirtualizedContainerService.HintSize="828,4336.8" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" Visible="False" WorkbookPath="[in_QuotationFilePath]">
+        <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - Daily Quotation Sheet" sap:VirtualizedContainerService.HintSize="828,4093.6" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" Visible="False" WorkbookPath="[in_QuotationFilePath]">
           <ui:ExcelApplicationScope.Body>
             <ActivityAction x:TypeArguments="ui:WorkbookApplication">
               <ActivityAction.Argument>
                 <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
               </ActivityAction.Argument>
-              <Sequence DisplayName="fetch data" sap:VirtualizedContainerService.HintSize="794.4,4227.2" sap2010:WorkflowViewState.IdRef="Sequence_4">
+              <Sequence DisplayName="fetch data" sap:VirtualizedContainerService.HintSize="794.4,3984" sap2010:WorkflowViewState.IdRef="Sequence_4">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -161,7 +162,7 @@
                   </If.Else>
                 </If>
                 <ui:LogMessage DisplayName="Log Message - Fetching Min working hours" sap:VirtualizedContainerService.HintSize="752.8,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Fetching Minimun Working Hours from Quotation file...&quot;]" />
-                <ui:LookupDataTable LookupColumnIndex="{x:Null}" LookupDataColumn="{x:Null}" RowIndex="{x:Null}" TargetColumnIndex="{x:Null}" TargetDataColumn="{x:Null}" DataTable="[in_dt_Quotation]" DisplayName="Lookup Data Table - For min working hrs" sap:VirtualizedContainerService.HintSize="333.6,295.2" sap2010:WorkflowViewState.IdRef="LookupDataTable_1" LookupColumnName="Column29" LookupValue="[in_CurrentRow(&quot;Job Type&quot;).ToString]" TargetColumnName="Column3">
+                <ui:LookupDataTable LookupColumnIndex="{x:Null}" LookupDataColumn="{x:Null}" RowIndex="{x:Null}" TargetColumnIndex="{x:Null}" TargetDataColumn="{x:Null}" DataTable="[in_dt_Quotation]" DisplayName="Lookup Data Table - For min working hrs" sap:VirtualizedContainerService.HintSize="752.8,52.8" sap2010:WorkflowViewState.IdRef="LookupDataTable_1" LookupColumnName="Column29" LookupValue="[in_CurrentRow(&quot;Job Type&quot;).ToString]" TargetColumnName="Column3">
                   <ui:LookupDataTable.CellValue>
                     <OutArgument x:TypeArguments="x:String">[MinHoursLine]</OutArgument>
                   </ui:LookupDataTable.CellValue>
@@ -190,38 +191,54 @@
                 </Assign>
                 <ui:LogMessage DisplayName="Log Message Display Min workign hrs" sap:VirtualizedContainerService.HintSize="752.8,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Minimun Working Hours fetched are: &quot;+ out_MinWorkingHours.ToString]" />
                 <ui:LogMessage DisplayName="Log Message - Fetching Vehicle type for Quickbooks." sap:VirtualizedContainerService.HintSize="752.8,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;Fetching Vehicle type for Quickbooks...&quot;]" />
-                <ui:LookupDataTable LookupColumnIndex="{x:Null}" LookupDataColumn="{x:Null}" RowIndex="{x:Null}" TargetColumnIndex="{x:Null}" TargetDataColumn="{x:Null}" DataTable="[in_dt_VehicleTypeMap1]" DisplayName="Lookup Data Table - qkbk veh type" sap:VirtualizedContainerService.HintSize="752.8,295.2" sap2010:WorkflowViewState.IdRef="LookupDataTable_2" LookupColumnName="[in_Config1(&quot;JobTypeColFromMasterFile&quot;).ToString]" LookupValue="[in_CurrentRow(&quot;Job Type&quot;).ToString]" TargetColumnName="QBkVName">
-                  <ui:LookupDataTable.CellValue>
-                    <OutArgument x:TypeArguments="x:String">[out_VehicleTypeQkbk]</OutArgument>
-                  </ui:LookupDataTable.CellValue>
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                </ui:LookupDataTable>
-                <ui:LogMessage DisplayName="Log Message Display Vehicle type" sap:VirtualizedContainerService.HintSize="752.8,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Vehicle Type fetched is: &quot;+out_VehicleTypeQkbk]" />
-                <If Condition="[String.IsNullOrEmpty( out_VehicleTypeQkbk)]" DisplayName="If vehicle type is null #1" sap:VirtualizedContainerService.HintSize="752.8,248.8" sap2010:WorkflowViewState.IdRef="If_2">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <If.Then>
-                    <Throw DisplayName="Throw Vehicle Type not found #2" Exception="[new BusinessRuleException(&quot;Vehicle Type is not found in Vehicle Type Mapping sheet.&quot;)]" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="Throw_2" />
-                  </If.Then>
-                  <If.Else>
-                    <Sequence sap2010:WorkflowViewState.IdRef="Sequence_3">
+                <TryCatch DisplayName="Try Catch for Vehicle type quickbook" sap:VirtualizedContainerService.HintSize="752.8,583.2" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+                  <TryCatch.Try>
+                    <ui:LookupDataTable LookupColumnIndex="{x:Null}" LookupDataColumn="{x:Null}" RowIndex="{x:Null}" TargetColumnIndex="{x:Null}" TargetDataColumn="{x:Null}" DataTable="[in_dt_VehicleTypeMap1]" DisplayName="Lookup Data Table - qkbk veh type" sap:VirtualizedContainerService.HintSize="333.6,295.2" sap2010:WorkflowViewState.IdRef="LookupDataTable_2" LookupColumnName="[in_Config1(&quot;JobTypeColFromMasterFile&quot;).ToString]" LookupValue="[in_CurrentRow(&quot;Job Type&quot;).ToString]" TargetColumnName="QBkVName">
+                      <ui:LookupDataTable.CellValue>
+                        <OutArgument x:TypeArguments="x:String">[out_VehicleTypeQkbk]</OutArgument>
+                      </ui:LookupDataTable.CellValue>
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                    </Sequence>
-                  </If.Else>
-                </If>
+                    </ui:LookupDataTable>
+                  </TryCatch.Try>
+                  <TryCatch.Catches>
+                    <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,418.4" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ActivityAction x:TypeArguments="s:Exception">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                        </ActivityAction.Argument>
+                        <Sequence DisplayName="catch" sap:VirtualizedContainerService.HintSize="375.2,348" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:LogMessage DisplayName="Log Message - vehicle type not found" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_30" Level="Error" Message="[&quot;Vehicle Type is not found in Vehicle Type Mapping sheet for Job Type: &quot;+ in_CurrentRow(&quot;Job Type&quot;).ToString]" />
+                          <Assign DisplayName="Assign Exception" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_5">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="s:Exception">[exception]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="ui:BusinessRuleException">[new BusinessRuleException("Vehicle Type is not found in Vehicle Type Mapping sheet for Job Type: "+ in_CurrentRow("Job Type").ToString)]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <Throw DisplayName="Throw Vehicle type not found" Exception="[exception]" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="Throw_9" />
+                        </Sequence>
+                      </ActivityAction>
+                    </Catch>
+                  </TryCatch.Catches>
+                </TryCatch>
+                <ui:LogMessage DisplayName="Log Message Display Vehicle type" sap:VirtualizedContainerService.HintSize="752.8,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Vehicle Type fetched is: &quot;+out_VehicleTypeQkbk]" />
                 <ui:LogMessage DisplayName="Log Message  - fetching std rate #1" sap:VirtualizedContainerService.HintSize="752.8,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;Fetching Standard rate from Quickbooks...&quot;]" />
                 <ui:LookupDataTable LookupColumnIndex="{x:Null}" LookupDataColumn="{x:Null}" RowIndex="{x:Null}" TargetColumnIndex="{x:Null}" TargetDataColumn="{x:Null}" DataTable="[in_dt_Quotation]" DisplayName="Lookup Data Table - StdRate #1" sap:VirtualizedContainerService.HintSize="752.8,295.2" sap2010:WorkflowViewState.IdRef="LookupDataTable_3" LookupColumnName="Column29" LookupValue="[in_CurrentRow(&quot;Job Type&quot;).ToString]" TargetColumnName="Column18">
                   <ui:LookupDataTable.CellValue>
@@ -305,13 +322,13 @@
         </ui:ExcelApplicationScope>
       </If.Then>
       <If.Else>
-        <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - Daily Quotation Sheet for Std Quotation" sap:VirtualizedContainerService.HintSize="828,4445.6" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" InstanceCachePeriod="3000" Visible="False" WorkbookPath="[in_QuotationFilePath]">
+        <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope - Daily Quotation Sheet for Std Quotation" sap:VirtualizedContainerService.HintSize="828,4230.4" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" InstanceCachePeriod="3000" Visible="False" WorkbookPath="[in_QuotationFilePath]">
           <ui:ExcelApplicationScope.Body>
             <ActivityAction x:TypeArguments="ui:WorkbookApplication">
               <ActivityAction.Argument>
                 <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
               </ActivityAction.Argument>
-              <Sequence DisplayName="fetch data for Std Quotation" sap:VirtualizedContainerService.HintSize="794.4,4336" sap2010:WorkflowViewState.IdRef="Sequence_7">
+              <Sequence DisplayName="fetch data for Std Quotation" sap:VirtualizedContainerService.HintSize="794.4,4080.8" sap2010:WorkflowViewState.IdRef="Sequence_7">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -359,63 +376,64 @@
                   </If.Else>
                 </If>
                 <ui:LogMessage DisplayName="Log Message - Fetching Vehicle Descriptn for Quickbooks  for Std Quotation" sap:VirtualizedContainerService.HintSize="752.8,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="Info" Message="[&quot;Fetching Vehicle Description for Standard Quotation...&quot;]" />
-                <ui:LookupDataTable LookupColumnIndex="{x:Null}" LookupDataColumn="{x:Null}" RowIndex="{x:Null}" TargetColumnIndex="{x:Null}" TargetDataColumn="{x:Null}" DataTable="[in_dt_VehicleTypeMap1]" DisplayName="Lookup Data Table - Vehicle Type Descrpton Quickbooks  for Std Quotation" sap:VirtualizedContainerService.HintSize="752.8,295.2" sap2010:WorkflowViewState.IdRef="LookupDataTable_6" LookupColumnName="[in_Config1(&quot;JobTypeColFromMasterFile&quot;).ToString]" LookupValue="[in_CurrentRow(&quot;Job Type&quot;).ToString]" TargetColumnName="[in_Config1(&quot;DecriptionForStandardQuotation&quot;).ToString]">
-                  <ui:LookupDataTable.CellValue>
-                    <OutArgument x:TypeArguments="x:String">[out_VehicleTypeDescription]</OutArgument>
-                  </ui:LookupDataTable.CellValue>
+                <TryCatch DisplayName="Try Catch for Vehicle decription" sap:VirtualizedContainerService.HintSize="752.8,52.8" sap2010:WorkflowViewState.IdRef="TryCatch_2">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                </ui:LookupDataTable>
-                <If Condition="[String.IsNullOrEmpty( out_VehicleTypeDescription)]" DisplayName="If vehicle type Description is null" sap:VirtualizedContainerService.HintSize="752.8,436.8" sap2010:WorkflowViewState.IdRef="If_4">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <If.Then>
-                    <Sequence DisplayName="Vehicle description error" sap:VirtualizedContainerService.HintSize="375.2,248" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                  <TryCatch.Try>
+                    <ui:LookupDataTable LookupColumnIndex="{x:Null}" LookupDataColumn="{x:Null}" RowIndex="{x:Null}" TargetColumnIndex="{x:Null}" TargetDataColumn="{x:Null}" DataTable="[in_dt_VehicleTypeMap1]" DisplayName="Lookup Data Table - Vehicle Type Descrpton Quickbooks  for Std Quotation" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="LookupDataTable_6" LookupColumnName="[in_Config1(&quot;JobTypeColFromMasterFile&quot;).ToString]" LookupValue="[in_CurrentRow(&quot;Job Type&quot;).ToString]" TargetColumnName="[in_Config1(&quot;DecriptionForStandardQuotation&quot;).ToString]">
+                      <ui:LookupDataTable.CellValue>
+                        <OutArgument x:TypeArguments="x:String">[out_VehicleTypeDescription]</OutArgument>
+                      </ui:LookupDataTable.CellValue>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:LookupDataTable>
+                  </TryCatch.Try>
+                  <TryCatch.Catches>
+                    <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,418.4" sap2010:WorkflowViewState.IdRef="Catch`1_3">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <ui:LogMessage DisplayName="Log Message - Vehicle type description error" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_28" Level="Error" Message="[&quot;Vehicle Type Description is not found in Vehicle Type Mapping sheet for Job Type: &quot;+ in_CurrentRow(&quot;Job Type&quot;).ToString]" />
-                      <Throw DisplayName="Throw Vehicle Description not found" Exception="[new BusinessRuleException(&quot;Vehicle Type Description is not found in Vehicle Type Mapping sheet for Job Type: &quot;+ in_CurrentRow(&quot;Job Type&quot;).ToString)]" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="Throw_4" />
-                    </Sequence>
-                  </If.Then>
-                  <If.Else>
-                    <Sequence sap2010:WorkflowViewState.IdRef="Sequence_6">
-                      <sap:WorkflowViewStateService.ViewState>
-                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                        </scg:Dictionary>
-                      </sap:WorkflowViewStateService.ViewState>
-                    </Sequence>
-                  </If.Else>
-                </If>
+                      <ActivityAction x:TypeArguments="s:Exception">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                        </ActivityAction.Argument>
+                        <Sequence DisplayName="Vehicle description error" sap:VirtualizedContainerService.HintSize="375.2,348" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:LogMessage DisplayName="Log Message - Vehicle type description error" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_31" Level="Error" Message="[&quot;Vehicle Type Description is not found in Vehicle Type Mapping sheet for Job Type: &quot;+ in_CurrentRow(&quot;Job Type&quot;).ToString]" />
+                          <Assign DisplayName="Assign Exception for Vehicle description" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_6">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="s:Exception">[exception]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="ui:BusinessRuleException">[new BusinessRuleException("Vehicle Type Description is not found in Vehicle Type Mapping sheet for Job Type: "+ in_CurrentRow("Job Type").ToString)]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <Throw DisplayName="Throw Vehicle Description not found" Exception="[exception]" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="Throw_10" />
+                        </Sequence>
+                      </ActivityAction>
+                    </Catch>
+                  </TryCatch.Catches>
+                </TryCatch>
                 <ui:LogMessage DisplayName="Log Message Display Vehicle type description from master file" sap:VirtualizedContainerService.HintSize="752.8,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_14" Level="Info" Message="[&quot;Vehicle Type Description fetched from Master file is: &quot;+ out_VehicleTypeDescription]" />
                 <ui:LogMessage DisplayName="Log Message - Fetching Min working hours for Std Quotation" sap:VirtualizedContainerService.HintSize="752.8,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_15" Level="Info" Message="[&quot;Fetching Minimun Working Hours from Quotation file...&quot;]" />
-                <ui:LookupDataTable LookupColumnIndex="{x:Null}" LookupDataColumn="{x:Null}" RowIndex="{x:Null}" TargetColumnIndex="{x:Null}" TargetDataColumn="{x:Null}" DataTable="[in_dt_Quotation]" DisplayName="Lookup Data Table - For min working hrs for Std Quotation" sap:VirtualizedContainerService.HintSize="752.8,295.2" sap2010:WorkflowViewState.IdRef="LookupDataTable_7" LookupColumnName="Column2" LookupValue="[out_VehicleTypeDescription]" TargetColumnName="Column23">
+                <ui:LookupDataTable LookupColumnIndex="{x:Null}" LookupDataColumn="{x:Null}" RowIndex="{x:Null}" TargetColumnIndex="{x:Null}" TargetDataColumn="{x:Null}" DataTable="[in_dt_Quotation]" DisplayName="Lookup Data Table - For min working hrs for Std Quotation" sap:VirtualizedContainerService.HintSize="752.8,52.8" sap2010:WorkflowViewState.IdRef="LookupDataTable_7" LookupColumnName="Column2" LookupValue="[out_VehicleTypeDescription]" TargetColumnName="Column23">
                   <ui:LookupDataTable.CellValue>
                     <OutArgument x:TypeArguments="x:Double">[out_MinWorkingHours]</OutArgument>
-                  </ui:LookupDataTable.CellValue>
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                </ui:LookupDataTable>
-                <ui:LogMessage DisplayName="Log Message Display Min workign hrs #1" sap:VirtualizedContainerService.HintSize="752.8,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_16" Level="Info" Message="[&quot;Minimun Working Hours fetched are: &quot;+ out_MinWorkingHours.ToString]" />
-                <ui:LogMessage DisplayName="Log Message  - fetching std rate" sap:VirtualizedContainerService.HintSize="752.8,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_17" Level="Info" Message="[&quot;Fetching Standard rate from Quickbooks...&quot;]" />
-                <ui:LookupDataTable LookupColumnIndex="{x:Null}" LookupDataColumn="{x:Null}" RowIndex="{x:Null}" TargetColumnIndex="{x:Null}" TargetDataColumn="{x:Null}" DataTable="[in_dt_Quotation]" DisplayName="Lookup Data Table - StdRate" sap:VirtualizedContainerService.HintSize="752.8,52.8" sap2010:WorkflowViewState.IdRef="LookupDataTable_8" LookupColumnName="Column2" LookupValue="[out_VehicleTypeDescription]" TargetColumnName="Column17">
-                  <ui:LookupDataTable.CellValue>
-                    <OutArgument x:TypeArguments="ui:GenericValue">[out_StdRate]</OutArgument>
                   </ui:LookupDataTable.CellValue>
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -424,11 +442,66 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:LookupDataTable>
-                <ui:IsMatch BuilderPattern="\d+" DisplayName="Is Match Validate std rate #1" sap:VirtualizedContainerService.HintSize="752.8,60" sap2010:WorkflowViewState.IdRef="IsMatch_3" Input="[out_StdRate]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;DIG&quot;,&quot;OperationName&quot;:&quot;Digit&quot;,&quot;OperationValue&quot;:&quot;\\d&quot;,&quot;QuantifierFirstValue&quot;:&quot;+&quot;,&quot;QuantifierID&quot;:&quot;OOM&quot;,&quot;QuantifierName&quot;:&quot;At least one (1 or more)&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="\d+" RegexOption="IgnoreCase, Compiled" Result="[StdRateValid]" />
-                <If Condition="[StdRateValid]" DisplayName="If check if std rate is valid string #1" sap:VirtualizedContainerService.HintSize="752.8,407.2" sap2010:WorkflowViewState.IdRef="If_8">
+                <ui:LogMessage DisplayName="Log Message Display Min workign hrs #1" sap:VirtualizedContainerService.HintSize="752.8,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_16" Level="Info" Message="[&quot;Minimun Working Hours fetched are: &quot;+ out_MinWorkingHours.ToString]" />
+                <ui:LogMessage DisplayName="Log Message  - fetching std rate" sap:VirtualizedContainerService.HintSize="752.8,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_17" Level="Info" Message="[&quot;Fetching Standard rate from Quickbooks...&quot;]" />
+                <TryCatch DisplayName="Try Catch for Std rate" sap:VirtualizedContainerService.HintSize="752.8,583.2" sap2010:WorkflowViewState.IdRef="TryCatch_3">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <TryCatch.Try>
+                    <ui:LookupDataTable LookupColumnIndex="{x:Null}" LookupDataColumn="{x:Null}" RowIndex="{x:Null}" TargetColumnIndex="{x:Null}" TargetDataColumn="{x:Null}" DataTable="[in_dt_Quotation]" DisplayName="Lookup Data Table - StdRate" sap:VirtualizedContainerService.HintSize="333.6,295.2" sap2010:WorkflowViewState.IdRef="LookupDataTable_8" LookupColumnName="Column2" LookupValue="[out_VehicleTypeDescription]" TargetColumnName="Column17">
+                      <ui:LookupDataTable.CellValue>
+                        <OutArgument x:TypeArguments="ui:GenericValue">[out_StdRate]</OutArgument>
+                      </ui:LookupDataTable.CellValue>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:LookupDataTable>
+                  </TryCatch.Try>
+                  <TryCatch.Catches>
+                    <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,418.4" sap2010:WorkflowViewState.IdRef="Catch`1_4">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ActivityAction x:TypeArguments="s:Exception">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                        </ActivityAction.Argument>
+                        <Sequence DisplayName="Sd rate catch" sap:VirtualizedContainerService.HintSize="375.2,348" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:LogMessage DisplayName="Log Message - Check Standard rate" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_32" Level="Error" Message="[&quot;The fetched Standard rate is null. Please check it manually in the Quotation File for Description: &quot;+out_VehicleTypeDescription]" />
+                          <Assign DisplayName="Assign Monthly rate null" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_7">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="s:Exception">[exception]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="ui:BusinessRuleException">[new BusinessRuleException("The fetched Standard rate is null. Please check it manually in the Quotation File for Description: "+out_VehicleTypeDescription)]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <Throw DisplayName="Throw Standard rate null" Exception="[exception]" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="Throw_11" />
+                        </Sequence>
+                      </ActivityAction>
+                    </Catch>
+                  </TryCatch.Catches>
+                </TryCatch>
+                <ui:IsMatch BuilderPattern="\d+" DisplayName="Is Match Validate std rate #1" sap:VirtualizedContainerService.HintSize="752.8,60" sap2010:WorkflowViewState.IdRef="IsMatch_3" Input="[out_StdRate]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;DIG&quot;,&quot;OperationName&quot;:&quot;Digit&quot;,&quot;OperationValue&quot;:&quot;\\d&quot;,&quot;QuantifierFirstValue&quot;:&quot;+&quot;,&quot;QuantifierID&quot;:&quot;OOM&quot;,&quot;QuantifierName&quot;:&quot;At least one (1 or more)&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="\d+" RegexOption="IgnoreCase, Compiled" Result="[StdRateValid]" />
+                <If Condition="[StdRateValid]" DisplayName="If check if std rate is valid string #1" sap:VirtualizedContainerService.HintSize="752.8,52.8" sap2010:WorkflowViewState.IdRef="If_8">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
@@ -449,17 +522,53 @@
                 </If>
                 <ui:LogMessage DisplayName="Log Message Std rate" sap:VirtualizedContainerService.HintSize="752.8,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_18" Level="Info" Message="[&quot;Standard Rate fetched is: &quot;+ out_StdRate.ToString]" />
                 <ui:LogMessage DisplayName="Log Message  - fetching prem rate" sap:VirtualizedContainerService.HintSize="752.8,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_19" Level="Info" Message="[&quot;Fetching Premium rate from Quickbooks...&quot;]" />
-                <ui:LookupDataTable LookupColumnIndex="{x:Null}" LookupDataColumn="{x:Null}" RowIndex="{x:Null}" TargetColumnIndex="{x:Null}" TargetDataColumn="{x:Null}" DataTable="[in_dt_Quotation]" DisplayName="Lookup Data Table - Premium" sap:VirtualizedContainerService.HintSize="752.8,52.8" sap2010:WorkflowViewState.IdRef="LookupDataTable_9" LookupColumnName="Column2" LookupValue="[out_VehicleTypeDescription]" TargetColumnName="Column19">
-                  <ui:LookupDataTable.CellValue>
-                    <OutArgument x:TypeArguments="ui:GenericValue">[out_PremRate]</OutArgument>
-                  </ui:LookupDataTable.CellValue>
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                </ui:LookupDataTable>
+                <TryCatch DisplayName="Try Catch for Premium rate" sap:VirtualizedContainerService.HintSize="752.8,583.2" sap2010:WorkflowViewState.IdRef="TryCatch_4">
+                  <TryCatch.Try>
+                    <ui:LookupDataTable LookupColumnIndex="{x:Null}" LookupDataColumn="{x:Null}" RowIndex="{x:Null}" TargetColumnIndex="{x:Null}" TargetDataColumn="{x:Null}" DataTable="[in_dt_Quotation]" DisplayName="Lookup Data Table - Premium" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="LookupDataTable_9" LookupColumnName="Column2" LookupValue="[out_VehicleTypeDescription]" TargetColumnName="Column19">
+                      <ui:LookupDataTable.CellValue>
+                        <OutArgument x:TypeArguments="ui:GenericValue">[out_PremRate]</OutArgument>
+                      </ui:LookupDataTable.CellValue>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:LookupDataTable>
+                  </TryCatch.Try>
+                  <TryCatch.Catches>
+                    <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,418.4" sap2010:WorkflowViewState.IdRef="Catch`1_5">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ActivityAction x:TypeArguments="s:Exception">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                        </ActivityAction.Argument>
+                        <Sequence DisplayName="Prem rate catch" sap:VirtualizedContainerService.HintSize="375.2,348" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:LogMessage DisplayName="Log Message - Check Premium rate" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_33" Level="Error" Message="[&quot;The fetched Premium rate is null. Please check it manually in the Quotation File for Description: &quot;+out_VehicleTypeDescription]" />
+                          <Assign DisplayName="Assign Premium rate null" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_8">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="s:Exception">[exception]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="ui:BusinessRuleException">[new BusinessRuleException("The fetched Premium rate is null. Please check it manually in the Quotation File for Description: "+out_VehicleTypeDescription)]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <Throw DisplayName="Throw Premium rate null" Exception="[exception]" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="Throw_12" />
+                        </Sequence>
+                      </ActivityAction>
+                    </Catch>
+                  </TryCatch.Catches>
+                </TryCatch>
                 <ui:IsMatch BuilderPattern="\d+" DisplayName="Is Match Validate Prem rate #1" sap:VirtualizedContainerService.HintSize="752.8,60" sap2010:WorkflowViewState.IdRef="IsMatch_4" Input="[out_PremRate]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;DIG&quot;,&quot;OperationName&quot;:&quot;Digit&quot;,&quot;OperationValue&quot;:&quot;\\d&quot;,&quot;QuantifierFirstValue&quot;:&quot;+&quot;,&quot;QuantifierID&quot;:&quot;OOM&quot;,&quot;QuantifierName&quot;:&quot;At least one (1 or more)&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="\d+" RegexOption="IgnoreCase, Compiled" Result="[PremRateValid]" />
                 <If Condition="[PremRateValid]" DisplayName="If check if Prem rate is valid string #1" sap:VirtualizedContainerService.HintSize="752.8,407.2" sap2010:WorkflowViewState.IdRef="If_9">
                   <sap:WorkflowViewStateService.ViewState>
