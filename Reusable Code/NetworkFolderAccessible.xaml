@@ -14,7 +14,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>904,1227.2</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>620,708</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>NetworkFolderFileAccessible_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="26">
@@ -73,10 +73,9 @@
       <AssemblyReference>System.ValueTuple</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>NPOI</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="This .xaml will check if all the required network folders are accessible for the process to run." DisplayName="Check network paths are accessible" sap:VirtualizedContainerService.HintSize="914.4,1162.4" sap2010:WorkflowViewState.IdRef="Sequence_4">
+  <Sequence sap2010:Annotation.AnnotationText="This .xaml will check if all the required network folders are accessible for the process to run." DisplayName="Check network paths are accessible" sap:VirtualizedContainerService.HintSize="475.2,643.2" sap2010:WorkflowViewState.IdRef="Sequence_4">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="FilePathAccessibleBoolean" />
     </Sequence.Variables>
@@ -86,7 +85,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Try Catch - PAths are accessible" sap:VirtualizedContainerService.HintSize="872.8,1038.4" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Try Catch - PAths are accessible" sap:VirtualizedContainerService.HintSize="433.6,506.4" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <TryCatch.Try>
         <Sequence DisplayName="NetworkFolderFileAccessible" sap:VirtualizedContainerService.HintSize="836,807.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
           <sap:WorkflowViewStateService.ViewState>
@@ -129,7 +128,7 @@
         </Sequence>
       </TryCatch.Try>
       <TryCatch.Catches>
-        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="839.2,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_1">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -155,6 +154,29 @@
                 </sap:WorkflowViewStateService.ViewState>
               </ui:LogMessage>
               <Rethrow DisplayName="Rethrow the current exception" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="Rethrow_1" />
+            </Sequence>
+          </ActivityAction>
+        </Catch>
+        <Catch x:TypeArguments="ui:BusinessRuleException" sap:VirtualizedContainerService.HintSize="400,318.4" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ActivityAction x:TypeArguments="ui:BusinessRuleException">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="ui:BusinessRuleException" Name="exception" />
+            </ActivityAction.Argument>
+            <Sequence DisplayName="Business Catch" sap:VirtualizedContainerService.HintSize="375.2,248" sap2010:WorkflowViewState.IdRef="Sequence_6">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:LogMessage DisplayName="Log Message- In catch of network folder access" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Error" Message="[&quot;In the catch of Business Exception of Network Folder Access check...&quot;]" />
+              <Rethrow DisplayName="Rethrow the current exception" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="Rethrow_2" />
             </Sequence>
           </ActivityAction>
         </Catch>
