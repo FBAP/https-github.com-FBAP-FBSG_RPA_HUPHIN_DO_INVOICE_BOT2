@@ -78,6 +78,7 @@
       <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
       <AssemblyReference>System.Data.Entity</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence sap2010:Annotation.AnnotationText="This .xaml will check if the input file is available for Daily process on the network drive or input folder specified." DisplayName="Check input file of process" sap:VirtualizedContainerService.HintSize="1440.8,2136" sap2010:WorkflowViewState.IdRef="Sequence_4">

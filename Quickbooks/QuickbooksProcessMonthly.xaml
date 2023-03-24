@@ -18,7 +18,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1977.6,12361.6</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1977.6,12360.8</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Sequence_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="49">
@@ -117,9 +117,10 @@
       <AssemblyReference>UiPath.CV.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Vision.Core</AssemblyReference>
       <AssemblyReference>UiPath.OCR.Contracts</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="This .xaml will create invoices for &#xA;Monthly process. It will also calculate the total standard working hours and working hours on Weekends." DisplayName="Quickbooks Process" sap:VirtualizedContainerService.HintSize="1988,12296.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="This .xaml will create invoices for &#xA;Monthly process. It will also calculate the total standard working hours and working hours on Weekends." DisplayName="Quickbooks Process" sap:VirtualizedContainerService.HintSize="1988,12296" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Double" Name="TotalPremWorkingHours" />
       <Variable x:TypeArguments="x:Double" Name="TotalStdWorkingHours" />
@@ -157,7 +158,7 @@
         <x:Boolean x:Key="IsPinned">False</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Try Catch for process" sap:VirtualizedContainerService.HintSize="1946.4,12160" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Try Catch for process" sap:VirtualizedContainerService.HintSize="1946.4,12159.2" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -165,19 +166,19 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <Sequence DisplayName="Process" sap:VirtualizedContainerService.HintSize="1909.6,11905.6" sap2010:WorkflowViewState.IdRef="Sequence_55">
+        <Sequence DisplayName="Process" sap:VirtualizedContainerService.HintSize="1909.6,11904.8" sap2010:WorkflowViewState.IdRef="Sequence_55">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window Huphin" sap:VirtualizedContainerService.HintSize="1868,11204.8" sap2010:WorkflowViewState.IdRef="WindowScope_3" InformativeScreenshot="d8b26e7efcab376a251e4ad5cecc50e8" Selector="&lt;wnd app='qbw32.exe' cls='MauiFrame' title='HUP HIN*' /&gt;">
+          <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window Huphin" sap:VirtualizedContainerService.HintSize="1868,11204" sap2010:WorkflowViewState.IdRef="WindowScope_3" InformativeScreenshot="d8b26e7efcab376a251e4ad5cecc50e8" Selector="&lt;wnd app='qbw32.exe' cls='MauiFrame' title='HUP HIN*' /&gt;">
             <ui:WindowScope.Body>
               <ActivityAction x:TypeArguments="x:Object">
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
                 </ActivityAction.Argument>
-                <Sequence DisplayName="HUP HIN TRANSPORT CO PTE LTD " sap:VirtualizedContainerService.HintSize="1834.4,11057.6" sap2010:WorkflowViewState.IdRef="Sequence_107">
+                <Sequence DisplayName="HUP HIN TRANSPORT CO PTE LTD " sap:VirtualizedContainerService.HintSize="1834.4,11056.8" sap2010:WorkflowViewState.IdRef="Sequence_107">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -518,7 +519,7 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </ui:LogMessage>
-                  <TryCatch DisplayName="Try Catch for Min hours line" sap:VirtualizedContainerService.HintSize="436.8,676.8" sap2010:WorkflowViewState.IdRef="TryCatch_5">
+                  <TryCatch DisplayName="Try Catch for Min hours line" sap:VirtualizedContainerService.HintSize="1792.8,52.8" sap2010:WorkflowViewState.IdRef="TryCatch_5">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -913,10 +914,10 @@
                     </ui:GetValue.Value>
                   </ui:GetValue>
                   <ui:LogMessage DisplayName="Log Message - Display invoice number" sap:VirtualizedContainerService.HintSize="1792.8,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_83" Level="Info" Message="[&quot;Invoice Number fetched is: &quot;+ out_InvoiceNumber1.ToString]" />
-                  <If Condition="[Not out_InvoiceNumber1.ToString.SubString(0,2)=&quot;IN&quot;]" DisplayName="If Invoice number does not start with IN change it to user's choice " sap:VirtualizedContainerService.HintSize="1792.8,52.8" sap2010:WorkflowViewState.IdRef="If_39">
+                  <If Condition="[Not out_InvoiceNumber1.ToString.SubString(0,2)=&quot;IN&quot;]" DisplayName="If Invoice number does not start with IN change it to user's choice " sap:VirtualizedContainerService.HintSize="1792.8,676" sap2010:WorkflowViewState.IdRef="If_39">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
@@ -1049,7 +1050,7 @@
                     </ui:SendHotkey.Target>
                   </ui:SendHotkey>
                   <ui:LogMessage DisplayName="Log Message - Entering the Company details and ref number" sap:VirtualizedContainerService.HintSize="1792.8,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_86" Level="Info" Message="[&quot;Entering the Company details and Quotation Reference number...&quot;]" />
-                  <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SimulateType="{x:Null}" Activate="True" DelayBefore="[CInt( in_Config1(&quot;DelayOneThousand&quot;).ToString)]" DisplayName="Type Into description column #5" sap:VirtualizedContainerService.HintSize="1792.8,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_42" SendWindowMessages="True" Text="[&quot;OUR REF: &quot;+ QuotationRefNumber.ToString]">
+                  <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SimulateType="{x:Null}" Activate="True" DelayBefore="[CInt( in_Config1(&quot;DelayBeforeAfter&quot;).ToString)]" DisplayName="Type Into description column #5" sap:VirtualizedContainerService.HintSize="1792.8,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_42" SendWindowMessages="True" Text="[&quot;OUR REF: &quot;+ QuotationRefNumber.ToString]">
                     <ui:TypeInto.Target>
                       <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="345e2739-2f62-4c7c-8335-7176c66f396e" InformativeScreenshot="49b3b93a9ef79db56a2ceb69bd4db95e" Selector="&lt;wnd cls='MauiForm' title='Create Invoices*' /&gt;&lt;wnd cls='Edit' /&gt;" WaitForReady="COMPLETE">
                         <ui:Target.TimeoutMS>
@@ -1070,7 +1071,7 @@
                       </ui:Target>
                     </ui:SendHotkey.Target>
                   </ui:SendHotkey>
-                  <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SimulateType="{x:Null}" Activate="True" DelayBefore="[CInt( in_Config1(&quot;DelayOneThousand&quot;).ToString)]" DisplayName="Type Into description column #1" sap:VirtualizedContainerService.HintSize="1792.8,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_69" SendWindowMessages="True" Text="[&quot;SITE: &quot;+in_dt_TransactionItem1(0)(&quot;Job Site address&quot;).ToString + &quot;[k(tab)]&quot;]">
+                  <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SimulateType="{x:Null}" Activate="True" DelayBefore="[CInt( in_Config1(&quot;DelayBeforeAfter&quot;).ToString)]" DisplayName="Type Into description column #1" sap:VirtualizedContainerService.HintSize="1792.8,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_69" SendWindowMessages="True" Text="[&quot;SITE: &quot;+in_dt_TransactionItem1(0)(&quot;Job Site address&quot;).ToString + &quot;[k(tab)]&quot;]">
                     <ui:TypeInto.Target>
                       <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="345e2739-2f62-4c7c-8335-7176c66f396e" InformativeScreenshot="49b3b93a9ef79db56a2ceb69bd4db95e" Selector="&lt;wnd cls='MauiForm' title='Create Invoices*' /&gt;&lt;wnd cls='Edit' /&gt;" WaitForReady="COMPLETE">
                         <ui:Target.TimeoutMS>

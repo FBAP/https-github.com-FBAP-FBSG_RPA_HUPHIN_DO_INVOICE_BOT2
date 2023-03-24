@@ -9,7 +9,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>620,3009.6</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>866.4,1324</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Initialization_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="39">
@@ -94,18 +94,17 @@
       <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
       <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
       <AssemblyReference>System.Data.Entity</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Open applications used in the process and do necessary initialization procedures (e.g., login)." DisplayName="Initialize All Applications" sap:VirtualizedContainerService.HintSize="556.8,2944.8" sap2010:WorkflowViewState.IdRef="Sequence_9">
+  <Sequence sap2010:Annotation.AnnotationText="Open applications used in the process and do necessary initialization procedures (e.g., login)." DisplayName="Initialize All Applications" sap:VirtualizedContainerService.HintSize="478.4,1259.2" sap2010:WorkflowViewState.IdRef="Sequence_9">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log message (Initialize applications)" sap:VirtualizedContainerService.HintSize="515.2,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Opening applications...&quot;]" />
-    <TryCatch DisplayName="Try Catch - Shared drive paths" sap:VirtualizedContainerService.HintSize="515.2,2688" sap2010:WorkflowViewState.IdRef="TryCatch_3">
+    <ui:LogMessage DisplayName="Log message (Initialize applications)" sap:VirtualizedContainerService.HintSize="436.8,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Opening applications...&quot;]" />
+    <TryCatch DisplayName="Try Catch - Shared drive paths" sap:VirtualizedContainerService.HintSize="436.8,989.6" sap2010:WorkflowViewState.IdRef="TryCatch_3">
       <TryCatch.Variables>
         <Variable x:TypeArguments="x:Boolean" Name="ExcelSuccess" />
         <Variable x:TypeArguments="x:Boolean" Name="OutlookSuccess" />
@@ -117,121 +116,112 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <Sequence DisplayName="Check all initialization" sap:VirtualizedContainerService.HintSize="478.4,2456.8" sap2010:WorkflowViewState.IdRef="Sequence_90">
+        <Sequence DisplayName="Initialization" sap:VirtualizedContainerService.HintSize="385.6,758.4" sap2010:WorkflowViewState.IdRef="Sequence_97">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-              <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message Shared drive accesses" sap:VirtualizedContainerService.HintSize="436.8,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_69" Level="Info" Message="[&quot;Checking the shared drive accesses.&quot;]" />
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke NetworkFolderFileAccessible workflow - Invoices" sap:VirtualizedContainerService.HintSize="436.8,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Reusable Code\NetworkFolderAccessible.xaml">
-            <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="x:String" x:Key="in_NetworkFileFolderPath">[in_Config("InvoicePath").ToString]</InArgument>
-              <InArgument x:TypeArguments="x:Int32" x:Key="in_RetryNumber">[Cint(in_Config("RetryNumber"))]</InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_Word">[in_Config("InvoicesFolderName").ToString]</InArgument>
-              <InArgument x:TypeArguments="x:TimeSpan" x:Key="in_RetryIntervalMedium">[Timespan.Parse(in_Config("RetryIntervalMedium").ToString)]</InArgument>
-            </ui:InvokeWorkflowFile.Arguments>
-          </ui:InvokeWorkflowFile>
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke NetworkFolderFileAccessible workflow - DOs" sap:VirtualizedContainerService.HintSize="436.8,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Reusable Code\NetworkFolderAccessible.xaml">
-            <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="x:String" x:Key="in_NetworkFileFolderPath">[in_Config("DOPdfPath").ToString]</InArgument>
-              <InArgument x:TypeArguments="x:Int32" x:Key="in_RetryNumber">[Cint(in_Config("RetryNumber"))]</InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_Word">[in_Config("DOFolderName").ToString]</InArgument>
-              <InArgument x:TypeArguments="x:TimeSpan" x:Key="in_RetryIntervalMedium">[Timespan.Parse(in_Config("RetryIntervalMedium").ToString)]</InArgument>
-            </ui:InvokeWorkflowFile.Arguments>
-          </ui:InvokeWorkflowFile>
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke NetworkFolderFileAccessible workflow - Quotation" sap:VirtualizedContainerService.HintSize="436.8,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Reusable Code\NetworkFolderAccessible.xaml">
-            <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="x:String" x:Key="in_NetworkFileFolderPath">[in_Config("QuotationFilePath").ToString]</InArgument>
-              <InArgument x:TypeArguments="x:Int32" x:Key="in_RetryNumber">[Cint(in_Config("RetryNumber"))]</InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_Word">[in_Config("QuotationFolderName").ToString]</InArgument>
-              <InArgument x:TypeArguments="x:TimeSpan" x:Key="in_RetryIntervalMedium">[Timespan.Parse(in_Config("RetryIntervalMedium").ToString)]</InArgument>
-            </ui:InvokeWorkflowFile.Arguments>
-          </ui:InvokeWorkflowFile>
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke NetworkFolderFileAccessible workflow - Master file #1" sap:VirtualizedContainerService.HintSize="436.8,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Reusable Code\NetworkFolderAccessible.xaml">
-            <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="x:String" x:Key="in_NetworkFileFolderPath">[in_Config("MasterFilePath").ToString]</InArgument>
-              <InArgument x:TypeArguments="x:Int32" x:Key="in_RetryNumber">[Cint(in_Config("RetryNumber"))]</InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_Word">[in_Config("MasterFileFolderName").ToString]</InArgument>
-              <InArgument x:TypeArguments="x:TimeSpan" x:Key="in_RetryIntervalMedium">[Timespan.Parse(in_Config("RetryIntervalMedium").ToString)]</InArgument>
-            </ui:InvokeWorkflowFile.Arguments>
-          </ui:InvokeWorkflowFile>
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke NetworkFolderFileAccessible workflow - POs" sap:VirtualizedContainerService.HintSize="436.8,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Reusable Code\NetworkFolderAccessible.xaml">
-            <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="x:String" x:Key="in_NetworkFileFolderPath">[in_Config("POPDFPath").ToString]</InArgument>
-              <InArgument x:TypeArguments="x:Int32" x:Key="in_RetryNumber">[Cint(in_Config("RetryNumber"))]</InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_Word">[in_Config("POFolderName").ToString]</InArgument>
-              <InArgument x:TypeArguments="x:TimeSpan" x:Key="in_RetryIntervalMedium">[Timespan.Parse(in_Config("RetryIntervalMedium").ToString)]</InArgument>
-            </ui:InvokeWorkflowFile.Arguments>
-          </ui:InvokeWorkflowFile>
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke NetworkFolderFileAccessible workflow - Timesheet" sap:VirtualizedContainerService.HintSize="436.8,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="Reusable Code\NetworkFolderAccessible.xaml">
-            <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="x:String" x:Key="in_NetworkFileFolderPath">[in_Config("TimeSheetPath").ToString]</InArgument>
-              <InArgument x:TypeArguments="x:Int32" x:Key="in_RetryNumber">[Cint(in_Config("RetryNumber"))]</InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_Word">[in_Config("TimesheetsFolderName").ToString]</InArgument>
-              <InArgument x:TypeArguments="x:TimeSpan" x:Key="in_RetryIntervalMedium">[Timespan.Parse(in_Config("RetryIntervalMedium").ToString)]</InArgument>
-            </ui:InvokeWorkflowFile.Arguments>
-          </ui:InvokeWorkflowFile>
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke NetworkFolderFileAccessible workflow" sap:VirtualizedContainerService.HintSize="436.8,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="Reusable Code\NetworkFileAccessible.xaml">
-            <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="x:String" x:Key="in_NetworkFileFolderPath">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;ScheduleDetailsFilepath&quot;).ToString" />
-              </InArgument>
-              <InArgument x:TypeArguments="x:Int32" x:Key="in_RetryNumber">
-                <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="Cint( in_Config(&quot;RetryNumber&quot;))" />
-              </InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_Word">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;ScheduleDetailsFileFolderName&quot;).ToString" />
-              </InArgument>
-              <InArgument x:TypeArguments="x:TimeSpan" x:Key="in_RetryIntervalMedium">
-                <mva:VisualBasicValue x:TypeArguments="x:TimeSpan" ExpressionText="Timespan.Parse(in_Config(&quot;RetryIntervalMedium&quot;).ToString)" />
-              </InArgument>
-            </ui:InvokeWorkflowFile.Arguments>
-          </ui:InvokeWorkflowFile>
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke NetworkFolderFileAccessible workflow - Master file" sap:VirtualizedContainerService.HintSize="436.8,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_13" UnSafe="False" WorkflowFileName="Reusable Code\NetworkFileAccessible.xaml">
-            <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="x:String" x:Key="in_NetworkFileFolderPath">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;MasterFilePath&quot;).ToString+in_Config(&quot;MasterFileName&quot;).ToString+&quot;.xlsx&quot;" />
-              </InArgument>
-              <InArgument x:TypeArguments="x:Int32" x:Key="in_RetryNumber">
-                <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="Cint( in_Config(&quot;RetryNumber&quot;))" />
-              </InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_Word">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;MasterFileFolderName&quot;).ToString" />
-              </InArgument>
-              <InArgument x:TypeArguments="x:TimeSpan" x:Key="in_RetryIntervalMedium">
-                <mva:VisualBasicValue x:TypeArguments="x:TimeSpan" ExpressionText="Timespan.Parse(in_Config(&quot;RetryIntervalMedium&quot;).ToString)" />
-              </InArgument>
-            </ui:InvokeWorkflowFile.Arguments>
-          </ui:InvokeWorkflowFile>
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CheckAllColumnsMasterFile workflow" sap:VirtualizedContainerService.HintSize="436.8,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="Reusable Code\CheckAllColumnsMasterFile.xaml">
-            <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config1">[in_Config]</InArgument>
-              <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_BillingEntity">[out_dt_BillingEntityDT1]</OutArgument>
-              <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_PublicHoliday">[out_dt_PublicHolidayDT1]</OutArgument>
-              <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_VehicleTypeMap">[out_dt_VehicleTypeMapDT1]</OutArgument>
-            </ui:InvokeWorkflowFile.Arguments>
-          </ui:InvokeWorkflowFile>
-          <Sequence DisplayName="Applications check - Excel" sap:VirtualizedContainerService.HintSize="436.8,68.8" sap2010:WorkflowViewState.IdRef="Sequence_87">
+          <Sequence DisplayName="Check all initialization" sap:VirtualizedContainerService.HintSize="344,68.8" sap2010:WorkflowViewState.IdRef="Sequence_90">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:LogMessage DisplayName="Log Message - check excel" sap:VirtualizedContainerService.HintSize="416.8,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_70" Level="Info" Message="[&quot;Checking Excel...&quot;]" />
-            <ui:RetryScope DisplayName="Retry Scope - Excel" sap:VirtualizedContainerService.HintSize="416.8,528.8" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[CInt( in_Config(&quot;RetryNumber&quot;))]" RetryInterval="[Timespan.Parse(in_Config(&quot;RetryIntervalMedium&quot;).ToString)]">
+            <ui:LogMessage DisplayName="Log Message Shared drive accesses" sap:VirtualizedContainerService.HintSize="362.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_69" Level="Info" Message="[&quot;Checking the shared drive accesses.&quot;]" />
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke NetworkFolderFileAccessible workflow - Invoices" sap:VirtualizedContainerService.HintSize="362.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Reusable Code\NetworkFolderAccessible.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InArgument x:TypeArguments="x:String" x:Key="in_NetworkFileFolderPath">[in_Config("InvoicePath").ToString]</InArgument>
+                <InArgument x:TypeArguments="x:Int32" x:Key="in_RetryNumber">[Cint(in_Config("RetryNumber"))]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_Word">[in_Config("InvoicesFolderName").ToString]</InArgument>
+                <InArgument x:TypeArguments="x:TimeSpan" x:Key="in_RetryIntervalMedium">[Timespan.Parse(in_Config("RetryIntervalMedium").ToString)]</InArgument>
+              </ui:InvokeWorkflowFile.Arguments>
+            </ui:InvokeWorkflowFile>
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke NetworkFolderFileAccessible workflow - DOs" sap:VirtualizedContainerService.HintSize="362.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Reusable Code\NetworkFolderAccessible.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InArgument x:TypeArguments="x:String" x:Key="in_NetworkFileFolderPath">[in_Config("DOPdfPath").ToString]</InArgument>
+                <InArgument x:TypeArguments="x:Int32" x:Key="in_RetryNumber">[Cint(in_Config("RetryNumber"))]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_Word">[in_Config("DOFolderName").ToString]</InArgument>
+                <InArgument x:TypeArguments="x:TimeSpan" x:Key="in_RetryIntervalMedium">[Timespan.Parse(in_Config("RetryIntervalMedium").ToString)]</InArgument>
+              </ui:InvokeWorkflowFile.Arguments>
+            </ui:InvokeWorkflowFile>
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke NetworkFolderFileAccessible workflow - Quotation" sap:VirtualizedContainerService.HintSize="362.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Reusable Code\NetworkFolderAccessible.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InArgument x:TypeArguments="x:String" x:Key="in_NetworkFileFolderPath">[in_Config("QuotationFilePath").ToString]</InArgument>
+                <InArgument x:TypeArguments="x:Int32" x:Key="in_RetryNumber">[Cint(in_Config("RetryNumber"))]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_Word">[in_Config("QuotationFolderName").ToString]</InArgument>
+                <InArgument x:TypeArguments="x:TimeSpan" x:Key="in_RetryIntervalMedium">[Timespan.Parse(in_Config("RetryIntervalMedium").ToString)]</InArgument>
+              </ui:InvokeWorkflowFile.Arguments>
+            </ui:InvokeWorkflowFile>
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke NetworkFolderFileAccessible workflow - Master file #1" sap:VirtualizedContainerService.HintSize="362.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Reusable Code\NetworkFolderAccessible.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InArgument x:TypeArguments="x:String" x:Key="in_NetworkFileFolderPath">[in_Config("MasterFilePath").ToString]</InArgument>
+                <InArgument x:TypeArguments="x:Int32" x:Key="in_RetryNumber">[Cint(in_Config("RetryNumber"))]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_Word">[in_Config("MasterFileFolderName").ToString]</InArgument>
+                <InArgument x:TypeArguments="x:TimeSpan" x:Key="in_RetryIntervalMedium">[Timespan.Parse(in_Config("RetryIntervalMedium").ToString)]</InArgument>
+              </ui:InvokeWorkflowFile.Arguments>
+            </ui:InvokeWorkflowFile>
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke NetworkFolderFileAccessible workflow - POs" sap:VirtualizedContainerService.HintSize="362.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Reusable Code\NetworkFolderAccessible.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InArgument x:TypeArguments="x:String" x:Key="in_NetworkFileFolderPath">[in_Config("POPDFPath").ToString]</InArgument>
+                <InArgument x:TypeArguments="x:Int32" x:Key="in_RetryNumber">[Cint(in_Config("RetryNumber"))]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_Word">[in_Config("POFolderName").ToString]</InArgument>
+                <InArgument x:TypeArguments="x:TimeSpan" x:Key="in_RetryIntervalMedium">[Timespan.Parse(in_Config("RetryIntervalMedium").ToString)]</InArgument>
+              </ui:InvokeWorkflowFile.Arguments>
+            </ui:InvokeWorkflowFile>
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke NetworkFolderFileAccessible workflow - Timesheet" sap:VirtualizedContainerService.HintSize="362.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="Reusable Code\NetworkFolderAccessible.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InArgument x:TypeArguments="x:String" x:Key="in_NetworkFileFolderPath">[in_Config("TimeSheetPath").ToString]</InArgument>
+                <InArgument x:TypeArguments="x:Int32" x:Key="in_RetryNumber">[Cint(in_Config("RetryNumber"))]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_Word">[in_Config("TimesheetsFolderName").ToString]</InArgument>
+                <InArgument x:TypeArguments="x:TimeSpan" x:Key="in_RetryIntervalMedium">[Timespan.Parse(in_Config("RetryIntervalMedium").ToString)]</InArgument>
+              </ui:InvokeWorkflowFile.Arguments>
+            </ui:InvokeWorkflowFile>
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke NetworkFolderFileAccessible workflow" sap:VirtualizedContainerService.HintSize="362.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="Reusable Code\NetworkFileAccessible.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InArgument x:TypeArguments="x:String" x:Key="in_NetworkFileFolderPath">[in_Config("ScheduleDetailsFilepath").ToString]</InArgument>
+                <InArgument x:TypeArguments="x:Int32" x:Key="in_RetryNumber">[Cint( in_Config("RetryNumber"))]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_Word">[in_Config("ScheduleDetailsFileFolderName").ToString]</InArgument>
+                <InArgument x:TypeArguments="x:TimeSpan" x:Key="in_RetryIntervalMedium">[Timespan.Parse(in_Config("RetryIntervalMedium").ToString)]</InArgument>
+              </ui:InvokeWorkflowFile.Arguments>
+            </ui:InvokeWorkflowFile>
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke NetworkFolderFileAccessible workflow - Master file" sap:VirtualizedContainerService.HintSize="362.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_13" UnSafe="False" WorkflowFileName="Reusable Code\NetworkFileAccessible.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InArgument x:TypeArguments="x:String" x:Key="in_NetworkFileFolderPath">[in_Config("MasterFilePath").ToString+in_Config("MasterFileName").ToString+".xlsx"]</InArgument>
+                <InArgument x:TypeArguments="x:Int32" x:Key="in_RetryNumber">[Cint( in_Config("RetryNumber"))]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_Word">[in_Config("MasterFileFolderName").ToString]</InArgument>
+                <InArgument x:TypeArguments="x:TimeSpan" x:Key="in_RetryIntervalMedium">[Timespan.Parse(in_Config("RetryIntervalMedium").ToString)]</InArgument>
+              </ui:InvokeWorkflowFile.Arguments>
+            </ui:InvokeWorkflowFile>
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CheckAllColumnsMasterFile workflow" sap:VirtualizedContainerService.HintSize="362.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="Reusable Code\CheckAllColumnsMasterFile.xaml">
+              <ui:InvokeWorkflowFile.Arguments>
+                <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config1">[in_Config]</InArgument>
+                <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_BillingEntity">[out_dt_BillingEntityDT1]</OutArgument>
+                <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_PublicHoliday">[out_dt_PublicHolidayDT1]</OutArgument>
+                <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_VehicleTypeMap">[out_dt_VehicleTypeMapDT1]</OutArgument>
+              </ui:InvokeWorkflowFile.Arguments>
+            </ui:InvokeWorkflowFile>
+          </Sequence>
+          <Sequence DisplayName="Applications check - Excel" sap:VirtualizedContainerService.HintSize="344,68.8" sap2010:WorkflowViewState.IdRef="Sequence_93">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:LogMessage DisplayName="Log Message - check excel" sap:VirtualizedContainerService.HintSize="416.8,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_75" Level="Info" Message="[&quot;Checking Excel...&quot;]" />
+            <ui:RetryScope DisplayName="Retry Scope - Excel" sap:VirtualizedContainerService.HintSize="416.8,528.8" sap2010:WorkflowViewState.IdRef="RetryScope_3" NumberOfRetries="[CInt( in_Config(&quot;RetryNumber&quot;))]" RetryInterval="[Timespan.Parse(in_Config(&quot;RetryIntervalMedium&quot;).ToString)]">
               <ui:RetryScope.ActivityBody>
                 <ActivityAction>
-                  <Sequence DisplayName="Action for excel" sap:VirtualizedContainerService.HintSize="375.2,280.8" sap2010:WorkflowViewState.IdRef="Sequence_86">
+                  <Sequence DisplayName="Action for excel" sap:VirtualizedContainerService.HintSize="375.2,280.8" sap2010:WorkflowViewState.IdRef="Sequence_92">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:StartProcess WorkingDirectory="{x:Null}" Arguments="Excel" DisplayName="Start Process - excel" FileName="[in_Config(&quot;ExcelExePath&quot;).ToString]" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="StartProcess_4" />
-                    <Assign DisplayName="Assign ExcelSuccess" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_9">
+                    <ui:StartProcess WorkingDirectory="{x:Null}" Arguments="Excel" DisplayName="Start Process - excel" FileName="[in_Config(&quot;ExcelExePath&quot;).ToString]" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="StartProcess_6" />
+                    <Assign DisplayName="Assign ExcelSuccess" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_12">
                       <Assign.To>
                         <OutArgument x:TypeArguments="x:Boolean">[ExcelSuccess]</OutArgument>
                       </Assign.To>
@@ -244,7 +234,7 @@
               </ui:RetryScope.ActivityBody>
               <ui:RetryScope.Condition>
                 <ActivityFunc x:TypeArguments="x:Boolean">
-                  <ui:CheckTrue ErrorMessage="{x:Null}" DisplayName="Check if excel flag is True" Expression="[ExcelSuccess]" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="CheckTrue_1" />
+                  <ui:CheckTrue ErrorMessage="{x:Null}" DisplayName="Check if excel flag is True" Expression="[ExcelSuccess]" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="CheckTrue_3" />
                 </ActivityFunc>
               </ui:RetryScope.Condition>
               <sap:WorkflowViewStateService.ViewState>
@@ -254,28 +244,28 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:RetryScope>
-            <ui:KillProcess AppliesTo="{x:Null}" Process="{x:Null}" ContinueOnError="True" DisplayName="Kill Process - Excel" sap:VirtualizedContainerService.HintSize="416.8,134.4" sap2010:WorkflowViewState.IdRef="KillProcess_3" ProcessName="Excel" />
-            <ui:LogMessage DisplayName="Log Message - &quot;Excel check completed.&quot;" sap:VirtualizedContainerService.HintSize="416.8,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_71" Level="Info" Message="[&quot;Excel check completed.&quot;]" />
+            <ui:KillProcess AppliesTo="{x:Null}" Process="{x:Null}" ContinueOnError="True" DisplayName="Kill Process - Excel" sap:VirtualizedContainerService.HintSize="416.8,134.4" sap2010:WorkflowViewState.IdRef="KillProcess_5" ProcessName="Excel" />
+            <ui:LogMessage DisplayName="Log Message - &quot;Excel check completed.&quot;" sap:VirtualizedContainerService.HintSize="416.8,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_76" Level="Info" Message="[&quot;Excel check completed.&quot;]" />
           </Sequence>
-          <Sequence DisplayName="Applications check - Outlook" sap:VirtualizedContainerService.HintSize="436.8,68.8" sap2010:WorkflowViewState.IdRef="Sequence_89">
+          <Sequence DisplayName="Applications check - Outlook" sap:VirtualizedContainerService.HintSize="344,68.8" sap2010:WorkflowViewState.IdRef="Sequence_95">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:LogMessage DisplayName="Log Message - Outlook check" sap:VirtualizedContainerService.HintSize="416.8,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_72" Level="Info" Message="[&quot;Checking Outlook...&quot;]" />
-            <ui:RetryScope DisplayName="Retry Scope - Outlook" sap:VirtualizedContainerService.HintSize="416.8,528.8" sap2010:WorkflowViewState.IdRef="RetryScope_2" NumberOfRetries="[CInt( in_Config(&quot;RetryNumber&quot;))]" RetryInterval="[Timespan.Parse(in_Config(&quot;RetryIntervalMedium&quot;).ToString)]">
+            <ui:LogMessage DisplayName="Log Message - Outlook check" sap:VirtualizedContainerService.HintSize="416.8,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_77" Level="Info" Message="[&quot;Checking Outlook...&quot;]" />
+            <ui:RetryScope DisplayName="Retry Scope - Outlook" sap:VirtualizedContainerService.HintSize="416.8,528.8" sap2010:WorkflowViewState.IdRef="RetryScope_4" NumberOfRetries="[CInt( in_Config(&quot;RetryNumber&quot;))]" RetryInterval="[Timespan.Parse(in_Config(&quot;RetryIntervalMedium&quot;).ToString)]">
               <ui:RetryScope.ActivityBody>
                 <ActivityAction>
-                  <Sequence DisplayName="Action for outlook" sap:VirtualizedContainerService.HintSize="375.2,280.8" sap2010:WorkflowViewState.IdRef="Sequence_88">
+                  <Sequence DisplayName="Action for outlook" sap:VirtualizedContainerService.HintSize="375.2,280.8" sap2010:WorkflowViewState.IdRef="Sequence_94">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:StartProcess WorkingDirectory="{x:Null}" Arguments="Outlook" DisplayName="Start Process - Outlook" FileName="[in_Config(&quot;OutlookExePath&quot;).ToString]" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="StartProcess_5" />
-                    <Assign DisplayName="Assign OutlookSuccess" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_10">
+                    <ui:StartProcess WorkingDirectory="{x:Null}" Arguments="Outlook" DisplayName="Start Process - Outlook" FileName="[in_Config(&quot;OutlookExePath&quot;).ToString]" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="StartProcess_7" />
+                    <Assign DisplayName="Assign OutlookSuccess" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_13">
                       <Assign.To>
                         <OutArgument x:TypeArguments="x:Boolean">[OutlookSuccess]</OutArgument>
                       </Assign.To>
@@ -288,7 +278,7 @@
               </ui:RetryScope.ActivityBody>
               <ui:RetryScope.Condition>
                 <ActivityFunc x:TypeArguments="x:Boolean">
-                  <ui:CheckTrue ErrorMessage="{x:Null}" DisplayName="Check outlook flag is true" Expression="[OutlookSuccess]" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="CheckTrue_2" />
+                  <ui:CheckTrue ErrorMessage="{x:Null}" DisplayName="Check outlook flag is true" Expression="[OutlookSuccess]" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="CheckTrue_4" />
                 </ActivityFunc>
               </ui:RetryScope.Condition>
               <sap:WorkflowViewStateService.ViewState>
@@ -298,12 +288,18 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:RetryScope>
-            <ui:KillProcess AppliesTo="{x:Null}" Process="{x:Null}" ContinueOnError="True" DisplayName="Kill Process - Outlook" sap:VirtualizedContainerService.HintSize="416.8,134.4" sap2010:WorkflowViewState.IdRef="KillProcess_4" ProcessName="Outlook" />
-            <ui:LogMessage DisplayName="Log Message - &quot;Outlook check completed.&quot;" sap:VirtualizedContainerService.HintSize="416.8,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_73" Level="Info" Message="[&quot;Outlook check completed.&quot;]" />
+            <ui:KillProcess AppliesTo="{x:Null}" Process="{x:Null}" ContinueOnError="True" DisplayName="Kill Process - Outlook" sap:VirtualizedContainerService.HintSize="416.8,134.4" sap2010:WorkflowViewState.IdRef="KillProcess_6" ProcessName="Outlook" />
+            <ui:LogMessage DisplayName="Log Message - &quot;Outlook check completed.&quot;" sap:VirtualizedContainerService.HintSize="416.8,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_78" Level="Info" Message="[&quot;Outlook check completed.&quot;]" />
           </Sequence>
-          <TryCatch DisplayName="Try Catch Quickbooks login" sap:VirtualizedContainerService.HintSize="436.8,344.8" sap2010:WorkflowViewState.IdRef="TryCatch_4">
+          <TryCatch DisplayName="Try Catch Quickbooks login" sap:VirtualizedContainerService.HintSize="344,52.8" sap2010:WorkflowViewState.IdRef="TryCatch_5">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
             <TryCatch.Try>
-              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke QuickbooksLogin workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="Quickbooks\QuickbooksLogin.xaml">
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke QuickbooksLogin workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_15" UnSafe="False" WorkflowFileName="Quickbooks\QuickbooksLogin.xaml">
                 <ui:InvokeWorkflowFile.Arguments>
                   <InArgument x:TypeArguments="x:String" x:Key="in_QuickbooksExePath">[in_Config("QuickbooksExePath").ToString]</InArgument>
                   <InArgument x:TypeArguments="x:String" x:Key="in_RecipientsEmailList">[in_Config("RecipientsEmailList").ToString]</InArgument>
@@ -313,7 +309,7 @@
               </ui:InvokeWorkflowFile>
             </TryCatch.Try>
             <TryCatch.Catches>
-              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="403.2,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_4">
+              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="403.2,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_5">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -324,7 +320,7 @@
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="catch of login" sap:VirtualizedContainerService.HintSize="375.2,501.6" sap2010:WorkflowViewState.IdRef="Sequence_91">
+                  <Sequence DisplayName="catch of login" sap:VirtualizedContainerService.HintSize="375.2,501.6" sap2010:WorkflowViewState.IdRef="Sequence_96">
                     <Sequence.Variables>
                       <Variable x:TypeArguments="x:String" Name="Process" />
                     </Sequence.Variables>
@@ -333,8 +329,8 @@
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:LogMessage DisplayName="Log Message Quickbooks Login" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_74" Level="Error" Message="[&quot;In the catch of Quickbooks login sequence...&quot;]" />
-                    <Assign DisplayName="Assignn process" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_11">
+                    <ui:LogMessage DisplayName="Log Message Quickbooks Login" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_79" Level="Error" Message="[&quot;In the catch of Quickbooks login sequence...&quot;]" />
+                    <Assign DisplayName="Assignn process" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_14">
                       <Assign.To>
                         <OutArgument x:TypeArguments="x:String">[Process]</OutArgument>
                       </Assign.To>
@@ -342,7 +338,7 @@
                         <InArgument x:TypeArguments="x:String">No Process</InArgument>
                       </Assign.Value>
                     </Assign>
-                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke SendExceptionEmail workflow 6" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_14" UnSafe="False" WorkflowFileName="Reusable Code\SendExceptionEmail.xaml">
+                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke SendExceptionEmail workflow 6" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_16" UnSafe="False" WorkflowFileName="Reusable Code\SendExceptionEmail.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
                         <InArgument x:TypeArguments="x:String" x:Key="in_Subject">[in_Config("QuickbooksLoginSubject").ToString]</InArgument>
                         <InArgument x:TypeArguments="x:String" x:Key="in_Body">[in_Config("QuickbooksLoginBody").ToString]</InArgument>
@@ -353,14 +349,14 @@
                         <InOutArgument x:TypeArguments="x:String" x:Key="io_ProcessType1">[Process]</InOutArgument>
                       </ui:InvokeWorkflowFile.Arguments>
                     </ui:InvokeWorkflowFile>
-                    <Rethrow DisplayName="Rethrow current exception #1" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="Rethrow_2" />
+                    <Rethrow DisplayName="Rethrow current exception #1" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="Rethrow_3" />
                   </Sequence>
                 </ActivityAction>
               </Catch>
             </TryCatch.Catches>
           </TryCatch>
-          <ui:LogMessage DisplayName="Log message (Initialize applications) sequence ended" sap:VirtualizedContainerService.HintSize="436.8,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Trace" Message="[&quot;Opening applications sequence ended...&quot;]" />
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ProcessStartNotification workflow" sap:VirtualizedContainerService.HintSize="436.8,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" UnSafe="False" WorkflowFileName="Reusable Code\ProcessStartNotification.xaml">
+          <ui:LogMessage DisplayName="Log message (Initialize applications) sequence ended" sap:VirtualizedContainerService.HintSize="344,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_80" Level="Trace" Message="[&quot;Opening applications sequence ended...&quot;]" />
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ProcessStartNotification workflow" sap:VirtualizedContainerService.HintSize="344,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_17" UnSafe="False" WorkflowFileName="Reusable Code\ProcessStartNotification.xaml">
             <ui:InvokeWorkflowFile.Arguments>
               <InArgument x:TypeArguments="x:String" x:Key="in_RecipientsEmailList">[in_Config("RecipientsEmailList").ToString]</InArgument>
               <InArgument x:TypeArguments="x:String" x:Key="in_Subject">[in_Config("StartNotificationSubject").ToString]</InArgument>
@@ -371,7 +367,7 @@
         </Sequence>
       </TryCatch.Try>
       <TryCatch.Catches>
-        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="481.6,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_3">
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="403.2,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_3">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">False</x:Boolean>

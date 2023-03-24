@@ -21,7 +21,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>2573.6,3340.8</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>2573.6,5810.4</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>GetTransactionData_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="43">
@@ -111,9 +111,10 @@
       <AssemblyReference>UiPath.Platform</AssemblyReference>
       <AssemblyReference>UiPath.Mail</AssemblyReference>
       <AssemblyReference>UiPath.Mail.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Get a transaction item from a specified source (e.g., Orchestrator queues, spreadsheets, databases, mailboxes or web APIs). &#xA;&#xA;If there are no transaction items remaining, out_TransactionItem is set to Nothing, which leads to the End Process state. &#xA;&#xA;For cases in which there is only a single transaction (i.e., a linear process), use an If activity to check whether the argument in_TransactionNumber has the value 1 (meaning it is the first and only transaction) and assign the transaction item to out_TransactionItem. For any other value of in_TransactionNumber, out_TransactionItem should be set to Nothing.&#xA;&#xA;If there are multiple transactions, use the argument in_TransactionNumber as an index to retrieve the correct transaction to be processed. If there are no more transactions left, it is necessary to set out_TransactionItem to Nothing, thus ending the process." DisplayName="Get Transaction Data" sap:VirtualizedContainerService.HintSize="2584,3276" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Get a transaction item from a specified source (e.g., Orchestrator queues, spreadsheets, databases, mailboxes or web APIs). &#xA;&#xA;If there are no transaction items remaining, out_TransactionItem is set to Nothing, which leads to the End Process state. &#xA;&#xA;For cases in which there is only a single transaction (i.e., a linear process), use an If activity to check whether the argument in_TransactionNumber has the value 1 (meaning it is the first and only transaction) and assign the transaction item to out_TransactionItem. For any other value of in_TransactionNumber, out_TransactionItem should be set to Nothing.&#xA;&#xA;If there are multiple transactions, use the argument in_TransactionNumber as an index to retrieve the correct transaction to be processed. If there are no more transactions left, it is necessary to set out_TransactionItem to Nothing, thus ending the process." DisplayName="Get Transaction Data" sap:VirtualizedContainerService.HintSize="2584,5745.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="s:String[]" Name="ArrayOfColumns" />
       <Variable x:TypeArguments="x:String" Name="ColumnToFilter" />
@@ -309,14 +310,14 @@
         </Sequence>
       </If.Then>
       <If.Else>
-        <Sequence DisplayName="Assign transaction data to nothing if processing is done for respective process" sap:VirtualizedContainerService.HintSize="791.2,1455.2" sap2010:WorkflowViewState.IdRef="Sequence_89">
+        <Sequence DisplayName="Assign transaction data to nothing if processing is done for respective process" sap:VirtualizedContainerService.HintSize="791.2,1615.2" sap2010:WorkflowViewState.IdRef="Sequence_89">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <If Condition="[io_ProcessedRowCount&gt;= io_dt_TransactionData.Rows.Count]" DisplayName="If processing is done for one process" sap:VirtualizedContainerService.HintSize="749.6,1362.4" sap2010:WorkflowViewState.IdRef="If_26">
+          <If Condition="[io_ProcessedRowCount&gt;= io_dt_TransactionData.Rows.Count]" DisplayName="If processing is done for one process" sap:VirtualizedContainerService.HintSize="749.6,1522.4" sap2010:WorkflowViewState.IdRef="If_26">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -324,7 +325,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <If.Then>
-              <Sequence DisplayName="Assign transaction data to nothing" sap:VirtualizedContainerService.HintSize="714.4,1173.6" sap2010:WorkflowViewState.IdRef="Sequence_90">
+              <Sequence DisplayName="Assign transaction data to nothing" sap:VirtualizedContainerService.HintSize="714.4,1333.6" sap2010:WorkflowViewState.IdRef="Sequence_90">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -356,7 +357,7 @@
                     <InArgument x:TypeArguments="x:Int32">[io_ProcessCounter+1]</InArgument>
                   </Assign.Value>
                 </Assign>
-                <Switch x:TypeArguments="x:String" DisplayName="Switch - Send report" Expression="[io_ProcessType]" sap:VirtualizedContainerService.HintSize="672.8,187.2" sap2010:WorkflowViewState.IdRef="Switch`1_6">
+                <Switch x:TypeArguments="x:String" DisplayName="Switch - Send report" Expression="[io_ProcessType]" sap:VirtualizedContainerService.HintSize="672.8,347.2" sap2010:WorkflowViewState.IdRef="Switch`1_6">
                   <Switch.Default>
                     <ui:LogMessage DisplayName="Default option" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_56" Level="Info" Message="[&quot;No process was supposed to run now.&quot;]" />
                   </Switch.Default>
@@ -455,7 +456,7 @@
         </Sequence>
       </If.Else>
     </If>
-    <ui:InterruptibleWhile CurrentIndex="{x:Null}" Condition="[io_dt_TransactionData.RowCount=0 and io_dt_ScheduleDetailsDT.Rows.Count&gt;io_ProcessCounter]" DisplayName="While io_transacation dt is null 1" sap:VirtualizedContainerService.HintSize="573.6,707.2" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
+    <ui:InterruptibleWhile CurrentIndex="{x:Null}" Condition="[io_dt_TransactionData.RowCount=0 and io_dt_ScheduleDetailsDT.Rows.Count&gt;io_ProcessCounter]" DisplayName="While io_transacation dt is null 1" sap:VirtualizedContainerService.HintSize="2542.4,707.2" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
       <ui:InterruptibleWhile.Body>
         <Sequence DisplayName="Run process for each row #1" sap:VirtualizedContainerService.HintSize="538.4,540" sap2010:WorkflowViewState.IdRef="Sequence_84">
           <sap:WorkflowViewStateService.ViewState>
@@ -484,11 +485,21 @@
             </sap:WorkflowViewStateService.ViewState>
             <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="Daily" DisplayName="Invoke CheckInputFile Daily workflow 1" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_28" UnSafe="False" WorkflowFileName="ExtractInput\CheckInputFileDaily.xaml">
               <ui:InvokeWorkflowFile.Arguments>
-                <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config1">[in_Config]</InArgument>
-                <InOutArgument x:TypeArguments="x:Int32" x:Key="io_ProcessCounter1">[io_ProcessCounter]</InOutArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="in_ProcessType">[io_ProcessType]</InArgument>
-                <OutArgument x:TypeArguments="x:String" x:Key="out_InputOutputFilePath">[io_IOExcelFilePathDaily]</OutArgument>
-                <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_TransactionData1">[io_dt_TransactionData]</OutArgument>
+                <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config1">
+                  <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
+                </InArgument>
+                <InOutArgument x:TypeArguments="x:Int32" x:Key="io_ProcessCounter1">
+                  <mva:VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="io_ProcessCounter" />
+                </InOutArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_ProcessType">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="io_ProcessType" />
+                </InArgument>
+                <OutArgument x:TypeArguments="x:String" x:Key="out_InputOutputFilePath">
+                  <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="io_IOExcelFilePathDaily" />
+                </OutArgument>
+                <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_TransactionData1">
+                  <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="io_dt_TransactionData" />
+                </OutArgument>
               </ui:InvokeWorkflowFile.Arguments>
             </ui:InvokeWorkflowFile>
             <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="Consolidated" DisplayName="Invoke CheckInputFileConso workflow 1" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_29" UnSafe="False" WorkflowFileName="ExtractInput\CheckInputFileConso.xaml">
@@ -513,9 +524,9 @@
         </Sequence>
       </ui:InterruptibleWhile.Body>
     </ui:InterruptibleWhile>
-    <If Condition="[(io_dt_TransactionData.Rows.Count&gt;0) and (io_dt_ScheduleDetailsDT.Rows.Count&gt; io_ProcessCounter)]" DisplayName="If Fresh Run then read schedule details file" sap:VirtualizedContainerService.HintSize="1906.4,371.2" sap2010:WorkflowViewState.IdRef="If_41">
+    <If Condition="[(io_dt_TransactionData.Rows.Count&gt;0) and (io_dt_ScheduleDetailsDT.Rows.Count&gt; io_ProcessCounter)]" DisplayName="If Fresh Run then read schedule details file" sap:VirtualizedContainerService.HintSize="2542.4,2680.8" sap2010:WorkflowViewState.IdRef="If_41">
       <If.Then>
-        <Switch x:TypeArguments="x:String" DisplayName="Switch go to current process" Expression="[io_ProcessType]" sap:VirtualizedContainerService.HintSize="496.8,182.4" sap2010:WorkflowViewState.IdRef="Switch`1_7">
+        <Switch x:TypeArguments="x:String" DisplayName="Switch go to current process" Expression="[io_ProcessType]" sap:VirtualizedContainerService.HintSize="1400.8,2492" sap2010:WorkflowViewState.IdRef="Switch`1_7">
           <Switch.Default>
             <ui:LogMessage DisplayName="If no process is to run" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_60" Level="Info" Message="[&quot;No process was supposed to run now.&quot;]" />
           </Switch.Default>

@@ -72,7 +72,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="42">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="84">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -115,6 +115,7 @@
       <AssemblyReference>UiPath.Vision.Core</AssemblyReference>
       <AssemblyReference>UiPath.OCR.Contracts</AssemblyReference>
       <AssemblyReference>UiPath.CV.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence sap2010:Annotation.AnnotationText="This will create invoice in the quickbooks as per Daily and Consolidated scenario. It will also calculate the total number of standard and premium working hours." DisplayName="Quickbooks Process" sap:VirtualizedContainerService.HintSize="981.6,10532.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -207,7 +208,7 @@
                     <InArgument x:TypeArguments="sd:DataTable">[new DataTable]</InArgument>
                   </Assign.Value>
                 </Assign>
-                <If Condition="[DailySheetPresent]" DisplayName="If Daily Quoattion sheet present" sap:VirtualizedContainerService.HintSize="518.4,52.8" sap2010:WorkflowViewState.IdRef="If_33">
+                <If Condition="[DailySheetPresent]" DisplayName="If Daily Quoattion sheet present" sap:VirtualizedContainerService.HintSize="1196.8,3248" sap2010:WorkflowViewState.IdRef="If_33">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -297,7 +298,7 @@
                     </Sequence>
                   </If.Then>
                   <If.Else>
-                    <Sequence DisplayName="fetch data from std Quotation sheet" sap:VirtualizedContainerService.HintSize="777.6,2665.6" sap2010:WorkflowViewState.IdRef="Sequence_99">
+                    <Sequence DisplayName="fetch data from std Quotation sheet" sap:VirtualizedContainerService.HintSize="777.6,3088.8" sap2010:WorkflowViewState.IdRef="Sequence_99">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -376,7 +377,7 @@
                           </Sequence>
                         </If.Else>
                       </If>
-                      <Sequence DisplayName="Write Hours in respective rows" sap:VirtualizedContainerService.HintSize="736,1672" sap2010:WorkflowViewState.IdRef="Sequence_98">
+                      <Sequence DisplayName="Write Hours in respective rows" sap:VirtualizedContainerService.HintSize="736,2095.2" sap2010:WorkflowViewState.IdRef="Sequence_98">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -409,13 +410,13 @@
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                         </ui:FilterDataTable>
-                        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="[Count1]" DataTable="[dt_ColBCRange]" DisplayName="For Each Row in Data Table dt_ColBCRange" sap:VirtualizedContainerService.HintSize="694.4,1276.8" sap2010:WorkflowViewState.IdRef="ForEachRow_3">
+                        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="[Count1]" DataTable="[dt_ColBCRange]" DisplayName="For Each Row in Data Table dt_ColBCRange" sap:VirtualizedContainerService.HintSize="694.4,1700" sap2010:WorkflowViewState.IdRef="ForEachRow_3">
                           <ui:ForEachRow.Body>
                             <ActivityAction x:TypeArguments="sd:DataRow">
                               <ActivityAction.Argument>
                                 <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
                               </ActivityAction.Argument>
-                              <Sequence DisplayName="Body #1" sap:VirtualizedContainerService.HintSize="660.8,1160.8" sap2010:WorkflowViewState.IdRef="Sequence_97">
+                              <Sequence DisplayName="Body #1" sap:VirtualizedContainerService.HintSize="660.8,1584" sap2010:WorkflowViewState.IdRef="Sequence_97">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -436,14 +437,42 @@
                                     <OutArgument x:TypeArguments="x:String">[MinValue]</OutArgument>
                                   </ui:ExcelReadCell.Result>
                                 </ui:ExcelReadCell>
-                                <Assign DisplayName="Assign Minvalue" sap:VirtualizedContainerService.HintSize="619.2,60" sap2010:WorkflowViewState.IdRef="Assign_28">
-                                  <Assign.To>
-                                    <OutArgument x:TypeArguments="x:String">[MinValue]</OutArgument>
-                                  </Assign.To>
-                                  <Assign.Value>
-                                    <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Matches(MinValue,"[0-9]\d*(.[0-9]\d+)?")(0).ToString]</InArgument>
-                                  </Assign.Value>
-                                </Assign>
+                                <TryCatch DisplayName="Try Catch for min hours" sap:VirtualizedContainerService.HintSize="619.2,483.2" sap2010:WorkflowViewState.IdRef="TryCatch_3">
+                                  <TryCatch.Try>
+                                    <Assign DisplayName="Assign Minvalue" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_28">
+                                      <Assign.To>
+                                        <OutArgument x:TypeArguments="x:String">[MinValue]</OutArgument>
+                                      </Assign.To>
+                                      <Assign.Value>
+                                        <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Matches(MinValue,"[0-9]\d*(.[0-9]\d+)?")(0).ToString]</InArgument>
+                                      </Assign.Value>
+                                    </Assign>
+                                  </TryCatch.Try>
+                                  <TryCatch.Catches>
+                                    <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,318.4" sap2010:WorkflowViewState.IdRef="Catch`1_5">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <ActivityAction x:TypeArguments="s:Exception">
+                                        <ActivityAction.Argument>
+                                          <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                                        </ActivityAction.Argument>
+                                        <Sequence DisplayName="Catch - For min hours error" sap:VirtualizedContainerService.HintSize="375.2,248" sap2010:WorkflowViewState.IdRef="Sequence_145">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <ui:LogMessage DisplayName="Log Message - Error of min hours" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_141" Level="Error" Message="[&quot;The Record is using Standard Sheet of Quotation file please check it manually if the Min Hours cells are merged and the whole text is present in O column&quot;]" />
+                                          <Throw DisplayName="Throw Std Sheet is not merged" Exception="[new BusinessRuleException(&quot;The Record is using Standard Sheet of Quotation file please check it manually if the Min Hours cells are merged and the whole text is present in O column&quot;)]" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="Throw_26" />
+                                        </Sequence>
+                                      </ActivityAction>
+                                    </Catch>
+                                  </TryCatch.Catches>
+                                </TryCatch>
                                 <ui:LogMessage DisplayName="Log Message - Writing Hours" sap:VirtualizedContainerService.HintSize="619.2,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_72" Level="Info" Message="[&quot;Writing Hours: &quot;+  MinValue]" />
                                 <ui:IsMatch BuilderPattern="\d{1,2}" DisplayName="Is Match - Validate Min hours" sap:VirtualizedContainerService.HintSize="619.2,60" sap2010:WorkflowViewState.IdRef="IsMatch_1" Input="[MinValue]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;DIG&quot;,&quot;OperationName&quot;:&quot;Digit&quot;,&quot;OperationValue&quot;:&quot;\\d&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;BXYT&quot;,&quot;QuantifierName&quot;:&quot;Between x and y times&quot;,&quot;QuantifierSecondValue&quot;:&quot;2&quot;}]" Pattern="\d{1,2}" RegexOption="IgnoreCase, Compiled" Result="[MinValueValid]" />
                                 <If Condition="[MinValueValid]" DisplayName="If MinValueValid" sap:VirtualizedContainerService.HintSize="619.2,407.2" sap2010:WorkflowViewState.IdRef="If_52">
@@ -1054,7 +1083,7 @@
                   </ui:SendHotkey.Target>
                 </ui:SendHotkey>
                 <ui:LogMessage DisplayName="Log Message - Entering the Company details and ref number" sap:VirtualizedContainerService.HintSize="828,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_84" Level="Info" Message="[&quot;Entering the Company details and Quotation Reference number...&quot;]" />
-                <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SimulateType="{x:Null}" Activate="True" DelayBefore="[CInt( in_Config1(&quot;DelayOneThousand&quot;).ToString)]" DisplayName="Type Into description column #4" sap:VirtualizedContainerService.HintSize="828,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_30" SendWindowMessages="True" Text="[&quot;OUR REF: &quot;+ QuotationRefNumber.ToString]">
+                <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SimulateType="{x:Null}" Activate="True" DelayBefore="[CInt( in_Config1(&quot;DelayBeforeAfter&quot;).ToString)]" DisplayName="Type Into description column #4" sap:VirtualizedContainerService.HintSize="828,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_30" SendWindowMessages="True" Text="[&quot;OUR REF: &quot;+ QuotationRefNumber.ToString]">
                   <ui:TypeInto.Target>
                     <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="345e2739-2f62-4c7c-8335-7176c66f396e" InformativeScreenshot="49b3b93a9ef79db56a2ceb69bd4db95e" Selector="&lt;wnd cls='MauiForm' title='Create Invoices*' /&gt;&lt;wnd cls='Edit' /&gt;" WaitForReady="NONE">
                       <ui:Target.TimeoutMS>
@@ -1075,7 +1104,7 @@
                     </ui:Target>
                   </ui:SendHotkey.Target>
                 </ui:SendHotkey>
-                <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBetweenKeys="{x:Null}" EmptyField="{x:Null}" SimulateType="{x:Null}" Activate="True" DelayBefore="[CInt( in_Config1(&quot;DelayOneThousand&quot;).ToString)]" DelayMS="[CInt( in_Config1(&quot;DelayBeforeMS&quot;).ToString)]" DisplayName="Type Into description column #3" sap:VirtualizedContainerService.HintSize="828,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_43" SendWindowMessages="True" Text="[&quot;SITE: &quot;+in_dt_TransactionItem1(0)(&quot;Job Site address&quot;).ToString.Trim]">
+                <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBetweenKeys="{x:Null}" EmptyField="{x:Null}" SimulateType="{x:Null}" Activate="True" DelayBefore="[CInt( in_Config1(&quot;DelayBeforeAfter&quot;).ToString)]" DelayMS="[CInt( in_Config1(&quot;DelayBeforeMS&quot;).ToString)]" DisplayName="Type Into description column #3" sap:VirtualizedContainerService.HintSize="828,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_43" SendWindowMessages="True" Text="[&quot;SITE: &quot;+in_dt_TransactionItem1(0)(&quot;Job Site address&quot;).ToString.Trim]">
                   <ui:TypeInto.Target>
                     <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="345e2739-2f62-4c7c-8335-7176c66f396e" InformativeScreenshot="49b3b93a9ef79db56a2ceb69bd4db95e" Selector="&lt;wnd cls='MauiForm' title='Create Invoices*' /&gt;&lt;wnd cls='Edit' /&gt;" WaitForReady="NONE">
                       <ui:Target.TimeoutMS>
